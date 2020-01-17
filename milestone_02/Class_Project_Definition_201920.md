@@ -67,10 +67,16 @@ T: Task
    4. [T] Re-enable login/register links
    5. [T] Manually test register and login; user should easily be able to see that they are logged in
 3. [E] As an administrator I want to be able to upload a spreadsheet of results so that new data can be added to our system
+   1. [U] As an administrator, I want to have privileged, secure access to our records so that I can modify them as needed
+      1. [T] Define a super-user account type with elevated privileges for accessing the database
+      2. [T] Make record-modifying actions restricted to this super-user account type and and inaccessible to normal users or guests without accounts
+   2. [U] As an administrator, I want to be able to add records to our system by uploading a standardly-formatted spreadsheet, so that I can save time and avoid redundancy
+      1. [T] Create an action method for adding an individual record to the database
+      2. [T] Create an action method that takes a .csv file and adds each row to the database
 4. [U] As a visitor I want to be able to search for an athlete and then view their athlete page so I can find out more information about them
 5. [U] As a visitor I want to be able to view race results for an athlete so I can see how they have performed
 6. [U] As a visitor I want to be able to view PR's (personal records) for an athlete so I can see their best performances
-7. [E] 
+7. [E] As an administrator, 
     1. [U]
         1. [T]
         2. [T]
