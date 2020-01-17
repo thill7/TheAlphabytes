@@ -59,7 +59,7 @@ T: Task
    1. [T] Create starter ASP dot NET MVC 5 Web Application with Individual User Accounts and no unit test project
    2. [T] Choose CSS library (Bootstrap 3, 4, or ?) and use it for all pages
    3. [T] Create nice homepage: write initial content, customize navbar, hide links to login/register
-   4. [T] Create SQL Server database on Azure and configure web app to use it. Hide credentials.
+   4. [T] Create SQL Server database locally. Hide credentials.
 2. [U] As a visitor to the site I would like to be able to register an account so I will be able to access athlete statistics
    1. [T] Copy SQL schema from an existing ASP.NET Identity database and integrate it into our UP script
    2. [T] Configure web app to use our db with Identity tables in it
