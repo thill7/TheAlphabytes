@@ -82,6 +82,7 @@ T: Task
 9. [U] As a robot I would like to be prevented from creating an account on your website so I don't ask millions of my friends to join your website and try to add comments about male enhancement drugs.
 
 ## Initial Architecture Envisioning
+![IAE](IAE.jpg)
 
 ## Agile Data Modeling
 ![Sequence_Diagram](UML_sequence_diagram.jpg)
