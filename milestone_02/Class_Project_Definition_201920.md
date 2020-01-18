@@ -38,9 +38,9 @@ The product is centered around three core features:
 ## Initial Modeling
 
 ### Use Case Diagrams
-![Use_Case_Diagram](/UML_use_case_diagram.jpg)
+![Use_Case_Diagram](UML_use_case_diagram.jpg)
 ### Other Modeling
-![ER_Diagram](/erdiagram.jpg)
+![ER_Diagram](erdiagram.jpg)
 
 ## Identify Non-Functional Requirements
 
@@ -84,6 +84,6 @@ T: Task
 ## Initial Architecture Envisioning
 
 ## Agile Data Modeling
-![Sequence_Diagram](/UML_sequence_diagram.jpg)
+![Sequence_Diagram](UML_sequence_diagram.jpg)
 
 ## Timeline and Release Plan
