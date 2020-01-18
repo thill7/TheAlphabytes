@@ -77,12 +77,7 @@ T: Task
 5. [U] As a visitor I want to be able to view race results for an athlete so I can see how they have performed
 6. [U] As a visitor I want to be able to view PR's (personal records) for an athlete so I can see their best performances
 7. [U] As a user I want to be able to view a graph of race results for a specific athlete and event, so that I can see the athlete's progress over time
-8. [E] As an administrator, 
-    1. [U]
-        1. [T]
-        2. [T]
-        3. [T]
-    2. [U]
+8. [U] As a visitor I would like to see cute or funny web pages when errors occur, so that I don't have to worry about complex details of why a piece of the website didn't work
 9. [U] As a robot I would like to be prevented from creating an account on your website so I don't ask millions of my friends to join your website and try to add comments about male enhancement drugs.
 
 ## Initial Architecture Envisioning
