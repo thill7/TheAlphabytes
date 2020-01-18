@@ -80,11 +80,18 @@ T: Task
 7. [U] As a user I want to be able to view a graph of race results for a specific athlete and event, so that I can see the athlete's progress over time
 8. [U] As a visitor I would like to see cute or funny web pages when errors occur, so that I don't have to worry about complex details of why a piece of the website didn't work
 9. [U] As a robot I would like to be prevented from creating an account on your website so I don't ask millions of my friends to join your website and try to add comments about male enhancement drugs.
+10. [U] As a coach, I would like to see predictive performances for the athletes on my team, so I can strategize for upcoming meets.
+11. [U] As a coach, I would like the ability to have athletes automatically assigned to races for the upcoming meets, so that the team has the optimum chance of winning the meet.
+	1. [T] Develop an algorithm to optimize athlete race assignments assuming no knowlege of opponent teams..
+	2. [T] Integrate knowlege of opponent team's performances and predict their time.
 
 ## Initial Architecture Envisioning
 ![IAE](IAE.jpg)
 
 ## Agile Data Modeling
 ![Sequence_Diagram](UML_sequence_diagram.jpg)
+
+## Vision Statement
+For swimming athletes and coaches who want professional level analytics and strategies to win meets, the Swimming Predictive Analytics Solution is an indepth website that will provide a platform to track race results for athlete and perform analysis to optimize the teams strategy. Coaches will be able to access insight to their athletes' fitness and trends in performance including predictions on future performance. This solution would allow coaches to develop an optimized strategy for a coming meet by assigning athletes to specific races based on predicted results. Unlike hiring personnel with advanced training, our product would provide all analysis and storage of race results in one place for a fraction of the expense making elite analytics accessible to teams of any level.
 
 ## Timeline and Release Plan
