@@ -19,11 +19,13 @@ The product is centered around three core features:
 
 ## Initial Requirements Elaboration and Elicitation
 
-### Questions
-
 ### Interviews
-
-### Other Elicitation Activities?
+1. *Are athletes users?*
+    * An athlete can be a user, but they are not connected to the athlete in the database. That is, the fact that an athlete is in the database does not make them a user of the system. They can sign-up to be a user, but it will be independent of their status as an athlete.
+2. *What data do you want us to store for athletes and coaches?* 
+    * I would like to be able to see the first and last name of athletes and coaches. The gender of the athlete is important as well, but I do not need to know the coaches gender.
+3. *Are users people?*
+    * Of course users are people! In terms of the database though, a user should not be a person, since a person has a first and last name, while the user is only identified by their username, which is an email.
 
 ## List of Needs and Features
 
