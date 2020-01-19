@@ -37,10 +37,10 @@ The product is centered around three core features:
 
 ## Initial Modeling
 
-### Use Case Diagrams
+### UML Use Case Diagram
 ![Use_Case_Diagram](UML_use_case_diagram.jpg)
-### Other Modeling
-![ER_Diagram](erdiagram.jpg)
+### UML Sequence Diagram
+![Sequence_Diagram](UML_sequence_diagram.jpg)
 
 ## Identify Non-Functional Requirements
 
@@ -89,7 +89,7 @@ T: Task
 ![IAE](IAE.jpg)
 
 ## Agile Data Modeling
-![Sequence_Diagram](UML_sequence_diagram.jpg)
+![ER_Diagram](erdiagram.jpg)
 
 ## Vision Statement
 For swimming athletes and coaches who want professional level analytics and strategies to win meets, the Swimming Predictive Analytics Solution is an indepth website that will provide a platform to track race results for athlete and perform analysis to optimize the teams strategy. Coaches will be able to access insight to their athletes' fitness and trends in performance including predictions on future performance. This solution would allow coaches to develop an optimized strategy for a coming meet by assigning athletes to specific races based on predicted results. Unlike hiring personnel with advanced training, our product would provide all analysis and storage of race results in one place for a fraction of the expense making elite analytics accessible to teams of any level.

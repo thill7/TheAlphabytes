@@ -18,3 +18,4 @@ For this solution, we will use an API that can handle monetary transactions like
 In the chore assignment feature, we would need to create an algorithm that would assign chores to people. Chores could have different levels of difficulty, urgency, and frequency. The algorithm would need to assign chores fairly and could maybe even take into account chore preferences of the household members.
 
 On a scale of 1 to 10, this solution would be rated 7 because the features are fairly independent of each other so it would be easier to create value quickly early on without being dependent on one massive and complex feature. However, there is some amount of difficulty because it would incorporate multiple APIs and the algorithmic component's "fairness" for chore assignments might be hard to quantify or have an acceptance test for.
+
