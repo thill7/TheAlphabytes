@@ -182,7 +182,3 @@ ON DELETE CASCADE
 GO
 ALTER TABLE [dbo].[AspNetUserRoles] CHECK CONSTRAINT [FK_dbo.AspNetUserRoles_dbo.AspNetUsers_UserId]
 GO
-USE [master]
-GO
-ALTER DATABASE [aspnet-class_project-20200121043524] SET  READ_WRITE 
-GO
