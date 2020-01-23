@@ -1,4 +1,94 @@
-﻿
+﻿CREATE TABLE [dbo].[Person]
+(
+	[ID]	INT IDENTITY (1,1)	NOT NULL,
+	[FirstName]	NVARCHAR(50)	NOT NULL,
+	[LastName]	NVARCHAR(50)	NOT NULL,
+	CONSTRAINT [PK_dbo.Person] PRIMARY KEY CLUSTERED ([ID] ASC)
+);
+
+CREATE TABLE [dbo].[Gender]
+(
+	[ID]	INT IDENTITY (1,1)	NOT NULL,
+	[Name]	NVARCHAR(50)		NOT NULL,
+	CONSTRAINT [PK_dbo.Gender] PRIMARY KEY CLUSTERED ([ID] ASC)
+);
+
+CREATE TABLE [dbo].[Athlete]
+(
+	[ID]		INT IDENTITY (1,1)	NOT NULL,
+	[Age]		INT					NOT NULL,
+	[PersonID]	INT					NOT NULL,
+	[GenderID]	INT					NOT NULL,
+	CONSTRAINT [PK_dbo.Athlete] PRIMARY KEY CLUSTERED ([ID] ASC),
+	CONSTRAINT [PK_dbo.Athlete_dbo.PersonID] FOREIGN KEY ([PersonID])
+		REFERENCES [dbo].[Person] ([ID]) ON DELETE CASCADE,
+	CONSTRAINT [PK_dbo.Athlete_dbo.GenderID] FOREIGN KEY ([GenderID])
+		REFERENCES [dbo].[Gender] ([ID]) ON DELETE CASCADE
+);
+
+CREATE TABLE [dbo].[Coach]
+(
+	[ID]		INT IDENTITY (1,1)	NOT NULL,
+	[PersonID]	INT					NOT NULL,
+	CONSTRAINT [PK_dbo.Coach] PRIMARY KEY CLUSTERED ([ID] ASC),
+	CONSTRAINT [PK_dbo.Coach_dbo.PersonID] FOREIGN KEY ([PersonID])
+		REFERENCES [dbo].[Person] ([ID]) ON DELETE CASCADE,
+);
+
+CREATE TABLE [dbo].[Team]
+(
+	[ID]		INT IDENTITY (1,1)	NOT NULL,
+	[Name]		NVARCHAR(50)		NOT NULL,
+	[CoachID]	INT					NOT NULL,
+	CONSTRAINT [PK_dbo.Team] PRIMARY KEY CLUSTERED ([ID] ASC),
+	CONSTRAINT [PK_dbo.Team_dbo.CoachID] FOREIGN KEY ([CoachID])
+		REFERENCES [dbo].[Coach] ([ID]) ON DELETE CASCADE,
+);
+
+CREATE TABLE [dbo].[TeamMember]
+(
+	[TeamID]	INT		NOT NULL,
+	[AthleteID]	INT		NOT NULL,
+	CONSTRAINT [PK_dbo.TeamMeet] PRIMARY KEY CLUSTERED ([TeamID], [AthleteID]),
+	CONSTRAINT [PK_dbo.TeamMember_dbo.TeamID] FOREIGN KEY ([TeamID])
+		REFERENCES [dbo].[Team] ([ID]) ON DELETE CASCADE,
+	CONSTRAINT [PK_dbo.Team_dbo.AthleteID] FOREIGN KEY ([AthleteID])
+		REFERENCES [dbo].[Athlete] ([ID]) ON DELETE NO ACTION,
+);
+
+CREATE TABLE [dbo].[Event]
+(
+	[ID]		INT IDENTITY (1,1)	NOT NULL,
+	[Name]		NVARCHAR(50)		NOT NULL,
+	[GenderID]	INT					NOT NULL,
+	CONSTRAINT [PK_dbo.Event] PRIMARY KEY CLUSTERED ([ID] ASC),
+	CONSTRAINT [PK_dbo.Event_dbo.GenderID] FOREIGN KEY ([GenderID])
+		REFERENCES [dbo].[Gender] ([ID]) ON DELETE CASCADE
+);
+
+CREATE TABLE [dbo].[Meet]
+(
+	[ID]		INT IDENTITY (1,1)	NOT NULL,
+	[Date]		DATETIME			NOT NULL,
+	[Location]	NVARCHAR(50)		NOT NULL,
+	CONSTRAINT [PK_dbo.Meet] PRIMARY KEY CLUSTERED ([ID] ASC)
+);
+
+CREATE TABLE [dbo].[Record]
+(
+	[ID]		INT IDENTITY (1,1)	NOT NULL,
+	[Time]		FLOAT				NOT NULL,
+	[AthleteID]	INT					NOT NULL,
+	[EventID]	INT					NOT NULL,
+	[MeetID]	INT					NOT NULL,
+	CONSTRAINT [PK_dbo.Record] PRIMARY KEY CLUSTERED ([ID] ASC),
+	CONSTRAINT [PK_dbo.Record_dbo.AthleteID] FOREIGN KEY ([AthleteID])
+		REFERENCES [dbo].[Athlete] ([ID]) ON DELETE CASCADE,
+	CONSTRAINT [PK_dbo.Record_dbo.EventID] FOREIGN KEY ([EventID])
+		REFERENCES [dbo].[Event] ([ID]) ON DELETE NO ACTION,
+	CONSTRAINT [PK_dbo.Record_dbo.MeetID] FOREIGN KEY ([MeetID])
+		REFERENCES [dbo].[Meet] ([ID]) ON DELETE CASCADE
+);
 
 -- ##### IDENTITY TABLES BELOW ##### ATHLETE TABLES ABOVE #####
 
