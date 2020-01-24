@@ -30,7 +30,7 @@
                     {
                         <tr class="col-10">
                             <td>
-                                @Html.ActionLink(person.FirstName + " " + person.LastName, "Person", new { id = person.ID, search = ViewBag.Search })
+                                @Html.ActionLink(person.FirstName + " " + person.LastName, "Detail", "Record", new { id = person.ID, search = ViewBag.Search }, null)
                             </td>
                         </tr>
                     }
