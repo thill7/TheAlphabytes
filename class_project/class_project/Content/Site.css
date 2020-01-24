@@ -9,3 +9,8 @@ div#heroImage img{
    object-fit: cover;
    object-position: center;
 }
+
+.link-plain {
+    color: azure;
+    text-decoration: none;
+}
