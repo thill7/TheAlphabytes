@@ -21,13 +21,17 @@ namespace class_project.Controllers
         public ActionResult Search()
         {
             string search = Request.QueryString["search"];
-            var matchLastName = db.People.Where(p => p.LastName.Contains(search));
-            var query = db.People.Where(p => p.FirstName.Contains(search)).Concat(matchLastName);
-            List<Person> SearchList = query.ToList();
-            ViewBag.Success = true;
-            if (!SearchList.Any())
+            if (!String.IsNullOrEmpty(search))
             {
-                ViewBag.Success = false;
+                var matchLastName = db.People.Where(p => p.LastName.Contains(search));
+                var query = db.People.Where(p => p.FirstName.Contains(search)).Union(matchLastName);
+                List<Person> SearchList = query.ToList();
+                ViewBag.Success = true;
+                if (!SearchList.Any())
+                {
+                    ViewBag.Success = false;
+                }
+                return View(SearchList);
             }
             return View();
         }
