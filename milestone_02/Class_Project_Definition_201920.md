@@ -36,6 +36,10 @@ The product is centered around three core features:
 5. "Standard" logins are fine.  Use email (must be unique) for username and then require an 8+ character password.  Will eventually need to confirm email to try to prevent some forms of misuse.  Admins and contractors must have an offline confirmation by our employees and then the "super" admin adds them manually.
 6. The core entity is the athlete.  They are essentially free agents in the system.  They can be a member of one or more teams at one time, then change at any time.  Later when we want to have teams and do predictive analysis we'll let the coaches assemble their own teams and add/remove athletes from their rosters.
 7. The first stats we want are: 1) display PR's prominantly in each race event, 2) show a historical picture/plot of performance, per race type and distance, 3) some measure of how they rank compared to other athletes, both current and historical, 4) something that shows how often they compete in each race event, i.e. which events are they competing in most frequently, and alternately, which events are they "avoiding"
+8. Athletes can be searched for by name using a search tool.
+9. Coaches will be able to automatically generate optimal lineups for winning a given meet, based on the past performance of athletes on their team.
+10. Users who are logged in will have a customized dashboard as their homepage, with information tailored to their interests in specific events or athletes.
+11.  Athletes can be "favorited" by users with an account so they can be quickly viewed without searching, and those users can see the latest updates about their favorited athletes.
 
 ## Initial Modeling
 
@@ -51,6 +55,9 @@ The product is centered around three core features:
 3. Site should never return debug error pages.  Web server should have a custom 404 page that is cute or funny and has a link to the main index page.
 4. All server errors must be logged so we can investigate what is going on in a page accessible only to Admins.
 5. English will be the default language.
+6. All styling will be done with Bootstrap 4 when possible.
+7. Pages will be designed with HTML 5.
+8. Only data critical to the user experience will be stored, and no user data will be shared with outside resources.
 
 ## Identify Functional Requirements (User Stories)
 
