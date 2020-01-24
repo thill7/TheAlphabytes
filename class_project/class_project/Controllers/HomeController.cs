@@ -40,6 +40,7 @@ namespace class_project.Controllers
         }
 
         // GET: Person/5
+        //[Authorize]
         public ActionResult Person(int? id, string search)
         {
             if (id == null)

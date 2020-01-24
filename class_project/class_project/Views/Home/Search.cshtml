@@ -6,34 +6,41 @@
 
 <h2 align="center">Search Athletes</h2>
 
-@using (Html.BeginForm("Search", "Home", FormMethod.Get))
-{
-    @Html.AntiForgeryToken()
-
-    <div class="row form-group">
-        <div class="col-xs-10" style="padding-left:0px; padding-right:0px">
-            @Html.TextBox("search", null, new { @class = "form-control", type = "text", style = "padding-right:0px; margin-right:0px;", name = "search" })
-        </div>
-        <div class="col-xs-2" style="padding-left:0px; padding-right:0px">
-            <button type="submit" class="btn btn-primary btn-block" style="padding-left:0px;margin-left:0px;">Search</button>
+<div class="container-fluid">
+    @using (Html.BeginForm("Search", "Home", FormMethod.Get))
+    {
+        @Html.AntiForgeryToken()
+    <div class="container">
+        <div class="row p-1">
+            <div class="col-10 p-0">
+                @Html.TextBox("search", null, new { @class = "form-control", type = "text", style = "", name = "search" })
+            </div>
+            <div class="col-2 p-0">
+                <button type="submit" class="btn btn-dark btn-block">Search</button>
+            </div>
         </div>
     </div>
-}
-@if (ViewBag.Success ?? false)
-{
-    <table class="table table-hover table-bordered">
-        @foreach (var person in Model)
-        {
-            <tr>
-                <td>
-                    @Html.ActionLink(person.FirstName + " " + person.LastName, "Person", new { id = person.ID, search = ViewBag.Search })
-                </td>
-            </tr>
-        }
-    </table>
-}
-else if (ViewBag.Success == false)
-{
-    <br />
-    <p>Sorry, we could not find the athlete you were looking for.</p>
-}
+    }
+    @if (ViewBag.Success ?? false)
+    {
+        <div class="container">
+            <div class="row">
+                <table class="table table-hover table-bordered">
+                    @foreach (var person in Model)
+                    {
+                        <tr class="col-10">
+                            <td>
+                                @Html.ActionLink(person.FirstName + " " + person.LastName, "Person", new { id = person.ID, search = ViewBag.Search })
+                            </td>
+                        </tr>
+                    }
+                </table>
+            </div>
+        </div>
+    }
+    else if (ViewBag.Success == false)
+    {
+        <br />
+        <p>Sorry, we could not find the athlete you were looking for.</p>
+    }
+</div>
