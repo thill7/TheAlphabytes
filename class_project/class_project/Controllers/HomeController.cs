@@ -26,7 +26,7 @@ namespace class_project.Controllers
             string search = Request.QueryString["search"];
             if (!String.IsNullOrEmpty(search))
             {
-                var matchLastName = db.People.Where(p => p.LastName.Contains(search));
+                var matchLastName = db.People.Where(p => db.Athletes.Any(a => a.PersonID == p.ID)).Where(p => p.LastName.Contains(search));
                 var query = db.People.Where(p => p.FirstName.Contains(search)).Union(matchLastName);
                 List<Person> SearchList = query.ToList();
                 ViewBag.Success = true;
