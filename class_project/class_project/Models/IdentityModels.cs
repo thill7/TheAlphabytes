@@ -22,7 +22,6 @@ namespace class_project.Models
     {
         public ApplicationDbContext()
             : base("CPDBContext", throwIfV1Schema: false)
-         // : base("AzureConnection", throwIfV1Schema: false)
         {
             Database.SetInitializer<ApplicationDbContext>(null);
         }
