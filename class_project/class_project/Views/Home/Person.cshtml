@@ -1,0 +1,25 @@
+﻿@model class_project.Models.ViewModel.PersonViewModel
+
+@{
+    ViewBag.Title = "Person";
+}
+
+<div class="row">
+    <div class="col-md-6 dashboard-item">
+        <h3>@Html.DisplayFor(model => model.PersonName)</h3>
+        <table class="table table-condensed">
+           <tr>
+                <td>
+                    @Html.DisplayNameFor(model => model.PersonAge)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.PersonAge)
+                </td>
+           </tr>
+        </table>
+    </div>
+</div>
+
+<p>
+    @Html.ActionLink("Back to Search", "Search", new { search = ViewBag.Search })
+</p>
