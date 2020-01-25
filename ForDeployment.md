@@ -2,12 +2,12 @@
 ## Class Project
 1. In the directory `\TheAlphabytes\class_project\class_project\Web.config` change
     ```xml
-    <connectionStrings>
+    <connectionStrings configSource="Web_deploy.config">
     </connectionStrings>
     ```
     to
     ```xml
-    <connectionStrings configSource="Web_deploy.config">
+    <connectionStrings>
     </connectionStrings>
     ```
 
