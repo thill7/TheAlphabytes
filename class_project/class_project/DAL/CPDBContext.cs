@@ -9,7 +9,7 @@ namespace class_project.DAL
     public partial class CPDBContext : DbContext
     {
         public CPDBContext()
-            : base("name=CPDBContext")
+            : base("name=CPDBContext_Azure")
         {
         }
 
