@@ -1,0 +1,70 @@
+﻿@model class_project.Models.RecordViewModel
+
+@{
+    ViewBag.Title = "Index";
+}
+
+@section scripts {
+    @Scripts.Render("~/Scripts/jquery-ui.js") 
+    @Scripts.Render("~/Scripts/RecordIndex.js")
+}
+
+@Styles.Render("~/Content/jquery-ui.theme.css")
+@Styles.Render("~/Content/jquery-ui.css")
+@Styles.Render("~/Content/WaterBG.css")
+
+<div class="container  rounded p-3 my-2 bg-dark d-flex flex-column align-items-center justify-content-center">
+    <form class="form-inline" id="athleteFilter">
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <span class="input-group-text">Search By Athlete</span>
+            </div>
+            <input type="text" min="1" class="form-control" id="athleteSearchInput" />
+            <div class="input-group-append">
+                <button type="submit" class="btn btn-info">Filter</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<div class="row">
+@foreach (var item in Model.Records)
+{
+    <div class="col-md-6 result" data-athlete="@item.AthleteID" data-event="@item.EventID" data-location="@item.MeetID">
+        <dl class="rounded shadow m-4 p-4 bg-dark text-white">
+            <div class="row">
+                <div class="col-md-12">
+                    <dt><h4 class="text-primary">Name</h4></dt>
+                    <dd><h2>@($"{item.Athlete.Person.FirstName} {item.Athlete.Person.LastName}")</h2></dd>
+                </div>
+                <div class="col-md-12">
+                    <hr />
+                </div>
+                <div class="col-md-6">
+                    <dt><h4 class="text-primary">Event</h4></dt>
+                    <dd><h3>@item.Event.Name</h3></dd>
+                </div>
+                <div class="col-md-6">
+                    <dt><h4 class="text-info">Meet</h4></dt>
+                    <dd><h3>@item.Meet.Location</h3></dd>
+                </div>
+                <div class="col-md-12 bg-info rounded p-3 mt-4 border border-white text-center">
+                    <dt><h4>Time</h4></dt>
+                    <dd><h3>@item.Time</h3></dd>
+                </div>
+            </div>
+        </dl>
+    </div>
+}
+<div class="col-md-12">
+    <div class="container bg-dark d-flex flex-row justify-content-center align-items-center rounded p-4">
+        <div class="pagination d-inline-flex justify-content-center">
+            @for (int i = 1; i <= Model.MaxPage; i++)
+            {
+                <span class="@("page-item text-muted"+(Model.CurrentPage == i ? " active" : ""))">@Html.ActionLink(i.ToString(), "Index", "Record", new { page = i }, new { @class = "page-link" })</span>
+            }
+        </div>
+    </div>
+    
+</div>
+</div>

@@ -1,0 +1,46 @@
+﻿@model IEnumerable<class_project.Models.Person>
+
+@{
+    ViewBag.Title = "Search";
+}
+
+<h2 align="center">Search Athletes</h2>
+
+<div class="container-fluid">
+    @using (Html.BeginForm("Search", "Home", FormMethod.Get))
+    {
+        @Html.AntiForgeryToken()
+    <div class="container">
+        <div class="row p-1">
+            <div class="col-10 p-0">
+                @Html.TextBox("search", null, new { @class = "form-control", type = "text", style = "", name = "search" })
+            </div>
+            <div class="col-2 p-0">
+                <button type="submit" class="btn btn-dark btn-block">Search</button>
+            </div>
+        </div>
+    </div>
+    }
+    @if (ViewBag.Success ?? false)
+    {
+        <div class="container">
+            <div class="row">
+                <table class="table table-hover table-bordered">
+                    @foreach (var person in Model)
+                    {
+                        <tr class="col-10">
+                            <td>
+                                @Html.ActionLink(person.FirstName + " " + person.LastName, "Detail", "Record", new { id = person.ID, search = ViewBag.Search }, null)
+                            </td>
+                        </tr>
+                    }
+                </table>
+            </div>
+        </div>
+    }
+    else if (ViewBag.Success == false)
+    {
+        <br />
+        <p>Sorry, we could not find the athlete you were looking for.</p>
+    }
+</div>
