@@ -19,12 +19,12 @@ namespace class_project.Controllers
             JArray jsonData = JArray.FromObject(cpdb.Records.ToList().GroupBy(r => r.AthleteID).Select(r => new { r.FirstOrDefault().AthleteID, Name = (r.LastOrDefault().Athlete.Person.FirstName + " " + r.LastOrDefault().Athlete.Person.LastName) }));
             return Content(jsonData.ToString(), "application/json");
         }
-        [Authorize]
-        public ActionResult Detail(int ? Id, int ? eventID, int ? meetID)
+        //[Authorize]
+        public ActionResult Detail(int Id, int ? eventID, int ? meetID)
         {
             var records = cpdb.Records.ToList()
                 .Where(r => cpdb.Athletes.Any(a => a.PersonID == Id))
-                .Where(r => Id != null ? r.AthleteID == cpdb.Athletes.Where(a => a.PersonID == Id).FirstOrDefault().ID : true)
+                .Where(r => r.AthleteID == cpdb.Athletes.Where(a => a.PersonID == Id).FirstOrDefault().ID)
                 .Where(r => eventID != null ? r.EventID == eventID : true)
                 .Where(r => meetID != null ? r.MeetID == meetID : true);
 

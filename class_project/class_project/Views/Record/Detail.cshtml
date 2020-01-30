@@ -4,6 +4,17 @@
     ViewBag.Title = "Detail";
 }
 
+<div class="bg-dark text-white jumbotron m-4">
+    <div class="row">
+        <div class="col-md-6 d-flex flex-column align-items-center justify-content-center">
+            <h4 class="display-4">@Model.First().Athlete.Person.FirstName @Model.First().Athlete.Person.LastName</h4>
+        </div>
+        <div class="col-md-6 d-flex flex-column align-items-center justify-content-center">
+            <p class="lead"><span class="font-weight-bold">Races On Record: </span>@Model.Count()</p>
+            <button data-athlete="@Model.First().AthleteID" class="btn btn-block btn-info athlete-stats-btn">SHOW STATS</button>
+        </div>
+    </div>
+</div>
 <div class="row">
     @foreach (var item in Model)
     {
@@ -44,5 +55,24 @@
     </div>
 </div>
 }
+
+<div class="modal" id="statsModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Race Stats for <span id="modalAthleteName"></span></h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <div class="modal-body">
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+            </div>
+
+        </div>
+    </div>
+</div>
 
 
