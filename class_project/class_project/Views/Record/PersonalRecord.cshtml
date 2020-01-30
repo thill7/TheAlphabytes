@@ -34,13 +34,10 @@
        @: </div>
     }
 </div>
-@if (ViewBag.Return == true)
-{
-    <div class="row">
-        <div class="col-md-12">
-            <div class="mx-4 p-4 bg-dark rounded d-flex flex-column align-items-center justify-content-center">
-                <a href="@Request.Url.GetLeftPart(UriPartial.Path)" class="btn btn-info">Show All</a>
-            </div>
+<div class="row">
+    <div class="col-md-12">
+        <div class="mx-4 p-4 bg-dark rounded d-flex flex-column align-items-center justify-content-center">
+            <a href="~/Record/Detail/@Model.First().AthleteID" class="btn btn-info">Back to All Records</a>
         </div>
     </div>
-}
+</div>
