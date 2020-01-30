@@ -33,7 +33,7 @@ The product is centered around three core features:
 ## Initial Modeling
 
 ### Mind Map
-![Mind_Map](milestone_03/Mindmap.jpg)
+![Mind_Map](../milestone_03/IBS_MindMap.jpg)
 
 _____________________________________________________________________________________________________________________________________
 
