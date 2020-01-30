@@ -31,5 +31,17 @@ namespace class_project.Controllers
             ViewBag.Return = eventID != null || meetID != null;
             return View(records);
         }
+
+        [Authorize]
+        public ActionResult PersonalRecord(int Id)
+        {
+            var records = cpdb.Records.ToList()
+                .Where(r => r.AthleteID == Id)
+                .OrderBy(r => r.Time)
+                .GroupBy(r => r.EventID)
+                .Select(r => r.FirstOrDefault());
+
+            return View(records);
+        }
     }
 }
