@@ -14,3 +14,8 @@ div#heroImage img{
     color: azure;
     text-decoration: none;
 }
+
+#modalGraphHolder {
+    overflow-x: scroll;
+    overflow-y:auto;
+}

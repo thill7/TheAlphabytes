@@ -31,5 +31,16 @@ namespace class_project.Controllers
             ViewBag.Return = eventID != null || meetID != null;
             return View(records);
         }
+
+        public ContentResult History(int id)
+        {
+            var results = cpdb
+                .Records.Where(r => r.AthleteID == id)
+                .GroupBy(r => r.Event.Name)
+                .Select(r => new { r.FirstOrDefault().Event.Name, Records = r.Select(l => new { l.Meet.Location, l.Meet.Date, l.Time }).OrderBy(l => l.Date) });
+
+            JArray resultsJson = JArray.FromObject(results);
+            return Content(resultsJson.ToString(), "application/json");
+        }
     }
 }

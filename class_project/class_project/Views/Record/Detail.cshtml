@@ -4,6 +4,11 @@
     ViewBag.Title = "Detail";
 }
 
+@section scripts {
+    @Scripts.Render("~/Scripts/Plotly/plotly.min.js");
+    @Scripts.Render("~/Scripts/RecordDetail.js")    
+}
+
 <div class="bg-dark text-white jumbotron m-4">
     <div class="row">
         <div class="col-md-6 d-flex flex-column align-items-center justify-content-center">
@@ -11,7 +16,7 @@
         </div>
         <div class="col-md-6 d-flex flex-column align-items-center justify-content-center">
             <p class="lead"><span class="font-weight-bold">Races On Record: </span>@Model.Count()</p>
-            <button data-athlete="@Model.First().AthleteID" class="btn btn-block btn-info athlete-stats-btn">SHOW STATS</button>
+            <button data-athlete-name="@Model.First().Athlete.Person.FirstName @Model.First().Athlete.Person.LastName" data-athlete-id="@Model.First().AthleteID" class="btn btn-block btn-info athlete-stats-btn">SHOW STATS</button>
         </div>
     </div>
 </div>
@@ -57,7 +62,7 @@
 }
 
 <div class="modal" id="statsModal">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
                 <h4 class="modal-title">Race Stats for <span id="modalAthleteName"></span></h4>
@@ -65,6 +70,7 @@
             </div>
 
             <div class="modal-body">
+                <div id="modalGraphHolder"></div>
             </div>
 
             <div class="modal-footer">
