@@ -19,6 +19,10 @@ The product is centered around three core features:
 
 ### Interviews
 
+## Full Vision Statement
+
+For people suffering from Irritable Bowel Syndrome who want to conveniently determine if the foods they are choosing to buy or consume will impact them negatively, the IBS Food Inspector website is a web-based application that will allow users to explore foods, both generic and from well-known name brands, and determine whether they are suitable for their diet. Using a proprietary algorithm, foods will be automatically ranked from low to high FODMAP content based on their ingredients, which are checked against a database containing hundreds of ingredients from well-established sources. In addition, registered users will be able to input additional ingredients that they've found to be problematic in their experience. For extra convenience, a mobile android and/or iOS application will also be integrated so that users can scan barcodes in store and get a quick score for foods they're unsure about. Unlike other nutritional databases, our product will specialize in just one dietary need, as opposed to other sites that cast a wide net and provide marginal support for several diets.
+
 ## List of Needs and Features
 
 1. A clean, nice looking site that is easily navigable with a serene and professional style. Features should be easy to find and the site should have information pages for visitors who want to learn more about IBS, FODMAPs, our algorithm, etc.
@@ -84,14 +88,11 @@ T: Task
 	2. [T] Integrate knowlege of opponent team's performances and predict their time.
 
 ## Initial Architecture Envisioning
-![IAE](IAE.jpg)
+(To be completed)
 
 ## Agile Data Modeling
-![ER_Diagram](erdiagram.jpg)
-
-## Vision Statement
-For swimming athletes and coaches who want professional level analytics and strategies to win meets, the Swimming Predictive Analytics Solution is an indepth website that will provide a platform to track race results for athlete and perform analysis to optimize the teams strategy. Coaches will be able to access insight to their athletes' fitness and trends in performance including predictions on future performance. This solution would allow coaches to develop an optimized strategy for a coming meet by assigning athletes to specific races based on predicted results. Unlike hiring personnel with advanced training, our product would provide all analysis and storage of race results in one place for a fraction of the expense making elite analytics accessible to teams of any level.
+(To be completed)
 
 ## Timeline and Release Plan
-
+(To be completed)
 
