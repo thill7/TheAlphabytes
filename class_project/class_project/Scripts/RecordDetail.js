@@ -1,16 +1,4 @@
 ﻿$(document).ready(() => {
-    async function toggleModal() {
-        var state = $("#statsModal").css("display") == "block";
-        var modal = $("#statsModal");
-
-        var d = $.Deferred();
-
-        $(modal)
-            .one(state ? 'shown.bs.modal' : 'hidden.bs.modal', d.resolve)
-            .modal(state ? 'show' : 'hide');
-
-        return d.promise();
-    }
 
     async function updateModal(athleteName, athleteID) {
         $("#modalAthleteName").text(athleteName);
