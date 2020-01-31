@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ﻿@model IEnumerable<class_project.Models.Record>
 
 @{
@@ -82,3 +83,63 @@
 </div>
 
 
+=======
+﻿@model IEnumerable<class_project.Models.Record>
+
+@{
+    ViewBag.Title = "Detail";
+}
+
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="col-md-6 result" data-athlete="@item.AthleteID" data-event="@item.EventID" data-location="@item.MeetID">
+            <dl class="rounded shadow m-4 p-4 bg-dark text-white">
+                <div class="row">
+                    <div class="col-md-12">
+                        <dt><h4 class="text-primary">Name</h4></dt>
+                        <dd><h2>@($"{item.Athlete.Person.FirstName} {item.Athlete.Person.LastName}")</h2></dd>
+                    </div>
+                    <div class="col-md-12">
+                        <hr />
+                    </div>
+                    <div class="col-md-6">
+                        <dt><h4 class="text-primary">Event</h4></dt>
+                        <dd><h3><a class="link-plain" href="?eventID=@item.EventID">@item.Event.Name</a></h3></dd>
+                    </div>
+                    <div class="col-md-6">
+                        <dt><h4 class="link-plain">Meet</h4></dt>
+                        <dd><h3><a class="link-plain" href="?meetID=@item.MeetID">@item.Meet.Location</a></h3></dd>
+                    </div>
+                    <div class="col-md-12 bg-info rounded p-3 mt-4 border border-white text-center">
+                        <dt><h4>Time</h4></dt>
+                        <dd><h3>@item.Time</h3></dd>
+                    </div>
+                </div>
+            </dl>
+        </div>
+    }
+</div>
+@if (ViewBag.Return == true)
+{
+    <div class="row">
+        <div class="col-md-12">
+            <div class="mx-4 p-4 bg-dark rounded d-flex flex-column align-items-center justify-content-center">
+                <a href="@Request.Url.GetLeftPart(UriPartial.Path)" class="btn btn-info">Show All</a>
+            </div>
+        </div>
+    </div>
+}
+else
+{
+    <div class="row">
+        <div class="col-md-12">
+            <div class="mx-4 p-4 bg-dark rounded d-flex flex-column align-items-center justify-content-center">
+                <a href="~/Record/PersonalRecord/@Model.First().AthleteID" class="btn btn-info">Personal Records</a>
+            </div>
+        </div>
+    </div>
+}
+
+
+>>>>>>> dev

@@ -41,6 +41,16 @@ namespace class_project.Controllers
 
             JArray resultsJson = JArray.FromObject(results);
             return Content(resultsJson.ToString(), "application/json");
+        [Authorize]
+        public ActionResult PersonalRecord(int Id)
+        {
+            var records = cpdb.Records.ToList()
+                .Where(r => r.AthleteID == Id)
+                .OrderBy(r => r.Time)
+                .GroupBy(r => r.EventID)
+                .Select(r => r.FirstOrDefault());
+
+            return View(records);
         }
     }
 }
