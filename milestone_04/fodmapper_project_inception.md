@@ -44,7 +44,11 @@ For people suffering from Irritable Bowel Syndrome who want to conveniently dete
 ### Mind Map
 ![Mind_Map](../milestone_03/IBS_MindMap.jpg)
 
-### 
+### Visual Representation of Ranking
+![visual_rank](visual_ranking_diagram.jpg)
+
+### Routing for a Barcode Scanner
+![barcode](barcode_diagram.jpg)
 
 
 ## Identify Non-Functional Requirements
