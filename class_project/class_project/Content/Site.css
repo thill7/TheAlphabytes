@@ -11,6 +11,11 @@ div#heroImage img{
    object-position: center;
 }
 
+div#mrWaterDrop img
+{
+    width: 200px;
+}
+
 .link-plain {
     color: azure;
     text-decoration: none;

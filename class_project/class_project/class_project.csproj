@@ -173,6 +173,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\RecordController.cs" />
@@ -213,6 +214,7 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Images\swim-864383_1920.jpg" />
+    <Content Include="Images\WaterDrop.png" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -366,6 +368,7 @@
     <Content Include="Views\Home\Person.cshtml" />
     <Content Include="Views\Record\Detail.cshtml" />
     <Content Include="Views\Record\Index.cshtml" />
+    <Content Include="Views\Error\ErrorPage.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
