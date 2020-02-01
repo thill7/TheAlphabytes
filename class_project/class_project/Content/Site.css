@@ -1,6 +1,7 @@
 ﻿body {
     padding-top: 50px;
     padding-bottom: 20px;
+    overflow-x: hidden;
 }
 
 div#heroImage img{
@@ -10,7 +11,17 @@ div#heroImage img{
    object-position: center;
 }
 
+div#mrWaterDrop img
+{
+    width: 200px;
+}
+
 .link-plain {
     color: azure;
     text-decoration: none;
+}
+
+#modalGraphHolder {
+    overflow-x: scroll;
+    overflow-y:auto;
 }

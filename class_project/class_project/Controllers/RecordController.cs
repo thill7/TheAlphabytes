@@ -20,11 +20,11 @@ namespace class_project.Controllers
             return Content(jsonData.ToString(), "application/json");
         }
         [Authorize]
-        public ActionResult Detail(int ? Id, int ? eventID, int ? meetID)
+        public ActionResult Detail(int Id, int ? eventID, int ? meetID)
         {
             var records = cpdb.Records.ToList()
                 .Where(r => cpdb.Athletes.Any(a => a.PersonID == Id))
-                .Where(r => Id != null ? r.AthleteID == cpdb.Athletes.Where(a => a.PersonID == Id).FirstOrDefault().ID : true)
+                .Where(r => r.AthleteID == cpdb.Athletes.Where(a => a.PersonID == Id).FirstOrDefault().ID)
                 .Where(r => eventID != null ? r.EventID == eventID : true)
                 .Where(r => meetID != null ? r.MeetID == meetID : true);
 
@@ -32,6 +32,16 @@ namespace class_project.Controllers
             return View(records);
         }
 
+        public ContentResult History(int id)
+        {
+            var results = cpdb
+                .Records.Where(r => r.AthleteID == id)
+                .GroupBy(r => r.Event.Name)
+                .Select(r => new { r.FirstOrDefault().Event.Name, Records = r.Select(l => new { l.Meet.Location, l.Meet.Date, l.Time }).OrderBy(l => l.Date) });
+
+            JArray resultsJson = JArray.FromObject(results);
+            return Content(resultsJson.ToString(), "application/json");
+        }
         [Authorize]
         public ActionResult PersonalRecord(int Id)
         {
