@@ -1,24 +1,7 @@
 # **Team Project**
 ## **Needs & Features**
 
-1. Users will be able to register and log in to an account.
-
-1. Users will be able to send an email to the developers with critical feedback.
-
-1. Users will be able to have a personal page.
-
-1. Users will be able to add food items that are not necessarily defined as high FODMAP, but the user is sensitive to.
-
-1. Users will be able to search for a food item to determine whether or not it is high FODMAP.
-
-1. Users will be able to view an info page where they can learn about FODMAPs.
-
-1. Users will be able to view an info page where they can learn about IBS.
-
-1. Users will be able to view an info page where they can learn about how our search algorithm works.
-
-1. There will be a complex algorithm to determine the level of FODMAPs present, and or the chances of the user having a bad reaction to the given food item.
-
-1. There will be an accompanying mobile app.
-
-1. We will use some sort of machine learning to try to find trends in the foods that users indicate they are sensitive to.
+1. A clean, nice looking site that is easily navigable with a serene and professional style. Features should be easy to find and the site should have information pages for visitors who want to learn more about IBS, FODMAPs, our algorithm, etc. Visitors to the site should be able to search for foods from an external database like USDA and/or other databases and APIs. There should be a detailed page dynamically generated for each food. If a food is not in the database, there should be a notification that the food could not be found and a list of common FODMAP ingredients to look out for. Visitors should also be able to contact the development team to send feedback on features. Since the application will be entirely free to use, there should also be an area for users who have benefitted from the site to express their gratitude to the developers by sending them money. This area should say something cute and non-aggressive like "Like our website? Buy us a coffee".
+2. Users will be able to log in and tag foods as being either higher or lower risk for triggering symptoms for them specifically. A logged in user will be able to make lists of foods that are safe to eat which they can then sort by major food groups, and export as a grocery list. When a user searches for a food, an algorithm will rank the food based on analysis of the ingredients pulled from the USDA database. The algorithm should factor in the amounts of high FODMAPs ingredients, as well as user specified high or low risk foods. Visitors will be able to search for a food and the algorithm will return an overall ranking for the food and a visual representation of the breakdown (for example a pie chart that is color coded) so there is some transparency in how the food is analyzed.
+3. There will be a barcode scanner so that users can analyze foods while they are out shopping. It is especially important that this component of the web application has a scalable design since mobile will be the most likely platform this feature would be used on. The barcode scanned should automatically find the food in the database and use the algorithm to analyze the food returning the same results as if the user had searched for it. There will be a companion mobile app that will emphasize features that users will be more likely to use on the go like the barcode scanner. All features and content should be easy to use on the mobile app.
+4. The more users log foods into the site the "smarter" the site should become. The application should look for trends across both a large scale and an individual scale. It should identify trends in foods marked higher risk by a specific user to predict other foods which may be high risk. On the large scale, it should also be able to identify overall trends within demographics such as gender, ethnicity, and age about high risk foods. Additionally, if many users log a food as high risk, a food that currently is not considered a FODMAP, the site should "discover" this food and incorporate it into the algorithm as well as notify the developers that a new FODMAP food as been discovered.
