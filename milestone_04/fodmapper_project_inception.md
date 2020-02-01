@@ -68,34 +68,20 @@ E: Epic
 U: User Story  
 T: Task  
 
-1. [U] As a visitor to the site I would like to see a fantastic and modern homepage that introduces me to the site and the features currently available.
-   1. [T] Create starter ASP dot NET MVC 5 Web Application with Individual User Accounts and no unit test project
-   2. [T] Choose CSS library (Bootstrap 3, 4, or ?) and use it for all pages
-   3. [T] Create nice homepage: write initial content, customize navbar, hide links to login/register
-   4. [T] Create SQL Server database locally. Hide credentials.
-2. [U] As a visitor to the site I would like to be able to register an account so I will be able to access athlete statistics
-   1. [T] Copy SQL schema from an existing ASP.NET Identity database and integrate it into our UP script
-   2. [T] Configure web app to use our db with Identity tables in it
-   3. [T] Create a user table and customize user pages to display additional data
-   4. [T] Re-enable login/register links
-   5. [T] Manually test register and login; user should easily be able to see that they are logged in
-3. [E] As an administrator I want to be able to upload a spreadsheet of results so that new data can be added to our system
-   1. [U] As an administrator, I want to have privileged, secure access to our records so that I can modify them as needed
-      1. [T] Define a super-user account type with elevated privileges for accessing the database
-      2. [T] Make record-modifying actions restricted to this super-user account type and and inaccessible to normal users or guests without accounts
-   2. [U] As an administrator, I want to be able to add records to our system by uploading a standardly-formatted spreadsheet, so that I can save time and avoid redundancy
-      1. [T] Create an action method for adding an individual record to the database
-      2. [T] Create an action method that takes a .csv file and adds each row to the database
-4. [U] As a visitor I want to be able to search for an athlete and then view their athlete page so I can find out more information about them
-5. [U] As a visitor I want to be able to view race results for an athlete so I can see how they have performed
-6. [U] As a visitor I want to be able to view PR's (personal records) for an athlete so I can see their best performances
-7. [U] As a user I want to be able to view a graph of race results for a specific athlete and event, so that I can see the athlete's progress over time
-8. [U] As a visitor I would like to see cute or funny web pages when errors occur, so that I don't have to worry about complex details of why a piece of the website didn't work
-9. [U] As a robot I would like to be prevented from creating an account on your website so I don't ask millions of my friends to join your website and try to add comments about male enhancement drugs.
-10. [U] As a coach, I would like to see predictive performances for the athletes on my team, so I can strategize for upcoming meets.
-11. [U] As a coach, I would like the ability to have athletes automatically assigned to races for the upcoming meets, so that the team has the optimum chance of winning the meet.
-	1. [T] Develop an algorithm to optimize athlete race assignments assuming no knowlege of opponent teams..
-	2. [T] Integrate knowlege of opponent team's performances and predict their time.
+1. [E] As a visitor to the site, I want to find information about IBS, FODMAPs, and other relevant things so I can understand the context for this website.
+   1. [U] As a visitor, I want to find information about IBS so I can learn about what it is.
+   2. [U] As a visitor, I want to find information about FODMAPs so I understand why this website exists.
+2. [E] As a visitor, I want to search for a food so I can see a detailed page with the nutritional information and ingredients.
+   1. [U] As a user, I want to be able to search for a food from a reputable source so I know I am getting valid information.
+   2. [U] As a user, I want to see ingredients for a food, so I can look up specific ingredients I have concerns about.
+   3. [U] As a user, I want dynamic nutrition labels so I can see the nutrition information for different serving sizes. 
+3. [E] As a visitor, I want to search for a specific ingredient so I can see if it is high FODMAPs and why it is high FODMAPS.
+   1. [U] As a visitor, I want to search for an ingredient so I can see what level of FODMAPs it is.
+   2. [U] As a visitor, I want to see a breakdown of the ingredient so I understand why it is high or low FODMAPs
+   3. [U] As a visitor, I want a page of common FODMAPs ingredients too look out for, so I can analyze foods myself.
+4. [E] As a user, I want to give feedback to the site so I can make suggestions or give monetary support.
+   1. [U] As a user, I want to contact the developers, so I can complain about the lack of features.
+   2. [U] As a user, I want to monetarily support the website/development team, so that I can express my appreciation for the value of their product.
 
 ## Initial Architecture Envisioning
 (To be completed)
