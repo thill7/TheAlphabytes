@@ -1,0 +1,23 @@
+﻿@model class_project.Models.ApplicationUser
+@{
+    ViewBag.Title = "Delete Account";
+}
+
+<br />
+<div class="container-fluid pt-md-2">
+    <div class="row justify-content-center">
+        <div class="col-sm-6">
+            <div class="card">
+                <h2 class="card-header text-center">@ViewBag.Title</h2>
+                <div class="card-body text-center">
+                    @using (Html.BeginForm())
+                    {
+                        @Html.HiddenFor(model=>model.Id)
+                        <h4 class="p-2">Are you sure you want to permanently delete @Html.DisplayFor(model => model.Email)'s account?</h4>
+                        <button type="submit" class="btn btn-danger p-2">Permanently Delete</button>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,23 @@
+﻿@model class_project.Models.ApplicationUser
+@{
+    ViewBag.Title = "Promote User";
+}
+
+<br />
+<div class="container-fluid pt-md-2">
+    <div class="row justify-content-center">
+        <div class="col-sm-6">
+            <div class="card">
+                <h2 class="card-header text-center">@ViewBag.Title</h2>
+                <div class="card-body text-center">
+                    @using (Html.BeginForm())
+                    {
+                        @Html.HiddenFor(model => model.Id)
+                        <h4 class="p-2">Are you sure you want to promote @Html.DisplayFor(model => model.Email) to administrator?</h4>
+                        <button type="submit" class="btn btn-dark p-2">Promote</button>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
