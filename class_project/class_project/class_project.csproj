@@ -375,6 +375,7 @@
     <Content Include="Views\Error\ErrorPage.cshtml" />
     <Content Include="Views\User\Index.cshtml" />
     <Content Include="Views\User\Delete.cshtml" />
+    <Content Include="Views\User\Promote.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

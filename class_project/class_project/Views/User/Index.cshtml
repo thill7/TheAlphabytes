@@ -1,4 +1,5 @@
 ﻿@model IEnumerable<class_project.Models.ApplicationUser>
+@using Microsoft.AspNet.Identity;
 @{
     ViewBag.Title = "Delete or Promote Users";
 }
@@ -10,7 +11,7 @@
             <div class="card">
                 <h2 class="card-header text-center">@ViewBag.Title</h2>
                 <div class="card-body">
-                    <table class="table table-striped">
+                    <table class="table">
                         <tr>
                             <th>@Html.DisplayName("Email")</th>
                             <th></th>
@@ -19,9 +20,12 @@
                         @foreach (var item in Model)
                         {
                             <tr>
-                                <td>@Html.DisplayFor(model => item.Email)</td>
-                                <td>@Html.ActionLink("Delete Account", "Delete", new { id = item.Id })</td>
-                                <td>@Html.ActionLink("Promote to Admin", "UserEdit", new { id = item.Id })</td>
+                                @if (!(item.Id == User.Identity.GetUserId()))
+                                {
+                                    <td>@Html.DisplayFor(model => item.Email)</td>
+                                    <td>@Html.ActionLink("Delete Account", "Delete", new { id = item.Id })</td>
+                                    <td>@Html.ActionLink("Promote to Admin", "Promote", new { id = item.Id })</td>
+                                }
                             </tr>
                         }
                     </table>
