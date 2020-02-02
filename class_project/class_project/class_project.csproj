@@ -376,6 +376,7 @@
     <Content Include="Views\User\Index.cshtml" />
     <Content Include="Views\User\Delete.cshtml" />
     <Content Include="Views\User\Promote.cshtml" />
+    <Content Include="Views\Record\PersonalRecord.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

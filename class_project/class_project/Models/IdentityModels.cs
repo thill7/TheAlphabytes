@@ -21,7 +21,7 @@ namespace class_project.Models
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext()
-            : base("CPDBContext", throwIfV1Schema: false)
+            : base("CPDBContext_Azure", throwIfV1Schema: false)
         {
             Database.SetInitializer<ApplicationDbContext>(null);
         }
