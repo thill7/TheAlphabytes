@@ -61,6 +61,8 @@ For people suffering from Irritable Bowel Syndrome who want to conveniently dete
 7. Pages will be designed with HTML 5.
 8. Only data critical to the user experience will be stored, and no user data will be shared with outside resources.
 9. In order to render the initial state of React components server side, a javascript engine is required to be installed on the web app server.
+10. Navigation between pages create a fluid user experience.
+11. Styling of website uses calming colors.
 
 ## Identify Functional Requirements (User Stories)
 
@@ -82,6 +84,26 @@ T: Task
 4. [E] As a user, I want to give feedback to the site so I can make suggestions or give monetary support.
    1. [U] As a user, I want to contact the developers, so I can complain about the lack of features.
    2. [U] As a user, I want to monetarily support the website/development team, so that I can express my appreciation for the value of their product.
+5. [E] As a user, I would like the food search to specifically identify FODMAP ingredients so I know what to look out for.
+6. [E] As a user, I would like the food search to show an overall ranking of the food's risk so that I can easily interpret results at a glance.
+7. [E] As a user, I would like to be able to mark foods as being specifically high risk to me.
+8. [E] ranking of the food incorporates my feedback
+9. [E] As a user, I would like to be able to save foods that are safe for me to eat so I can see them broken down by food group.
+10. [E] export grocery list
+11. [E] transparency in algorithm
+      1. [U] visual representation color coded breakdow
+      2. [U] show specific ingrediants
+      3. [U] algorithm info page
+12. upc in algorithm
+13. mobile app barcode
+14. mobile app grocery list
+15. mobile app save foods
+16. mobile app search food by name
+16. identify trends in user marked high risk foods
+17. predict high risk foods for user
+18. identify trends within demographics
+19. discover new fodmap foods
+20. custom error pages
 
 ## Initial Architecture Envisioning
 (To be completed)
