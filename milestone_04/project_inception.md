@@ -87,23 +87,23 @@ T: Task
 5. [E] As a user, I would like the food search to specifically identify FODMAP ingredients so I know what to look out for.
 6. [E] As a user, I would like the food search to show an overall ranking of the food's risk so that I can easily interpret results at a glance.
 7. [E] As a user, I would like to be able to mark foods as being specifically high risk to me.
-8. [E] ranking of the food incorporates my feedback
+8. [E] As a user, I would like the food ranking algorithm to also take into consideration foods that I've manually specified to be less or more aggravating to my IBS symptoms as well as foods I'm just trying to avoid. 
 9. [E] As a user, I would like to be able to save foods that are safe for me to eat so I can see them broken down by food group.
-10. [E] export grocery list
+10. [E] As a user, I want the option to publicly list my saved foods on my profile so that other people trying to cook for me can get an idea of what foods I can and can't eat
 11. [E] transparency in algorithm
       1. [U] visual representation color coded breakdow
       2. [U] show specific ingrediants
       3. [U] algorithm info page
-12. upc in algorithm
-13. mobile app barcode
-14. mobile app grocery list
-15. mobile app save foods
-16. mobile app search food by name
-16. identify trends in user marked high risk foods
-17. predict high risk foods for user
-18. identify trends within demographics
-19. discover new fodmap foods
-20. custom error pages
+12. [E] As a visitor, I would like to be able to search for a food item by it's UPC code just as easily as a text search, so that I can conveniently and quickly locate information pertaining to a food I am considering consuming.
+13. [E] As a mobile visitor, I would like to have the option to scan the barcode of a food item and view details about it on a convenient mobile app so that I can quickly determine whether or not I should purchase a food based on its FODMAP content.
+14. [E] As a user, I want to be able to save foods and ingredients to a named list, then later print a list of these in a printer-friendly format so that I can easily locate them while shopping for groceries. 
+15. [E] As a mobile user, I would like to be able to quickly save food items on my mobile device and have items I've saved displayed back in a visually pleasing format so that I can look at these at my convenience as use them as a quick reference in various circumstances.
+16. [E] As a mobile visitor, I would like to be able to search for a food by it's name so that I can get quick, convenient feedback on foods I'm curious about. 
+16. [E] As a user, I would like to optionally have my personal food sensitivities analyzed along with those of other users in a statistical context so that I can continually get the best recommendations about which foods or ingredients to potentially avoid.  
+17. [E] As a user, I would like foods that I've specified to be aggravating to my symptoms to be considered in future calculations of food suitability so that I can get feedback that is the most personally applicable to my needs.
+18. [E] As a user, I want any statistical calculations made based on my food preference data to be compared in a meaningful way with that of other people in the same or similar demographics to me so that I can be assured that the feedback I'm getting is the most applicable to people like me.
+19. [E] As a user, I would like my personal input on different foods to work towards the discovery of new FODMAP foods so that the results for everyone using the web application are the most current and thoroughly-tested
+20. [E] As a visitor, I want to see a cute, but informative 404 page in case I make a wrong turn or type a url incorrectly so that I'll be able to easily find my way back to a useful page and not feel lost
 
 ## Initial Architecture Envisioning
 (To be completed)
