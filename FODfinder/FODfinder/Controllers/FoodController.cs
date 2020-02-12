@@ -20,7 +20,7 @@ namespace FODfinder.Controllers
             UriBuilder uriBuilder = new UriBuilder(USDA_FOOD_SEARCH);
             var queryParams = HttpUtility.ParseQueryString(uriBuilder.Query);
             queryParams["api_key"] = _API_key;
-            queryParams["generalSearchInput"] = query;
+            queryParams["generalSearchInput"] = String.Join("%20",query.Split(' '));
             queryParams["includeDataTypeList"] = "Branded";
             uriBuilder.Query = queryParams.ToString();
 

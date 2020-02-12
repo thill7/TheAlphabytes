@@ -17,7 +17,8 @@ namespace FODfinder
             // your components as well as all of their dependencies.
             // See http://reactjs.net/ for more information. Example:
             ReactSiteConfiguration.Configuration
-                .AddScript("~/Scripts/React/Food/FoodSearchResults.jsx");
+                .AddScript("~/Scripts/React/Food/FoodSearchResults.jsx")
+                .AddScript("~/Scripts/React/Food/FoodSearchResultItems.jsx");
             //	.AddScript("~/Scripts/Second.jsx");
 
             // If you use an external build too (for example, Babel, Webpack,
