@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FODfinder.Models.Food;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -30,10 +31,14 @@ namespace FODfinder.Controllers
             return responseString;
         }
         // GET: Food
-        public ActionResult Index()
+        async public Task<ActionResult> Index(String query)
         {
-            Debug.WriteLine(_API_key);
-            return View();
+            if (query == null)
+            {
+                return View();
+            }
+            var foodSearchResults = await GetFoodResults(query);
+            return View(new FoodSearchResult(foodSearchResults));
         }
     }
 }
