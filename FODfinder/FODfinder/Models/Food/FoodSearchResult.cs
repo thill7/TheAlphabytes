@@ -7,6 +7,7 @@ namespace FODfinder.Models.Food
 {
     public class FoodSearchResult
     {
+        public String Query { get; private set; }
         public int TotalHits { get; private set; }
         public int CurrentPage { get; private set; }
         public int TotalPages { get; private set; }
@@ -15,6 +16,7 @@ namespace FODfinder.Models.Food
         public FoodSearchResult(string jsonInput)
         {
             JObject jsonObject = JObject.Parse(jsonInput);
+            Query = jsonObject.SelectToken("foodSearchCriteria.generalSearchInput")?.ToString() ?? "";
             TotalHits = int.TryParse(jsonObject.SelectToken("totalHits")?.ToString() ?? "", out int totalHits) ? totalHits : 0;
             CurrentPage = int.TryParse(jsonObject.SelectToken("currentPage")?.ToString() ?? "", out int currentPage) ? currentPage : 0;
             TotalPages = int.TryParse(jsonObject.SelectToken("totalPages")?.ToString() ?? "", out int totalPages) ? totalPages : 0;

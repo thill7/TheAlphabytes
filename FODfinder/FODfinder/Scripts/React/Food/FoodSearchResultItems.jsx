@@ -6,9 +6,9 @@
         };
     }
 
-    componentWillReceiveProps(props) {
-        if (this.props != props) {
-            this.props = props;
+    componentWillReceiveProps(nextProps) {
+        if (this.props != nextProps) {
+            this.setState({ results: nextProps.results });
         }
     }
 
@@ -17,11 +17,14 @@
 
         return (
             <div className="container-fluid">
+                <p className="bg-secondary display-4 p-2 rounded shadow text-white">Results:</p>
+                <ul className="list-group list-group-lg">
                 {
                     results.map((result,i) => {
-                        return (<p key={i}>{result.Description}</p>);
+                        return (<li className="list-group-item" key={i}>{result.Description}</li>);
                     })
                 }
+                </ul>
             </div>
         )
     }

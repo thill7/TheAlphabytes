@@ -7,3 +7,11 @@ html, body {
     width: 100%;
     overflow-x: hidden;
 }
+
+.LoadingWrapper {
+    transition: all 1s ease;
+}
+
+.LoadingBlur {
+    filter: blur(5px);
+}

@@ -25,7 +25,7 @@ namespace FODfinder
             // Browserify or Gulp), you can improve performance by disabling 
             // ReactJS.NET's version of Babel and loading the pre-transpiled 
             // scripts. Example:
-            //ReactSiteConfiguration.Configuration
+            //ReactSiteConfiguration
             //	.SetLoadBabel(false)
             //	.AddScriptWithoutTransform("~/Scripts/bundle.server.js")
         }

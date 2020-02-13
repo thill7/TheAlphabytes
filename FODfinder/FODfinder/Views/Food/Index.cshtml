@@ -4,23 +4,21 @@
 @{
     ViewBag.Title = "Index";
 }
-
-<h2>Index</h2>
-
-<div class="container d-flex justify-content-center align-items-center bg-primary rounded p-4">
-    @using (Html.BeginForm("Index", "Food", FormMethod.Get, new { @class = "form-inline w-100" }))
-    {
-        <div class="input-group w-100">
-            <div class="input-group-prepend">
-                <span class="input-group-text">Search:</span>
+<div class="container-fluid bg-secondary p-4 rounded-bottom">
+    <div class="container d-flex justify-content-center align-items-center bg-primary rounded p-4">
+        @using (Html.BeginForm("Index", "Food", FormMethod.Get, new { @class = "form-inline w-100" }))
+        {
+            <div class="input-group w-100">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Search:</span>
+                </div>
+                @Html.TextBox("query", "", new { @class = "form-control flex-fill" })
+                <div class="input-group-append">
+                    <button class="btn btn-success" type="submit">Go!</button>
+                </div>
             </div>
-            @Html.TextBox("query", "", new { @class = "form-control flex-fill" })
-            <div class="input-group-append">
-                <button class="btn btn-success" type="submit">Go!</button>
-            </div>
-        </div>
-    }
-</div>
+        }
+    </div>
 
 @if (Model == null)
 {
@@ -28,16 +26,18 @@
 }
 else
 {
-    @Html.React("FoodSearchResults",new
+    @Html.React("FoodSearchResults", new
     {
         results = JArray.FromObject(Model.Foods).ToString(),
         currentPage = Model.CurrentPage,
         totalPages = Model.TotalPages,
-        totalHits = Model.TotalHits
+        totalHits = Model.TotalHits,
+        query = Model.Query
     })
+
     <script crossorigin src="https://cdnjs.cloudflare.com/ajax/libs/react/16.8.0/umd/react.development.js"></script>
     <script crossorigin src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.8.0/umd/react-dom.development.js"></script>
     @Scripts.Render("~/bundles/FoodSearchResults")
     @Html.ReactInitJavaScript()
 }
-
+</div>
