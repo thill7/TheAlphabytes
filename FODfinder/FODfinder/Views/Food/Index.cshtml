@@ -4,15 +4,17 @@
 @{
     ViewBag.Title = "Index";
 }
+
+@Styles.Render("~/Content/font-awesome.min.css")   
 <div class="container-fluid bg-secondary p-4 rounded-bottom">
     <div class="container d-flex justify-content-center align-items-center bg-primary rounded p-4">
         @using (Html.BeginForm("Index", "Food", FormMethod.Get, new { @class = "form-inline w-100" }))
         {
-            <div class="input-group w-100">
-                <div class="input-group-prepend">
+            <div class="input-group flex-lg-fill">
+                <div class="input-group-prepend d-none d-lg-flex">
                     <span class="input-group-text">Search:</span>
                 </div>
-                @Html.TextBox("query", "", new { @class = "form-control flex-fill" })
+                @Html.TextBox("query", "", new { @class = "form-control" })
                 <div class="input-group-append">
                     <button class="btn btn-success" type="submit">Go!</button>
                 </div>
@@ -22,7 +24,7 @@
 
 @if (Model == null)
 {
-    <p>No Search Results</p>
+    <p class="bg-secondary display-4 p-2 my-4 rounded shadow text-white text-center">Powered By USDA FoodData Central</p>
 }
 else
 {

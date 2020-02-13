@@ -41,7 +41,7 @@
         var pageNumbers = Array.apply(null, Array(totalPages)).map((_, i) => { return i; });
 
         return (
-            <div className="container">
+            <div className="container p-0 p-lg-3">
                 <div className="row bg-primary rounded my-4">
                     <div className="col-md-4  p-4 d-inline-flex flex-column align-items-center justify-content-center">
                         <p className="bg-secondary rounded p-2 text-white shadow"><span className="font-weight-bold">Current Page</span>: {currentPage}</p>
