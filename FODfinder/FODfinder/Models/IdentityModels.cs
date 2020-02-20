@@ -21,7 +21,7 @@ namespace FODfinder.Models
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext()
-            : base("FFDBContext", throwIfV1Schema: false)
+            : base("FFDBContext_Azure_test", throwIfV1Schema: false)
         {
         }
 
