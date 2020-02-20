@@ -15,15 +15,29 @@ namespace FODfinder.Controllers
     public class FoodController : Controller
     {
         private String _API_key = WebConfigurationManager.AppSettings.Get("USDA_KEY");
-        private const String USDA_FOOD_SEARCH = "https://api.nal.usda.gov/fdc/v1/search";
+        private const String USDA_FOOD = "https://api.nal.usda.gov/fdc/v1/";
         async private Task<String> GetFoodResults(String query, String pageNumber = "1")
         {
-            UriBuilder uriBuilder = new UriBuilder(USDA_FOOD_SEARCH);
+            UriBuilder uriBuilder = new UriBuilder(USDA_FOOD+"search");
             var queryParams = HttpUtility.ParseQueryString(uriBuilder.Query);
             queryParams["api_key"] = _API_key;
             queryParams["generalSearchInput"] = String.Join("%20",query.Split(' '));
             queryParams["includeDataTypeList"] = "Branded";
             queryParams["pageNumber"] = pageNumber;
+            uriBuilder.Query = queryParams.ToString();
+
+            HttpClient client = new HttpClient();
+
+            var response = await client.GetAsync(uriBuilder.ToString());
+            var responseString = await response.Content.ReadAsStringAsync();
+            return responseString;
+        }
+
+        async private Task<String> GetFoodDetails(String fdcId)
+        {
+            UriBuilder uriBuilder = new UriBuilder(USDA_FOOD + "search");
+            var queryParams = HttpUtility.ParseQueryString(uriBuilder.Query);
+            queryParams["api_key"] = _API_key;
             uriBuilder.Query = queryParams.ToString();
 
             HttpClient client = new HttpClient();

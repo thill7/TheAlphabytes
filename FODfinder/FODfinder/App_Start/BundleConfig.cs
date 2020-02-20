@@ -32,6 +32,10 @@ namespace FODfinder
                     "~/Scripts/React/Food/FoodSearchResults.jsx"
                 ));
 
+            bundles.Add(new BabelBundle("~/bundles/FoodDetails").Include(
+                "~/Scripts/React/Food/FoodDetails.jsx"
+            ));
+
             BundleTable.EnableOptimizations = true;
 
         }
