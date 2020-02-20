@@ -35,7 +35,7 @@ namespace FODfinder.Controllers
 
         async private Task<String> GetFoodDetails(String fdcId)
         {
-            UriBuilder uriBuilder = new UriBuilder(USDA_FOOD + "search");
+            UriBuilder uriBuilder = new UriBuilder(USDA_FOOD+fdcId);
             var queryParams = HttpUtility.ParseQueryString(uriBuilder.Query);
             queryParams["api_key"] = _API_key;
             uriBuilder.Query = queryParams.ToString();
@@ -55,6 +55,12 @@ namespace FODfinder.Controllers
             }
             var foodSearchResults = await GetFoodResults(query);
             return View(new FoodSearchResult(foodSearchResults));
+        }
+
+        async public Task<ActionResult> Details(int id)
+        {
+            var foodDetails = await GetFoodDetails(id.ToString());
+            return View(new FoodDetailsModels(foodDetails));
         }
 
         async public Task<ContentResult> Get(String query, String page)
