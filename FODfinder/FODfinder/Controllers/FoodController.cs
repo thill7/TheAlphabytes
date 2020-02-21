@@ -60,6 +60,11 @@ namespace FODfinder.Controllers
         async public Task<ActionResult> Details(int id)
         {
             var foodDetails = await GetFoodDetails(id.ToString());
+            JObject json = JObject.Parse(foodDetails);
+            if (!json.ContainsKey("fdcId"))
+            {
+                return new HttpNotFoundResult("Invalid FdcId");
+            }
             return View(new FoodDetailsModels(foodDetails));
         }
 

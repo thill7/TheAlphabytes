@@ -14,7 +14,8 @@ namespace FODfinder.Models.Food
         public String Ingredients { private set; get; }
         public Double ServingSize { private set; get; }
         public String ServingSizeUnit { private set; get; }
-        public String LabelNutrients { private get; set; }
+        public String LabelNutrients { private set; get; }
+        public String UPC { private set; get; }
 
         public FoodDetailsModels(String jsonString) {
             JObject detailObject = JObject.Parse(jsonString);
@@ -25,6 +26,7 @@ namespace FODfinder.Models.Food
             ServingSizeUnit = detailObject.SelectToken("servingSizeUnit")?.ToString() ?? "";
             LabelNutrients = detailObject.SelectToken("labelNutrients")?.ToString() ?? "";
             FdcId = int.TryParse(detailObject.SelectToken("fdcId")?.ToString() ?? "", out int fdcId) ? fdcId : -1;
+            UPC = detailObject.SelectToken("gtinUpc")?.ToString() ?? "";
         }
     }
 }
