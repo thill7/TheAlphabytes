@@ -234,6 +234,7 @@
     <Compile Include="Controllers\FodmapInfoController.cs" />
     <Compile Include="Controllers\FoodController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\IbsInfoController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -429,6 +430,7 @@
     <Content Include="Views\FodmapInfo\Index.cshtml" />
     <Content Include="Views\Food\Index.cshtml" />
     <Content Include="Views\Food\Details.cshtml" />
+    <Content Include="Views\IbsInfo\Index.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
