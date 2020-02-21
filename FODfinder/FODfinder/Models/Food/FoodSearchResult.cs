@@ -7,7 +7,7 @@ namespace FODfinder.Models.Food
 {
     public class FoodSearchResult
     {
-        public String Query { get; private set; }
+        public string Query { get; private set; }
         public int TotalHits { get; private set; }
         public int CurrentPage { get; private set; }
         public int TotalPages { get; private set; }
@@ -23,7 +23,7 @@ namespace FODfinder.Models.Food
             JArray foods = JArray.Parse(jsonObject.SelectToken("foods")?.ToString() ?? "");
             foreach(var food in foods)
             {
-                String foodResult = food.ToString();
+                string foodResult = food.ToString();
                 Foods.Add(new FoodSearchResultItem(foodResult));
             }
         }

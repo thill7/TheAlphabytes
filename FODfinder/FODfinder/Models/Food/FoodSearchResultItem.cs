@@ -10,12 +10,12 @@ namespace FODfinder.Models.Food
     {
         public int FdcId { get; private set; }
         public int GtinUPC { get; private set; }
-        public String Description { get; private set; }
-        public String PublishedDate { get; private set; }
-        public String BrandOwner { get; private set; }
-        public String Ingredients { get; private set; }
+        public string Description { get; private set; }
+        public string PublishedDate { get; private set; }
+        public string BrandOwner { get; private set; }
+        public string Ingredients { get; private set; }
 
-        public FoodSearchResultItem(String jsonString)
+        public FoodSearchResultItem(string jsonString)
         {
             JObject foodObject = JObject.Parse(jsonString);
             FdcId = int.TryParse(foodObject.SelectToken("fdcId")?.ToString() ?? "", out int fdcId) ? fdcId : -1;
