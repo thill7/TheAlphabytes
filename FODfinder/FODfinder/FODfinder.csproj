@@ -222,6 +222,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Food\FoodDetailsModels.cs" />
     <Compile Include="Models\Food\FoodSearchResult.cs" />
     <Compile Include="Models\Food\FoodSearchResultItem.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -259,6 +260,7 @@
     <Content Include="Scripts\esm\popper-utils.min.js" />
     <Content Include="Scripts\esm\popper.js" />
     <Content Include="Scripts\esm\popper.min.js" />
+    <Content Include="Scripts\React\Food\FoodDetails.jsx" />
     <Content Include="Scripts\React\Food\FoodSearchResultItems.jsx" />
     <Content Include="Scripts\React\Food\FoodSearchResults.jsx" />
     <Content Include="Scripts\index.js.flow" />
@@ -409,6 +411,7 @@
     <Content Include="Scripts\popper-utils.js.map" />
     <Content Include="Views\FodmapInfo\Index.cshtml" />
     <Content Include="Views\Food\Index.cshtml" />
+    <Content Include="Views\Food\Details.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

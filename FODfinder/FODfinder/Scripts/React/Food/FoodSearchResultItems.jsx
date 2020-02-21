@@ -21,7 +21,7 @@
                 <ul className="list-group list-group-lg">
                 {
                     results.map((result,i) => {
-                        return (<li className="list-group-item" key={i}>{result.Description}</li>);
+                        return (<li className="list-group-item" key={i}><a href={`/food/details/${result.FdcId}`}>{result.Description}</a></li>);
                     })
                 }
                 </ul>
