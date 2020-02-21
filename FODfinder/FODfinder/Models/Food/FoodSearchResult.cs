@@ -17,9 +17,9 @@ namespace FODfinder.Models.Food
         {
             JObject jsonObject = JObject.Parse(jsonInput);
             Query = jsonObject.SelectToken("foodSearchCriteria.generalSearchInput")?.ToString() ?? "";
-            TotalHits = int.TryParse(jsonObject.SelectToken("totalHits")?.ToString() ?? "", out int totalHits) ? totalHits : 0;
-            CurrentPage = int.TryParse(jsonObject.SelectToken("currentPage")?.ToString() ?? "", out int currentPage) ? currentPage : 0;
-            TotalPages = int.TryParse(jsonObject.SelectToken("totalPages")?.ToString() ?? "", out int totalPages) ? totalPages : 0;
+            TotalHits = int.TryParse(jsonObject.SelectToken("totalHits")?.ToString() ?? "", out var totalHits) ? totalHits : 0;
+            CurrentPage = int.TryParse(jsonObject.SelectToken("currentPage")?.ToString() ?? "", out var currentPage) ? currentPage : 0;
+            TotalPages = int.TryParse(jsonObject.SelectToken("totalPages")?.ToString() ?? "", out var totalPages) ? totalPages : 0;
             JArray foods = JArray.Parse(jsonObject.SelectToken("foods")?.ToString() ?? "");
             foreach(var food in foods)
             {
