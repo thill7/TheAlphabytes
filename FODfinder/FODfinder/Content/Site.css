@@ -1,4 +1,12 @@
-﻿body {
+﻿:root {
+    --m1: 0.25rem;
+    --m2: 0.5rem;
+    --m3: 1rem;
+    --m4: 1.5rem;
+    --m5: 3rem;
+}
+
+body {
     padding-top: 50px;
     padding-bottom: 20px;
 }
@@ -28,4 +36,15 @@ html, body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+.UpcContainer {
+    max-width: 100%;
+    text-align: center;
+    display:inline;
+    padding: var(--m4);
+}
+
+.ImgUpc {
+    max-width: 100%;
+    object-fit: contain;
 }
