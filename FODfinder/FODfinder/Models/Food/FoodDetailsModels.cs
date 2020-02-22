@@ -22,10 +22,12 @@ namespace FODfinder.Models.Food
             Description = detailObject.SelectToken("description")?.ToString() ?? "";
             BrandOwner = detailObject.SelectToken("brandOwner")?.ToString() ?? "";
             Ingredients = detailObject.SelectToken("ingredients")?.ToString() ?? "";
-            ServingSize = Double.TryParse(detailObject.SelectToken("servingSize")?.ToString() ?? "", out var servingSize) ? servingSize : 0.0;
+            double servingSize;
+            ServingSize = Double.TryParse(detailObject.SelectToken("servingSize")?.ToString() ?? "", out servingSize) ? servingSize : 0.0;
             ServingSizeUnit = detailObject.SelectToken("servingSizeUnit")?.ToString() ?? "";
             LabelNutrients = detailObject.SelectToken("labelNutrients")?.ToString() ?? "";
-            FdcId = int.TryParse(detailObject.SelectToken("fdcId")?.ToString() ?? "", out var fdcId) ? fdcId : -1;
+            int fdcId;
+            FdcId = int.TryParse(detailObject.SelectToken("fdcId")?.ToString() ?? "", out fdcId) ? fdcId : -1;
             UPC = detailObject.SelectToken("gtinUpc")?.ToString() ?? "";
         }
     }
