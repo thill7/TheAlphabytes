@@ -3,29 +3,41 @@
 @{
     ViewBag.Title = "Search";
 }
-
-    <div class="container-fluid pt-4">
-        <h2>Search if an ingredient is a FODMAP</h2>
-
-        @using (Html.BeginForm("Search", "FODMAPIngredients", FormMethod.Get))
-        {
-            @Html.AntiForgeryToken()
-            <div class="container">
-                <div class="row p-1">
-                    <div class="col-10 p-0">
-                        @Html.TextBox("search", null, new { @class = "form-control", type = "text", style = "", name = "search" })
+        
+        @Styles.Render("~/Content/font-awesome.min.css")
+    <div class="container-fluid bg-secondary p-4 rounded-bottom">
+        <div class="container d-flex justify-content-center align-items-center bg-primary rounded p-4">
+            @using (Html.BeginForm("Search", "FODMAPIngredients", FormMethod.Get, new { @class = "form-inline w-100" }))
+            {
+                @Html.AntiForgeryToken()
+                <div class="input-group flex-lg-fill">
+                    <div class="input-group-prepend d-none d-lg-flex">
+                        <span class="input-group-text">Search:</span>
                     </div>
-                    <div class="col-2 p-0">
-                        <button type="submit" class="btn btn-dark btn-block">Search</button>
+                    @Html.TextBox("search", null, new { @class = "form-control", type = "text", style = "", name = "search" })
+                    <div class="input-group-append">
+                        <button type="submit" class="btn btn-success">Go!</button>
                     </div>
                 </div>
-            </div>
-        }
+            }
+        </div>
+        <p class="bg-secondary display-4 p-2 my-4 rounded shadow text-white text-center">Search if an ingredient is high FODMAP</p>
+
         @if (ViewBag.Success ?? false)
         {
             <div class="container">
-                <div class="row">
-                    <table class="table table-hover table-bordered">
+                <div class="row card rounded">
+                    <table class="table table-hover table-light">
+                        <thead>
+                            <tr class="col-10">
+                                <th>
+                                    INGREDIENT:
+                                </th>
+                                <th>
+                                    ALSO LISTED AS:
+                                </th>
+                            </tr>
+                        </thead>
                         @foreach (var ingredient in Model)
                         {
                             <tr class="col-10">
@@ -44,11 +56,13 @@
         else if (ViewBag.Success == false)
         {
             <br />
-            <p>
-                We did not find any ingredients that matched your search.
-                This ingredient is <i>probably</i> not a FODMAP. If you would
-                like more information, please see <a href="/FODMAPIngredients/Browse">Common FODMAP Ingredients</a>
-                or our <a href="/FodmapInfo/Index">FODMAP info page</a>.
-            </p>
+            <div class="container d-flex justify-content-center align-items-center bg-primary rounded p-4">
+                <p style="color:aliceblue;">
+                    We did not find any ingredients that matched your search.
+                    This ingredient is <i>probably</i> not a FODMAP. If you would
+                    like more information, please see our list of <b><a style="color:aliceblue" href="/FODMAPIngredients/Browse">FODMAP Ingredients</a></b>
+                    or our <b><a style="color:aliceblue" href="/FodmapInfo/Index">FODMAP info page</a></b>.
+                </p>
+            </div>
         }
     </div>

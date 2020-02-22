@@ -4,31 +4,34 @@
     ViewBag.Title = "Browse FODMAPs";
 }
 
-<div class="container-fluid pt-4">
-    <h2 align="center">Browse FODMAP Ingredients</h2>
+    <div class="container-fluid pt-4">
+        <h2 class="display-4 pt-3 text-center">Browse FODMAP Ingredients</h2>
+        <hr />
+        <div class="row justify-content-center">
+            <div class="col-sm-8">
+                <table class="table text-muted">
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Name)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Aliases)
+                        </th>
+                    </tr>
 
-    <table class="table">
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Name)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Aliases)
-            </th>
-            <th></th>
-        </tr>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Name)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Aliases)
+                            </td>
+                        </tr>
+                    }
 
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Name)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Aliases)
-                </td>
-            </tr>
-        }
-
-    </table>
-</div>
+                </table>
+            </div>
+        </div>
+    </div>
