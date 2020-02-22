@@ -248,6 +248,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\down.sql" />
+    <Content Include="App_Data\FODfinderDB.mdf" />
+    <Content Include="App_Data\FODfinderDB_log.ldf">
+      <DependentUpon>FODfinderDB.mdf</DependentUpon>
+    </Content>
+    <Content Include="App_Data\seed.sql" />
     <!-- <Content Include="App_Data\FODfinderDB.mdf" />
     <Content Include="App_Data\FODfinderDB_log.ldf">
       <DependentUpon>FODfinderDB.mdf</DependentUpon>
