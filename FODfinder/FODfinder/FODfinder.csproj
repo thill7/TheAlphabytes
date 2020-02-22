@@ -442,11 +442,7 @@
     <Content Include="Views\FodmapInfo\Index.cshtml" />
     <Content Include="Views\Food\Index.cshtml" />
     <Content Include="Views\Food\Details.cshtml" />
-    <Content Include="Views\FODMAPIngredients\Create.cshtml" />
-    <Content Include="Views\FODMAPIngredients\Delete.cshtml" />
-    <Content Include="Views\FODMAPIngredients\Details.cshtml" />
-    <Content Include="Views\FODMAPIngredients\Edit.cshtml" />
-    <Content Include="Views\FODMAPIngredients\Index.cshtml" />
+    <Content Include="Views\FODMAPIngredients\Browse.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
