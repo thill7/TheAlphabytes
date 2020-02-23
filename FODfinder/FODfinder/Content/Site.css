@@ -29,3 +29,12 @@ html, body {
     justify-content: center;
     align-items: center;
 }
+
+#ContactFormLabel {
+    width: 70px;
+    margin: 0;
+}
+
+#ContactFormButton {
+    width: 70px;
+}

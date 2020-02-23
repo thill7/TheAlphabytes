@@ -17,6 +17,7 @@ namespace FODfinder.Models.Contact
 
         [Required(ErrorMessage = "Please enter a subject")]
         public string Subject { get; set; }
+        [Display(Name = "Message")]
         [Required(ErrorMessage = "Please enter your message")]
         public string EmailContents { get; set; }
     }
