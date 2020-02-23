@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="..\packages\JavaScriptEngineSwitcher.V8.Native.win-x86.3.3.0\build\net45\JavaScriptEngineSwitcher.V8.Native.win-x86.props" Condition="Exists('..\packages\JavaScriptEngineSwitcher.V8.Native.win-x86.3.3.0\build\net45\JavaScriptEngineSwitcher.V8.Native.win-x86.props')" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
@@ -236,6 +236,7 @@
     <Compile Include="Controllers\FODMAPIngredientsController.cs" />
     <Compile Include="Controllers\FoodController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\IbsInfoController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -439,6 +440,7 @@
     <Content Include="Views\Food\Details.cshtml" />
     <Content Include="Views\FODMAPIngredients\Browse.cshtml" />
     <Content Include="Views\FODMAPIngredients\Search.cshtml" />
+    <Content Include="Views\IbsInfo\Index.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
