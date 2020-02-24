@@ -6,17 +6,11 @@ using System.Web.Mvc;
 
 namespace FODfinder.Controllers
 {
-    public class HomeController : Controller
+    public class IbsInfoController : Controller
     {
+        // GET: IbsInfo
         public ActionResult Index()
         {
-            return View();
-        }
-
-        public ActionResult About()
-        {
-            ViewBag.Message = "Your application description page.";
-
             return View();
         }
     }

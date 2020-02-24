@@ -48,3 +48,12 @@ html, body {
     max-width: 100%;
     object-fit: contain;
 }
+
+#ContactFormLabel {
+    width: 70px;
+    margin: 0;
+}
+
+#ContactFormButton {
+    width: 70px;
+}

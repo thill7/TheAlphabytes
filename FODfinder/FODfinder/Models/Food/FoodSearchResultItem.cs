@@ -18,8 +18,10 @@ namespace FODfinder.Models.Food
         public FoodSearchResultItem(string jsonString)
         {
             JObject foodObject = JObject.Parse(jsonString);
-            FdcId = int.TryParse(foodObject.SelectToken("fdcId")?.ToString() ?? "", out int fdcId) ? fdcId : -1;
-            GtinUPC = int.TryParse(foodObject.SelectToken("fdcId")?.ToString() ?? "", out int gtinUpc) ? gtinUpc : -1;
+            int fdcId;
+            FdcId = int.TryParse(foodObject.SelectToken("fdcId")?.ToString() ?? "", out fdcId) ? fdcId : -1;
+            int gtinUpc;
+            GtinUPC = int.TryParse(foodObject.SelectToken("fdcId")?.ToString() ?? "", out gtinUpc) ? gtinUpc : -1;
             Description = foodObject.SelectToken("description")?.ToString() ?? "";
             PublishedDate = foodObject.SelectToken("publishedData")?.ToString() ?? "";
             BrandOwner = foodObject.SelectToken("brandOwner")?.ToString() ?? "";
