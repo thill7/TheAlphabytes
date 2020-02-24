@@ -30,12 +30,12 @@ namespace FODfinder.Controllers
                 var password = System.Web.Configuration.WebConfigurationManager.AppSettings["senderPassword"];
                 var body = "<h2>Email from: " +
                     contactForm.Name + " (" +
-                    contactForm.Email + ")</h2><p><big><b>Message:</b>\n" +
+                    contactForm.Email + ")</h2><hr /><p><big><b>Message:</b>\n" +
                     contactForm.EmailContents + "</big></p>";
                 var message = new MailMessage();
                 message.To.Add(new MailAddress("thealphabytes@gmail.com"));
                 message.From = new MailAddress(userName);
-                message.Subject = contactForm.Subject;
+                message.Subject = $"{contactForm.Subject} - {DateTime.Now}";
                 message.Body = string.Format(body, contactForm.Name, contactForm.Email, contactForm.EmailContents);
                 message.IsBodyHtml = true;
 
@@ -53,7 +53,6 @@ namespace FODfinder.Controllers
                     smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
                     await smtp.SendMailAsync(message);
                     return RedirectToAction("Sent");
-
                 }
             }
             return View(contactForm);
