@@ -10,6 +10,10 @@
 }
 else
 {
+    @Styles.Render("~/Content/archivo-black.css")
+    @Styles.Render("~/Content/nutritionLabel-min.css")
+
+
     @Html.React("FoodDetails", new
     {
         details = JObject.FromObject(Model).ToString()
