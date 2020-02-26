@@ -1,0 +1,81 @@
+﻿@model FODfinder.Models.Contact.ContactForm
+@using reCAPTCHA.MVC
+@{
+    ViewBag.Title = "Contact";
+}
+
+<div class="container-fluid pt-4">
+    <div class="row d-flex justify-content-center">
+        <div class="col-lg-8">
+            <div class="card shadow">
+                <div class="card-header bg-secondary text-white text-center">
+                    <h4>
+                        Send us an Email
+                    </h4>
+                </div>
+                <div class="card-body d-flex justify-content-center">
+                    @using (Html.BeginForm("Contact", "Contact", FormMethod.Post, new { @class = "container-fluid p-0" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        <div class="form-group">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text text-white bg-secondary">
+                                        @Html.LabelFor(model => model.Name, htmlAttributes: new { id = "ContactFormLabel" })
+                                    </div>
+                                </div>
+                                @Html.EditorFor(model => model.Name, new { htmlattributes = new { @class = "form-control", placeholder = "Your name..." } })
+                            </div>
+                            @Html.ValidationMessageFor(model => model.Name, null, new { @class = "text-danger" })
+                        </div>
+                        <div class="form-group">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text text-white bg-secondary">
+                                        @Html.LabelFor(model => model.Email, htmlAttributes: new { id = "ContactFormLabel" })
+                                    </div>
+                                </div>
+                                @Html.EditorFor(model => model.Email, new { htmlattributes = new { @class = "form-control", placeholder = "Your email address..." } })
+                            </div>
+                            @Html.ValidationMessageFor(model => model.Email, null, new { @class = "text-danger" })
+                        </div>
+                        <div class="form-group">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text text-white bg-secondary">
+                                        @Html.LabelFor(model => model.Subject, htmlAttributes: new { id = "ContactFormLabel" })
+                                    </div>
+                                </div>
+                                @Html.EditorFor(model => model.Subject, new { htmlattributes = new { @class = "form-control", placeholder = "Subject..." } })
+                            </div>
+                            @Html.ValidationMessageFor(model => model.Subject, null, new { @class = "text-danger" })
+                        </div>
+                        <div class="form-group">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text text-white bg-secondary">
+                                        @Html.LabelFor(model => model.EmailContents, htmlAttributes: new { id = "ContactFormLabel" })
+                                    </div>
+                                </div>
+                                @Html.TextAreaFor(model => model.EmailContents, new { @class = "form-control", rows = 1, placeholder = "Message..." })
+                            </div>
+                            @Html.ValidationMessageFor(model => model.EmailContents, null, new { @class = "text-danger" })
+                        </div>
+                        <div class="form-group">
+                            <div class="d-flex justify-content-center">
+                                @Html.Recaptcha()
+                            </div>
+                            <div class="col-md text-center">
+                                @Html.ValidationMessage("ReCaptcha", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="form-group m-0 d-flex">
+                            @Html.ActionLink("Home", "Index", "Home", null, new { @class = "btn btn-primary mr-auto", id = "ContactFormButton" })
+                            <input id="ContactFormButton" type="submit" value="Send" class="btn btn-success ml-auto" />
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,59 @@
+﻿:root {
+    --m1: 0.25rem;
+    --m2: 0.5rem;
+    --m3: 1rem;
+    --m4: 1.5rem;
+    --m5: 3rem;
+}
+
+body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+html, body {
+    width: 100%;
+    overflow-x: hidden;
+}
+
+.LoadingWrapper {
+    transition: all 1s ease;
+}
+
+.LoadingBlur {
+    filter: blur(5px);
+}
+
+.LoadingSpinnerContainer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.UpcContainer {
+    max-width: 100%;
+    text-align: center;
+    display:inline;
+    padding: var(--m4);
+}
+
+.ImgUpc {
+    max-width: 100%;
+    object-fit: contain;
+}
+
+#ContactFormLabel {
+    width: 70px;
+    margin: 0;
+}
+
+#ContactFormButton {
+    width: 70px;
+}

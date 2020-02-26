@@ -1,0 +1,25 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="container pt-3">
+    <div class="row d-flex justify-content-center">
+        <div class="col-lg-3">
+            <div class="card shadow">
+                <div class="card-header text-center bg-secondary text-white py-0">
+                    <h1>IBS</h1>
+                </div>
+                <div class="card-body text-muted text-center">
+                    <h4>
+                        To learn more about IBS, click here!
+                    </h4>
+                    @Html.ActionLink("Learn More", "index", "IbsInfo", null, new
+                    {
+                        @class = "btn btn-primary",
+                        id = "button"
+                    })
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
