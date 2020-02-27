@@ -63,6 +63,25 @@ html, body {
     flex: 1 1 auto !important;
 }
 
+.FoodLink {
+    text-decoration: none;
+    transition: background, color 0.25s ease;
+}
+
+.FoodLink:hover {
+    text-decoration: none;
+    background: var(--primary);
+    color: var(--light);
+}
+
+.FoodLink:visited {
+    text-decoration: none;
+}
+
+.FoodLink:active {
+    text-decoration: none;
+}
+
 /* Small devices (landscape phones, 576px and up) */
 @media (min-width: 576px) {
     
