@@ -59,6 +59,10 @@ html, body {
     width: 70px;
 }
 
+.Spacer {
+    flex: 1 1 auto !important;
+}
+
 /* Small devices (landscape phones, 576px and up) */
 @media (min-width: 576px) {
     
