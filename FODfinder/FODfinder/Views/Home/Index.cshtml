@@ -22,4 +22,30 @@
             </div>
         </div>
     </div>
+    <div class="row mt-4">
+        <div class="col-lg-6">
+            <div class="p-4 b-left-lg-4 rounded s-lg-right d-flex flex-column justify-content-between">
+                <p class="display-4">FODFinder</p>
+                <p class="lead">What can you do here?</p>
+                <p class="text-body">&emsp;This website is a free resource for learning about IBS and FODMAPs, searching for foods to see if they're compatible with a low-FODMAP diet, and saving those results for your later convenience in shopping, meal prep, and everyday life.</p>
+                <p class="text-muted">Curious? Try searching a food, like "chili" or "bananas", in the search bar</p>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="p-4 d-flex flex-column justify-content-center h-100 align-items-center">
+                @using (Html.BeginForm("Index","Food",FormMethod.Get, new { @class="form-inline"}))
+                {
+                <div class="input-group input-group-lg">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Search</span>
+                    </div>
+                    @Html.TextBox("query", "", new { @class = "form-control", required = true})
+                    <div class="input-group-append">
+                        <button class="btn btn-success" type="submit">Go!</button>
+                    </div>
+                </div>
+                }
+            </div>
+        </div>
+    </div>
 </div>
