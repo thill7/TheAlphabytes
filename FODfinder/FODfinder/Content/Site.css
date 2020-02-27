@@ -79,12 +79,16 @@ html, body {
 
     .b-left-lg-4 {
         border:0;
-        border-left: var(--m4) solid black;
+        border-left: var(--m4) solid black !important;
     }
 
     .b-right-lg-4 {
         border: 0;
-        border-right: var(--m4) solid black;
+        border-right: var(--m4) solid black !important;
+    }
+
+    .b-lg-1 {
+        border: var(--m1) solid black;
     }
 }
 
