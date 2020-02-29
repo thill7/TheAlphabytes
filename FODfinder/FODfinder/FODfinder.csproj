@@ -295,6 +295,7 @@
     <Content Include="Scripts\esm\popper.min.js" />
     <Content Include="Scripts\nutritionLabel-min.js" />
     <Content Include="Scripts\React\Food\FoodDetails.jsx" />
+    <Content Include="Scripts\React\Food\FoodSearch.jsx" />
     <Content Include="Scripts\React\Food\FoodSearchResultItems.jsx" />
     <Content Include="Scripts\React\Food\FoodSearchResults.jsx" />
     <Content Include="Scripts\index.js.flow" />

@@ -19,7 +19,8 @@ namespace FODfinder
             ReactSiteConfiguration.Configuration
                 .AddScript("~/Scripts/React/Food/FoodSearchResults.jsx")
                 .AddScript("~/Scripts/React/Food/FoodSearchResultItems.jsx")
-                .AddScript("~/Scripts/React/Food/FoodDetails.jsx");
+                .AddScript("~/Scripts/React/Food/FoodDetails.jsx")
+                .AddScript("~/Scripts/React/Food/FoodSearch.jsx");
             //	.AddScript("~/Scripts/Second.jsx");
 
             // If you use an external build too (for example, Babel, Webpack,
