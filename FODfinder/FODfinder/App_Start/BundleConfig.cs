@@ -37,8 +37,6 @@ namespace FODfinder
                 "~/Scripts/React/Food/FoodDetails.jsx"));
 
             bundles.Add(new BabelBundle("~/bundles/FoodSearchBundle").Include(
-                "~/Scripts/jquery-3.3.1.min.js",
-                "~/Scripts/popper.min.js",
                 "~/Scripts/React/Food/FoodSearch.jsx"));
 
             BundleTable.EnableOptimizations = true;

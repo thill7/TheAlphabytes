@@ -20,7 +20,7 @@
                             <li class="nav-item">@Html.ActionLink("Home", "Index", "Home", null, new { @class = "nav-link" })</li>
                             <li class="nav-item">@Html.ActionLink("Food Search", "Index", "Food", null, new { @class = "nav-link" })</li>
                             <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#"data-toggle="dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">
                                     FODMAP Ingredients
                                 </a>
                                 <div class="dropdown-menu">
@@ -55,8 +55,8 @@
                 </div>
             </div>
         </div>
+        @Scripts.Render("~/Scripts/umd/popper.min.js")
         @Scripts.Render("~/bundles/jquery")
-        @Scripts.Render("~/Scripts/popper.js")
         @Scripts.Render("~/bundles/bootstrap")
         @RenderSection("scripts", required: false)
     </body>

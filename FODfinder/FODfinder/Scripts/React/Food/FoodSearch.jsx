@@ -15,8 +15,9 @@
         await this.setState({ query: event.target.value });
     }
 
-    async onUpcToggle(event) {
-        await this.setState({ isUpc: event.target.value != "0" });
+    async onUpcToggle(toggled) {
+        await this.setState({ isUpc: toggled });
+        console.log(this.state.isUpc);
     }
 
     onQuerySubmit(event) {
@@ -33,20 +34,33 @@
 
         return (
             <form className="form-inline w-100" onSubmit={(e) => { this.onQuerySubmit(e) }}>
-                <div className="input-group w-100">
-                    <div className="input-group-prepend">
-                        <select className="form-control input-group-text" onChange={(e) => { this.onUpcToggle(e) }}>
-                            <option value="0" defaultValue>
-                                Search by name
-                            </option>
-                            <option value="1">
-                                Search by UPC
-                            </option>
-                        </select>
-                    </div>
-                    <input type="text" onChangeCapture={(e) => { this.onQueryChanged(e) }} className="form-control" />
-                    <div className="input-group-append">
-                        <button className="btn btn-success" type="submit">Go!</button>
+                <div className="form-group w-100">
+                    <div className="input-group w-100">
+                        <div className="input-group-prepend">
+                            <span className="input-group-text">
+                                Search
+                            </span>
+                            <div className="dropdown">
+                                <button type="button" className="btn btn-dark dropdown-toggle dropdown-toggle-split rounded-0" data-toggle="dropdown" id="SearchByButton">
+                                    <span className="sr-only">
+                                        Search by
+                                    </span>
+                                </button>
+                                <div className="dropdown-menu bg-dark" aria-labelledby="SearchByButton">
+                                    <h6 className="dropdown-header text-light">Search by:</h6>
+                                    <a href="#" className={"dropdown-item" + (!isUpc ? " active bg-dark" : "")} onClick={() => { this.onUpcToggle(false) }}>
+                                        Name
+                                    </a>
+                                    <a href="#" className={"dropdown-item" + (isUpc ? " active bg-dark" : "")} onClick={() => { this.onUpcToggle(true) }}>
+                                        UPC
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <input type="text" onChangeCapture={(e) => { this.onQueryChanged(e) }} className="form-control border-left-0 border-right-0" />
+                        <div className="input-group-append">
+                            <button className="btn btn-success" type="submit">Go!</button>
+                        </div>
                     </div>
                 </div>
             </form>
