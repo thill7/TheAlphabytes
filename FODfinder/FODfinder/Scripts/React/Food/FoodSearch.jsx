@@ -21,9 +21,11 @@
 
     onQuerySubmit(event) {
         event.preventDefault();
-        var { isUpc,query } = this.state;
-        let url = `/Food/Index?query=${(isUpc ? "gtinUpc:" : "") + query}`;
-        window.location.href = url;
+        var { isUpc, query } = this.state;
+        if (query != "") {
+            let url = `/Food/Index?query=${(isUpc ? "gtinUpc:" : "") + query}`;
+            window.location.href = url;
+        }
     }
 
     render() {
@@ -33,16 +35,15 @@
             <form className="form-inline w-100" onSubmit={(e) => { this.onQuerySubmit(e) }}>
                 <div className="input-group w-100">
                     <div className="input-group-prepend">
-                        <span className="input-group-text">Search:</span>
-                    </div>
-                        <select className="form-control" onChange={(e) => { this.onUpcToggle(e) }}>
+                        <select className="form-control input-group-text" onChange={(e) => { this.onUpcToggle(e) }}>
                             <option value="0" defaultValue>
-                                Name
+                                Search by name
                             </option>
                             <option value="1">
-                                UPC
+                                Search by UPC
                             </option>
                         </select>
+                    </div>
                     <input type="text" onChangeCapture={(e) => { this.onQueryChanged(e) }} className="form-control" />
                     <div className="input-group-append">
                         <button className="btn btn-success" type="submit">Go!</button>
