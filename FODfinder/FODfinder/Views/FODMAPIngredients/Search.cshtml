@@ -6,7 +6,7 @@
         
         @Styles.Render("~/Content/font-awesome.min.css")
     <div class="container-fluid bg-secondary p-4 rounded-bottom">
-        <div class="container d-flex justify-content-center align-items-center bg-primary rounded p-4">
+        <div class="container d-flex justify-content-center align-items-center rounded p-4">
             @using (Html.BeginForm("Search", "FODMAPIngredients", FormMethod.Get, new { @class = "form-inline w-100" }))
             {
                 @Html.AntiForgeryToken()
@@ -16,12 +16,12 @@
                     </div>
                     @Html.TextBox("search", null, new { @class = "form-control", type = "text", style = "", name = "search" })
                     <div class="input-group-append">
-                        <button type="submit" class="btn btn-success">Go!</button>
+                        <button type="submit" class="btn btn-primary">Go!</button>
                     </div>
                 </div>
             }
         </div>
-        <p class="bg-secondary display-4 p-2 my-4 rounded shadow text-white text-center">Search if an ingredient is high FODMAP</p>
+        <p class="bg-secondary display-4 p-2 my-4 rounded shadow text-gray text-center">Search if an ingredient is high FODMAP</p>
 
         @if (ViewBag.Success ?? false)
         {

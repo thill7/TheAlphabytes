@@ -42,15 +42,15 @@
 
         return (
             <div className="container p-0 p-lg-3">
-                <div className="row bg-primary rounded my-4">
+                <div className="row rounded my-0">
                     <div className="col-md-4  p-4 d-inline-flex flex-column align-items-center justify-content-center">
-                        <p className="bg-secondary rounded p-2 text-white shadow"><span className="font-weight-bold">Current Page</span>: {currentPage}</p>
+                        <p className="bg-secondary rounded p-2 text-gray shadow"><span className="font-weight-bold">Current Page</span>: {currentPage}</p>
                     </div>
                     <div className="col-md-4 p-4 d-inline-flex flex-column align-items-center justify-content-center">
-                        <p className="bg-secondary rounded p-2 text-white shadow"><span className="font-weight-bold">Total Pages</span>: {totalPages}</p>
+                        <p className="bg-secondary rounded p-2 text-gray shadow"><span className="font-weight-bold">Total Pages</span>: {totalPages}</p>
                     </div>
                     <div className="col-md-4 p-4 d-inline-flex flex-column align-items-center justify-content-center">
-                        <p className="bg-secondary rounded p-2 text-white shadow"><span className="font-weight-bold">Total Hits</span>: {totalHits}</p>
+                        <p className="bg-secondary rounded p-2 text-gray shadow"><span className="font-weight-bold">Total Hits</span>: {totalHits}</p>
                     </div>
                 </div>
                 <div className={loading ? "LoadingWrapper LoadingBlur" : "LoadingWrapper"}>

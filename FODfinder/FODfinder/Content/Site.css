@@ -4,10 +4,46 @@
     --m3: 1rem;
     --m4: 1.5rem;
     --m5: 3rem;
+    --gray: rbga(0,0,0,0.5);
+    --info: #E5D7D7;
+    --primary: rbga(0,0,0,0.5);
+    --secondary: #CCBDBD;
+    --light: #F5EEEB;
+    --dark: #242A4A;
+}
+
+.navbar-light, .bg-light, .btn-light, .input-group-text-light {
+    background-color: #F5EEEB !important;
+}
+
+.navbar-dark, .bg-dark, .btn-dark {
+    background-color: #242A4A !important;
+}
+
+.bg-primary, .btn-primary {
+    background-color: #CCBDBD !important;
+    border-color: transparent !important;
+}
+
+.bg-secondary, .btn-secondary {
+    background-color: #F5EEEB !important;
+}
+
+.bg-info, .btn-info {
+    background-color: rgba(226, 215, 215, 100) !important;
+}
+
+.text-gray {
+    color: rgba(0,0,0,0.5) !important;
+}
+
+.card-img {
+    max-height: 75px !important;
+    width: auto;
 }
 
 body {
-    padding-top: 50px;
+    padding-top: 65px;
     padding-bottom: 20px;
 }
 
@@ -66,4 +102,64 @@ html, body {
 #RegisterFormLabel {
     width: 130px;
     margin: 0;
+}
+.Spacer {
+    flex: 1 1 auto !important;
+}
+
+.FoodLink {
+    text-decoration: none;
+    transition: background, color 0.25s ease;
+}
+
+.FoodLink:hover {
+    text-decoration: none;
+    background: var(--primary);
+    color: var(--light);
+}
+
+.FoodLink:visited {
+    text-decoration: none;
+}
+
+.FoodLink:active {
+    text-decoration: none;
+}
+
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) {
+    
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+    
+}
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+    .s-lg-left {
+        box-shadow: 5vmin 0 3vmin 0.1vmin var(--shadow-light) inset;
+    }
+    .s-lg-right {
+        box-shadow: -5vmin 0 3vmin 0.1vmin var(--shadow-light) inset;
+    }
+
+    .b-left-lg-4 {
+        border:0;
+        border-left: var(--m4) solid black !important;
+    }
+
+    .b-right-lg-4 {
+        border: 0;
+        border-right: var(--m4) solid black !important;
+    }
+
+    .b-lg-1 {
+        border: var(--m1) solid black;
+    }
+}
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+    
 }
