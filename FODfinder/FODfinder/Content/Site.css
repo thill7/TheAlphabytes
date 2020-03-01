@@ -62,3 +62,8 @@ html, body {
     width: 65px;
     margin: 0;
 }
+
+#RegisterFormLabel {
+    width: 130px;
+    margin: 0;
+}
