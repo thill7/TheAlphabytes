@@ -15,7 +15,7 @@
         @using (Html.BeginForm("Index", "Food", FormMethod.Get, new { @class = "form-inline w-100" }))
         {
             <div class="input-group flex-lg-fill">
-                <div class="input-group-prepend d-none d-lg-flex">
+                <div class="input-group-prepend">
                     <span class="input-group-text">Search:</span>
                 </div>
                 @Html.TextBox("query", "", new { @class = "form-control" })
@@ -28,7 +28,7 @@
 
     @if (Model == null)
     {
-        <p class="bg-secondary display-4 p-2 my-4 rounded shadow text-white text-center">Powered By USDA FoodData Central</p>
+        <p class="display-4 p-2 my-4 rounded shadow text-white text-center">Powered By USDA FoodData Central</p>
     }
     else
     {

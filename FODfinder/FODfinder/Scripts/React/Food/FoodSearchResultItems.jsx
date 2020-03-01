@@ -21,7 +21,26 @@
                 <ul className="list-group list-group-lg">
                 {
                     results.map((result,i) => {
-                        return (<li className="list-group-item" key={i}><a href={`/food/details/${result.FdcId}`}>{result.Description}</a></li>);
+                        return (
+                            <a className="list-group-item list-group-item-info FoodLink" key={i} href={`/food/details/${result.FdcId}`}>
+                                <div className="row">
+                                    <div className="col-sm-8">
+                                        <div className="row">
+                                            <div className="col-md-6">
+                                                <span className="text-capitalize">{result.Description.toLowerCase()}</span>
+                                            </div>
+                                            <div className="col-md-6">
+                                                <span className="text-capitalize font-weight-bold">{result.BrandOwner.toLowerCase()}</span>
+                                            </div>
+                                            
+                                        </div>
+                                    </div>
+                                    <div className="col-sm-4 text-lg-right">
+                                        <span>UPC: {result.GtinUPC}</span>
+                                    </div>
+                                </div>
+                            </a>
+                        );
                     })
                 }
                 </ul>
