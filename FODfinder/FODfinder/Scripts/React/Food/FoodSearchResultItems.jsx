@@ -17,7 +17,7 @@
 
         return (
             <div className="container-fluid">
-                <p className="bg-secondary display-4 p-2 rounded shadow text-white">Results:</p>
+                <p className="bg-secondary display-4 p-2 rounded shadow text-gray">Results:</p>
                 <ul className="list-group list-group-lg">
                 {
                     results.map((result,i) => {

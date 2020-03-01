@@ -2,8 +2,8 @@
     ViewBag.Title = "Home Page";
 }
 
-<div class="container pt-3">
-    <!--
+    <div class="container pt-3">
+        <!--
     <div class="row d-flex justify-content-center">
         <div class="col-lg-3">
             <div class="card shadow">
@@ -24,72 +24,75 @@
         </div>
     </div>
     -->
-    <div class="row mt-4">
-        <div class="col-lg-6">
-            <div class="p-4 b-left-lg-4 rounded s-lg-right d-flex flex-column justify-content-between">
-                <p class="display-4">FODFinder</p>
-                <p class="lead">What can you do here?</p>
-                <p class="text-body">&emsp;This website is a free resource for learning about <a href="@Url.Action("Index","IbsInfo")">IBS</a> and <a href="@Url.Action("Index","FodmapInfo")">FODMAPs</a>, searching for foods to see if they're compatible with a low-FODMAP diet, and saving those results for your later convenience in shopping, meal prep, and everyday life.</p>
-                
+        <div class="row pt-4 justify-content-center"><img class="img-fluid visible-s" src="~/Content/home-logo.png" /></div>
+        <div class="row mt-4">
+            <div class="col-lg-6">
+                <div class="p-4 rounded s-lg-right d-flex flex-column justify-content-between">
+                    <p class="lead">What can you do here?</p>
+                    <p class="text-body">&emsp;This website is a free resource for learning about <a href="@Url.Action("Index","IbsInfo")">IBS</a> and <a href="@Url.Action("Index","FodmapInfo")">FODMAPs</a>, searching for foods to see if they're compatible with a low-FODMAP diet, and saving those results for your later convenience in shopping, meal prep, and everyday life.</p>
+
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="p-4 d-flex flex-column justify-content-center h-100 align-items-center">
+                    @using (Html.BeginForm("Index", "Food", FormMethod.Get, new { @class = "form-inline w-100" }))
+                    {
+                        <div class="input-group input-group-lg w-100">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text input-group-text-light">Search</span>
+                            </div>
+                            @Html.TextBox("query", "", new { @class = "form-control", required = true })
+                            <div class="input-group-append">
+                                <button class="btn btn-primary" type="submit">Go!</button>
+                            </div>
+                        </div>
+                    }
+                    <p class="text-muted mt-2">Curious? Try searching a food, like "chili" or "bananas", in the search bar</p>
+                </div>
             </div>
         </div>
-        <div class="col-lg-6">
-            <div class="p-4 d-flex flex-column justify-content-center h-100 align-items-center">
-                @using (Html.BeginForm("Index", "Food", FormMethod.Get, new { @class = "form-inline w-100" }))
-                {
-                    <div class="input-group input-group-lg w-100">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text">Search</span>
-                        </div>
-                        @Html.TextBox("query", "", new { @class = "form-control", required = true })
-                        <div class="input-group-append">
-                            <button class="btn btn-success" type="submit">Go!</button>
-                        </div>
+        <div class="row mt-4">
+            <div class="col-lg-4 mb-lg-0 mb-4">
+                <div class="card shadow h-100">
+                    <div class="card-header bg-light text-gray">
+                        <h3 class="text-center">What is IBS?</h3>
                     </div>
-                }
-                <p class="text-muted mt-2">Curious? Try searching a food, like "chili" or "bananas", in the search bar</p>
-            </div>
-        </div>
-    </div>
-    <div class="row mt-4">
-        <div class="col-lg-4 mb-lg-0 mb-4">
-            <div class="card shadow h-100">
-                <div class="card-header bg-info text-white">
-                    <h2 class="text-center">IBS Info</h2>
-                </div>
-                <div class="card-body">
-                    Not sure what IBS is (or even stands for)? You're in luck! We've done the research, cross-referenced sources, and compiled a short information page to help you learn about the condition.
-                </div>
-                <div class="card-footer text-center">
-                    <a href="@Url.Action("Index","IbsInfo")" class="btn btn-info w-50">IBS</a>
+                    <div class="card-body">
+                        <div class="row pl-1 pr-1">Not sure what IBS is (or even stands for)? You're in luck! We've done the research, cross-referenced sources, and compiled a short information page to help you learn about the condition.</div>
+                        <div class="justify-content-center row"><img class="img-fluid card-img" src="~/Content/IBS_info.png" /></div>
+                    </div>
+                    <div class="card-footer text-center">
+                        <a href="@Url.Action("Index","IbsInfo")" class="btn btn-light text-gray w-50">IBS</a>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="col-lg-4 mb-lg-0 mb-4">
-            <div class="card shadow h-100">
-                <div class="card-header bg-info text-white">
-                    <h2 class="text-center">FODMAP Info</h2>
-                </div>
-                <div class="card-body">
-                    FODMAP is an initialism (or an acronym, depending on how you say it). Do you know what it means? If not, check out our FODMAP information page.
-                </div>
-                <div class="card-footer text-center">
-                    <a href="@Url.Action("Index","FodmapInfo")" class="btn btn-info w-50">FODMAPs</a>
+            <div class="col-lg-4 mb-lg-0 mb-4">
+                <div class="card shadow h-100">
+                    <div class="card-header bg-light text-gray">
+                        <h3 class="text-center">What are FODMAPs</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="row pl-1 pr-1">FODMAP is an initialism (or an acronym, depending on how you say it). Do you know what it means? If not, check out our FODMAP information page.</div>
+                        <div class="justify-content-center pt-2 row"><img class="img-fluid card-img" src="~/Content/FODMAP.png" /></div>
+                    </div>
+                    <div class="card-footer text-center">
+                        <a href="@Url.Action("Index","FodmapInfo")" class="btn btn-light text-gray w-50">FODMAPs</a>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="col-lg-4 mb-lg-0 mb-4">
-            <div class="card shadow h-100">
-                <div class="card-header bg-info text-white">
-                    <h2 class="text-center">Contact Us</h2>
-                </div>
-                <div class="card-body">
-                    We'll admit it; we're humans too. We make mistakes, overlook things, or sometimes just lack the persepctive someone else may have. We also sometimes do a good job. In either case, feel free to stop by our Contact page and send us a message. We'll get back to you as soon as possible.
-                </div>
-                <div class="card-footer text-center">
-                    <a href="@Url.Action("Contact","Contact")" class="btn btn-info w-50">Contact</a>
+            <div class="col-lg-4 mb-lg-0 mb-4">
+                <div class="card shadow h-100">
+                    <div class="card-header bg-light text-gray">
+                        <h3 class="text-center">Feedback?</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="row pl-1 pr-1">Have a question, constructive criticism, or other feedback to share? Please to stop by our contact page and send us a message. We'll get back to you as soon as possible.</div>
+                        <div class="justify-content-center pt-3 row"><img class="img-fluid card-img" src="~/Content/contact.png" /></div>
+                    </div>
+                    <div class="card-footer text-center">
+                        <a href="@Url.Action("Contact","Contact")" class="btn btn-light text-gray w-50">Contact</a>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
