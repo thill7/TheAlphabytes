@@ -76,7 +76,7 @@
 
         return (
             <div className="pt-4">
-                <div className="card bg-secondary text-white shadow">
+                <div className="card bg-secondary text-gray shadow">
                     <div className="card-header">
                         <h2 className="display-4 font-weight-normal text-capitalize">{details.Description.toLowerCase()}</h2>
                         <h3 className="font-weight-light">{details.BrandOwner}</h3>
@@ -90,7 +90,7 @@
                                 <p><span className="font-weight-bold">Serving Size:</span> {details.ServingSize}{details.ServingSizeUnit}</p>
                             </div>
                             <div className="col-md-6">
-                                <div className="shadow rounded bg-dark p-4">
+                                <div className="shadow rounded bg-gray p-4">
                                     <div id="nutritionLabel">
 
                                     </div>
