@@ -6,9 +6,9 @@
 
 <div class="container-fluid pt-4">
     <div class="row justify-content-center">
-        <div class="col-md-5">
+        <div class="col-lg-5">
             <div class="card shadow">
-                <div class="card-header bg-secondary text-white text-center">
+                <div class="card-header bg-secondary text-gray text-center">
                     <h4>Create An Account</h4>
                 </div>
                 <div class="card-body d-flex justify-content-center">
@@ -20,33 +20,44 @@
                             <div class="form-group">
                                 <div class="input-group">
                                     <div class="input-group-prepend">
-                                        <div class="input-group-text text-white bg-secondary">
+                                        <div class="input-group-text text-gray bg-secondary">
                                             @Html.LabelFor(m => m.Email, new { id = "RegisterFormLabel" })
                                         </div>
                                     </div>
-                                    @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+                                    @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder = "example@email.com" })
                                 </div>
                                 @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
                             </div>
                             <div class="form-group">
                                 <div class="input-group">
                                     <div class="input-group-prepend">
-                                        <div class="input-group-text text-white bg-secondary">
+                                        <div class="input-group-text text-gray bg-secondary">
+                                            @Html.LabelFor(m => m.UserName, new { id = "RegisterFormLabel" })
+                                        </div>
+                                    </div>
+                                    @Html.TextBoxFor(m => m.UserName, new { @class = "form-control", placeholder = "Usernames are NOT case-sensitive" })
+                                </div>
+                                @Html.ValidationMessageFor(m => m.UserName, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text text-gray bg-secondary">
                                             @Html.LabelFor(m => m.Password, new { id = "RegisterFormLabel" })
                                         </div>
                                     </div>
-                                    @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+                                    @Html.PasswordFor(m => m.Password, new { @class = "form-control", placeholder = "6-100 characters" })
                                 </div>
                                 @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
                             </div>
                             <div class="form-group">
                                 <div class="input-group">
                                     <div class="input-group-prepend">
-                                        <div class="input-group-text text-white bg-secondary">
+                                        <div class="input-group-text text-gray bg-secondary">
                                             @Html.LabelFor(m => m.ConfirmPassword, new { id = "RegisterFormLabel" })
                                         </div>
                                     </div>
-                                    @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
+                                    @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control", placeholder = "Confirm password" })
                                 </div>
                                 @Html.ValidationMessageFor(m => m.ConfirmPassword, "", new { @class = "text-danger" })
                             </div>

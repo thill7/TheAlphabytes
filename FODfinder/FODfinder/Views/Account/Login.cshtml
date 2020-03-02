@@ -6,9 +6,9 @@
 
 <div class="container-fluid pt-4">
     <div class="row justify-content-center">
-        <div class="col-md-5">
+        <div class="col-lg-5">
             <div class="card shadow">
-                <div class="card-header bg-secondary text-white text-center">
+                <div class="card-header bg-secondary text-gray text-center">
                     <h4>Sign in</h4>
                 </div>
                 <div class="card-body d-flex justify-content-center">
@@ -20,18 +20,18 @@
                             <div class="form-group">
                                 <div class="input-group">
                                     <div class="input-group-prepend">
-                                        <div class="input-group-text text-white bg-secondary">
-                                            @Html.LabelFor(m => m.Email, new { id = "LoginFormLabel" })
+                                        <div class="input-group-text text-gray bg-secondary">
+                                            @Html.LabelFor(m => m.UserName, new { id = "LoginFormLabel" })
                                         </div>
                                     </div>
-                                    @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder = "example@email.com" })
+                                    @Html.TextBoxFor(m => m.UserName, new { @class = "form-control", placeholder = "Your username..." })
                                 </div>
-                                @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                                @Html.ValidationMessageFor(m => m.UserName, "", new { @class = "text-danger" })
                             </div>
                             <div class="form-group">
                                 <div class="input-group">
                                     <div class="input-group-prepend">
-                                        <div class="input-group-text text-white bg-secondary">
+                                        <div class="input-group-text text-gray bg-secondary">
                                             @Html.LabelFor(m => m.Password, new { id = "LoginFormLabel" })
                                         </div>
                                     </div>
