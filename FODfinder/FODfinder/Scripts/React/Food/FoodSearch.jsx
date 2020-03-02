@@ -33,6 +33,7 @@
         var { isUpc } = this.state;
 
         return (
+            <div className="container pt-3">
             <form className="form-inline w-100" onSubmit={(e) => { this.onQuerySubmit(e) }}>
                 <div className="form-group w-100">
                     <div className="input-group w-100">
@@ -47,23 +48,24 @@
                                     </span>
                                 </button>
                                 <div className="dropdown-menu bg-secondary" aria-labelledby="SearchByButton">
-                                    <h6 className="dropdown-header text-light">Search by:</h6>
-                                    <a href="#" className={"dropdown-item" + (!isUpc ? " active" : "")} onClick={() => { this.onUpcToggle(false) }}>
+                                    <h6 className="dropdown-header text-gray">Search by:</h6>
+                                    <a href="#" className={"dropdown-item text-gray" + (!isUpc ? " active bg-primary" : "")} onClick={() => { this.onUpcToggle(false) }}>
                                         Name
                                     </a>
-                                    <a href="#" className={"dropdown-item" + (isUpc ? " active" : "")} onClick={() => { this.onUpcToggle(true) }}>
+                                    <a href="#" className={"dropdown-item text-gray" + (isUpc ? " active bg-primary" : "")} onClick={() => { this.onUpcToggle(true) }}>
                                         UPC
                                     </a>
                                 </div>
                             </div>
                         </div>
-                        <input type="text" required="true" onChangeCapture={(e) => { this.onQueryChanged(e) }} className="form-control border-left-0 border-right-0" />
+                        <input type="text" required={true} onChangeCapture={(e) => { this.onQueryChanged(e) }} className="form-control border-left-0 border-right-0" />
                         <div className="input-group-append">
                             <button className="btn btn-primary" type="submit">Go!</button>
                         </div>
                     </div>
                 </div>
             </form>
+            </div>
         );
     }
 }
