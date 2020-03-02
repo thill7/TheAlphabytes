@@ -41,25 +41,25 @@
                                 Search
                             </span>
                             <div className="dropdown">
-                                <button type="button" className="btn btn-dark dropdown-toggle dropdown-toggle-split rounded-0" data-toggle="dropdown" id="SearchByButton">
+                                <button type="button" className="btn btn-primary dropdown-toggle dropdown-toggle-split rounded-0" data-toggle="dropdown" id="SearchByButton">
                                     <span className="sr-only">
                                         Search by
                                     </span>
                                 </button>
-                                <div className="dropdown-menu bg-dark" aria-labelledby="SearchByButton">
+                                <div className="dropdown-menu bg-secondary" aria-labelledby="SearchByButton">
                                     <h6 className="dropdown-header text-light">Search by:</h6>
-                                    <a href="#" className={"dropdown-item" + (!isUpc ? " active bg-dark" : "")} onClick={() => { this.onUpcToggle(false) }}>
+                                    <a href="#" className={"dropdown-item" + (!isUpc ? " active" : "")} onClick={() => { this.onUpcToggle(false) }}>
                                         Name
                                     </a>
-                                    <a href="#" className={"dropdown-item" + (isUpc ? " active bg-dark" : "")} onClick={() => { this.onUpcToggle(true) }}>
+                                    <a href="#" className={"dropdown-item" + (isUpc ? " active" : "")} onClick={() => { this.onUpcToggle(true) }}>
                                         UPC
                                     </a>
                                 </div>
                             </div>
                         </div>
-                        <input type="text" onChangeCapture={(e) => { this.onQueryChanged(e) }} className="form-control border-left-0 border-right-0" />
+                        <input type="text" required="true" onChangeCapture={(e) => { this.onQueryChanged(e) }} className="form-control border-left-0 border-right-0" />
                         <div className="input-group-append">
-                            <button className="btn btn-success" type="submit">Go!</button>
+                            <button className="btn btn-primary" type="submit">Go!</button>
                         </div>
                     </div>
                 </div>
