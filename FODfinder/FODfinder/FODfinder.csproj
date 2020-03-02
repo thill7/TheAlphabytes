@@ -277,6 +277,11 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\font-awesome.css" />
     <Content Include="Content\font-awesome.min.css" />
+    <Content Include="Content\Images\contact.png" />
+    <Content Include="Content\Images\FODMAP.png" />
+    <Content Include="Content\Images\home-logo.png" />
+    <Content Include="Content\Images\IBS_info.png" />
+    <Content Include="Content\Images\logo.png" />
     <Content Include="Content\nutritionLabel-min.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\fontawesome-webfont.svg" />
