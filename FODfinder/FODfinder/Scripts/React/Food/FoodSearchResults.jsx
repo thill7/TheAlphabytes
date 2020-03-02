@@ -12,8 +12,6 @@
 
         this.onPageNavigate.bind(this);
         this.onGetPage.bind(this);
-
-        console.log(this.state);
     }
     
     async onGetPage(pNum) {
@@ -23,7 +21,6 @@
     
     
     async onPageNavigate(pNum) {
-        console.log(pNum);
         this.setState({ loading: true });
         var newResults = await this.onGetPage(pNum);
         this.setState({
@@ -59,11 +56,11 @@
                 <ul className="pagination pagination-lg justify-content-center flex-wrap">
                     {
                         pageNumbers.map((p, i) => {
-                            return (<li key={"page-"+(i+1)} className={"page-item" + (i + 1 == currentPage ? " active" : "")}><a onClick={() => { this.onPageNavigate(i+1) }} className="page-link">{i + 1}</a></li>)
+                            return (<li key={"page-" + (i + 1)} className={"page-item" + (i + 1 == currentPage ? " active" : "")}><a onClick={() => { this.onPageNavigate(i + 1) }} className="page-link">{i + 1}</a></li>)
                         })
                     }
                 </ul>
             </div>
-        )
+        );
     }
 }

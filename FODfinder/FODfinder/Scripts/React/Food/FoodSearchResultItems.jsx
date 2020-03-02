@@ -27,15 +27,15 @@
                                     <div className="col-sm-8">
                                         <div className="row">
                                             <div className="col-md-6">
-                                                <span className="text-capitalize">{result.Description.toLowerCase()}</span>
+                                                <span className="text-capitalize text-gray">{result.Description.toLowerCase()}</span>
                                             </div>
                                             <div className="col-md-6">
-                                                <span className="text-capitalize font-weight-bold">{result.BrandOwner.toLowerCase()}</span>
+                                                <span className="text-capitalize text-gray font-weight-bold">{result.BrandOwner.toLowerCase()}</span>
                                             </div>
                                             
                                         </div>
                                     </div>
-                                    <div className="col-sm-4 text-lg-right">
+                                    <div className="col-sm-4 text-lg-right text-gray">
                                         <span>UPC: {result.GtinUPC}</span>
                                     </div>
                                 </div>
