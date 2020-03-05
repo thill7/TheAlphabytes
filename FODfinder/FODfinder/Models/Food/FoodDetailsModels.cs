@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using FODfinder.Utility;
 using Newtonsoft.Json.Linq;
 
 namespace FODfinder.Models.Food
@@ -11,17 +12,30 @@ namespace FODfinder.Models.Food
         public int FdcId { private set; get; }
         public string Description { private set; get; }
         public string BrandOwner { private set; get; }
-        public string Ingredients { private set; get; }
+        public List<Ingredient> Ingredients { private set; get; } = new List<Ingredient>();
         public double ServingSize { private set; get; }
         public string ServingSizeUnit { private set; get; }
         public string LabelNutrients { private set; get; }
         public string UPC { private set; get; }
 
-        public FoodDetailsModels(String jsonString) {
+        public FoodDetailsModels(String jsonString, ref FFDBContext db) {
             JObject detailObject = JObject.Parse(jsonString);
             Description = detailObject.SelectToken("description")?.ToString() ?? "";
             BrandOwner = detailObject.SelectToken("brandOwner")?.ToString() ?? "";
-            Ingredients = detailObject.SelectToken("ingredients")?.ToString() ?? "";
+            var ingredientString = detailObject.SelectToken("ingredients")?.ToString() ?? "";
+            if(!String.IsNullOrEmpty(ingredientString))
+            {
+                var parsedIngredients = IngredientParser.Parse(ingredientString);
+                foreach(var ingredient in parsedIngredients)
+                {
+                    if(String.IsNullOrEmpty(ingredient))
+                    {
+                        continue;
+                    }
+                    var fodmap = db.FODMAPIngredients.Where(f => ingredient.Contains(f.Name.ToLower())).FirstOrDefault();
+                    Ingredients.Add(new Ingredient(ingredient, fodmap != null));
+                }
+            }
             double servingSize;
             ServingSize = Double.TryParse(detailObject.SelectToken("servingSize")?.ToString() ?? "", out servingSize) ? servingSize : 0.0;
             ServingSizeUnit = detailObject.SelectToken("servingSizeUnit")?.ToString() ?? "";

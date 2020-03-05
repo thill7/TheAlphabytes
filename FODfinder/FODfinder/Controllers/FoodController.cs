@@ -1,4 +1,5 @@
-﻿using FODfinder.Models.Food;
+﻿using FODfinder.Models;
+using FODfinder.Models.Food;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
@@ -16,6 +17,7 @@ namespace FODfinder.Controllers
     {
         private String _API_key = WebConfigurationManager.AppSettings.Get("USDA_KEY");
         private const String USDA_FOOD = "https://api.nal.usda.gov/fdc/v1/";
+        private FFDBContext db = new FFDBContext();
         async private Task<String> GetFoodResults(String query, String pageNumber = "1")
         {
             UriBuilder uriBuilder = new UriBuilder(USDA_FOOD+"search");
@@ -65,7 +67,7 @@ namespace FODfinder.Controllers
             {
                 return new HttpNotFoundResult("Invalid FdcId");
             }
-            return View(new FoodDetailsModels(foodDetails));
+            return View(new FoodDetailsModels(foodDetails,ref db));
         }
 
         async public Task<ContentResult> Get(String query, String page)
