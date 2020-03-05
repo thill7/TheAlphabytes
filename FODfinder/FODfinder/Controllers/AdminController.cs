@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Web.Mvc;
 using FODfinder.Models;
 using Microsoft.AspNet.Identity;
@@ -16,7 +17,7 @@ namespace FODfinder.Controllers
             List<ApplicationUser> users = context.Users.ToList();
 
             var userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(context));
-            users.RemoveAll(x => userManager.IsInRole(x.Id, "Admin"));
+            users.RemoveAll(x => userManager.IsInRole(x.Id, "Admin") || userManager.IsInRole(x.Id, "SuperAdmin"));
 
             return View(users);
         }
@@ -24,6 +25,11 @@ namespace FODfinder.Controllers
         public ActionResult Delete(string id)
         {
             ApplicationUser user = context.Users.Where(x => x.Id == id).FirstOrDefault();
+            var userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(context));
+            if(userManager.IsInRole(id, "SuperAdmin"))
+            {
+                throw new System.Web.Http.HttpResponseException(HttpStatusCode.Unauthorized);
+            }
             return View(user);
         }
 
