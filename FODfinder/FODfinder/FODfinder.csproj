@@ -256,10 +256,12 @@
     <Compile Include="Models\Food\FoodDetailsModels.cs" />
     <Compile Include="Models\Food\FoodSearchResult.cs" />
     <Compile Include="Models\Food\FoodSearchResultItem.cs" />
+    <Compile Include="Models\Food\Ingredient.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="Utility\IngredientParser.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\down.sql" />
@@ -338,6 +340,8 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\popper.min.js" />
+    <Content Include="Scripts\React\react-dom.development.js" />
+    <Content Include="Scripts\React\react.development.js" />
     <Content Include="Scripts\src\index.js" />
     <Content Include="Scripts\src\methods\defaults.js" />
     <Content Include="Scripts\src\methods\destroy.js" />
