@@ -4,6 +4,10 @@
     ViewBag.Title = "Details";
 }
 
+@section scripts {
+    @Scripts.Render("~/Scripts/axios.min.js")
+}
+
 @if (Model == null)
 {
     <p class="bg-secondary display-4 p-2 my-4 rounded shadow text-white text-center">FOOD NOT FOUND.</p>

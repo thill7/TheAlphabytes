@@ -1,0 +1,163 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Data.Entity;
+using System.Linq;
+using System.Net;
+using System.Web;
+using System.Web.Mvc;
+using FODfinder.Models;
+using Microsoft.AspNet.Identity;
+using Newtonsoft.Json.Linq;
+
+namespace FODfinder.Controllers
+{
+    public class SavedFoodsController : Controller
+    {
+        private FFDBContext db = new FFDBContext();
+
+        // GET: SavedFoods
+        public ActionResult Index()
+        {
+            return View(db.SavedFoods.ToList());
+        }
+
+        // GET: SavedFoods/Details/5
+        public ActionResult Details(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            SavedFood savedFood = db.SavedFoods.Find(id);
+            if (savedFood == null)
+            {
+                return HttpNotFound();
+            }
+            return View(savedFood);
+        }
+
+        [Authorize]
+        // GET: SavedFoods/Create
+        public ActionResult Create()
+        {
+            string id = User.Identity.GetUserId();
+            
+            return View();
+        }
+
+        // POST: SavedFoods/Create
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        //[Authorize]
+        //[ValidateAntiForgeryToken]
+        public ContentResult Create(int usdaFoodID)
+        {
+            string userID = User.Identity.GetUserId();
+            if (userID != null)
+            {
+                SavedFood savedFood = new SavedFood(usdaFoodID, userID);
+                try
+                {
+                    db.SavedFoods.Add(savedFood);
+                    db.SaveChanges();
+                    var jsonData = new
+                    {
+                        success = true,
+                        message = "Food has been saved.",
+                    };
+
+                    var result = JObject.FromObject(jsonData);
+                    return Content(result.ToString(), "Application/json");
+                }
+                catch
+                {
+                    var jsonData2 = new
+                    {
+                        success = false,
+                        message = "Food has already been saved.",
+                    };
+
+                    var result2 = JObject.FromObject(jsonData2);
+                    return Content(result2.ToString(), "Application/json");
+                }
+            }
+
+            var jsonData3 = new
+            {
+                success = false,
+                message = "User not logged in.",
+            };
+
+            var result3 = JObject.FromObject(jsonData3);
+            return Content(result3.ToString(), "Application/json");
+        }
+
+        // GET: SavedFoods/Edit/5
+        public ActionResult Edit(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            SavedFood savedFood = db.SavedFoods.Find(id);
+            if (savedFood == null)
+            {
+                return HttpNotFound();
+            }
+            return View(savedFood);
+        }
+
+        // POST: SavedFoods/Edit/5
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit([Bind(Include = "usdaFoodID,userID")] SavedFood savedFood)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Entry(savedFood).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View(savedFood);
+        }
+
+        // GET: SavedFoods/Delete/5
+        public ActionResult Delete(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            SavedFood savedFood = db.SavedFoods.Find(id);
+            if (savedFood == null)
+            {
+                return HttpNotFound();
+            }
+            return View(savedFood);
+        }
+
+        // POST: SavedFoods/Delete/5
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteConfirmed(int id)
+        {
+            SavedFood savedFood = db.SavedFoods.Find(id);
+            db.SavedFoods.Remove(savedFood);
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                db.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+    }
+}

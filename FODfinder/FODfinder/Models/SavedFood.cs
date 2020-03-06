@@ -8,6 +8,11 @@ namespace FODfinder.Models
 
     public partial class SavedFood
     {
+        public SavedFood(int usdaId, string userId)
+        {
+            this.usdaFoodID = usdaId;
+            this.userID = userId;
+        }
         [Key]
         [Column(Order = 0)]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]

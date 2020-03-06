@@ -242,6 +242,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\IbsInfoController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\SavedFoodsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -268,6 +269,7 @@
     <Content Include="App_Data\FODfinderDB_log.ldf">
       <DependentUpon>FODfinderDB.mdf</DependentUpon>
     </Content>
+    <Content Include="App_Data\seed.sql" />
     <!-- <Content Include="App_Data\FODfinderDB.mdf" />
     <Content Include="App_Data\FODfinderDB_log.ldf">
       <DependentUpon>FODfinderDB.mdf</DependentUpon>
@@ -462,6 +464,11 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
+    <Content Include="Views\SavedFoods\Create.cshtml" />
+    <Content Include="Views\SavedFoods\Delete.cshtml" />
+    <Content Include="Views\SavedFoods\Details.cshtml" />
+    <Content Include="Views\SavedFoods\Edit.cshtml" />
+    <Content Include="Views\SavedFoods\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\index.d.ts" />
@@ -475,6 +482,7 @@
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
