@@ -11,11 +11,13 @@
                     <h4>Delete User</h4>
                 </div>
                 <div class="card-body">
-                    @using (Html.BeginForm())
+                    @using (Html.BeginForm("Delete", "Admin", FormMethod.Post, new { @class = "container-fluid p-2" }))
                     {
                         @Html.HiddenFor(model => model.Id)
-                        <h4 class="p-2">Are you sure you want to permanently delete @Html.DisplayFor(model => model.UserName)'s account?</h4>
-                        <button type="submit" class="btn btn-danger p-2">Permanently Delete</button>
+                        <h5 class="text-center">Are you sure you want to permanently delete @Html.DisplayFor(model => model.UserName)'s account?</h5>
+                        <div class="input-group pt-3">
+                            <button type="submit" class="btn btn-danger mx-auto p-2 font-weight-bold">Permanently Delete</button>
+                        </div>
                     }
                 </div>
             </div>
