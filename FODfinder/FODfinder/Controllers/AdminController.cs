@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using System.Net;
 using System.Web.Mvc;
 using FODfinder.Models;
 using Microsoft.AspNet.Identity;
@@ -26,9 +25,13 @@ namespace FODfinder.Controllers
         {
             ApplicationUser user = context.Users.Where(x => x.Id == id).FirstOrDefault();
             var userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(context));
+            if(id == null)
+            {
+                return new HttpNotFoundResult();
+            }
             if(userManager.IsInRole(id, "SuperAdmin"))
             {
-                throw new System.Web.Http.HttpResponseException(HttpStatusCode.Unauthorized);
+                return new HttpUnauthorizedResult("SuperAdmin cannot be removed");
             }
             return View(user);
         }
