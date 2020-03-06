@@ -12,24 +12,26 @@
                     <h4>Manage Users</h4>
                 </div>
                 <div class="card-body">
-                    <table class="table">
-                        <tr>
-                            <th class="text-gray">Username</th>
-                            <th class="text-gray">Email</th>
-                            <th class="text-gray">Actions</th>
-                        </tr>
-                        @foreach (var user in Model)
-                        {
-                            <tr>
-                                @if (!(user.Id == User.Identity.GetUserId()))
-                                {
-                                    <td>@Html.DisplayFor(model => user.UserName)</td>
-                                    <td class="mx-auto">@Html.DisplayFor(model => user.Email)</td>
-                                    <td>@Html.ActionLink("Delete Account", "Delete", new { id = user.Id })</td>
-                                }
+                    <div class="container">
+                        <table class="table">
+                            <tr class="d-flex">
+                                <th class="col-sm-4 text-gray">Username</th>
+                                <th class="col-sm-4 text-gray">Email</th>
+                                <th class="col-sm-4 text-gray">Actions</th>
                             </tr>
-                        }
-                    </table>
+                            @foreach (var user in Model)
+                            {
+                                if (!(user.Id == User.Identity.GetUserId()))
+                                {
+                                    <tr class="d-flex">
+                                        <td class="col-sm-4">@Html.DisplayFor(model => user.UserName)</td>
+                                        <td class="col-sm-4">@Html.DisplayFor(model => user.Email)</td>
+                                        <td class="col-sm-4">@Html.ActionLink("Delete Account", "Delete", new { id = user.Id })</td>
+                                    </tr>
+                                }
+                            }
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
