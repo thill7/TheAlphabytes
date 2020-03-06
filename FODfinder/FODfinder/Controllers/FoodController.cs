@@ -15,15 +15,15 @@ namespace FODfinder.Controllers
 {
     public class FoodController : Controller
     {
-        private String _API_key = WebConfigurationManager.AppSettings.Get("USDA_KEY");
-        private const String USDA_FOOD = "https://api.nal.usda.gov/fdc/v1/";
+        private string _API_key = WebConfigurationManager.AppSettings.Get("USDA_KEY");
+        private const string USDA_FOOD = "https://api.nal.usda.gov/fdc/v1/";
         private FFDBContext db = new FFDBContext();
-        async private Task<String> GetFoodResults(String query, String pageNumber = "1")
+        async private Task<string> GetFoodResults(string query, string pageNumber = "1", string ingredients = "", bool allWordsRequired = false)
         {
             UriBuilder uriBuilder = new UriBuilder(USDA_FOOD+"search");
             var queryParams = HttpUtility.ParseQueryString(uriBuilder.Query);
             queryParams["api_key"] = _API_key;
-            queryParams["generalSearchInput"] = String.Join("%20",query.Split(' '));
+            queryParams["generalSearchInput"] = string.Join("%20",query.Split(' '));
             queryParams["includeDataTypeList"] = "Branded";
             queryParams["pageNumber"] = pageNumber;
             uriBuilder.Query = queryParams.ToString();
@@ -35,7 +35,7 @@ namespace FODfinder.Controllers
             return responseString;
         }
 
-        async private Task<String> GetFoodDetails(String fdcId)
+        async private Task<string> GetFoodDetails(string fdcId)
         {
             UriBuilder uriBuilder = new UriBuilder(USDA_FOOD+fdcId);
             var queryParams = HttpUtility.ParseQueryString(uriBuilder.Query);
@@ -49,7 +49,7 @@ namespace FODfinder.Controllers
             return responseString;
         }
         // GET: Food
-        async public Task<ActionResult> Index(String query)
+        async public Task<ActionResult> Index(string query)
         {
             if (query == null)
             {
@@ -70,7 +70,7 @@ namespace FODfinder.Controllers
             return View(new FoodDetailsModels(foodDetails,ref db));
         }
 
-        async public Task<ContentResult> Get(String query, String page)
+        async public Task<ContentResult> Get(string query, string page)
         {
             var foodSearchResults = await GetFoodResults(query, page);
             FoodSearchResult results = new FoodSearchResult(foodSearchResults);
