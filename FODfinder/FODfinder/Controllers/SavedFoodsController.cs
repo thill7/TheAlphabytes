@@ -50,7 +50,6 @@ namespace FODfinder.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        //[Authorize]
         //[ValidateAntiForgeryToken]
         public ContentResult Create(int usdaFoodID)
         {
@@ -66,6 +65,7 @@ namespace FODfinder.Controllers
                     {
                         success = true,
                         message = "Food has been saved.",
+                        redirect = false
                     };
 
                     var result = JObject.FromObject(jsonData);
@@ -77,6 +77,7 @@ namespace FODfinder.Controllers
                     {
                         success = false,
                         message = "Food has already been saved.",
+                        redirect = false
                     };
 
                     var result2 = JObject.FromObject(jsonData2);
@@ -88,6 +89,7 @@ namespace FODfinder.Controllers
             {
                 success = false,
                 message = "User not logged in.",
+                redirect = true
             };
 
             var result3 = JObject.FromObject(jsonData3);

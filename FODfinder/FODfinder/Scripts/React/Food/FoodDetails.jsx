@@ -75,9 +75,14 @@
         var temp = parseInt(this.state.details.FdcId);
         var saveFood = await axios.post(`/SavedFoods/Create`, { usdaFoodID: temp });
         var result = saveFood.data;
-        window.console.log(result);
-        //alert(temp);
-        //window.location.href = "/Home/Index";
+        var message = result.message;
+        if (result.redirect == true) {
+            window.location.replace("/Account/Login");
+        } else {
+            alert(message);
+        }
+        
+        window.console.log(message);
     }
 
     render() {
