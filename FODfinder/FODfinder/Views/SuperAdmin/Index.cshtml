@@ -1,0 +1,50 @@
+﻿@model IEnumerable<FODfinder.Models.ApplicationUser>
+@using Microsoft.AspNet.Identity;
+@using FODfinder.Models
+@using Microsoft.AspNet.Identity.EntityFramework;
+@{
+    ViewBag.Title = "Manage Users";
+}
+
+<div class="container-fluid pt-4">
+    <div class="row justify-content-center">
+        <div class="col-lg-10">
+            <div class="card shadow">
+                <div class="card-header bg-secondary text-gray text-center">
+                    <h4>Manage Users</h4>
+                </div>
+                <div class="card-body">
+                    <table class="table">
+                        <tr>
+                            <th class="text-gray">Username</th>
+                            <th class="text-gray">Email</th>
+                            <th class="text-gray">Actions</th>
+                        </tr>
+                        @foreach (var user in Model)
+                        {
+                            <tr>
+                                @if (!(user.Id == User.Identity.GetUserId()))
+                                {
+                                    <td>@Html.DisplayFor(model => user.UserName)</td>
+                                    <td class="mx-auto">@Html.DisplayFor(model => user.Email)</td>
+                                    <td>
+                                        @Html.ActionLink("Delete User", "Delete", new { id = user.Id }) | 
+                                            @if (new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext())).IsInRole(user.Id, "Admin"))
+                                            {
+                                                @Html.ActionLink("Demote to User", "Demote", new { id = user.Id })
+                                            }
+                                            else
+                                            {
+                                                @Html.ActionLink("Promote to Admin", "Promote", new { id = user.Id })
+                                            }
+                                    </td>
+                                }
+                            </tr>
+                        }
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
