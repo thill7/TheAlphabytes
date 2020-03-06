@@ -77,7 +77,7 @@
         var result = saveFood.data;
         var message = result.message;
         if (result.redirect == true) {
-            window.location.replace("/Account/Login");
+            window.location.replace("/Account/Login?ReturnUrl=%2ffood%2fdetails%2f" + temp);
         } else {
             alert(message);
         }
