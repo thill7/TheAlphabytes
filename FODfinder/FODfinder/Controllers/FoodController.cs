@@ -18,7 +18,7 @@ namespace FODfinder.Controllers
         private string _API_key = WebConfigurationManager.AppSettings.Get("USDA_KEY");
         private const string USDA_FOOD = "https://api.nal.usda.gov/fdc/v1/";
         private FFDBContext db = new FFDBContext();
-        async private Task<string> GetFoodResults(string query, string pageNumber = "1", string ingredients = "", bool allWordsRequired = false)
+        async private Task<string> GetFoodResults(string query, string pageNumber = "1", string ingredients = "", bool requireAllWords = false)
         {
             UriBuilder uriBuilder = new UriBuilder(USDA_FOOD+"search");
             var queryParams = HttpUtility.ParseQueryString(uriBuilder.Query);
@@ -26,6 +26,8 @@ namespace FODfinder.Controllers
             queryParams["generalSearchInput"] = string.Join("%20",query.Split(' '));
             queryParams["includeDataTypeList"] = "Branded";
             queryParams["pageNumber"] = pageNumber;
+            queryParams["ingredients"] = ingredients;
+            queryParams["requireAllWords"] = $"{requireAllWords}";
             uriBuilder.Query = queryParams.ToString();
 
             HttpClient client = new HttpClient();
