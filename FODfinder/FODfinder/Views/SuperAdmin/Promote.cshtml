@@ -1,0 +1,29 @@
+﻿@model FODfinder.Models.ApplicationUser
+@{
+    ViewBag.Title = "Promote User";
+}
+
+<div class="container-fluid pt-4">
+    <div class="row justify-content-center">
+        <div class="col-lg-10">
+            <div class="card shadow">
+                <div class="card-header bg-secondary text-gray text-center">
+                    <h4>Promote User</h4>
+                </div>
+                <div class="card-body">
+                    @using (Html.BeginForm("Promote", "SuperAdmin", FormMethod.Post, new { @class = "container-fluid p-2" }))
+                    {
+                        @Html.HiddenFor(model => model.Id)
+                        <h5 class="text-center">Are you sure you want to promote @Html.DisplayFor(model => model.UserName) to Admin?</h5>
+                        <div class="input-group pt-3">
+                            <button type="submit" class="btn btn-primary ml-auto p-2" id="PromoteDemoteForm">Promote</button>
+                            <div class="p-2"></div>
+                            @Html.ActionLink("Nevermind", "Index", null, new { @class = "btn btn-primary mr-auto p-2", id = "PromoteDemoteForm" })
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

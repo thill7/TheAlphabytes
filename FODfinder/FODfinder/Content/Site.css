@@ -114,6 +114,11 @@ html, body {
     margin: 0;
 }
 
+#PromoteDemoteForm {
+    width: 100px;
+    margin: 0;
+}
+
 .Spacer {
     flex: 1 1 auto !important;
 }

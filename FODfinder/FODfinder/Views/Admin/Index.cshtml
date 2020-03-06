@@ -1,0 +1,40 @@
+﻿@model IEnumerable<FODfinder.Models.ApplicationUser>
+@using Microsoft.AspNet.Identity;
+@{
+    ViewBag.Title = "Manage Users";
+}
+
+<div class="container-fluid pt-4">
+    <div class="row justify-content-center">
+        <div class="col-lg-10">
+            <div class="card shadow">
+                <div class="card-header bg-secondary text-gray text-center">
+                    <h4>Manage Users</h4>
+                </div>
+                <div class="card-body">
+                    <div class="container">
+                        <table class="table">
+                            <tr class="d-flex">
+                                <th class="col-sm-4 text-gray">Username</th>
+                                <th class="col-sm-4 text-gray">Email</th>
+                                <th class="col-sm-4 text-gray">Actions</th>
+                            </tr>
+                            @foreach (var user in Model)
+                            {
+                                if (!(user.Id == User.Identity.GetUserId()))
+                                {
+                                    <tr class="d-flex">
+                                        <td class="col-sm-4">@Html.DisplayFor(model => user.UserName)</td>
+                                        <td class="col-sm-4">@Html.DisplayFor(model => user.Email)</td>
+                                        <td class="col-sm-4">@Html.ActionLink("Delete Account", "Delete", new { id = user.Id })</td>
+                                    </tr>
+                                }
+                            }
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,27 @@
+﻿@model FODfinder.Models.ApplicationUser
+@{
+    ViewBag.Title = "Delete User";
+}
+
+<div class="container-fluid pt-4">
+    <div class="row justify-content-center">
+        <div class="col-lg-10">
+            <div class="card shadow">
+                <div class="card-header bg-secondary text-gray text-center">
+                    <h4>Delete User</h4>
+                </div>
+                <div class="card-body">
+                    @using (Html.BeginForm("Delete", "Admin", FormMethod.Post, new { @class = "container-fluid p-2" }))
+                    {
+                        @Html.HiddenFor(model => model.Id)
+                        <h5 class="text-center">Are you sure you want to permanently delete @Html.DisplayFor(model => model.UserName)'s account?</h5>
+                        <div class="input-group pt-3">
+                            <button type="submit" class="btn btn-danger mx-auto p-2 font-weight-bold">Permanently Delete</button>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
