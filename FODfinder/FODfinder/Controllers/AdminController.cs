@@ -25,13 +25,13 @@ namespace FODfinder.Controllers
         {
             ApplicationUser user = context.Users.Where(x => x.Id == id).FirstOrDefault();
             var userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(context));
-            if(id == null)
+            if (id == null)
             {
                 return new HttpNotFoundResult();
             }
-            if(userManager.IsInRole(id, "SuperAdmin"))
+            if (userManager.IsInRole(id, "SuperAdmin") || userManager.IsInRole(id, "Admin"))
             {
-                return new HttpUnauthorizedResult("SuperAdmin cannot be removed");
+                return new HttpUnauthorizedResult();
             }
             return View(user);
         }
