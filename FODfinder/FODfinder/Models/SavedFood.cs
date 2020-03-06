@@ -8,6 +8,7 @@ namespace FODfinder.Models
 
     public partial class SavedFood
     {
+        public SavedFood() { }
         public SavedFood(int usdaId, string userId)
         {
             this.usdaFoodID = usdaId;

@@ -17,9 +17,11 @@ namespace FODfinder.Controllers
         private FFDBContext db = new FFDBContext();
 
         // GET: SavedFoods
+        [Authorize]
         public ActionResult Index()
         {
-            return View(db.SavedFoods.ToList());
+            var uid = User.Identity.GetUserId();
+            return View(db.SavedFoods.Where(sf => sf.userID == uid).ToList());
         }
 
         // GET: SavedFoods/Details/5
@@ -35,15 +37,6 @@ namespace FODfinder.Controllers
                 return HttpNotFound();
             }
             return View(savedFood);
-        }
-
-        [Authorize]
-        // GET: SavedFoods/Create
-        public ActionResult Create()
-        {
-            string id = User.Identity.GetUserId();
-            
-            return View();
         }
 
         // POST: SavedFoods/Create
