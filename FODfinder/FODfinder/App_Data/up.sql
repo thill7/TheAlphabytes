@@ -103,6 +103,9 @@ CREATE TABLE [dbo].[SavedFoods]
 (
 	[usdaFoodID]	INT					NOT NULL,
 	[userID]		NVARCHAR(128)		NOT NULL,
+	[brand]			NVARCHAR(200)		NOT NULL,
+	[upc]			NVARCHAR(32)		NOT NULL,
+	[desc]			NVARCHAR(200)		NOT NULL,
 	CONSTRAINT [PK_dbo.SavedFoods] PRIMARY KEY CLUSTERED ([usdaFoodID] ASC, [userID] ASC),
 	CONSTRAINT [PK_dbo.SavedFoods_dbo.userID] FOREIGN KEY ([userID])
 		REFERENCES [dbo].[AspNetUsers] ([Id]) ON DELETE CASCADE

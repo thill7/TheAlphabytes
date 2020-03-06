@@ -72,8 +72,11 @@
     }
 
     async handleclick() {
-        var temp = parseInt(this.state.details.FdcId);
-        var saveFood = await axios.post(`/SavedFoods/Create`, { usdaFoodID: temp });
+        var id = parseInt(this.state.details.FdcId);
+        var brand = this.state.details.BrandOwner;
+        var desc = this.state.details.Description;
+        var barcode = this.state.details.UPC;
+        var saveFood = await axios.post(`/SavedFoods/Create`, { usdaFoodID: id, brandOwner: brand, description: desc, upc: barcode });
         var result = saveFood.data;
         var message = result.message;
         if (result.redirect == true) {

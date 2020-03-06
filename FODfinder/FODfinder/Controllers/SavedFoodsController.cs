@@ -5,6 +5,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Net;
 using System.Web;
+using System.Web.Configuration;
 using System.Web.Mvc;
 using FODfinder.Models;
 using Microsoft.AspNet.Identity;
@@ -44,12 +45,12 @@ namespace FODfinder.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         //[ValidateAntiForgeryToken]
-        public ContentResult Create(int usdaFoodID)
+        public ContentResult Create(int usdaFoodID, string brandOwner, string upc, string description)
         {
             string userID = User.Identity.GetUserId();
             if (userID != null)
             {
-                SavedFood savedFood = new SavedFood(usdaFoodID, userID);
+                SavedFood savedFood = new SavedFood(usdaFoodID, userID, brandOwner, upc, description);
                 try
                 {
                     db.SavedFoods.Add(savedFood);
