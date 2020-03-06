@@ -10,36 +10,35 @@
 }
 
 @Styles.Render("~/Content/font-awesome.min.css")
-    <div class="container-fluid bg-secondary p-4 rounded-bottom">
+<div class="container-fluid bg-secondary p-4 rounded-bottom">
 
-        @if (Model == null)
-        {
-            <div class="container d-flex justify-content-center align-items-center rounded p-4">
-                <div class="row d-flex justify-content-center">
-                    <div class="col-12">
-                        @Html.React("FoodSearch", false)
-                    </div>
-                    <div class="col-12">
-                        <p class="bg-secondary display-4 p-2 my-4 rounded shadow text-gray text-center">Powered By USDA FoodData Central</p>
-                    </div>
+    @if (Model == null)
+    {
+        <div class="container d-flex justify-content-center align-items-center rounded p-4">
+            <div class="row d-flex justify-content-center">
+                <div class="col-12">
+                    @Html.React("FoodSearch", false)
+                </div>
+                <div class="col-12">
+                    <p class="bg-secondary display-4 p-2 my-4 rounded shadow text-gray text-center">Powered By USDA FoodData Central</p>
                 </div>
             </div>
-        }
-        else
+        </div>
+    }
+    else
+    {
+        @Html.React("FoodSearch", false)
+        @Html.React("FoodSearchResults", new
         {
-            @Html.React("FoodSearch", false)
-            @Html.React("FoodSearchResults", new
-            {
-                results = JArray.FromObject(Model.Foods).ToString(),
-                currentPage = Model.CurrentPage,
-                totalPages = Model.TotalPages,
-                totalHits = Model.TotalHits,
-                query = Model.Query
-            })
-        }
-        <script crossorigin src="https://cdnjs.cloudflare.com/ajax/libs/react/16.8.0/umd/react.development.js"></script>
-        <script crossorigin src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.8.0/umd/react-dom.development.js"></script>
-        @Scripts.Render("~/bundles/FoodSearchBundle")
-        @Scripts.Render("~/bundles/FoodSearchResults")
-        @Html.ReactInitJavaScript()
-    </div>
+            results = JArray.FromObject(Model.Foods).ToString(),
+            currentPage = Model.CurrentPage,
+            totalPages = Model.TotalPages,
+            totalHits = Model.TotalHits,
+            query = Model.Query
+        })
+    }
+    @Scripts.Render("~/bundles/React")
+    @Scripts.Render("~/bundles/FoodSearchBundle")
+    @Scripts.Render("~/bundles/FoodSearchResults")
+    @Html.ReactInitJavaScript()
+</div>

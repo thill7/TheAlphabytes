@@ -27,6 +27,10 @@ namespace FODfinder
                 "~/Content/bootstrap.css",
                 "~/Content/site.css"));
 
+            bundles.Add(new BabelBundle("~/bundles/React").Include(
+                    "~/Scripts/React/react.development.js",
+                    "~/Scripts/React/react-dom.development.js"));
+
             bundles.Add(new BabelBundle("~/bundles/FoodSearchResults").Include(
                 "~/Scripts/React/Food/FoodSearchResultItems.jsx",
                 "~/Scripts/React/Food/FoodSearchResults.jsx"));

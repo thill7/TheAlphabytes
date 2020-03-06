@@ -18,7 +18,7 @@ namespace FODfinder.Controllers
         {
             return View(db.FODMAPIngredients.ToList());
         }
-
+        /*
         [HttpGet]
         public ActionResult Search()
         {
@@ -36,6 +36,7 @@ namespace FODfinder.Controllers
             }
             return View();
         }
+        */
 
         protected override void Dispose(bool disposing)
         {
