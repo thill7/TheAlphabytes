@@ -23,12 +23,12 @@ namespace FODfinder.Controllers
 
         public ActionResult Delete(string id)
         {
-            ApplicationUser user = context.Users.Where(x => x.Id == id).FirstOrDefault();
-            var userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(context));
             if (id == null)
             {
                 return new HttpNotFoundResult();
             }
+            ApplicationUser user = context.Users.Where(x => x.Id == id).FirstOrDefault();
+            var userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(context));
             if (userManager.IsInRole(id, "SuperAdmin"))
             {
                 return new HttpUnauthorizedResult("SuperAdmin cannot be removed");
@@ -47,6 +47,10 @@ namespace FODfinder.Controllers
 
         public ActionResult Promote(string id)
         {
+            if (id == null)
+            {
+                return new HttpNotFoundResult();
+            }
             ApplicationUser user = context.Users.Where(x => x.Id == id).FirstOrDefault();
             return View(user);
         }
@@ -62,6 +66,10 @@ namespace FODfinder.Controllers
 
         public ActionResult Demote(string id)
         {
+            if (id == null)
+            {
+                return new HttpNotFoundResult();
+            }
             ApplicationUser user = context.Users.Where(x => x.Id == id).FirstOrDefault();
             return View(user);
         }
