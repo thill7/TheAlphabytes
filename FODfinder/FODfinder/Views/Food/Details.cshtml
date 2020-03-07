@@ -1,7 +1,11 @@
-﻿@model FODfinder.Models.Food.FoodDetailsModels
+@model FODfinder.Models.Food.FoodDetailsModels
 @using Newtonsoft.Json.Linq
 @{
     ViewBag.Title = "Details";
+}
+
+@section scripts {
+    @Scripts.Render("~/Scripts/axios.min.js")
 }
 
 @if (Model == null)

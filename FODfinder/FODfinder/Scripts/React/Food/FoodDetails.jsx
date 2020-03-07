@@ -5,6 +5,7 @@
         this.state = {
             details: JSON.parse(this.props.details)
         };
+        this.handleclick.bind(this);
     }
 
     GetFoodNutrientValue(key) {
@@ -70,6 +71,23 @@
         });
     }
 
+    async handleclick() {
+        var id = parseInt(this.state.details.FdcId);
+        var brand = this.state.details.BrandOwner;
+        var desc = this.state.details.Description;
+        var barcode = this.state.details.UPC;
+        var saveFood = await axios.post(`/SavedFoods/Create`, { usdaFoodID: id, brandOwner: brand, description: desc, upc: barcode });
+        var result = saveFood.data;
+        var message = result.message;
+        if (result.redirect == true) {
+            window.location.replace("/Account/Login?ReturnUrl=%2ffood%2fdetails%2f" + temp);
+        } else {
+            alert(message);
+        }
+        
+        window.console.log(message);
+    }
+
     render() {
         var { details } = this.state;
         
@@ -80,6 +98,7 @@
                     <div className="card-header">
                         <h2 className="display-4 font-weight-normal text-capitalize">{details.Description.toLowerCase()}</h2>
                         <h3 className="font-weight-light">{details.BrandOwner}</h3>
+                        <button type="button" onClick={() => { this.handleclick() }} className="btn-primary text-white">Save Food</button>
                     </div>
                     <div className="card-body">
                         <div className="row">
