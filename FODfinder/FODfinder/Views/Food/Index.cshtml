@@ -10,17 +10,17 @@
 }
 
 @Styles.Render("~/Content/font-awesome.min.css")
-<div class="container-fluid bg-secondary p-4 rounded-bottom">
+<div class="container-fluid bg-secondary rounded-bottom px-0 pt-4">
 
     @if (Model == null)
     {
-        <div class="container d-flex justify-content-center align-items-center rounded p-4">
+        <div class="container-fluid d-flex justify-content-center align-items-center rounded">
             <div class="row d-flex justify-content-center">
-                <div class="col-12">
+                <div class="col-lg-12 p-0">
                     @Html.React("FoodSearch", false)
                 </div>
-                <div class="col-12">
-                    <p class="bg-secondary display-4 p-2 my-4 rounded shadow text-gray text-center">Powered By USDA FoodData Central</p>
+                <div class="col-lg-12 p-0">
+                    <p class="bg-secondary p-2 my-4 rounded shadow text-gray text-center">Powered By USDA FoodData Central</p>
                 </div>
             </div>
         </div>
