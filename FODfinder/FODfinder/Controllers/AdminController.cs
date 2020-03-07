@@ -57,6 +57,10 @@ namespace FODfinder.Controllers
         {
             if (ModelState.IsValid)
             {
+                if (db.FODMAPIngredients.First(x => x.Name.Contains(newIngredient.Name)) != null)
+                {
+                    return RedirectToAction("AddFodmap");
+                }
                 db.FODMAPIngredients.Add(newIngredient);
                 db.SaveChanges();
                 return RedirectToAction("AddFodmap");
