@@ -3,12 +3,14 @@
         super(props);
         this.state = {
             query: "",
-            isUpc: false
+            isUpc: false,
+            requireAllWords: false
         };
 
         this.onQueryChanged.bind(this);
         this.onQuerySubmit.bind(this);
         this.onUpcToggle.bind(this);
+        this.onRequireAllWords(this);
     }
 
     async onQueryChanged(event) {
@@ -17,7 +19,10 @@
 
     async onUpcToggle(toggled) {
         await this.setState({ isUpc: toggled });
-        console.log(this.state.isUpc);
+    }
+
+    async onRequireAllWords(toggled) {
+        await this.setState({ requireAllWords: toggled })
     }
 
     onQuerySubmit(event) {
@@ -45,7 +50,7 @@
                             <input type={(!isUpc ? "text" : "number")} required={true} onChangeCapture={(e) => { this.onQueryChanged(e) }} className="form-control border-left-0 border-right-0" />
                             <div className="input-group-append">
                                 <div className="btn-group">
-                                    <button type="button" className="btn btn-block btn-primary border border-0 border-right border-dark" data-toggle="collapse" data-target="#CollapseFilter">
+                                    <button type="button" className="btn btn-block btn-primary rounded-0" data-toggle="collapse" data-target="#CollapseFilter">
                                         <span className="small">
                                             ▼
                                         </span>
@@ -56,26 +61,31 @@
                         </div>             
                     </div>
                 </form>
-                <div className="pt-1">
-                    <button type="button" className="btn btn-block btn-primary" data-toggle="collapse" data-target="#CollapseFilter">
-                        <span>
-                            Apply Filters
-                        </span>
-                    </button>
-                    <div className="collapse pt-1" id="CollapseFilter">
-                        <div className="card card-body">
-                            <div className="dropdown">
-                                <button type="button" className="btn btn-primary dropdown-toggle" data-toggle="dropdown" id="SearchByButton">
-                                    {"Search by " + (!isUpc ? "Name" : "UPC")}
+                <div className="collapse" id="CollapseFilter">
+                    <div className="card card-body shadow bg-secondary border-0">
+                        <div className="dropdown py-2">
+                            <button type="button" className="btn btn-primary dropdown-toggle" data-toggle="dropdown" id="SearchByButton">
+                                {"Search by " + (!isUpc ? "Name" : "UPC")}
+                            </button>
+                            <div className="dropdown-menu bg-secondary" aria-labelledby="SearchByButton">
+                                <a href="#" className={"dropdown-item text-gray" + (!isUpc ? " active bg-primary" : "")} onClick={() => { this.onUpcToggle(false) }}>
+                                    Search by Name
+                                </a>
+                                <a href="#" className={"dropdown-item text-gray" + (isUpc ? " active bg-primary" : "")} onClick={() => { this.onUpcToggle(true) }}>
+                                    Search by UPC
+                                </a>
+                            </div>
+                        </div>
+                        <div className="input-group py-2">
+                            <div className="input-group-prepend">
+                                <span className="input-group-text"> 
+                                    Exact phrase search
+                                </span>
+                            </div>
+                            <div className="input-group-append">
+                                <button className={!this.state.requireAllWords ? "btn btn-danger" : "btn btn-success"} onClick={() => { !this.state.requireAllWords ? this.onRequireAllWords(true) : this.onRequireAllWords(false) }}>
+                                    {!this.state.requireAllWords ? "Disabled" : "Enabled"}
                                 </button>
-                                <div className="dropdown-menu bg-secondary" aria-labelledby="SearchByButton">
-                                    <a href="#" className={"dropdown-item text-gray" + (!isUpc ? " active bg-primary" : "")} onClick={() => { this.onUpcToggle(false) }}>
-                                        Search by Name
-                                    </a>
-                                    <a href="#" className={"dropdown-item text-gray" + (isUpc ? " active bg-primary" : "")} onClick={() => { this.onUpcToggle(true) }}>
-                                        Search by UPC
-                                    </a>
-                                </div>
                             </div>
                         </div>
                     </div>
