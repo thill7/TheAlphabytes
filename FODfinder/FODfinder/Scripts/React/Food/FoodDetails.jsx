@@ -24,7 +24,7 @@
             allowNoBorder: true,
             showServingUnitQuantity: true,
             itemName: details.Description,
-            ingredientList: details.Ingredients,
+            ingredientList: details.Ingredients.map(i => i.Name).join(","),
             showCalories: labelNutrients.calories != undefined,
             showFatCalories: false,
             showTotalFat: labelNutrients.fat != undefined,
@@ -103,8 +103,12 @@
                     <div className="card-body">
                         <div className="row">
                             <div className="col-md-6 d-inline-flex flex-column justify-content-start align-items-start">
-                                <p className="text-lowercase"><span className="font-weight-bold text-capitalize">Ingredients:</span> {details.Ingredients}</p>
-                                
+                                <p className="text-lowercase">
+                                    <span className="font-weight-bold text-capitalize">Ingredients:&nbsp;</span>
+                                    {
+                                        details.Ingredients.map((i, index) => <span><span key={index} className={"p2" + (i.IsFodmap ? " bg-danger-50 text-white rounded" : "")}>{i.Name}</span>{index < details.Ingredients.length - 1 ? ", " : ""}</span>)
+                                    }
+                                </p>
                                 <p className="d-inline-block"><span className="font-weight-bold">UPC:</span> {details.UPC}</p>
                                 <p><span className="font-weight-bold">Serving Size:</span> {details.ServingSize}{details.ServingSizeUnit}</p>
                             </div>

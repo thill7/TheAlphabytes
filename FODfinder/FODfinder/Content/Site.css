@@ -10,6 +10,7 @@
     --secondary: #CCBDBD;
     --light: #F5EEEB;
     --dark: #242A4A;
+    --danger-50: rgba(220,53,69,0.5);
 }
 
 .navbar-light, .bg-light, .btn-light, .input-group-text-light {
@@ -31,6 +32,10 @@
 
 .bg-info, .btn-info, .list-group-item-info {
     background-color: rgba(226, 215, 215, 100) !important;
+}
+
+.bg-danger-50 {
+    background-color: var(--danger-50) !important;
 }
 
 .text-gray {
@@ -106,6 +111,11 @@ html, body {
 
 #ChangePasswordFormLabel {
     width: 130px;
+    margin: 0;
+}
+
+#PromoteDemoteForm {
+    width: 100px;
     margin: 0;
 }
 

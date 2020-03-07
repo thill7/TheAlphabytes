@@ -20,20 +20,12 @@
                             <li class="nav-item">@Html.ActionLink("Food Search", "Index", "Food", null, new { @class = "nav-link" })</li>
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">
-                                    FODMAP Ingredients
-                                </a>
-                                <div class="dropdown-menu">
-                                    @Html.ActionLink("Search", "Search", "FODMAPIngredients", null, new { @class = "dropdown-item" })
-                                    @Html.ActionLink("Browse", "Browse", "FODMAPIngredients", null, new { @class = "dropdown-item" })
-                                </div>
-                            </li>
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">
                                     Information
                                 </a>
                                 <div class="dropdown-menu">
                                     @Html.ActionLink("What's a FODMAP?", "Index", "FodmapInfo", null, new { @class = "dropdown-item" })
                                     @Html.ActionLink("What is IBS?", "Index", "IbsInfo", null, new { @class = "dropdown-item" })
+                                    @Html.ActionLink("Browse FODMAPs", "Browse", "FODMAPIngredients", null, new { @class = "dropdown-item" })
                                 </div>
                             </li>
                             <li class="nav-item">@Html.ActionLink("Contact us", "Contact", "Contact", null, new { @class = "nav-link" })</li>
