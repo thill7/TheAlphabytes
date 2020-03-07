@@ -11,6 +11,7 @@ namespace FODfinder.Controllers
     public class AdminController : Controller
     {
         private ApplicationDbContext context = new ApplicationDbContext();
+        private FFDBContext db = new FFDBContext();
         public ActionResult Index()
         {
             List<ApplicationUser> users = context.Users.ToList();
@@ -43,6 +44,24 @@ namespace FODfinder.Controllers
             context.Users.Remove(user);
             context.SaveChanges();
             return RedirectToAction("Index");
+        }
+
+        public ActionResult AddFodmap()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult AddFodmap([Bind(Include = "Name,Aliases")] FODMAPIngredient newIngredient)
+        {
+            if (ModelState.IsValid)
+            {
+                db.FODMAPIngredients.Add(newIngredient);
+                db.SaveChanges();
+                return RedirectToAction("AddFodmap");
+            }
+            return View();
         }
     }
 }

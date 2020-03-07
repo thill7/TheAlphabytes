@@ -469,6 +469,7 @@
     <Content Include="Views\SuperAdmin\Delete.cshtml" />
     <Content Include="Views\SuperAdmin\Promote.cshtml" />
     <Content Include="Views\SuperAdmin\Demote.cshtml" />
+    <Content Include="Views\Admin\AddFodmap.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\index.d.ts" />

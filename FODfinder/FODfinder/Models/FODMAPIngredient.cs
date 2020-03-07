@@ -13,11 +13,11 @@ namespace FODfinder.Models
 
         [Required]
         [StringLength(50)]
-        [DisplayName("Ingredient Name:")]
+        [DisplayName("Ingredient Name")]
         public string Name { get; set; }
 
         [StringLength(50)]
-        [DisplayName("Also listed as:")]
+        [DisplayName("Also Listed As")]
         public string Aliases { get; set; }
     }
 }
