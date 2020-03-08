@@ -15,11 +15,11 @@
         this.onQueryChanged.bind(this);
         this.onQuerySubmit.bind(this);
         this.onUpcToggle.bind(this);
-        this.onRequireAllWords(this);
-        this.onCollapse(this);
-        this.addToIncludeList(this);
-        this.addToExcludeList(this);
-        this.showExcludeList(this);
+        this.onRequireAllWords.bind(this);
+        this.onCollapse.bind(this);
+        this.addToIncludeList.bind(this);
+        this.addToExcludeList.bind(this);
+        this.showExcludeList.bind(this);
     }
 
     async onQueryChanged(event) {
@@ -43,18 +43,19 @@
     }
 
     async addToIncludeList() {
-        if (!this.state.includeList.includes(this.state.includeItem)) {
-            await this.state.includeList.push(this.state.includeItem);
+        var {  includeItem, includeList  } = this.state;
+        if (!includeList.includes(includeItem) && includeItem != "") {
+            await this.setState({ includeList: [...includeList,includeItem] });
         }
         console.log("Include list: " + this.state.includeList)
     }
 
-    async showExcludeList() {
-        if (this.state.excludeList.length != 0) {
+    showIncludeList() {
+        if (this.state.includeList.length != 0) {
             return (
                 <div className="shadow rounded">
-                    <ul>
-                        this.state.excludeList.map(item => (<li key={item}>{item}</li>))
+                    <ul className="list-group">
+                        {this.state.includeList.map(item => (<li className="list-group-item" key={item}>{item}</li>))}
                     </ul>
                 </div>
             );
@@ -66,10 +67,23 @@
     }
 
     async addToExcludeList() {
-        if (!this.state.excludeList.includes(this.state.excludeItem)) {
-            await this.state.excludeList.push(this.state.excludeItem);
+        var {  excludeItem, excludeList  } = this.state;
+        if (!excludeList.includes(excludeItem) && excludeItem != "") {
+            await this.setState({ excludeList: [...excludeList,excludeItem] });
         }
         console.log("Exclude list: " + this.state.excludeList)
+    }
+
+    showExcludeList() {
+        if (this.state.excludeList.length != 0) {
+            return (
+                <div className="shadow rounded">
+                    <ul className="list-group">
+                        {this.state.excludeList.map(item => (<li className="list-group-item" key={item}>{item}</li>))}
+                    </ul>
+                </div>
+            );
+        }
     }
 
     onQuerySubmit(event) {
@@ -155,7 +169,7 @@
                                             Include
                                         </span>
                                     </div>
-                                    <input type="text" className="form-control" disabled={isUpc ? "disabled" : ""} onChangeCapture={(e) => { this.onAddInclude(e) }} />
+                                    <input type="text" className="form-control" disabled={isUpc ? "disabled" : ""} onChange={(e) => { this.onAddInclude(e) }} />
                                     <div className="input-group-append">
                                         <button className="btn btn-primary" disabled={isUpc ? "disabled" : ""} onClick={() => this.addToIncludeList()}>
                                             Add
@@ -163,7 +177,7 @@
                                     </div>
                                 </div>
                                 <div>
-                                    {this.showExcludeList()}
+                                    {this.showIncludeList()}
                                 </div>
                             </div>
                             <div className="col-lg-6">
@@ -173,12 +187,15 @@
                                             Exclude
                                         </span>
                                     </div>
-                                    <input type="text" className="form-control" disabled={isUpc ? "disabled" : ""} onChangeCapture={(e) => { this.onAddExclude(e) }} />
+                                    <input type="text" className="form-control" disabled={isUpc ? "disabled" : ""} onChange={(e) => { this.onAddExclude(e) }} />
                                     <div className="input-group-append">
                                         <button type="submit" className="btn btn-primary" disabled={isUpc ? "disabled" : ""} onClick={() => this.addToExcludeList()}>
                                             Add
                                         </button>
                                     </div>
+                                </div>
+                                <div>
+                                    {this.showExcludeList()}
                                 </div>
                             </div>
                         </div>
