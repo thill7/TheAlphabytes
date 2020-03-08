@@ -88,9 +88,18 @@
 
     onQuerySubmit(event) {
         event.preventDefault();
-        var { isUpc, query, requireAllWords } = this.state;
+        var { isUpc, query, requireAllWords, includeList, excludeList } = this.state;
+        var searchQuery = new URLSearchParams();
+        var totalIngredientList = [...includeList, ...excludeList.map(ex => `-${ex}`)];
+        totalIngredientList = totalIngredientList.map(ingr => ingr.includes(" ") ? `"${ingr}"` : ingr);
+        if (totalIngredientList.length > 0) {
+            searchQuery.append("ingredients", totalIngredientList.join(" "))
+        }
+        //console.log(totalIngredientList)
+        searchQuery.append("query", isUpc ? ("gtinUpc:" + query) : query)
+        searchQuery.append("requireAllWords", requireAllWords)
         if (query != "") {
-            let url = `/Food/Index?${ requireAllWords ? "requireAllWords=true&" : "" }query=${ (isUpc ? "gtinUpc:" : "") + query }`;
+            let url = "/Food/Index?" + searchQuery.toString();
             window.location.href = url;
         }
     }
@@ -164,8 +173,8 @@
                         <div className="row d-flex justify-content-center">
                             <div className="col-lg-6">
                                 <div className="input-group py-2">
-                                    <div className="input-group-prepend">
-                                        <span className="input-group-text">
+                                    <div className="input-group-prepend text-center">
+                                        <span id="IncludeExclude" className="input-group-text">
                                             Include
                                         </span>
                                     </div>
@@ -182,8 +191,8 @@
                             </div>
                             <div className="col-lg-6">
                                 <div className="input-group py-2">
-                                    <div className="input-group-prepend">
-                                        <span className="input-group-text">
+                                    <div className="input-group-prepend text-center">
+                                        <span id="IncludeExclude" className="input-group-text">
                                             Exclude
                                         </span>
                                     </div>

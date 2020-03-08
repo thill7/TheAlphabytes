@@ -23,15 +23,17 @@ namespace FODfinder.Controllers
             UriBuilder uriBuilder = new UriBuilder(USDA_FOOD+"search");
             var queryParams = HttpUtility.ParseQueryString(uriBuilder.Query);
             queryParams["api_key"] = _API_key;
-            queryParams["generalSearchInput"] = string.Join("%20",query.Split(' '));
+            queryParams["generalSearchInput"] = query;
             queryParams["includeDataTypeList"] = "Branded";
             queryParams["pageNumber"] = pageNumber;
             if (ingredients != null)
             {
                 queryParams["ingredients"] = ingredients;
             }
-            queryParams["requireAllWords"] = $"{requireAllWords}";
+            queryParams["requireAllWords"] = requireAllWords.ToString().ToLower();
             uriBuilder.Query = queryParams.ToString();
+
+            Debug.WriteLine(queryParams.ToString());
 
             HttpClient client = new HttpClient();
 
@@ -61,7 +63,7 @@ namespace FODfinder.Controllers
                 return View();
             }
             var foodSearchResults = await GetFoodResults(query, "1", ingredients, requireAllWords);
-            return View(new FoodSearchResult(foodSearchResults));
+            return View(new FoodSearchResult(foodSearchResults,ingredients,requireAllWords));
         }
 
         async public Task<ActionResult> Details(int id)
@@ -75,10 +77,10 @@ namespace FODfinder.Controllers
             return View(new FoodDetailsModels(foodDetails,ref db));
         }
 
-        async public Task<ContentResult> Get(string query, string page)
+        async public Task<ContentResult> Get(string query, string pageNumber="1", string ingredients = null, bool requireAllWords = false)
         {
-            var foodSearchResults = await GetFoodResults(query, page);
-            FoodSearchResult results = new FoodSearchResult(foodSearchResults);
+            var foodSearchResults = await GetFoodResults(query, pageNumber, ingredients, requireAllWords);
+            FoodSearchResult results = new FoodSearchResult(foodSearchResults,ingredients,requireAllWords);
             return Content(JObject.FromObject(results).ToString(), "application/json");
         }
     }

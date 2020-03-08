@@ -47,9 +47,6 @@
     width: auto;
 }
 
-#NoScrollDropdown {
-    height: auto !important;
-}
 
 body {
     padding-top: 65px;
@@ -97,6 +94,10 @@ html, body {
 #ContactFormLabel {
     width: 70px;
     margin: 0;
+}
+
+#IncludeExclude {
+    width: 80px;
 }
 
 #ContactFormButton {
