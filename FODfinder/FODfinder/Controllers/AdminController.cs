@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using FODfinder.Models;
@@ -46,8 +47,20 @@ namespace FODfinder.Controllers
             return RedirectToAction("Index");
         }
 
-        public ActionResult AddFodmap()
+        public enum Message
         {
+            AddFodmapSuccess,
+            FodmapExists,
+            AddFodmapFailure
+        }
+
+        public ActionResult AddFodmap(Message? message)
+        {
+            ViewBag.StatusMessage =
+                message == Message.AddFodmapSuccess ? "Successfully added new high FODMAP ingredient"
+                : message == Message.FodmapExists ? "Ingredient already exists in database"
+                : message == Message.AddFodmapFailure ? "Failed to add new entry to database"
+                : "";
             return View();
         }
 
@@ -57,15 +70,15 @@ namespace FODfinder.Controllers
         {
             if (ModelState.IsValid)
             {
-                if (db.FODMAPIngredients.First(x => x.Name.Contains(newIngredient.Name)) != null)
+                if (db.FODMAPIngredients.FirstOrDefault(x => x.Name.Contains(newIngredient.Name)) != null)
                 {
-                    return RedirectToAction("AddFodmap");
+                    return RedirectToAction("AddFodmap", new { Message = Message.FodmapExists });
                 }
                 db.FODMAPIngredients.Add(newIngredient);
                 db.SaveChanges();
-                return RedirectToAction("AddFodmap");
+                return RedirectToAction("AddFodmap", new { Message = Message.AddFodmapSuccess });
             }
-            return View();
+            return RedirectToAction("AddFodmap", new { Message = Message.AddFodmapFailure });
         }
     }
 }
