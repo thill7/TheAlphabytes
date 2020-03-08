@@ -30,7 +30,7 @@
     background-color: #F5EEEB !important;
 }
 
-.bg-info, .btn-info {
+.bg-info, .btn-info, .list-group-item-info {
     background-color: rgba(226, 215, 215, 100) !important;
 }
 
@@ -116,6 +116,11 @@ html, body {
 
 #ChangePasswordFormLabel {
     width: 130px;
+    margin: 0;
+}
+
+#PromoteDemoteForm {
+    width: 100px;
     margin: 0;
 }
 

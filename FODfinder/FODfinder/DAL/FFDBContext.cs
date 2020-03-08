@@ -8,7 +8,7 @@ namespace FODfinder.Models
     public partial class FFDBContext : DbContext
     {
         public FFDBContext()
-            : base("name=FFDBContext_Azure_dev")
+            : base("name=FFDBContext_Azure_Dev")
         {
         }
 
@@ -17,6 +17,7 @@ namespace FODfinder.Models
         public virtual DbSet<AspNetUserLogin> AspNetUserLogins { get; set; }
         public virtual DbSet<AspNetUser> AspNetUsers { get; set; }
         public virtual DbSet<FODMAPIngredient> FODMAPIngredients { get; set; }
+        public virtual DbSet<SavedFood> SavedFoods { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
