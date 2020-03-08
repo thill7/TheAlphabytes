@@ -88,9 +88,9 @@
 
     onQuerySubmit(event) {
         event.preventDefault();
-        var { isUpc, query } = this.state;
+        var { isUpc, query, requireAllWords } = this.state;
         if (query != "") {
-            let url = `/Food/Index?query=${(isUpc ? "gtinUpc:" : "") + query}`;
+            let url = `/Food/Index?${ requireAllWords ? "requireAllWords=true&" : "" }query=${ (isUpc ? "gtinUpc:" : "") + query }`;
             window.location.href = url;
         }
     }
