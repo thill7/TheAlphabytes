@@ -80,7 +80,7 @@
         var result = saveFood.data;
         var message = result.message;
         if (result.redirect == true) {
-            window.location.replace("/Account/Login?ReturnUrl=%2ffood%2fdetails%2f" + temp);
+            window.location.replace("/Account/Login?ReturnUrl=%2ffood%2fdetails%2f" + id);
         } else {
             alert(message);
         }
