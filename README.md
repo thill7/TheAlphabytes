@@ -1,10 +1,10 @@
-# Welcome to The Alphabytes repository.
+# Welcome to The Alphabytes repository
 
 ### What will I find here?
 This repo is home to The Alphabytes' revolutionary application for simple IBS relief through an easy to use low FODMAP food tracker, **FODfinder**.
 
 ### Who are The Alphabytes?
-Our core team is made up of star developers
+Our core team is made up of star developers:
 - **[Tanner Hill](https://github.com/thill7)** - Leading Javascript Expert
 - **[Gabriel Brehm](https://github.com/gibsgibs)** - Lord of Repository
 - **[Jensen Almquist](https://github.com/jalmquist18)** - Head Intern

@@ -6,6 +6,8 @@
             currentPage: this.props.currentPage,
             totalPages: this.props.totalPages <= 200 ? this.props.totalPages : 200,
             totalHits: this.props.totalHits,
+            ingredients: this.props.ingredients,
+            requireAllWords: this.props.requireAllWords,
             query: this.props.query, 
             loading: false
         };
@@ -15,7 +17,16 @@
     }
     
     async onGetPage(pNum) {
-        var response = await axios.get(`/Food/Get?query=${this.state.query}&page=${pNum}`);
+        var { ingredients, query, requireAllWords } = this.state;
+        var searchQuery = new URLSearchParams();
+        if (ingredients != "") {
+            searchQuery.append("ingredients", ingredients);
+        }
+        //console.log(totalIngredientList)
+        searchQuery.append("query", query);
+        searchQuery.append("requireAllWords", requireAllWords);
+        searchQuery.append("pageNumber", pNum);
+        var response = await axios.get(`/Food/Get?${searchQuery.toString()}`);
         return response.data;
     }
     
