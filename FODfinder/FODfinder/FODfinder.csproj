@@ -468,6 +468,13 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
+    <Content Include="Views\Admin\Index.cshtml" />
+    <Content Include="Views\Admin\Delete.cshtml" />
+    <Content Include="Views\SuperAdmin\Index.cshtml" />
+    <Content Include="Views\SuperAdmin\Delete.cshtml" />
+    <Content Include="Views\SuperAdmin\Promote.cshtml" />
+    <Content Include="Views\SuperAdmin\Demote.cshtml" />
+    <Content Include="Views\Admin\AddFodmap.cshtml" />
     <Content Include="Views\SavedFoods\Create.cshtml" />
     <Content Include="Views\SavedFoods\Delete.cshtml" />
     <Content Include="Views\SavedFoods\Details.cshtml" />
