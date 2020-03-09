@@ -70,7 +70,8 @@ namespace FODfinder.Controllers
         {
             if (ModelState.IsValid)
             {
-                if (db.FODMAPIngredients.FirstOrDefault(x => x.Name.Contains(newIngredient.Name)) != null)
+                if (db.FODMAPIngredients.FirstOrDefault(x => x.Name.Contains(newIngredient.Name)) != null
+                    || db.FODMAPIngredients.FirstOrDefault(x => x.Aliases.Contains(newIngredient.Name)) != null)
                 {
                     return RedirectToAction("AddFodmap", new { Message = Message.FodmapExists });
                 }
