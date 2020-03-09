@@ -90,12 +90,10 @@
         event.preventDefault();
         var { isUpc, query, requireAllWords, includeList, excludeList } = this.state;
         var searchQuery = new URLSearchParams();
-        var totalIngredientList = [...includeList, ...excludeList.map(ex => `-${ex}`)];
-        totalIngredientList = totalIngredientList.map(ingr => ingr.includes(" ") ? `"${ingr}"` : ingr);
+        var totalIngredientList = [...includeList.map(ingr => ingr.includes(" ") ? `"${ingr}"` : ingr), ...excludeList.map(ingr => ingr.includes(" ") ? `-"${ingr}"` : ingr)];
         if (totalIngredientList.length > 0) {
             searchQuery.append("ingredients", totalIngredientList.join(" "))
         }
-        //console.log(totalIngredientList)
         searchQuery.append("query", isUpc ? ("gtinUpc:" + query) : query)
         searchQuery.append("requireAllWords", requireAllWords)
         if (query != "") {
