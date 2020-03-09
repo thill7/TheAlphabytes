@@ -8,7 +8,6 @@
 	('Fruit Concentrate'),
 	('Garlic'),
 	('Glucose-fructose syrup'),
-	('Watermelon'),
 	('Tinned Fruit in Natural Juice'),
 	('Honey'),
 	('Fructose'),
@@ -56,6 +55,7 @@ GO
 
 INSERT INTO [dbo].[FODMAPIngredients] (Name, Aliases) VALUES
 	('Mushroom', 'Mushrooms'),
+	('Watermelon', 'Watermellon'),
 	('Cashews', 'Cashew'),
 	('Pistacios', 'Pistacio'),
 	('Figs', 'Fig'),

@@ -4,13 +4,29 @@
     if (User.IsInRole("Admin"))
     {
         <ul class="nav navbar-nav mr-auto">
-            <li class="nav-item">@Html.ActionLink("Manage Users", "Index", "Admin", routeValues: null, htmlAttributes: new { @class = "nav-link" })</li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">
+                    Admin Actions
+                </a>
+                <div class="dropdown-menu">
+                    @Html.ActionLink("Manage Users", "Index", "Admin", routeValues: null, htmlAttributes: new { @class = "dropdown-item" })
+                    @Html.ActionLink("Add a new FODMAP", "AddFodmap", "Admin", routeValues: null, htmlAttributes: new { @class = "dropdown-item" })
+                </div>
+            </li>
         </ul>
     }
     if (User.IsInRole("SuperAdmin"))
     {
         <ul class="nav navbar-nav mr-auto">
-            <li class="nav-item">@Html.ActionLink("Manage Users", "Index", "SuperAdmin", routeValues: null, htmlAttributes: new { @class = "nav-link" })</li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">
+                    Admin Actions
+                </a>
+                <div class="dropdown-menu">
+                    @Html.ActionLink("Manage Users", "Index", "SuperAdmin", routeValues: null, htmlAttributes: new { @class = "dropdown-item" })
+                    @Html.ActionLink("Add a new FODMAP", "AddFodmap", "Admin", routeValues: null, htmlAttributes: new { @class = "dropdown-item" })
+                </div>
+            </li>
         </ul>
     }
     <div class="ml-auto">
