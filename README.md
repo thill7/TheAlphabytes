@@ -1,4 +1,4 @@
-# Welcome to The Alphabytes repository.
+# Welcome to The Alphabytes repository
 
 ### What will I find here?
 This repo is home to The Alphabytes' revolutionary application for simple IBS relief through an easy to use low FODMAP food tracker, **FODfinder**.
