@@ -19,7 +19,7 @@
     async onGetPage(pNum) {
         var { ingredients, query, requireAllWords } = this.state;
         var searchQuery = new URLSearchParams();
-        if (ingredients != "") {
+        if (ingredients != "" && ingredients != null) {
             searchQuery.append("ingredients", ingredients);
         }
         //console.log(totalIngredientList)

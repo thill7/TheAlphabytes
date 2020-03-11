@@ -90,7 +90,7 @@
         event.preventDefault();
         var { isUpc, query, requireAllWords, includeList, excludeList } = this.state;
         var searchQuery = new URLSearchParams();
-        var totalIngredientList = [...includeList.map(ingr => ingr.includes(" ") ? `"${ingr}"` : ingr), ...excludeList.map(ingr => ingr.includes(" ") ? `-"${ingr}"` : ingr)];
+        var totalIngredientList = [...includeList.map(ingr => ingr.includes(" ") ? `"${ingr}"` : ingr), ...excludeList.map(ingr => ingr.includes(" ") ? `-"${ingr}"` : `-${ingr}`)];
         if (totalIngredientList.length > 0) {
             searchQuery.append("ingredients", totalIngredientList.join(" "))
         }
