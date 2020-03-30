@@ -18,6 +18,39 @@
     <string name="app_name">FODFinder</string>
     <string name="label_nav_home">Home</string>
     <string name="label_group_info">Info</string>
+    <string name="label_sources">Sources</string>
     <string name="label_nav_fodmap_info">What\'s a FODMAP?</string>
     <string name="label_nav_ibs_info">What\'s IBS?</string>
+
+    <!-- FODMAP INFO PAGE -->
+    <string name="header_what_is_a_fodmap">What is a FODMAP?</string>
+    <string name="header_what_do_fodmaps_do">What do FODMAPs do in the digestive system?</string>
+    <string name="header_avoid_fodmaps">Why should I avoid FODMAPS?</string>
+    <string name="header_learn_more">Where can I learn more?</string>
+
+    <string name="body_what_is_a_fodmap">Fermentable oligosaccharides, disaccharides, monosaccharides, and polyols, or
+        FODMAPs, are groups of short-chain carbohydrates that are not well absorbed during digestion (1). They include
+        many common foods and ingredients like apples, honey, high fructose corn syrup, lactose, and most beans to name
+        a few (2).
+    </string>
+    <string name="body_what_do_fodmaps_do">FODMAPs are grouped together because of their common traits.\n1. They are very
+        quickly fermented by bacteria in the gut, this creates gases that result in burping and flatulence.\n2. They pass
+        through the small intestine mostly unabsorbed.\n3. They are "osmotically-active" molecules, causing them to draw
+        excess water into the digestive tract (2).
+    </string>
+    <string name="body_avoid_fodmaps">Well actually&#8230; most people don\'t need to avoid foods high in FODMAPs at
+        all. However, many people with functional gastrointestinal disorders like IBS are more adversely affected by
+        FODMAP consumption, and studies have shown significant reduction of symptoms in IBS patients on a low FODMAP
+        diet (3).
+    </string>
+    <string name="body_learn_more">A helpful overview of FODMAPs can be found in Kris Gunnars\' article <a href="https://www.healthline.com/nutrition/fodmaps-101">here</a>, and for a
+        deeper look try starting with this <a href="https://onlinelibrary.wiley.com/doi/full/10.1111/j.1440-1746.2009.06149.x">scholarly review</a>
+    </string>
+
+    <string name="sources_fodmap">1. <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3388522/">ncbi.nlm.nih.gov</a>\n2. <a href="https://onlinelibrary.wiley.com/doi/full/10.1111/j.1440-1746.2009.06149.x">onlinelibrary.wiley.com</a>\n3. <a href="https://onlinelibrary.wiley.com/doi/abs/10.1111/j.1365-277X.2011.01162.x">onlinelibrary.wiley.com</a></string>
+
+
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

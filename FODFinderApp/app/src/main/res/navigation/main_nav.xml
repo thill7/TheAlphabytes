@@ -9,5 +9,10 @@
               tools:layout="@layout/fragment_home"
               android:label="@string/label_nav_home"/>
 
+    <fragment android:id="@+id/fodmap_info_fragment_nav"
+              android:name="dev.tannerhill.fodfinder.FodmapInfoFragment"
+              tools:layout="@layout/fragment_fodmap_info"
+              android:label="@string/label_nav_fodmap_info"/>
+
 
 </navigation>
