@@ -1,4 +1,6 @@
 ﻿DROP TABLE [dbo].[SavedFoods];
+DROP TABLE [dbo].[UserIngredients];
+DROP TABLE [dbo].[LabelledIngredients];
 DROP TABLE [dbo].[FODMAPIngredients];
 DROP TABLE [dbo].[AspNetUserRoles];
 DROP TABLE [dbo].[AspNetUserClaims];

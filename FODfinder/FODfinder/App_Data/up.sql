@@ -6,6 +6,14 @@
 	CONSTRAINT [PK_dbo.FODMAPIngredients] PRIMARY KEY CLUSTERED ([ID] ASC)
 );
 
+CREATE TABLE [dbo].[LabelledIngredients]
+(
+	[ID]		INT IDENTITY (1,1)	NOT NULL,
+	[Name]		NVARCHAR(50)		NOT NULL,
+	[usdaId]	INT					NOT NULL,
+	CONSTRAINT [PK_dbo.LabelledIngredients] PRIMARY KEY CLUSTERED ([ID] ASC)
+);
+
 -- #### IDENTITY TABLES BELOW #### --
 
 CREATE TABLE [dbo].[AspNetRoles](
@@ -99,6 +107,8 @@ GO
 ALTER TABLE [dbo].[AspNetUserRoles] CHECK CONSTRAINT [FK_dbo.AspNetUserRoles_dbo.AspNetUsers_UserId]
 GO
 
+--## MORE NON-ASPNET TABLES ##--
+
 CREATE TABLE [dbo].[SavedFoods]
 (
 	[usdaFoodID]	INT					NOT NULL,
@@ -109,4 +119,20 @@ CREATE TABLE [dbo].[SavedFoods]
 	CONSTRAINT [PK_dbo.SavedFoods] PRIMARY KEY CLUSTERED ([usdaFoodID] ASC, [userID] ASC),
 	CONSTRAINT [PK_dbo.SavedFoods_dbo.userID] FOREIGN KEY ([userID])
 		REFERENCES [dbo].[AspNetUsers] ([Id]) ON DELETE CASCADE
+);
+
+CREATE TABLE [dbo].[UserIngredients]
+(
+	[userID]				INT				NOT NULL,
+	[Label]					NVARCHAR(10)	NOT NULL 
+		CHECK (Label IN('High Risk', 'Low Risk', 'Blacklist')),
+	[LabelledIngredientID]	INT				NOT NULL,
+	[FODMAPIngredientID]	INT				NULL,
+	CONSTRAINT [PK_dbo.UserIngredients] PRIMARY KEY CLUSTERED ([LabelledIngredientID] ASC, [userID] ASC),
+	CONSTRAINT [PK_dbo.UserIngredients_dbo.userID] FOREIGN KEY ([userID])
+		REFERENCES [dbo].[AspNetUsers] ([Id]) ON DELETE CASCADE,
+	CONSTRAINT [PK_dbo.UserIngredients_dbo.LabelledID] FOREIGN KEY ([LabelledIngredientID])
+		REFERENCES [dbo].[LabelledIngredients] ([ID]),
+	CONSTRAINT [PK_dbo.UserIngredients_dbo.FODMAPIngredientID] FOREIGN KEY ([FODMAPIngredientID])
+		REFERENCES [dbo].[FODMAPIngredients] ([ID])
 );
