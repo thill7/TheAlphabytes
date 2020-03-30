@@ -98,7 +98,7 @@
                     <div className="card-header">
                         <h2 className="display-4 font-weight-normal text-capitalize">{details.Description.toLowerCase()}</h2>
                         <h3 className="font-weight-light">{details.BrandOwner}</h3>
-                        <button type="button" onClick={() => { this.handleclick() }} className="btn-primary text-white">Save Food</button>
+                        <button type="button" onClick={() => { this.handleclick() }} className="btn btn-primary text-white">Save Food</button>
                     </div>
                     <div className="card-body">
                         <div className="row">
