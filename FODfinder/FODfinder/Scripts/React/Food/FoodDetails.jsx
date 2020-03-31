@@ -106,7 +106,7 @@
                                 <p className="text-lowercase">
                                     <span className="font-weight-bold text-capitalize">Ingredients:&nbsp;</span>
                                     {
-                                        details.Ingredients.map((i, index) => <span><span key={index} onclick={this.showLabels} className={"p2" + (i.IsFodmap ? " bg-danger-50 text-white rounded" : "")}>{i.Name}</span>{index < details.Ingredients.length - 1 ? ", " : ""}</span>)
+                                        details.Ingredients.map((i, index) => <span><span key={index} onclick={this.showLabels} className={"p2 cursor-pointer" + (i.IsFodmap ? " bg-danger-50 text-white rounded" : "")}>{i.Name}</span>{index < details.Ingredients.length - 1 ? ", " : ""}</span>)
                                     }
                                 </p>
                                 <p className="d-inline-block"><span className="font-weight-bold">UPC:</span> {details.UPC}</p>

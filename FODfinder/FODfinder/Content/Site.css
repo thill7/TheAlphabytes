@@ -47,6 +47,9 @@
     width: auto;
 }
 
+.cursor-pointer{
+    cursor: pointer;
+}
 
 body {
     padding-top: 65px;
