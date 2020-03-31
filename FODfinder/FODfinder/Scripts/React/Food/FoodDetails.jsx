@@ -3,9 +3,11 @@
         super(props);
 
         this.state = {
-            details: JSON.parse(this.props.details)
+            details: JSON.parse(this.props.details),
+            showLabels: false
         };
         this.handleclick.bind(this);
+        this.showLabels = this.showLabels.bind(this);
     }
 
     GetFoodNutrientValue(key) {
@@ -88,6 +90,14 @@
         window.console.log(message);
     }
 
+    showLabels(event) {
+        event.preventDefault();
+
+        this.setState({
+            showLabels: true,
+        });
+    }
+
     render() {
         var { details } = this.state;
         
@@ -106,7 +116,19 @@
                                 <p className="text-lowercase">
                                     <span className="font-weight-bold text-capitalize">Ingredients:&nbsp;</span>
                                     {
-                                        details.Ingredients.map((i, index) => <span><span key={index} onclick={this.showLabels} className={"p2 cursor-pointer" + (i.IsFodmap ? " bg-danger-50 text-white rounded" : "")}>{i.Name}</span>{index < details.Ingredients.length - 1 ? ", " : ""}</span>)
+                                        details.Ingredients.map((i, index) => <span><span key={index} onClick={this.showLabels} className={"p2 cursor-pointer" + (i.IsFodmap ? " bg-danger-50 text-white rounded" : "")}>{i.Name}</span>{
+                                            this.state.showLabels
+                                                ? (
+                                                    <div className="labels">
+                                                        <button value="High Risk"> High Risk </button>
+                                                        <button value="Low Risk"> Low Risk </button>
+                                                        <button value="Blacklist"> Blacklist </button>
+                                                    </div>
+                                                )
+                                                : (
+                                                    null
+                                                )
+                                        }{index < details.Ingredients.length - 1 ? ", " : ""}</span>)
                                     }
                                 </p>
                                 <p className="d-inline-block"><span className="font-weight-bold">UPC:</span> {details.UPC}</p>
