@@ -123,7 +123,7 @@ CREATE TABLE [dbo].[SavedFoods]
 
 CREATE TABLE [dbo].[UserIngredients]
 (
-	[userID]				INT				NOT NULL,
+	[userID]				NVARCHAR(128)	NOT NULL,
 	[Label]					NVARCHAR(10)	NOT NULL 
 		CHECK (Label IN('High Risk', 'Low Risk', 'Blacklist')),
 	[LabelledIngredientID]	INT				NOT NULL,
