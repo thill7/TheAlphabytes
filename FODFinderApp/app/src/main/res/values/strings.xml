@@ -23,6 +23,8 @@
     <string name="label_nav_ibs_info">What\'s IBS?</string>
     <string name="label_nav_info">Information</string>
 
+    <string name="app_description">\tThis website is a free resource for learning about IBS and FODMAPs, searching for foods to see if they\'re compatible with a low-FODMAP diet (coming soon), and saving those results for your later convenience in shopping, meal prep, and everyday life (coming soon).</string>
+
     <!-- FODMAP INFO PAGE -->
     <string name="header_what_is_a_fodmap">What is a FODMAP?</string>
     <string name="header_what_do_fodmaps_do">What do FODMAPs do in the digestive system?</string>
@@ -84,6 +86,10 @@
     <string name="content_disclaimer">We are not medical professionals. We are not responsible for what may happen if
         you follow the advice listed on this site. If you have any serious concerns, please consult your doctor.
     </string>
+
+    <!-- RESOURCES -->
+
+    <string name="logo_source">http://fodfinderdev.azurewebsites.net/Content/Images/home-logo.png</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

@@ -1,14 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
              xmlns:tools="http://schemas.android.com/tools"
              android:layout_width="match_parent"
              android:layout_height="match_parent"
              tools:context=".HomeFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
+            android:layout_centerInParent="true"
+            android:orientation="vertical"
+            android:paddingHorizontal="15dp"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="@string/label_nav_home"/>
+            android:layout_height="wrap_content">
 
-</FrameLayout>
+        <ImageView
+                android:id="@+id/mainLogo"
+                android:src="@drawable/homelogo"
+                android:contentDescription="@string/app_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        <com.google.android.material.textview.MaterialTextView
+                style="@style/TextAppearance.MaterialComponents.Body1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/app_description"/>
+    </LinearLayout>
+
+
+</RelativeLayout>
