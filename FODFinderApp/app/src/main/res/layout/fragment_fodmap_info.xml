@@ -70,7 +70,7 @@
             <com.google.android.material.textview.MaterialTextView
                     android:padding="10dp"
                     style="@style/TextAppearance.MaterialComponents.Headline4"
-                    android:text="@string/header_learn_more"
+                    android:text="@string/header_learn_more_fodmap"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
             <com.google.android.material.textview.MaterialTextView

@@ -26,15 +26,17 @@
     <string name="header_what_is_a_fodmap">What is a FODMAP?</string>
     <string name="header_what_do_fodmaps_do">What do FODMAPs do in the digestive system?</string>
     <string name="header_avoid_fodmaps">Why should I avoid FODMAPS?</string>
-    <string name="header_learn_more">Where can I learn more?</string>
+    <string name="header_learn_more_fodmap">Where can I learn more?</string>
 
     <string name="body_what_is_a_fodmap">Fermentable oligosaccharides, disaccharides, monosaccharides, and polyols, or
         FODMAPs, are groups of short-chain carbohydrates that are not well absorbed during digestion (1). They include
         many common foods and ingredients like apples, honey, high fructose corn syrup, lactose, and most beans to name
         a few (2).
     </string>
-    <string name="body_what_do_fodmaps_do">FODMAPs are grouped together because of their common traits.\n1. They are very
-        quickly fermented by bacteria in the gut, this creates gases that result in burping and flatulence.\n2. They pass
+    <string name="body_what_do_fodmaps_do">FODMAPs are grouped together because of their common traits.\n1. They are
+        very
+        quickly fermented by bacteria in the gut, this creates gases that result in burping and flatulence.\n2. They
+        pass
         through the small intestine mostly unabsorbed.\n3. They are "osmotically-active" molecules, causing them to draw
         excess water into the digestive tract (2).
     </string>
@@ -43,13 +45,29 @@
         FODMAP consumption, and studies have shown significant reduction of symptoms in IBS patients on a low FODMAP
         diet (3).
     </string>
-    <string name="body_learn_more">A helpful overview of FODMAPs can be found in Kris Gunnars\' article <a href="https://www.healthline.com/nutrition/fodmaps-101">here</a>, and for a
-        deeper look try starting with this <a href="https://onlinelibrary.wiley.com/doi/full/10.1111/j.1440-1746.2009.06149.x">scholarly review</a>
+    <string name="body_learn_more">A helpful overview of FODMAPs can be found in Kris Gunnars\' article <a
+            href="https://www.healthline.com/nutrition/fodmaps-101">here</a>, and for a
+        deeper look try starting with this
+        <a href="https://onlinelibrary.wiley.com/doi/full/10.1111/j.1440-1746.2009.06149.x">scholarly review</a>
     </string>
 
-    <string name="sources_fodmap">1. <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3388522/">ncbi.nlm.nih.gov</a>\n2. <a href="https://onlinelibrary.wiley.com/doi/full/10.1111/j.1440-1746.2009.06149.x">onlinelibrary.wiley.com</a>\n3. <a href="https://onlinelibrary.wiley.com/doi/abs/10.1111/j.1365-277X.2011.01162.x">onlinelibrary.wiley.com</a></string>
+    <string name="sources_fodmap">1. <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3388522/">
+        ncbi.nlm.nih.gov</a>\n2. <a href="https://onlinelibrary.wiley.com/doi/full/10.1111/j.1440-1746.2009.06149.x">
+        onlinelibrary.wiley.com</a>\n3.
+        <a href="https://onlinelibrary.wiley.com/doi/abs/10.1111/j.1365-277X.2011.01162.x">onlinelibrary.wiley.com</a>
+    </string>
 
+    <!-- IBS INFO PAGE -->
 
+    <string name="header_what_is_ibs">What is IBS?</string>
+    <string name="header_common_symptoms">What are some common symptoms?</string>
+    <string name="header_learn_more_ibs">Where can I learn more?</string>
+    <string name="header_disclaimer">Disclaimer.</string>
+
+    <string name="content_what_is_ibs">IBS stands for irritable bowel syndrome. It is characterized by a symptom complex of abdominal pain acompannied with abnormal bowel habits, such as diarrhea, constipation, or both simultaneously [1]. It is part of a larger group of gastrointestinal diseases known as functional bowel disorders, or FDB, but an exact definition does not yet exist since some of the symptoms present differentiate it from other FDB [1].</string>
+    <string name="content_common_symptoms">There are many symptoms associated with IBS, including but not limited to:\n1. Abdominal cramps, \n2. Bloating, \n3. Flatus, \n4. Diarrhea and \n5. Constipation [2]\nAdditionally, these symptoms vary widely in severity, ranging from mild inconvienience to debilitating illness.</string>
+    <string name="content_learn_more_ibs">For more information, please visit the following sites:\n1. <a href="https://onlinelibrary.wiley.com/doi/full/10.1111/j.1440-1746.2009.06120.x">Irritable bowel syndrome: Epidemiology, diagnosis and treatment: An update for health‐care practitioners</a>\n2. <a href="https://www.mayoclinic.org/diseases-conditions/irritable-bowel-syndrome/symptoms-causes/syc-20360016">Irritable bowel syndrome</a></string>
+    <string name="content_disclaimer">We are not medical professionals. We are not responsible for what may happen if you follow the advice listed on this site. If you have any serious concerns, please consult your doctor.</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

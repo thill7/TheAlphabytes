@@ -14,5 +14,10 @@
               tools:layout="@layout/fragment_fodmap_info"
               android:label="@string/label_nav_fodmap_info"/>
 
+    <fragment android:id="@+id/ibs_info_fragment_nav"
+              android:name="dev.tannerhill.fodfinder.IbsInfoFragment"
+              tools:layout="@layout/fragment_ibs_info"
+              android:label="@string/label_nav_ibs_info"/>
+
 
 </navigation>
