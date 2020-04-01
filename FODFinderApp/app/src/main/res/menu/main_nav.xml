@@ -15,6 +15,8 @@
                           android:title="@string/label_nav_fodmap_info" />
                     <item android:id="@+id/ibs_info_fragment_nav"
                           android:title="@string/label_nav_ibs_info" />
+                    <item android:id="@+id/info_fragment_nav"
+                          android:title="@string/label_nav_info" />
                 </group>
             </menu>
         </item>

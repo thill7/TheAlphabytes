@@ -21,6 +21,7 @@
     <string name="label_sources">Sources</string>
     <string name="label_nav_fodmap_info">What\'s a FODMAP?</string>
     <string name="label_nav_ibs_info">What\'s IBS?</string>
+    <string name="label_nav_info">Information</string>
 
     <!-- FODMAP INFO PAGE -->
     <string name="header_what_is_a_fodmap">What is a FODMAP?</string>
@@ -64,10 +65,25 @@
     <string name="header_learn_more_ibs">Where can I learn more?</string>
     <string name="header_disclaimer">Disclaimer.</string>
 
-    <string name="content_what_is_ibs">IBS stands for irritable bowel syndrome. It is characterized by a symptom complex of abdominal pain acompannied with abnormal bowel habits, such as diarrhea, constipation, or both simultaneously [1]. It is part of a larger group of gastrointestinal diseases known as functional bowel disorders, or FDB, but an exact definition does not yet exist since some of the symptoms present differentiate it from other FDB [1].</string>
-    <string name="content_common_symptoms">There are many symptoms associated with IBS, including but not limited to:\n1. Abdominal cramps, \n2. Bloating, \n3. Flatus, \n4. Diarrhea and \n5. Constipation [2]\nAdditionally, these symptoms vary widely in severity, ranging from mild inconvienience to debilitating illness.</string>
-    <string name="content_learn_more_ibs">For more information, please visit the following sites:\n1. <a href="https://onlinelibrary.wiley.com/doi/full/10.1111/j.1440-1746.2009.06120.x">Irritable bowel syndrome: Epidemiology, diagnosis and treatment: An update for health‐care practitioners</a>\n2. <a href="https://www.mayoclinic.org/diseases-conditions/irritable-bowel-syndrome/symptoms-causes/syc-20360016">Irritable bowel syndrome</a></string>
-    <string name="content_disclaimer">We are not medical professionals. We are not responsible for what may happen if you follow the advice listed on this site. If you have any serious concerns, please consult your doctor.</string>
+    <string name="content_what_is_ibs">IBS stands for irritable bowel syndrome. It is characterized by a symptom complex
+        of abdominal pain acompannied with abnormal bowel habits, such as diarrhea, constipation, or both simultaneously
+        [1]. It is part of a larger group of gastrointestinal diseases known as functional bowel disorders, or FDB, but
+        an exact definition does not yet exist since some of the symptoms present differentiate it from other FDB [1].
+    </string>
+    <string name="content_common_symptoms">There are many symptoms associated with IBS, including but not limited
+        to:\n1. Abdominal cramps, \n2. Bloating, \n3. Flatus, \n4. Diarrhea and \n5. Constipation [2]\nAdditionally,
+        these symptoms vary widely in severity, ranging from mild inconvienience to debilitating illness.
+    </string>
+    <string name="content_learn_more_ibs">For more information, please visit the following sites:\n1. <a
+            href="https://onlinelibrary.wiley.com/doi/full/10.1111/j.1440-1746.2009.06120.x">Irritable bowel syndrome:
+        Epidemiology, diagnosis and treatment: An update for health‐care practitioners</a>\n2.
+        <a href="https://www.mayoclinic.org/diseases-conditions/irritable-bowel-syndrome/symptoms-causes/syc-20360016">
+            Irritable bowel syndrome
+        </a>
+    </string>
+    <string name="content_disclaimer">We are not medical professionals. We are not responsible for what may happen if
+        you follow the advice listed on this site. If you have any serious concerns, please consult your doctor.
+    </string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
