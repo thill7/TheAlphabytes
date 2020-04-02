@@ -27,8 +27,8 @@ namespace FODfinder.Models.Food
             var ingredientString = detailObject.SelectToken("ingredients")?.ToString() ?? "";
             if(!string.IsNullOrEmpty(ingredientString))
             {
-                List<string> primary = new List<string>();
-                List<string> secondary = new List<string>();
+                var primary = new List<List<string>>();
+                var secondary = new List<List<string>>();
                 IngredientParser.Parse(ingredientString, out primary, out secondary);
 
                 var parsedIngredients = IngredientParser.Parse(ingredientString);

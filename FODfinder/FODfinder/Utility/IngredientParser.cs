@@ -29,10 +29,12 @@ namespace FODfinder.Utility
             return parsedIngredients;
         }
 
-        public static void Parse(string ingredients, out List<string> primaryIngredients, out List<string> secondaryIngredients)
+        private static MatchCollection MatchRegEx(string ingredientsString) => Regex.Matches(ingredientsString, MultiIngredientPattern);
+        private static IEnumerable<string> ConvertToEnumerable(MatchCollection matches) => matches.Cast<Match>().Select(m => $"{m}".Trim());
+        private static List<string> ConvertToList(string ingredient) => ingredient.Contains('(') ? ingredient.Replace(")", "").Replace('(', ',').Split(',').ToList() : new List<string>() { ingredient };
+
+        public static void Parse(string ingredients, out List<List<string>> primaryIngredients, out List<List<string>> secondaryIngredients)
         {
-            primaryIngredients = new List<string>();
-            secondaryIngredients = new List<string>();
             ingredients = ingredients.ToLower();
             foreach (var toRemove in ToRemove)
             {
@@ -51,8 +53,23 @@ namespace FODfinder.Utility
             }
             var primaryIngredientsString = ingredients.Substring(0, index);
             var secondaryIngredientsString = ingredients.Substring(index + length);
-            var primaryMatches = Regex.Matches(primaryIngredientsString, MultiIngredientPattern);
-            var secondaryMatches = Regex.Matches(secondaryIngredientsString, MultiIngredientPattern);
+
+            var primaryIngredientsEnumerable = ConvertToEnumerable(MatchRegEx(primaryIngredientsString));
+            var secondaryIngredientsEnumerable = ConvertToEnumerable(MatchRegEx(secondaryIngredientsString));
+
+            primaryIngredients = new List<List<string>>();
+            secondaryIngredients = new List<List<string>>();
+
+            foreach (var primaryIngredient in primaryIngredientsEnumerable)
+            {
+                var list = ConvertToList(primaryIngredient);
+                primaryIngredients.Add(list);
+            }
+            foreach (var secondaryIngredient in secondaryIngredientsEnumerable)
+            {
+                var list = ConvertToList(secondaryIngredient);
+                secondaryIngredients.Add(list);
+            }
         }
     }
 }
