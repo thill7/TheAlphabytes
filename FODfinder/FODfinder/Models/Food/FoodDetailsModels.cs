@@ -13,22 +13,28 @@ namespace FODfinder.Models.Food
         public string Description { private set; get; }
         public string BrandOwner { private set; get; }
         public List<Ingredient> Ingredients { private set; get; } = new List<Ingredient>();
+        public List<Ingredient> PrimaryIngredients { private set; get; } = new List<Ingredient>();
+        public List<Ingredient> SecondaryIngredients { private set; get; } = new List<Ingredient>();
         public double ServingSize { private set; get; }
         public string ServingSizeUnit { private set; get; }
         public string LabelNutrients { private set; get; }
         public string UPC { private set; get; }
 
-        public FoodDetailsModels(String jsonString, ref FFDBContext db) {
+        public FoodDetailsModels(string jsonString, ref FFDBContext db) {
             JObject detailObject = JObject.Parse(jsonString);
             Description = detailObject.SelectToken("description")?.ToString() ?? "";
             BrandOwner = detailObject.SelectToken("brandOwner")?.ToString() ?? "";
             var ingredientString = detailObject.SelectToken("ingredients")?.ToString() ?? "";
-            if(!String.IsNullOrEmpty(ingredientString))
+            if(!string.IsNullOrEmpty(ingredientString))
             {
+                List<string> primary = new List<string>();
+                List<string> secondary = new List<string>();
+                IngredientParser.Parse(ingredientString, out primary, out secondary);
+
                 var parsedIngredients = IngredientParser.Parse(ingredientString);
                 foreach(var ingredient in parsedIngredients)
                 {
-                    if(String.IsNullOrEmpty(ingredient))
+                    if(string.IsNullOrEmpty(ingredient))
                     {
                         continue;
                     }
@@ -37,7 +43,7 @@ namespace FODfinder.Models.Food
                 }
             }
             double servingSize;
-            ServingSize = Double.TryParse(detailObject.SelectToken("servingSize")?.ToString() ?? "", out servingSize) ? servingSize : 0.0;
+            ServingSize = double.TryParse(detailObject.SelectToken("servingSize")?.ToString() ?? "", out servingSize) ? servingSize : 0.0;
             ServingSizeUnit = detailObject.SelectToken("servingSizeUnit")?.ToString() ?? "";
             LabelNutrients = detailObject.SelectToken("labelNutrients")?.ToString() ?? "";
             int fdcId;
