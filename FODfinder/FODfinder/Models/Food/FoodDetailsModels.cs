@@ -25,47 +25,13 @@ namespace FODfinder.Models.Food
             Description = detailObject.SelectToken("description")?.ToString() ?? "";
             BrandOwner = detailObject.SelectToken("brandOwner")?.ToString() ?? "";
             var ingredientString = detailObject.SelectToken("ingredients")?.ToString() ?? "";
-            if(!string.IsNullOrEmpty(ingredientString))
+            if (!string.IsNullOrEmpty(ingredientString))
             {
-                var primaryListofLists = new List<List<string>>();
-                var secondaryListofLists = new List<List<string>>();
-                IngredientParser.Parse(ingredientString, out primaryListofLists, out secondaryListofLists);
-                foreach (var ingredient in primaryListofLists)
-                {
-                    if(ingredient.Count > 1)
-                    {
-                        List<Ingredient> list = new List<Ingredient>();
-                        foreach (var subIngredient in ingredient)
-                        {
-                            var fodmap = db.FODMAPIngredients.Where(f => subIngredient.Contains(f.Name.ToLower())).FirstOrDefault();
-                            list.Add(new Ingredient(subIngredient, fodmap != null));
-                        }
-                        PrimaryIngredients.Add(list);
-                    }
-                    else if (ingredient.Count == 1)
-                    {
-                        var fodmap = db.FODMAPIngredients.Where(f => ingredient.Contains(f.Name.ToLower())).FirstOrDefault();
-                        PrimaryIngredients.Add(new List<Ingredient>() {new Ingredient(ingredient.FirstOrDefault(), fodmap != null) });
-                    }
-                }
-                foreach (var ingredient in secondaryListofLists)
-                {
-                    if (ingredient.Count > 1)
-                    {
-                        List<Ingredient> list = new List<Ingredient>();
-                        foreach (var subIngredient in ingredient)
-                        {
-                            var fodmap = db.FODMAPIngredients.Where(f => subIngredient.Contains(f.Name.ToLower())).FirstOrDefault();
-                            list.Add(new Ingredient(subIngredient, fodmap != null));
-                        }
-                        SecondaryIngredients.Add(list);
-                    }
-                    else if (ingredient.Count == 1)
-                    {
-                        var fodmap = db.FODMAPIngredients.Where(f => ingredient.Contains(f.Name.ToLower())).FirstOrDefault();
-                        SecondaryIngredients.Add(new List<Ingredient>() { new Ingredient(ingredient.FirstOrDefault(), fodmap != null) });
-                    }
-                }
+                var primary = new List<List<string>>();
+                var secondary = new List<List<string>>();
+                IngredientParser.Parse(ingredientString, out primary, out secondary);
+                PrimaryIngredients = IngredientParser.CreateListOfIngredients(primary, ref db);
+                SecondaryIngredients = IngredientParser.CreateListOfIngredients(secondary, ref db);
             }
             //if(!string.IsNullOrEmpty(ingredientString))
             //{
