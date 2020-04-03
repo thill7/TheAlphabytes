@@ -4,10 +4,12 @@
 
         this.state = {
             details: JSON.parse(this.props.details),
-            showLabels: false
+            showLabels: false,
+            ingredientId: null
         };
         this.handleclick.bind(this);
         this.showLabels = this.showLabels.bind(this);
+        this.hideLabels= this.hideLabels.bind(this);
     }
 
     GetFoodNutrientValue(key) {
@@ -90,12 +92,22 @@
         window.console.log(message);
     }
 
-    showLabels(event) {
+    showLabels(event, index) {
         event.preventDefault();
 
-        this.setState({
-            showLabels: true,
+        this.setState({ ingredientId: index });
+        this.setState({ showLabels: true }, () => {
+            document.addEventListener('click', this.hideLabels);
         });
+    }
+
+    hideLabels(event) {
+        if (!this.dropdownMenu.contains(event.target)) {
+            this.setState({ showLabels: false }, () => {
+                document.removeEventListener('click', this.hideLabels);
+            });
+        }
+        this.setState({ ingredientId: null });
     }
 
     render() {
@@ -116,10 +128,13 @@
                                 <p className="text-lowercase">
                                     <span className="font-weight-bold text-capitalize">Ingredients:&nbsp;</span>
                                     {
-                                        details.Ingredients.map((i, index) => <span><span key={index} onClick={this.showLabels} className={"p2 cursor-pointer" + (i.IsFodmap ? " bg-danger-50 text-white rounded" : "")}>{i.Name}</span>{
-                                            this.state.showLabels
+                                        details.Ingredients.map((i, index) => <span><span key={index} onClick={(e) => { this.showLabels(e,index) }} className={"p2 cursor-pointer" + (i.IsFodmap ? " bg-danger-50 text-white rounded" : "")}>{i.Name}</span>{
+                                            this.state.showLabels && this.state.ingredientId == index
                                                 ? (
-                                                    <div className="labels">
+                                                    <div className="labels"
+                                                        ref={(element) => {
+                                                        this.dropdownMenu = element;
+                                                    }}>
                                                         <button value="High Risk"> High Risk </button>
                                                         <button value="Low Risk"> Low Risk </button>
                                                         <button value="Blacklist"> Blacklist </button>
