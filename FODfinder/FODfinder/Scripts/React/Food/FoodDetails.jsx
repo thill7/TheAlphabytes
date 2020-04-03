@@ -131,13 +131,14 @@
                                         details.Ingredients.map((i, index) => <span><span key={index} onClick={(e) => { this.showLabels(e,index) }} className={"p2 cursor-pointer" + (i.IsFodmap ? " bg-danger-50 text-white rounded" : "")}>{i.Name}</span>{
                                             this.state.showLabels && this.state.ingredientId == index
                                                 ? (
-                                                    <div className="labels"
+                                                    <div id = "label" className="labels list-group"
                                                         ref={(element) => {
                                                         this.dropdownMenu = element;
-                                                    }}>
-                                                        <button value="High Risk"> High Risk </button>
-                                                        <button value="Low Risk"> Low Risk </button>
-                                                        <button value="Blacklist"> Blacklist </button>
+                                                        }}>
+                                                        <button className="list-group-item list-group-item-dark">{i.Name}</button>
+                                                        <button className="list-group-item list-group-item-action " value="High Risk"> High Risk </button>
+                                                        <button className="list-group-item list-group-item-action " value="Low Risk"> Low Risk </button>
+                                                        <button className="list-group-item list-group-item-action " value="Blacklist"> Blacklist </button>
                                                     </div>
                                                 )
                                                 : (
