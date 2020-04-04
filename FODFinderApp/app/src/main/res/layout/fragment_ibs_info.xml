@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+        <com.google.android.material.textview.MaterialTextView
+                android:padding="10dp"
+                style="@style/TextAppearance.MaterialComponents.Headline4"
+                android:text="@string/header_what_is_ibs"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        <com.google.android.material.textview.MaterialTextView
+                android:padding="20dp"
+                style="@style/TextAppearance.MaterialComponents.Body1"
+                android:text="@string/content_what_is_ibs"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+        <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginVertical="5dp"
+                android:background="?android:attr/listDivider"
+        />
+        <com.google.android.material.textview.MaterialTextView
+                android:padding="10dp"
+                style="@style/TextAppearance.MaterialComponents.Headline4"
+                android:text="@string/header_common_symptoms"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        <com.google.android.material.textview.MaterialTextView
+                android:padding="20dp"
+                style="@style/TextAppearance.MaterialComponents.Body1"
+                android:text="@string/content_common_symptoms"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+        <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginVertical="5dp"
+                android:background="?android:attr/listDivider"
+        />
+
+        <com.google.android.material.textview.MaterialTextView
+                android:padding="10dp"
+                style="@style/TextAppearance.MaterialComponents.Headline4"
+                android:text="@string/header_learn_more_ibs"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/learnMore"
+                android:padding="20dp"
+                style="@style/TextAppearance.MaterialComponents.Body1"
+                android:text="@string/content_learn_more_ibs"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+        <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginVertical="5dp"
+                android:background="?android:attr/listDivider"
+        />
+
+        <com.google.android.material.textview.MaterialTextView
+                android:padding="10dp"
+                style="@style/TextAppearance.MaterialComponents.Headline4"
+                android:text="@string/header_disclaimer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        <com.google.android.material.textview.MaterialTextView
+                android:padding="20dp"
+                style="@style/TextAppearance.MaterialComponents.Body1"
+                android:text="@string/content_disclaimer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>
