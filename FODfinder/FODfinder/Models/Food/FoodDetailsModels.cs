@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using FODfinder.Utility;
+using FODfinder.Models.Ingredients;
 using Newtonsoft.Json.Linq;
 
 namespace FODfinder.Models.Food
 {
     public class FoodDetailsModels
     {
+        private FFDBContext db = new FFDBContext();
         public int FdcId { private set; get; }
         public string Description { private set; get; }
         public string BrandOwner { private set; get; }
@@ -20,7 +22,7 @@ namespace FODfinder.Models.Food
         public string LabelNutrients { private set; get; }
         public string UPC { private set; get; }
 
-        public FoodDetailsModels(string jsonString, ref FFDBContext db) {
+        public FoodDetailsModels(string jsonString) {
             JObject detailObject = JObject.Parse(jsonString);
             Description = detailObject.SelectToken("description")?.ToString() ?? "";
             BrandOwner = detailObject.SelectToken("brandOwner")?.ToString() ?? "";
@@ -30,8 +32,8 @@ namespace FODfinder.Models.Food
                 var primary = new List<List<string>>();
                 var secondary = new List<List<string>>();
                 IngredientParser.Parse(ingredientString, out primary, out secondary);
-                PrimaryIngredients = IngredientParser.CreateListOfIngredients(primary, ref db);
-                SecondaryIngredients = IngredientParser.CreateListOfIngredients(secondary, ref db);
+                PrimaryIngredients = IngredientParser.CreateListOfIngredients(primary);
+                SecondaryIngredients = IngredientParser.CreateListOfIngredients(secondary);
             }
             //if(!string.IsNullOrEmpty(ingredientString))
             //{
