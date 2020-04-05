@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace FODfinder.Models.Ingredients
+namespace FODfinder.Models.Food
 {
     public class Ingredient
     {

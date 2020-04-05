@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using FODfinder.Utility;
-using FODfinder.Models.Ingredients;
 using Newtonsoft.Json.Linq;
 
 namespace FODfinder.Models.Food
