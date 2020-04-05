@@ -4,32 +4,40 @@
     ViewBag.Title = "Index";
 }
 
-    <div class="container-fluid pt-5 pb-3 rounded bg-secondary">
+    <div class="container-fluid pt-5 pb-5 rounded bg-secondary">
         <div class="row justify-content-center">
             <h1 class="text-gray">Saved Foods</h1>
         </div>
         
 
-        <table class="table">
-            <tr class="text-gray d-flex">
-                <th class="col-4">Food</th>
-                <th class="col-4">Brand</th>
-                <th class="col-4">UPC</th>
-            </tr>
+        <div class="container pt-2">
+            <div class="list-group">
+                <div class="list-group-item bg-secondary">
+                    <div class="row text-gray h5 mb-0">
+                        <div class="col-4">Food</div>
+                        <div class="col-4">Brand</div>
+                        <div class="col-4">UPC</div>
+                    </div>
+                </div>
+            </div>
             @foreach (var item in Model)
             {
-                <tr class="bg-white d-flex rounded">
-                    <td class="text-gray col-4">
-                        @Html.DisplayFor(modelItem => item.desc)
-                    </td>
-                    <td class="text-gray col-4">
-                        @Html.DisplayFor(modelItem => item.brand)
-                    </td>
-                    <td class="text-gray col-4">
-                        @Html.DisplayFor(modelItem => item.upc)
-                    </td>
-                </tr>
+                <div class="list-group">
+                    <a class="list-group-item FoodLink" href="/food/details/@item.usdaFoodID">
+                        <div class="row text-gray text-capitalize">
+                            <div class="col-4">
+                                @item.desc.ToLower()
+                            </div>
+                            <div class="col-4">
+                                @item.brand.ToLower()
+                            </div>
+                            <div class="col-4">
+                                @item.upc
+                            </div>
+                        </div>
+                    </a>
+                </div>
             }
 
-        </table>
+        </div>
     </div>
