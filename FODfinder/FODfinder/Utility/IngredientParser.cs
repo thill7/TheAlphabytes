@@ -8,10 +8,9 @@ namespace FODfinder.Utility
 {
     public class IngredientParser
     {
-        private const string MultiIngredientPattern = @"[\w\s-]+(\([\w\s-,]+\))*";
         private static readonly string[] ToRemove = { "ingredients", ":", ";", "made of", ".", "contains one or more of the following" };
         private static readonly string[] Variations = { "contains less than 2% of", "contains 2% or less of", "less than 2% of", "less than 2%", "less than 2 percent" };
-        private static MatchCollection MatchRegEx(string ingredientsString) => Regex.Matches(ingredientsString, MultiIngredientPattern);
+        private static MatchCollection MatchRegEx(string ingredientsString) => Regex.Matches(ingredientsString, @"[\w\s-]+(\([\w\s-,]+\))*");
         private static IEnumerable<string> ConvertToEnumerable(MatchCollection matches) => matches.Cast<Match>().Select(m => $"{m}".Trim());
         private static List<string> ConvertToList(string ingredient) => ingredient.Contains('(') ? ingredient.Replace(")", "").Replace('(', ',').Split(',').ToList() : new List<string>() { ingredient };
         private static List<List<string>> ConvertToListOfLists(IEnumerable<string> ingredients)

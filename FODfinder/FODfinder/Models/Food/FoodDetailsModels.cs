@@ -10,11 +10,10 @@ namespace FODfinder.Models.Food
 {
     public class FoodDetailsModels
     {
-        private FFDBContext db = new FFDBContext();
         public int FdcId { private set; get; }
         public string Description { private set; get; }
         public string BrandOwner { private set; get; }
-        public List<Ingredient> Ingredients { private set; get; } = new List<Ingredient>();
+        //public List<Ingredient> Ingredients { private set; get; } = new List<Ingredient>();
         public List<List<Ingredient>> PrimaryIngredients { private set; get; } = new List<List<Ingredient>>();
         public List<List<Ingredient>> SecondaryIngredients { private set; get; } = new List<List<Ingredient>>();
         public double ServingSize { private set; get; }
