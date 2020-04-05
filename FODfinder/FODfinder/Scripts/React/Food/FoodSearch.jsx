@@ -50,10 +50,6 @@
         console.log("Include list: " + this.state.includeList)
     }
 
-    trimLeadingZeros(query) {
-        return parseInt(query).toString();
-    }
-
     showIncludeList() {
         if (this.state.includeList.length != 0) {
             return (
@@ -98,7 +94,7 @@
         if (totalIngredientList.length > 0) {
             searchQuery.append("ingredients", totalIngredientList.join(" "))
         }
-        searchQuery.append("query", isUpc ? ("gtinUpc:*" + this.trimLeadingZeros(query)) : query)
+        searchQuery.append("query", isUpc ? ("gtinUpc:" + query) : query)
         searchQuery.append("requireAllWords", requireAllWords)
         if (query != "") {
             let url = "/Food/Index?" + searchQuery.toString();
