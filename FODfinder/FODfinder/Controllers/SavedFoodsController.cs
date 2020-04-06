@@ -13,12 +13,12 @@ using Newtonsoft.Json.Linq;
 
 namespace FODfinder.Controllers
 {
+    [Authorize]
     public class SavedFoodsController : Controller
     {
         private FFDBContext db = new FFDBContext();
 
         // GET: SavedFoods
-        [Authorize]
         public ActionResult Index()
         {
             var uid = User.Identity.GetUserId();
@@ -124,6 +124,7 @@ namespace FODfinder.Controllers
         // GET: SavedFoods/Delete/5
         public ActionResult Delete(int? usdaFoodID, string userID)
         {
+            User.
             if (usdaFoodID == null || userID == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
