@@ -54,7 +54,18 @@ namespace FODfinder.Controllers
                 }
                 if(db.UserIngredients.Where(s => s.LabelledIngredientID == ingredientID && s.userID == userID).Count() > 0)
                 {
-                    //change current record
+                    var existingRecord = db.UserIngredients.FirstOrDefault(s => s.LabelledIngredientID == ingredientID && s.userID == userID);
+                    existingRecord.Label = assignLabel;
+                    db.SaveChanges();
+                    var jsonData_edit_record = new
+                    {
+                        success = true,
+                        message = "Label has been changed in the record",
+                        redirect = false
+                    };
+
+                    var result = JObject.FromObject(jsonData_edit_record);
+                    return Content(result.ToString(), "Application/json");
                 }
                 else
                 {

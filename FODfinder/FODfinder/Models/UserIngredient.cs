@@ -8,6 +8,7 @@ namespace FODfinder.Models
 
     public partial class UserIngredient
     {
+        public UserIngredient() { }
         public UserIngredient(string uid, string lab, int liid)
         {
             this.userID = uid;
