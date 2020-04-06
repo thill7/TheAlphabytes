@@ -124,7 +124,6 @@ namespace FODfinder.Controllers
         // GET: SavedFoods/Delete/5
         public ActionResult Delete(int? usdaFoodID, string userID)
         {
-            User.
             if (usdaFoodID == null || userID == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
