@@ -8,6 +8,13 @@ namespace FODfinder.Models
 
     public partial class UserIngredient
     {
+        public UserIngredient(string uid, string lab, int liid)
+        {
+            this.userID = uid;
+            this.Label = lab;
+            this.LabelledIngredientID = liid;
+        }
+
         [Key]
         [Column(Order = 0)]
         public string userID { get; set; }

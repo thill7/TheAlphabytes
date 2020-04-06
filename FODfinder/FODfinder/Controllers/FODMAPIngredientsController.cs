@@ -28,32 +28,63 @@ namespace FODfinder.Controllers
             string userID = User.Identity.GetUserId();
             if (userID != null)
             {
-                SavedFood savedFood = new SavedFood(usdaFoodID, userID, brandOwner, upc, description);
-                try
+                int ingredientID = db.LabelledIngredients.Where(s => s.Name == ingredientName).Select(s => s.ID).FirstOrDefault();
+                if (ingredientID == 0)
                 {
-                    db.SavedFoods.Add(savedFood);
-                    db.SaveChanges();
-                    var jsonData = new
+                    LabelledIngredient labelIngredient = new LabelledIngredient();
+                    labelIngredient.Name = ingredientName;
+                    try
                     {
-                        success = true,
-                        message = "Food has been saved.",
-                        redirect = false
-                    };
+                        db.LabelledIngredients.Add(labelIngredient);
+                        db.SaveChanges();
+                        ingredientID = labelIngredient.ID;
+                    }
+                    catch
+                    {
+                        var jsonData_failed_ingredient_add = new
+                        {
+                            success = false,
+                            message = "Ingredient not added to database",
+                            redirect = false
+                        };
 
-                    var result = JObject.FromObject(jsonData);
-                    return Content(result.ToString(), "Application/json");
+                        var result = JObject.FromObject(jsonData_failed_ingredient_add);
+                        return Content(result.ToString(), "Application/json");
+                    }
                 }
-                catch
+                if(db.UserIngredients.Where(s => s.LabelledIngredientID == ingredientID && s.userID == userID).Count() > 0)
                 {
-                    var jsonData2 = new
+                    //change current record
+                }
+                else
+                {
+                    UserIngredient userIng = new UserIngredient(userID, assignLabel, ingredientID);
+                    try
                     {
-                        success = false,
-                        message = "Food has already been saved.",
-                        redirect = false
-                    };
+                        db.UserIngredients.Add(userIng);
+                        db.SaveChanges();
+                        var jsonData_success = new
+                        {
+                            success = true,
+                            message = "Label has been saved.",
+                            redirect = false
+                        };
 
-                    var result2 = JObject.FromObject(jsonData2);
-                    return Content(result2.ToString(), "Application/json");
+                        var result = JObject.FromObject(jsonData_success);
+                        return Content(result.ToString(), "Application/json");
+                    } 
+                    catch
+                    {
+                        var jsonData_fail = new
+                        {
+                            success = false,
+                            message = "Something went wrong",
+                            redirect = false
+                        };
+
+                        var result2 = JObject.FromObject(jsonData_fail);
+                        return Content(result2.ToString(), "Application/json");
+                    }
                 }
             }
 
