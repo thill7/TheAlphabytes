@@ -14,30 +14,32 @@
             <div class="list-group">
                 <div class="list-group-item bg-secondary">
                     <div class="row text-gray h5 mb-0">
-                        <div class="col-4">Food</div>
-                        <div class="col-4">Brand</div>
-                        <div class="col-4">UPC</div>
+                        <div class="col-3">Food</div>
+                        <div class="col-3">Brand</div>
+                        <div class="col-3">UPC</div>
                     </div>
                 </div>
             </div>
             @foreach (var item in Model)
             {
                 <div class="list-group">
-                    <a class="list-group-item FoodLink" href="/food/details/@item.usdaFoodID">
+                    <div class="list-group-item FoodLink" onclick="location.href='/food/details/@item.usdaFoodID'">
                         <div class="row text-gray text-capitalize">
-                            <div class="col-4">
+                            <div class="col-3 align-self-center">
                                 @item.desc.ToLower()
                             </div>
-                            <div class="col-4">
+                            <div class="col-3 align-self-center">
                                 @item.brand.ToLower()
                             </div>
-                            <div class="col-4">
+                            <div class="col-3 align-self-center">
                                 @item.upc
                             </div>
+                            <div class="col-3 align-self-center">
+                                @Html.ActionLink("Delete", "Delete", new { usdaFoodID = item.usdaFoodID, userID = item.userID }, new { @class = "btn btn-light" })
+                            </div>
                         </div>
-                    </a>
+                    </div>
                 </div>
             }
-
         </div>
     </div>

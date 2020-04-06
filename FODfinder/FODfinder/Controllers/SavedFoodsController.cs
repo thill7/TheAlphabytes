@@ -122,13 +122,13 @@ namespace FODfinder.Controllers
         }
 
         // GET: SavedFoods/Delete/5
-        public ActionResult Delete(int? id)
+        public ActionResult Delete(int? usdaFoodID, string userID)
         {
-            if (id == null)
+            if (usdaFoodID == null || userID == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            SavedFood savedFood = db.SavedFoods.Find(id);
+            SavedFood savedFood = db.SavedFoods.Find(usdaFoodID, userID);
             if (savedFood == null)
             {
                 return HttpNotFound();
@@ -139,9 +139,9 @@ namespace FODfinder.Controllers
         // POST: SavedFoods/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
+        public ActionResult DeleteConfirmed(int usdaFoodID, string userID)
         {
-            SavedFood savedFood = db.SavedFoods.Find(id);
+            SavedFood savedFood = db.SavedFoods.Find(usdaFoodID, userID);
             db.SavedFoods.Remove(savedFood);
             db.SaveChanges();
             return RedirectToAction("Index");
