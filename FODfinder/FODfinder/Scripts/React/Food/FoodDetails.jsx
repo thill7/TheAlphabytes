@@ -110,6 +110,19 @@
         this.setState({ ingredientId: null });
     }
 
+    async addLabel(label, ingredient) {
+        var id = parseInt(this.state.details.FdcId);
+        var saveLabel = await axios.post(`/FODMAPIngredients/Create`, { assignLabel: label, ingredientName: ingredient });
+        var result = saveLabel.data;
+        var message = result.message;
+        if(result.redirect == true) {
+            window.location.replace("/Account/Login?ReturnUrl=%2ffood%2fdetails%2f" + id);
+        } else {
+            alert(message);
+        }
+        window.console.log("Label: " + label + " Ingredient: " + ingredient);
+    }
+
     render() {
         var { details } = this.state;
         
@@ -136,9 +149,9 @@
                                                         this.dropdownMenu = element;
                                                         }}>
                                                         <button className="list-group-item list-group-item-dark">{i.Name}</button>
-                                                        <button className="list-group-item list-group-item-action " value="High Risk"> High Risk </button>
-                                                        <button className="list-group-item list-group-item-action " value="Low Risk"> Low Risk </button>
-                                                        <button className="list-group-item list-group-item-action " value="Blacklist"> Blacklist </button>
+                                                        <button className="list-group-item list-group-item-action " onClick={() => { this.addLabel("High Risk",i.Name) }}> High Risk </button>
+                                                        <button className="list-group-item list-group-item-action " onClick={() => { this.addLabel("Low Risk",i.Name) }}> Low Risk </button>
+                                                        <button className="list-group-item list-group-item-action " onClick={() => { this.addLabel("Blacklist",i.Name) }}> Blacklist </button>
                                                     </div>
                                                 )
                                                 : (
