@@ -15,6 +15,45 @@
         return "";
     }
 
+    GetIngredientListHelper(list) {
+        var ingredientsList = "";
+        for (var i = 0; i < list.length; i++) {
+            ingredientsList += list[i][0].Name;
+            if (list[i].length > 1) {
+                ingredientsList += " (";
+                for (var j = 1; j < list[i].length; j++) {
+                    if (j == list[i].length - 1) {
+                        ingredientsList += list[i][j].Name
+                    }
+                    else {
+                        ingredientsList += list[i][j].Name + ", ";
+                    }
+                }
+                if (i != list.length - 1) {
+                    ingredientsList += "), ";
+                }
+                else {
+                    ingredientsList += ")";
+                }
+            }
+            else if (i != list.length - 1) {
+                ingredientsList += ", ";
+            }
+        }
+        return ingredientsList;
+    }
+
+    GetIngredientList() {
+        var primaryIngredients = this.GetIngredientListHelper(this.state.details.PrimaryIngredients);
+        var secondaryIngredients = this.GetIngredientListHelper(this.state.details.SecondaryIngredients);
+        if (secondaryIngredients != "") {
+            return primaryIngredients.concat(", contains 2% or less of: ", secondaryIngredients, ".");
+        }
+        return primaryIngredients.concat(".");
+    }
+
+/*(details.PrimaryIngredients.map(i => i.map(j => j.Name).join(", ")).join(", ")).concat("contains 2% or less of: ", details.SecondaryIngredients.map(i => i.map(j => j.Name).join(", ")).join(", "), "."),*/
+
     componentDidMount() {
         var { details } = this.state;
         var labelNutrients = JSON.parse(details.LabelNutrients);
@@ -24,7 +63,7 @@
             allowNoBorder: true,
             showServingUnitQuantity: true,
             itemName: details.Description,
-            ingredientList: details.Ingredients.map(i => i.Name).join(","),
+            ingredientList: this.GetIngredientList(),
             showCalories: labelNutrients.calories != undefined,
             showFatCalories: false,
             showTotalFat: labelNutrients.fat != undefined,

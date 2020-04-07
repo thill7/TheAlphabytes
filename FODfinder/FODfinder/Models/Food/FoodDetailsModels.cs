@@ -12,7 +12,7 @@ namespace FODfinder.Models.Food
         public int FdcId { private set; get; }
         public string Description { private set; get; }
         public string BrandOwner { private set; get; }
-        //public List<Ingredient> Ingredients { private set; get; } = new List<Ingredient>();
+        public List<Ingredient> Ingredients { private set; get; } = new List<Ingredient>();
         public List<List<Ingredient>> PrimaryIngredients { private set; get; } = new List<List<Ingredient>>();
         public List<List<Ingredient>> SecondaryIngredients { private set; get; } = new List<List<Ingredient>>();
         public double ServingSize { private set; get; }
@@ -30,8 +30,8 @@ namespace FODfinder.Models.Food
                 var primary = new List<List<string>>();
                 var secondary = new List<List<string>>();
                 IngredientParser.Parse(ingredientString, out primary, out secondary);
-                PrimaryIngredients = IngredientParser.CreateListOfIngredients(primary);
-                SecondaryIngredients = IngredientParser.CreateListOfIngredients(secondary);
+                PrimaryIngredients = IngredientParser.ConvertToIngredients(primary);
+                SecondaryIngredients = IngredientParser.ConvertToIngredients(secondary);
             }
             //if(!string.IsNullOrEmpty(ingredientString))
             //{
