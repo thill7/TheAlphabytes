@@ -145,7 +145,11 @@
                                 <p className="text-lowercase">
                                     <span className="font-weight-bold text-capitalize">Ingredients:&nbsp;</span>
                                     {
-                                        details.Ingredients.map((i, index) => <span><span key={index} className={"p2" + (i.IsFodmap ? " bg-danger-50 text-white rounded" : "")}>{i.Name}</span>{index < details.Ingredients.length - 1 ? ", " : ""}</span>)
+                                        details.PrimaryIngredients.map(j => j.map((i, index) => <span><span key={index} className={"p2" + (i.IsFodmap ? " bg-danger-50 text-white rounded" : "")}>{i.Name}</span>{index < details.PrimaryIngredients.length - 1 ? ", " : ""}</span>))
+                                    }
+                                    <span className="font-weight-bold text-capitalize">contains 2% or less of:&nbsp;</span>
+                                    {
+                                        details.SecondaryIngredients.map(j => j.map((i, index) => <span><span key={index} className={"p2" + (i.IsFodmap ? " bg-danger-50 text-white rounded" : "")}>{i.Name}</span>{index < details.SecondaryIngredients.length - 1 ? ", " : ""}</span>))
                                     }
                                 </p>
                                 <p className="d-inline-block"><span className="font-weight-bold">UPC:</span> {details.UPC}</p>

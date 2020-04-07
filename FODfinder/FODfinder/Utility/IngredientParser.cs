@@ -9,7 +9,7 @@ namespace FODfinder.Utility
 {
     public class IngredientParser
     {
-        private const string Pattern = @"\w[\w\s-]+(\([\w\s-,]+\))*";
+        private const string Pattern = @"\w[\w\s-\']+(\([\w\s-,\']+\))*";
         private static readonly string[] ToRemove = { "ingredients", ":", ";", "made of", ".", "contains one or more of the following", "[", "]" };
         private static readonly string[] Variations = { "contains less than 2% of", "contains less than 2%", "contains 2% or less of", "less than 2% of", "less than 2%", "less than 2 percent" };
         public static MatchCollection MatchRegEx(string ingredientsString) => Regex.Matches(ingredientsString, Pattern);
