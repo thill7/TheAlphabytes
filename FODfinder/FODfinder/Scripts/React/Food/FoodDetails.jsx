@@ -149,7 +149,13 @@
                                     }
                                     <span className="font-weight-bold text-capitalize">contains 2% or less of:&nbsp;</span>
                                     {
-                                        details.SecondaryIngredients.map(j => j.map((i, index) => <span><span key={index} className={"p2" + (i.IsFodmap ? " bg-danger-50 text-white rounded" : "")}>{i.Name}</span>{index < details.SecondaryIngredients.length - 1 ? ", " : ""}</span>))
+                                        details.SecondaryIngredients.map(j => j.map((i, index) =>
+                                            <span>
+                                                <span key={index} className={"p2" + (i.IsFodmap ? " bg-danger-50 text-white rounded" : "")}>
+                                                    {j.length > 1 ? index == 0 ? "" : index != j.length ? "" : ")" : "("}{i.Name}
+                                                </span>
+                                                {index < details.SecondaryIngredients.length - 1 ? ", " : ""}
+                                            </span>))
                                     }
                                 </p>
                                 <p className="d-inline-block"><span className="font-weight-bold">UPC:</span> {details.UPC}</p>
@@ -161,10 +167,8 @@
 
                                     </div>
                                 </div>
-                                
                             </div>
                         </div>
-                        
                     </div>
                 </div>
             </div>
