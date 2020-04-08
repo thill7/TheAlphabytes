@@ -52,6 +52,8 @@
         return primaryIngredients.concat(".");
     }
 
+    
+
 /*(details.PrimaryIngredients.map(i => i.map(j => j.Name).join(", ")).join(", ")).concat("contains 2% or less of: ", details.SecondaryIngredients.map(i => i.map(j => j.Name).join(", ")).join(", "), "."),*/
 
     componentDidMount() {
@@ -130,7 +132,6 @@
     render() {
         var { details } = this.state;
         
-
         return (
             <div className="pt-4">
                 <div className="card bg-secondary text-gray shadow">
@@ -145,19 +146,51 @@
                                 <p className="text-lowercase">
                                     <span className="font-weight-bold text-capitalize">Ingredients:&nbsp;</span>
                                     {
-                                        details.PrimaryIngredients.map(j => j.map((i, index) => <span><span key={index} className={"p2" + (i.IsFodmap ? " bg-danger-50 text-white rounded" : "")}>{i.Name}</span>{index < details.PrimaryIngredients.length - 1 ? ", " : ""}</span>))
-                                    }
-                                    <span className="font-weight-bold text-capitalize">contains 2% or less of:&nbsp;</span>
-                                    {
-                                        details.SecondaryIngredients.map(j => j.map((i, index) =>
-                                            <span>
-                                                <span key={index} className={"p2" + (i.IsFodmap ? " bg-danger-50 text-white rounded" : "")}>
-                                                    {j.length > 1 ? index == 0 ? "" : index != j.length ? "" : ")" : "("}{i.Name}
+                                        details.PrimaryIngredients.map((j, jindex) => j.map((i, index) =>
+                                            <span key={index}>
+                                                {index == 1 ? "(" : ""}
+                                                <span key={index} className={"p2" + (i.IsFodmap ? " bg-danger-50 text-white rounded px-1" : "")}>
+                                                    {i.Name}
                                                 </span>
-                                                {index < details.SecondaryIngredients.length - 1 ? ", " : ""}
+                                                {index != (j.length - 1) ? "" : j.length > 1 ? ")" : ""}
+                                                {jindex == details.PrimaryIngredients.length - 1 ? (details.SecondaryIngredients.length != 0 ? ", " : " ") : j.length > 1 ? (index == 0 ? " " : ", ") : ", "}
+                                            </span>))
+                                    }
+                                    {
+                                        details.SecondaryIngredients.length > 0 &&
+                                        <span className="font-weight-bold">contains 2% or less of:&nbsp;</span>
+                                    }
+                                    {
+                                        details.SecondaryIngredients.map((j, jindex) => j.map((i, index) =>
+                                            <span key={index}>
+                                                {index == 1 ? "(" : ""}
+                                                <span key={index} className={"p2" + (i.IsFodmap ? " bg-danger-50 text-white rounded px-1" : "")}>
+                                                    {i.Name}
+                                                </span>
+                                                {index != (j.length - 1) ? "" : j.length > 1 ? ")" : ""}
+                                                {jindex == details.SecondaryIngredients.length - 1 ? " " : j.length > 1 ? (index == 0 ? " " : ", ") : ", "}
                                             </span>))
                                     }
                                 </p>
+                                {/* <div> {
+                                    details.SecondaryIngredients.length > 0
+                                        ? <p className="text-lowercase">
+                                            <span className="font-weight-bold text-capitalize">contains 2% or less of:&nbsp;</span>
+                                            {
+                                            details.SecondaryIngredients.map((j, jindex) => j.map((i, index) =>
+                                                <span key={index}>
+                                                    {index == 1 ? "(" : ""}
+                                                    <span key={index} className={"p2" + (i.IsFodmap ? " bg-danger-50 text-white rounded" : "")}>
+                                                        {i.Name}
+                                                    </span>
+                                                    {index != (j.length - 1) ? "" : j.length > 1 ? ")" : ""}
+                                                    {jindex == details.SecondaryIngredients.length + j.length - 1 ? "." : j.length > 1 ? (index == 0 ? " " : ", ") : ", "}
+                                                </span>))
+                                            }
+                                        </p>
+                                        : null
+                                    }
+                                </div>*/}
                                 <p className="d-inline-block"><span className="font-weight-bold">UPC:</span> {details.UPC}</p>
                                 <p><span className="font-weight-bold">Serving Size:</span> {details.ServingSize}{details.ServingSizeUnit}</p>
                             </div>
