@@ -86,6 +86,10 @@
         }
     }
 
+    removeLeadingZeros(query) {
+        return parseInt(query).toString();
+    }
+
     onQuerySubmit(event) {
         event.preventDefault();
         var { isUpc, query, requireAllWords, includeList, excludeList } = this.state;
@@ -94,7 +98,7 @@
         if (totalIngredientList.length > 0) {
             searchQuery.append("ingredients", totalIngredientList.join(" "))
         }
-        searchQuery.append("query", isUpc ? ("gtinUpc:" + query) : query)
+        searchQuery.append("query", isUpc ? ("gtinUpc:*" + this.removeLeadingZeros(query)) : query)
         searchQuery.append("requireAllWords", requireAllWords)
         if (query != "") {
             let url = "/Food/Index?" + searchQuery.toString();
