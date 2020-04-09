@@ -40,7 +40,7 @@ namespace FODfinder.Models.Food
             double servingSize;
             ServingSize = Double.TryParse(detailObject.SelectToken("servingSize")?.ToString() ?? "", out servingSize) ? servingSize : 0.0;
             ServingSizeUnit = detailObject.SelectToken("servingSizeUnit")?.ToString() ?? "";
-            ServingSizeFullText = detailObject.SelectToken("householdServingFullText")?.ToString() ?? "";
+            ServingSizeFullText = ServingSizeCleaner.Clean(detailObject.SelectToken("householdServingFullText")?.ToString() ?? "");
             LabelNutrients = detailObject.SelectToken("labelNutrients")?.ToString() ?? "";
             int fdcId;
             FdcId = int.TryParse(detailObject.SelectToken("fdcId")?.ToString() ?? "", out fdcId) ? fdcId : -1;

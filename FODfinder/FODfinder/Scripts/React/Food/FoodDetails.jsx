@@ -111,9 +111,9 @@
                                 </p>
                                 <p className="d-inline-block"><span className="font-weight-bold">UPC:</span> {details.UPC}</p>
                                 <p>
-                                    <span className="font-weight-bold">Serving Size:</span>
+                                    <span className="font-weight-bold">Serving Size:</span> {details.ServingSizeFullText}
                                     {
-                                        details.ServingSizeFullText} {(details.ServingSizeFullText == "") ? <span>{details.ServingSize}{details.ServingSizeUnit}</span> : <span>({details.ServingSize}{details.ServingSizeUnit})</span>
+                                        (details.ServingSizeFullText == "") ? <span> {details.ServingSize}{details.ServingSizeUnit}</span> : <span> ({details.ServingSize}{details.ServingSizeUnit})</span>
                                     }
                                 </p>
                             </div>
