@@ -110,7 +110,7 @@
                                     }
                                 </p>
                                 <p className="d-inline-block"><span className="font-weight-bold">UPC:</span> {details.UPC}</p>
-                                <p><span className="font-weight-bold">Serving Size:</span> {details.ServingSize}{details.ServingSizeUnit}</p>
+                                <p><span className="font-weight-bold">Serving Size:</span> {details.ServingSizeFullText} {/*{details.ServingSize}{details.ServingSizeUnit}*/} </p>
                             </div>
                             <div className="col-md-6">
                                 <div className="shadow rounded bg-gray p-4">
