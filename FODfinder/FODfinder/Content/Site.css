@@ -41,7 +41,18 @@
 .text-gray {
     color: rgba(0,0,0,0.5) !important;
 }
+.High-Risk {
+    background-color: var(--danger-50) !important;
+    color: white;
+}
+.Low-Risk {
+    background-color: transparent !important;
+}
 
+.Blacklist {
+    background-color: red !important;
+    color: white !important;
+}
 .card-img {
     max-height: 75px !important;
     width: auto;

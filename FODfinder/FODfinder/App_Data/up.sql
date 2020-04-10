@@ -125,7 +125,7 @@ CREATE TABLE [dbo].[UserIngredients]
 (
 	[userID]				NVARCHAR(128)	NOT NULL,
 	[Label]					NVARCHAR(10)	NOT NULL 
-		CHECK (Label IN('High Risk', 'Low Risk', 'Blacklist')),
+		CHECK (Label IN('High-Risk', 'Low-Risk', 'Blacklist')),
 	[LabelledIngredientID]	INT				NOT NULL,
 	[FODMAPIngredientID]	INT				NULL,
 	CONSTRAINT [PK_dbo.UserIngredients] PRIMARY KEY CLUSTERED ([LabelledIngredientID] ASC, [userID] ASC),

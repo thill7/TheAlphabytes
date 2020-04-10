@@ -16,6 +16,10 @@ namespace FODfinder.Models.Food
             this.Name = name;
             this.IsFodmap = isFodmap;
             this.Label = label;
+            if (label == "Low-Risk")
+            {
+                this.IsFodmap = false;
+            }
         }
     }
 }

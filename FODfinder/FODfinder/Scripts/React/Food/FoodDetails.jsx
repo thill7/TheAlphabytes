@@ -148,7 +148,7 @@
                                 <p className="text-lowercase">
                                     <span className="font-weight-bold text-capitalize">Ingredients:&nbsp;</span>
                                     {
-                                        details.Ingredients.map((i, index) => <span><span key={index} onClick={(e) => { this.showLabels(e, index) }} className={"p2 cursor-pointer " + i.Label + (i.IsFodmap ? " bg-danger-50 text-white rounded" : "")}>{i.Name}</span>{
+                                        details.Ingredients.map((i, index) => <span><span key={index} onClick={(e) => { this.showLabels(e, index) }} className={"p2 cursor-pointer rounded " + i.Label + (i.IsFodmap ? " bg-danger-50 text-white rounded" : "")}>{i.Name}</span>{
                                             this.state.showLabels && this.state.ingredientId == index
                                                 ? (
                                                     <div id = "label" className="labels list-group"
@@ -156,8 +156,8 @@
                                                         this.dropdownMenu = element;
                                                         }}>
                                                         <button className="list-group-item list-group-item-dark">{i.Name}</button>
-                                                        <button className="list-group-item list-group-item-action " onClick={() => { this.addLabel("High Risk",i.Name) }}> High Risk </button>
-                                                        <button className="list-group-item list-group-item-action " onClick={() => { this.addLabel("Low Risk",i.Name) }}> Low Risk </button>
+                                                        <button className="list-group-item list-group-item-action " onClick={() => { this.addLabel("High-Risk",i.Name) }}> High Risk </button>
+                                                        <button className="list-group-item list-group-item-action " onClick={() => { this.addLabel("Low-Risk",i.Name) }}> Low Risk </button>
                                                         <button className="list-group-item list-group-item-action " onClick={() => { this.addLabel("Blacklist",i.Name) }}> Blacklist </button>
                                                     </div>
                                                 )
