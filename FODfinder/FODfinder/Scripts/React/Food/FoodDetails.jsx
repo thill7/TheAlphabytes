@@ -144,7 +144,7 @@
                     <div className="card-header">
                         <h2 className="display-4 font-weight-normal text-capitalize">{details.Description.toLowerCase()}</h2>
                         <h3 className="font-weight-light">{details.BrandOwner}</h3>
-                        <button type="button" onClick={() => { this.handleclick() }} className="btn-primary text-white">Save Food</button>
+                        <button type="button" onClick={() => { this.handleclick() }} className="btn btn-primary text-white">Save Food</button>
                     </div>
                     <div className="card-body">
                         <div className="row">
@@ -173,7 +173,12 @@
                                 </p>
                                 {flagBlacklist == 1 ? <p className='d-inline-block font-weight-bold font-italic'>This food contains an item you blacklisted</p> : ""}
                                 <p className="d-inline-block"><span className="font-weight-bold">UPC:</span> {details.UPC}</p>
-                                <p><span className="font-weight-bold">Serving Size:</span> {details.ServingSize}{details.ServingSizeUnit}</p>
+                                <p>
+                                    <span className="font-weight-bold">Serving Size:</span> {details.ServingSizeFullText}
+                                    {
+                                        (details.ServingSizeFullText == "") ? <span> {details.ServingSize}{details.ServingSizeUnit}</span> : <span> ({details.ServingSize}{details.ServingSizeUnit})</span>
+                                    }
+                                </p>
                             </div>
                             <div className="col-md-6">
                                 <div className="shadow rounded bg-gray p-4">
