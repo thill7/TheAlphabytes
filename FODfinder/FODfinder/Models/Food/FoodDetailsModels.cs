@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Data;
 using System.Web;
 using FODfinder.Utility;
+using Microsoft.AspNet.Identity;
 using Newtonsoft.Json.Linq;
 
 namespace FODfinder.Models.Food
@@ -21,6 +23,7 @@ namespace FODfinder.Models.Food
 
         public FoodDetailsModels(string jsonString, ref FFDBContext db) {
             JObject detailObject = JObject.Parse(jsonString);
+            string userID = System.Web.HttpContext.Current.User.Identity.GetUserId();
             Description = detailObject.SelectToken("description")?.ToString() ?? "";
             BrandOwner = detailObject.SelectToken("brandOwner")?.ToString() ?? "";
             var ingredientString = detailObject.SelectToken("ingredients")?.ToString() ?? "";
@@ -34,7 +37,8 @@ namespace FODfinder.Models.Food
                         continue;
                     }
                     var fodmap = db.FODMAPIngredients.Where(f => ingredient.Contains(f.Name.ToLower())).FirstOrDefault();
-                    Ingredients.Add(new Ingredient(ingredient, fodmap != null));
+                    var label = db.UserIngredients.Where(u => u.userID == userID && u.LabelledIngredient.Name == ingredient).Select(u => u.Label).FirstOrDefault();
+                    Ingredients.Add(new Ingredient(ingredient, fodmap != null, label));
                 }
             }
             double servingSize;

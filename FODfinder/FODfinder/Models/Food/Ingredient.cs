@@ -9,11 +9,17 @@ namespace FODfinder.Models.Food
     {
         public String Name { get; private set; }
         public bool IsFodmap { get; private set; }
+        public string Label { get; private set; }
 
-        public Ingredient(String name, bool isFodmap)
+        public Ingredient(String name, bool isFodmap, string label)
         {
             this.Name = name;
             this.IsFodmap = isFodmap;
+            this.Label = label;
+            if (label == "Low-Risk")
+            {
+                this.IsFodmap = false;
+            }
         }
     }
 }
