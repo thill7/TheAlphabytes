@@ -131,6 +131,8 @@
 
     render() {
         var { details } = this.state;
+        var primaryCount = details.PrimaryIngredients.length - 1;
+        var secondaryCount = details.SecondaryIngredients.length - 1;
         
         return (
             <div className="pt-4">
@@ -153,7 +155,7 @@
                                                     {i.Name}
                                                 </span>
                                                 {index != (j.length - 1) ? "" : j.length > 1 ? ")" : ""}
-                                                {jindex == details.PrimaryIngredients.length - 1 ? (details.SecondaryIngredients.length != 0 ? ", " : " ") : j.length > 1 ? (index == 0 ? " " : ", ") : ", "}
+                                                {jindex == primaryCount ? (secondaryCount != 0 ? ", " : " ") : j.length > 1 ? (index == 0 ? " " : ", ") : ", "}
                                             </span>))
                                     }
                                     {
@@ -168,29 +170,10 @@
                                                     {i.Name}
                                                 </span>
                                                 {index != (j.length - 1) ? "" : j.length > 1 ? ")" : ""}
-                                                {jindex == details.SecondaryIngredients.length - 1 ? " " : j.length > 1 ? (index == 0 ? " " : ", ") : ", "}
+                                                {jindex == secondaryCount ? " " : j.length > 1 ? (index == 0 ? " " : ", ") : ", "}
                                             </span>))
                                     }
                                 </p>
-                                {/* <div> {
-                                    details.SecondaryIngredients.length > 0
-                                        ? <p className="text-lowercase">
-                                            <span className="font-weight-bold text-capitalize">contains 2% or less of:&nbsp;</span>
-                                            {
-                                            details.SecondaryIngredients.map((j, jindex) => j.map((i, index) =>
-                                                <span key={index}>
-                                                    {index == 1 ? "(" : ""}
-                                                    <span key={index} className={"p2" + (i.IsFodmap ? " bg-danger-50 text-white rounded" : "")}>
-                                                        {i.Name}
-                                                    </span>
-                                                    {index != (j.length - 1) ? "" : j.length > 1 ? ")" : ""}
-                                                    {jindex == details.SecondaryIngredients.length + j.length - 1 ? "." : j.length > 1 ? (index == 0 ? " " : ", ") : ", "}
-                                                </span>))
-                                            }
-                                        </p>
-                                        : null
-                                    }
-                                </div>*/}
                                 <p className="d-inline-block"><span className="font-weight-bold">UPC:</span> {details.UPC}</p>
                                 <p><span className="font-weight-bold">Serving Size:</span> {details.ServingSize}{details.ServingSizeUnit}</p>
                             </div>
