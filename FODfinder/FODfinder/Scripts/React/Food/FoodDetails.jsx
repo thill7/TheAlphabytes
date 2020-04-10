@@ -130,9 +130,13 @@
         window.console.log("Label: " + label + " Ingredient: " + ingredient);
     }
 
+    setFlag(flag) {
+        flag = 1;
+    }
+
     render() {
         var { details } = this.state;
-        
+        var { flagBlacklist } = 0;
 
         return (
             <div className="pt-4">
@@ -148,7 +152,7 @@
                                 <p className="text-lowercase">
                                     <span className="font-weight-bold text-capitalize">Ingredients:&nbsp;</span>
                                     {
-                                        details.Ingredients.map((i, index) => <span><span key={index} onClick={(e) => { this.showLabels(e, index) }} className={"p2 cursor-pointer rounded " + i.Label + (i.IsFodmap ? " bg-danger-50 text-white rounded" : "")}>{i.Name}</span>{
+                                        details.Ingredients.map((i, index) => <span><span key={index} onLoad={i.Label == "Blacklist" ? flagBlacklist = 1 : ""} onClick={(e) => { this.showLabels(e, index) }} className={"p2 cursor-pointer rounded " + i.Label + (i.IsFodmap ? " bg-danger-50 text-white rounded" : "")}>{i.Name}</span>{
                                             this.state.showLabels && this.state.ingredientId == index
                                                 ? (
                                                     <div id = "label" className="labels list-group"
@@ -167,6 +171,7 @@
                                         }{index < details.Ingredients.length - 1 ? ", " : ""}</span>)
                                     }
                                 </p>
+                                {flagBlacklist == 1 ? <p className='d-inline-block font-weight-bold font-italic'>This food contains an item you blacklisted</p> : ""}
                                 <p className="d-inline-block"><span className="font-weight-bold">UPC:</span> {details.UPC}</p>
                                 <p><span className="font-weight-bold">Serving Size:</span> {details.ServingSize}{details.ServingSizeUnit}</p>
                             </div>
