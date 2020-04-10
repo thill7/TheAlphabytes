@@ -3,9 +3,13 @@
         super(props);
 
         this.state = {
-            details: JSON.parse(this.props.details)
+            details: JSON.parse(this.props.details),
+            showLabels: false,
+            ingredientId: null
         };
         this.handleclick.bind(this);
+        this.showLabels = this.showLabels.bind(this);
+        this.hideLabels= this.hideLabels.bind(this);
     }
 
     GetFoodNutrientValue(key) {
@@ -129,11 +133,54 @@
         window.console.log(message);
     }
 
+   /* ingredientStatus(name) {
+        var statusOfIngredient = await axios.post(`FODMAPIngredients/GetLabel`, { ingredient: name });
+        var statusResult = statusOfIngredient.data;
+        var label = statusResult.ingredientLabel;
+        return label;
+    }*/
+
+    showLabels(event, index) {
+        event.preventDefault();
+
+        this.setState({ ingredientId: index });
+        this.setState({ showLabels: true }, () => {
+            document.addEventListener('click', this.hideLabels);
+        });
+    }
+
+    hideLabels(event) {
+        if (!this.dropdownMenu.contains(event.target)) {
+            this.setState({ showLabels: false }, () => {
+                document.removeEventListener('click', this.hideLabels);
+            });
+        }
+        this.setState({ ingredientId: null });
+    }
+
+    async addLabel(label, ingredient) {
+        var id = parseInt(this.state.details.FdcId);
+        var saveLabel = await axios.post(`/FODMAPIngredients/Create`, { assignLabel: label, ingredientName: ingredient });
+        var result = saveLabel.data;
+        var message = result.message;
+        if(result.redirect == true) {
+            window.location.replace("/Account/Login?ReturnUrl=%2ffood%2fdetails%2f" + id);
+        } else {
+            alert(message);
+        }
+        window.console.log("Label: " + label + " Ingredient: " + ingredient);
+    }
+
+    setFlag(flag) {
+        flag = 1;
+    }
+
     render() {
         var { details } = this.state;
         var primaryCount = details.PrimaryIngredients.length - 1;
         var secondaryCount = details.SecondaryIngredients.length - 1;
-        
+        var { flagBlacklist } = 0;
+
         return (
             <div className="pt-4">
                 <div className="card bg-secondary text-gray shadow">
@@ -172,10 +219,33 @@
                                                 {index != (j.length - 1) ? "" : j.length > 1 ? ")" : ""}
                                                 {jindex == secondaryCount ? " " : j.length > 1 ? (index == 0 ? " " : ", ") : ", "}
                                             </span>))
+                                        details.Ingredients.map((i, index) => <span><span key={index} onLoad={i.Label == "Blacklist" ? flagBlacklist = 1 : ""} onClick={(e) => { this.showLabels(e, index) }} className={"p2 cursor-pointer rounded " + i.Label + (i.IsFodmap ? " bg-danger-50 text-white rounded" : "")}>{i.Name}</span>{
+                                            this.state.showLabels && this.state.ingredientId == index
+                                                ? (
+                                                    <div id = "label" className="labels list-group"
+                                                        ref={(element) => {
+                                                        this.dropdownMenu = element;
+                                                        }}>
+                                                        <button className="list-group-item list-group-item-dark">{i.Name}</button>
+                                                        <button className="list-group-item list-group-item-action " onClick={() => { this.addLabel("High-Risk",i.Name) }}> High Risk </button>
+                                                        <button className="list-group-item list-group-item-action " onClick={() => { this.addLabel("Low-Risk",i.Name) }}> Low Risk </button>
+                                                        <button className="list-group-item list-group-item-action " onClick={() => { this.addLabel("Blacklist",i.Name) }}> Blacklist </button>
+                                                    </div>
+                                                )
+                                                : (
+                                                    null
+                                                )
+                                        }{index < details.Ingredients.length - 1 ? ", " : ""}</span>)
                                     }
                                 </p>
+                                {flagBlacklist == 1 ? <p className='d-inline-block font-weight-bold font-italic'>This food contains an item you blacklisted</p> : ""}
                                 <p className="d-inline-block"><span className="font-weight-bold">UPC:</span> {details.UPC}</p>
-                                <p><span className="font-weight-bold">Serving Size:</span> {details.ServingSize}{details.ServingSizeUnit}</p>
+                                <p>
+                                    <span className="font-weight-bold">Serving Size:</span> {details.ServingSizeFullText}
+                                    {
+                                        (details.ServingSizeFullText == "") ? <span> {details.ServingSize}{details.ServingSizeUnit}</span> : <span> ({details.ServingSize}{details.ServingSizeUnit})</span>
+                                    }
+                                </p>
                             </div>
                             <div className="col-md-6">
                                 <div className="shadow rounded bg-gray p-4">
@@ -188,6 +258,8 @@
                     </div>
                 </div>
             </div>
+
+
         );
     }
 }

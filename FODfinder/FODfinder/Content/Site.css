@@ -118,12 +118,26 @@
 .text-gray {
     color: rgba(0,0,0,0.5) !important;
 }
+.High-Risk {
+    background-color: var(--danger-50) !important;
+    color: white;
+}
+.Low-Risk {
+    background-color: transparent !important;
+}
 
+.Blacklist {
+    background-color: black !important;
+    color: white !important;
+}
 .card-img {
     max-height: 75px !important;
     width: auto;
 }
 
+.cursor-pointer{
+    cursor: pointer;
+}
 
 body {
     padding-top: 65px;

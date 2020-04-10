@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Data;
 using System.Web;
 using FODfinder.Utility;
+using Microsoft.AspNet.Identity;
 using Newtonsoft.Json.Linq;
 
 namespace FODfinder.Models.Food
@@ -17,11 +19,13 @@ namespace FODfinder.Models.Food
         public List<List<Ingredient>> SecondaryIngredients { private set; get; } = new List<List<Ingredient>>();
         public double ServingSize { private set; get; }
         public string ServingSizeUnit { private set; get; }
+        public string ServingSizeFullText { private set; get; }
         public string LabelNutrients { private set; get; }
         public string UPC { private set; get; }
 
         public FoodDetailsModels(string jsonString) {
             JObject detailObject = JObject.Parse(jsonString);
+            string userID = System.Web.HttpContext.Current.User.Identity.GetUserId();
             Description = detailObject.SelectToken("description")?.ToString() ?? "";
             BrandOwner = detailObject.SelectToken("brandOwner")?.ToString() ?? "";
             var ingredientString = detailObject.SelectToken("ingredients")?.ToString() ?? "";
@@ -53,6 +57,7 @@ namespace FODfinder.Models.Food
             double servingSize;
             ServingSize = double.TryParse(detailObject.SelectToken("servingSize")?.ToString() ?? "", out servingSize) ? servingSize : 0.0;
             ServingSizeUnit = detailObject.SelectToken("servingSizeUnit")?.ToString() ?? "";
+            ServingSizeFullText = ServingSizeCleaner.Clean(detailObject.SelectToken("householdServingFullText")?.ToString() ?? "");
             LabelNutrients = detailObject.SelectToken("labelNutrients")?.ToString() ?? "";
             int fdcId;
             FdcId = int.TryParse(detailObject.SelectToken("fdcId")?.ToString() ?? "", out fdcId) ? fdcId : -1;
