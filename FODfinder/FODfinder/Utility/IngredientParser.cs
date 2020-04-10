@@ -55,14 +55,14 @@ namespace FODfinder.Utility
                             foreach (var subIngredient in ingredient)
                             {
                                 var fodmap = db.FODMAPIngredients.Where(f => subIngredient.Contains(f.Name.ToLower())).FirstOrDefault();
-                                list.Add(new Ingredient(subIngredient.Trim(), fodmap != null));
+                                list.Add(new Ingredient(subIngredient.Trim(), fodmap != null, null));
                             }
                             ingredients.Add(list);
                         }
                         else if (ingredient.Count == 1)
                         {
                             var fodmap = db.FODMAPIngredients.Where(f => ingredient.FirstOrDefault().Contains(f.Name.ToLower())).FirstOrDefault();
-                            ingredients.Add(new List<Ingredient>() { new Ingredient(ingredient.FirstOrDefault().Trim(), fodmap != null) });
+                            ingredients.Add(new List<Ingredient>() { new Ingredient(ingredient.FirstOrDefault().Trim(), fodmap != null, null) });
                         }
                     }
                     return ingredients;
