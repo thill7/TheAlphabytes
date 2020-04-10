@@ -92,6 +92,13 @@
         window.console.log(message);
     }
 
+   /* ingredientStatus(name) {
+        var statusOfIngredient = await axios.post(`FODMAPIngredients/GetLabel`, { ingredient: name });
+        var statusResult = statusOfIngredient.data;
+        var label = statusResult.ingredientLabel;
+        return label;
+    }*/
+
     showLabels(event, index) {
         event.preventDefault();
 
@@ -141,7 +148,7 @@
                                 <p className="text-lowercase">
                                     <span className="font-weight-bold text-capitalize">Ingredients:&nbsp;</span>
                                     {
-                                        details.Ingredients.map((i, index) => <span><span key={index} onClick={(e) => { this.showLabels(e,index) }} className={"p2 cursor-pointer" + (i.IsFodmap ? " bg-danger-50 text-white rounded" : "")}>{i.Name}</span>{
+                                        details.Ingredients.map((i, index) => <span><span key={index} onClick={(e) => { this.showLabels(e, index) }} className={"p2 cursor-pointer " + i.Label + (i.IsFodmap ? " bg-danger-50 text-white rounded" : "")}>{i.Name}</span>{
                                             this.state.showLabels && this.state.ingredientId == index
                                                 ? (
                                                     <div id = "label" className="labels list-group"
