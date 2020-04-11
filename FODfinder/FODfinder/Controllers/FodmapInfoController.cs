@@ -13,5 +13,10 @@ namespace FODfinder.Controllers
         {
             return View();
         }
+        
+        public ActionResult CommonFodmap()
+        {
+            return View();
+        }
     }
 }
