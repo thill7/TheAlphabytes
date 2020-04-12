@@ -280,6 +280,7 @@
                                         (details.ServingSizeFullText == "") ? <span> {details.ServingSize}{details.ServingSizeUnit}</span> : <span> ({details.ServingSize}{details.ServingSizeUnit})</span>
                                     }
                                 </p>
+                                <p className="d-inline-block"><span className="font-weight-bold">This is a {details.FodmapScore} FODMAP food</span></p>
                             </div>
                             <div className="col-md-6">
                                 <div className="shadow rounded bg-gray p-4">

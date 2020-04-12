@@ -8,12 +8,31 @@ namespace FODfinder.Utility.Algorithm
 {
     public class Algorithm
     {
-        public static bool CheckListForFodmaps(List<List<Ingredient>> ingredients)
+        public static bool ListContainsFodmaps(List<List<Ingredient>> ingredients)
         {
             try
             {
-                var temp = ingredients.Select(i => i.Where(si => si.IsFodmap)) != null;
-                return temp;
+                foreach (var ingredient in ingredients)
+                {
+                    if (ingredient.Count == 1)
+                    {
+                        if (ingredient.FirstOrDefault().IsFodmap)
+                        {
+                            return true;
+                        }
+                    }
+                    else
+                    {
+                        foreach (var subingredient in ingredient)
+                        {
+                            if(subingredient.IsFodmap)
+                            {
+                                return true;
+                            }
+                        }
+                    }
+                }
+                return false;
             }
             catch (ArgumentNullException e)
             {
@@ -24,9 +43,8 @@ namespace FODfinder.Utility.Algorithm
         {
             try
             {
-                var score = CheckListForFodmaps(primaryIngredients) ? Score.High : Score.Low;
-                score = CheckListForFodmaps(secondaryIngredients) ? Score.Medium : Score.Low;
-                return score;
+                var temp = ListContainsFodmaps(primaryIngredients) ? Score.High : ListContainsFodmaps(secondaryIngredients) ? Score.Medium : Score.Low;
+                return temp;
             }
             catch (ArgumentNullException e)
             {
