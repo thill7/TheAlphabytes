@@ -4,6 +4,7 @@ using System.Text.RegularExpressions;
 using System;
 using FODfinder.Models.Food;
 using FODfinder.Models;
+using Microsoft.AspNet.Identity;
 
 namespace FODfinder.Utility
 {
@@ -46,6 +47,7 @@ namespace FODfinder.Utility
             {
                 using (FFDBContext db = new FFDBContext())
                 {
+                    string userID = System.Web.HttpContext.Current.User.Identity.GetUserId();
                     var ingredients = new List<List<Ingredient>>();
                     foreach (var ingredient in ingredientsAsStrings)
                     {
@@ -62,7 +64,8 @@ namespace FODfinder.Utility
                         else if (ingredient.Count == 1)
                         {
                             var fodmap = db.FODMAPIngredients.Where(f => ingredient.FirstOrDefault().Contains(f.Name.ToLower())).FirstOrDefault();
-                            ingredients.Add(new List<Ingredient>() { new Ingredient(ingredient.FirstOrDefault().Trim(), fodmap != null, null) });
+                            var label = db.UserIngredients.Where(u => u.userID == userID && u.LabelledIngredient.Name == ingredient.FirstOrDefault()).Select(u => u.Label).FirstOrDefault();
+                            ingredients.Add(new List<Ingredient>() { new Ingredient(ingredient.FirstOrDefault().Trim(), fodmap != null, label) });
                         }
                     }
                     return ingredients;
