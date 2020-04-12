@@ -35,7 +35,7 @@ namespace FODfinder.Utility
                     break;
                 }
             }
-            _ = index == -1 ? index = ingredients.Length : index;
+            var temp = index == -1 ? index = ingredients.Length : index;
             var primaryIngredientsString = ingredients.Substring(0, index);
             var secondaryIngredientsString = ingredients.Substring(index + length);
             secondaryIngredients = ConvertToListOfLists(ConvertToEnumerable(MatchRegEx(secondaryIngredientsString)));
