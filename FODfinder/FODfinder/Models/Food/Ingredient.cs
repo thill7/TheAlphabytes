@@ -7,7 +7,7 @@ namespace FODfinder.Models.Food
 {
     public class Ingredient
     {
-        public String Name { get; private set; }
+        public string Name { get; private set; }
         public bool IsFodmap { get; private set; }
         public string Label { get; private set; }
 

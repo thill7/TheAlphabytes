@@ -19,6 +19,46 @@
         return "";
     }
 
+    GetIngredientListHelper(list) {
+        var ingredientsList = "";
+        for (var i = 0; i < list.length; i++) {
+            ingredientsList += list[i][0].Name;
+            if (list[i].length > 1) {
+                ingredientsList += " (";
+                for (var j = 1; j < list[i].length; j++) {
+                    if (j == list[i].length - 1) {
+                        ingredientsList += list[i][j].Name
+                    }
+                    else {
+                        ingredientsList += list[i][j].Name + ", ";
+                    }
+                }
+                if (i != list.length - 1) {
+                    ingredientsList += "), ";
+                }
+                else {
+                    ingredientsList += ")";
+                }
+            }
+            else if (i != list.length - 1) {
+                ingredientsList += ", ";
+            }
+        }
+        return ingredientsList;
+    }
+
+    GetIngredientList() {
+        var primaryIngredients = this.GetIngredientListHelper(this.state.details.PrimaryIngredients);
+        var secondaryIngredients = this.GetIngredientListHelper(this.state.details.SecondaryIngredients);
+        if (secondaryIngredients != "") {
+            return primaryIngredients.concat(", contains 2% or less of: ", secondaryIngredients, ".");
+        }
+        return primaryIngredients.concat(".");
+    }
+    
+
+/*(details.PrimaryIngredients.map(i => i.map(j => j.Name).join(", ")).join(", ")).concat("contains 2% or less of: ", details.SecondaryIngredients.map(i => i.map(j => j.Name).join(", ")).join(", "), "."),*/
+
     componentDidMount() {
         var { details } = this.state;
         var labelNutrients = JSON.parse(details.LabelNutrients);
@@ -28,7 +68,7 @@
             allowNoBorder: true,
             showServingUnitQuantity: true,
             itemName: details.Description,
-            ingredientList: details.Ingredients.map(i => i.Name).join(","),
+            ingredientList: this.GetIngredientList(),
             showCalories: labelNutrients.calories != undefined,
             showFatCalories: false,
             showTotalFat: labelNutrients.fat != undefined,
@@ -136,6 +176,8 @@
 
     render() {
         var { details } = this.state;
+        var primaryCount = details.PrimaryIngredients.length - 1;
+        var secondaryCount = details.SecondaryIngredients.length - 1;
         var { flagBlacklist } = 0;
 
         return (
@@ -149,10 +191,69 @@
                     <div className="card-body">
                         <div className="row">
                             <div className="col-md-6 d-inline-flex flex-column justify-content-start align-items-start">
-                                <p className="text-lowercase">
+                                <div className="text-lowercase">
                                     <span className="font-weight-bold text-capitalize">Ingredients:&nbsp;</span>
                                     {
-                                        details.Ingredients.map((i, index) => <span><span key={index} onLoad={i.Label == "Blacklist" ? flagBlacklist = 1 : ""} onClick={(e) => { this.showLabels(e, index) }} className={"p2 cursor-pointer rounded " + i.Label + (i.IsFodmap ? " bg-danger-50 text-white rounded" : "")}>{i.Name}</span>{
+                                        details.PrimaryIngredients.map((i, iCount) => i.map((j, jCount, jKey = (iCount + "-primary-inner-span-" + jCount + "-" + Math.floor(Math.random() * 10000))) =>
+                                            <span key={"primary-outer-span-" + iCount + "-" + Math.floor(Math.random() * 10000)}>
+                                                {jCount == 1 ? "(" : ""}
+                                                <span key={jKey} onLoad={j.Label == "Blacklist" ? flagBlacklist = 1 : null} onClick={(e) => { this.showLabels(e, jKey) }} className={"p2 cursor-pointer rounded " + j.Label + (j.IsFodmap ? " bg-danger-50 text-white rounded px-1" : "")}>
+                                                    {j.Name}
+                                                </span>
+                                                {jCount != (i.length - 1) ? "" : i.length > 1 ? ")" : ""}
+                                                {iCount == primaryCount ? (secondaryCount != 0 ? ", " : " ") : i.length > 1 ? (jCount == 0 ? " " : ", ") : ", "}
+                                                {
+                                                    this.state.showLabels && this.state.ingredientId == jKey
+                                                        ? (
+                                                            <div id="label" className="labels list-group"
+                                                                ref={(element) => {
+                                                                    this.dropdownMenu = element;
+                                                                }}>
+                                                                <button className="list-group-item list-group-item-dark">{j.Name}</button>
+                                                                <button className="list-group-item list-group-item-action " onClick={() => { this.addLabel("High-Risk", j.Name) }}> High Risk </button>
+                                                                <button className="list-group-item list-group-item-action " onClick={() => { this.addLabel("Low-Risk", j.Name) }}> Low Risk </button>
+                                                                <button className="list-group-item list-group-item-action " onClick={() => { this.addLabel("Blacklist", j.Name) }}> Blacklist </button>
+                                                            </div>
+                                                        )
+                                                        : (
+                                                            null
+                                                        )
+                                                }
+                                            </span>))
+                                    }
+                                    {
+                                        details.SecondaryIngredients.length > 0 &&
+                                        <span className="font-weight-bold">contains 2% or less of:&nbsp;</span>
+                                    }
+                                    {
+                                        details.SecondaryIngredients.map((i, iCount) => i.map((j, jCount, jKey = (iCount + "-secondary-inner-span-" + jCount + "-" + Math.floor(Math.random() * 10000))) =>
+                                            <span key={"secondary-outer-span-" + i.Count + "-" + Math.floor(Math.random() * 10000)}>
+                                                {jCount == 1 ? "(" : ""}
+                                                <span key={jKey} onLoad={j.Label == "Blacklist" ? flagBlacklist = 1 : null} onClick={(e) => { this.showLabels(e, jKey) }} className={"p2 cursor-pointer rounded " + j.Label + (j.IsFodmap ? " bg-danger-50 text-white rounded px-1" : "")}>
+                                                    {j.Name}
+                                                </span>
+                                                {jCount != (i.length - 1) ? "" : i.length > 1 ? ")" : ""}
+                                                {iCount == secondaryCount ? " " : i.length > 1 ? (jCount == 0 ? " " : ", ") : ", "}
+                                                {
+                                                    this.state.showLabels && this.state.ingredientId == jKey
+                                                        ? (
+                                                            <div id="label" className="labels list-group"
+                                                                ref={(element) => {
+                                                                    this.dropdownMenu = element;
+                                                                }}>
+                                                                <button className="list-group-item list-group-item-dark">{j.Name}</button>
+                                                                <button className="list-group-item list-group-item-action " onClick={() => { this.addLabel("High-Risk", j.Name) }}> High Risk </button>
+                                                                <button className="list-group-item list-group-item-action " onClick={() => { this.addLabel("Low-Risk", j.Name) }}> Low Risk </button>
+                                                                <button className="list-group-item list-group-item-action " onClick={() => { this.addLabel("Blacklist", j.Name) }}> Blacklist </button>
+                                                            </div>
+                                                        )
+                                                        : (
+                                                            null
+                                                        )
+                                                }
+                                            </span>))
+                                    }
+                                    {/*details.Ingredients.map((i, index) => <span><span key={index} onLoad={i.Label == "Blacklist" ? flagBlacklist = 1 : ""} onClick={(e) => { this.showLabels(e, index) }} className={"p2 cursor-pointer rounded " + i.Label + (i.IsFodmap ? " bg-danger-50 text-white rounded" : "")}>{i.Name}</span>{
                                             this.state.showLabels && this.state.ingredientId == index
                                                 ? (
                                                     <div id = "label" className="labels list-group"
@@ -169,9 +270,9 @@
                                                     null
                                                 )
                                         }{index < details.Ingredients.length - 1 ? ", " : ""}</span>)
-                                    }
-                                </p>
-                                {flagBlacklist == 1 ? <p className='d-inline-block font-weight-bold font-italic'>This food contains an item you blacklisted</p> : ""}
+                                    }*/}
+                                </div>
+                                {flagBlacklist == 1 ? <p className='pt-2 d-inline-block font-weight-bold font-italic'>This food contains an item you blacklisted</p> : ""}
                                 <p className="d-inline-block"><span className="font-weight-bold">UPC:</span> {details.UPC}</p>
                                 <p>
                                     <span className="font-weight-bold">Serving Size:</span> {details.ServingSizeFullText}
@@ -186,15 +287,11 @@
 
                                     </div>
                                 </div>
-                                
                             </div>
                         </div>
-                        
                     </div>
                 </div>
             </div>
-
-
         );
     }
 }

@@ -88,7 +88,7 @@ namespace FODfinder.Controllers
             {
                 return new HttpNotFoundResult("Invalid FdcId");
             }
-            return View(new FoodDetailsModels(foodDetails,ref db));
+            return View(new FoodDetailsModels(foodDetails));
         }
 
         async public Task<ContentResult> Get(string query, string pageNumber="1", string ingredients = null, bool requireAllWords = false)
