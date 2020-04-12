@@ -28,7 +28,7 @@ namespace FODfinderTester
         }
 
         [TestMethod]
-        public void GenerateQueryString_WillEncodeUrlEntities()
+        public void GenerateQueryString_WillNotLeaveEntitiesUnencoded()
         {
             Dictionary<string, string> parameters = new Dictionary<string, string>()
             {
@@ -36,7 +36,7 @@ namespace FODfinderTester
                 {"age","23" }
             };
             string result = _foodController.GenerateQueryString(parameters);
-            StringAssert.Equals("user=tanner+hill&age=23", result);
+            Assert.IsFalse(Equals("user=tanner hill&age=23", result));
         }
     }
 }
