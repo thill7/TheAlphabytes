@@ -483,6 +483,7 @@
     <Content Include="Views\SavedFoods\Details.cshtml" />
     <Content Include="Views\SavedFoods\Edit.cshtml" />
     <Content Include="Views\SavedFoods\Index.cshtml" />
+    <Content Include="Views\FodmapInfo\CommonFodmap.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\index.d.ts" />

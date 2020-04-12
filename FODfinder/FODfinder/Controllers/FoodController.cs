@@ -18,20 +18,34 @@ namespace FODfinder.Controllers
         private string _API_key = WebConfigurationManager.AppSettings.Get("USDA_KEY");
         private const string USDA_FOOD = "https://api.nal.usda.gov/fdc/v1/";
         private FFDBContext db = new FFDBContext();
+
+        public string GenerateQueryString(Dictionary<string, string> keyValuePairs)
+        {
+            var queryParams = HttpUtility.ParseQueryString(string.Empty);
+            foreach (var param in keyValuePairs)
+            {
+                queryParams[param.Key] = param.Value;
+            }
+            return queryParams.ToString();
+        }
+
         async private Task<string> GetFoodResults(string query, string pageNumber = "1", string ingredients = null, bool requireAllWords = false)
         {
             UriBuilder uriBuilder = new UriBuilder(USDA_FOOD+"search");
-            var queryParams = HttpUtility.ParseQueryString(uriBuilder.Query);
-            queryParams["api_key"] = _API_key;
-            queryParams["generalSearchInput"] = query;
-            queryParams["includeDataTypeList"] = "Branded";
-            queryParams["pageNumber"] = pageNumber;
+            var paramCollection = new Dictionary<string, string>
+            {
+                ["api_key"] = _API_key,
+                ["generalSearchInput"] = query,
+                ["includeDataTypeList"] = "Branded",
+                ["pageNumber"] = pageNumber,
+                ["requireAllWords"] = requireAllWords.ToString().ToLower()
+            };
             if (ingredients != null)
             {
-                queryParams["ingredients"] = ingredients;
+                paramCollection["ingredients"] = ingredients;
             }
-            queryParams["requireAllWords"] = requireAllWords.ToString().ToLower();
-            uriBuilder.Query = queryParams.ToString();
+            var queryParams = GenerateQueryString(paramCollection);
+            uriBuilder.Query = queryParams;
 
             Debug.WriteLine(queryParams.ToString());
 
