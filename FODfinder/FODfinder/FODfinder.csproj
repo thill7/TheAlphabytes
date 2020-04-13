@@ -256,6 +256,7 @@
     <Compile Include="Models\AspNetUserClaim.cs" />
     <Compile Include="Models\AspNetUserLogin.cs" />
     <Compile Include="Models\Food\Ingredient.cs" />
+    <Compile Include="Models\UserList.cs" />
     <Compile Include="Utility\Algorithm\Algorithm.cs" />
     <Compile Include="Utility\IngredientParser.cs" />
     <Compile Include="DAL\FFDBContext.cs" />
