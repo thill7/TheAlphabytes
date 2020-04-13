@@ -1,39 +1,23 @@
 ﻿@model IEnumerable<FODfinder.Models.UserList>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "My Lists";
 }
 
-<h2>Index</h2>
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.userID)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.listName)
-        </th>
-        <th></th>
-    </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.userID)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.listName)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.listID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.listID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.listID })
-        </td>
-    </tr>
-}
-
-</table>
+<div class="container-fluid pt-5 pb-5 rounded bg-secondary">
+    <div class="row justify-content-center">
+        <h1 class="text-gray">My Lists</h1>
+    </div>
+    <div class="container pt-2">
+        <div class="list-group">
+            <div class="list-group-item bg-secondary">
+                <div class="row text-gray justify-content-center h5">
+                    @if(Model.Count() == 0)
+                    {
+                    <div>You haven't created any lists yet</div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

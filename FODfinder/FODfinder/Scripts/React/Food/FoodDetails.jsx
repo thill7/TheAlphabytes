@@ -4,10 +4,13 @@
 
         this.state = {
             details: JSON.parse(this.props.details),
+            showUserLists: false,
             showLabels: false,
             ingredientId: null
         };
         this.handleclick.bind(this);
+        this.showUserLists = this.showUserLists.bind(this);
+        this.hideUserLists = this.hideUserLists.bind(this);
         this.showLabels = this.showLabels.bind(this);
         this.hideLabels= this.hideLabels.bind(this);
     }
@@ -132,6 +135,20 @@
         window.console.log(message);
     }
 
+    showUserLists(event) {
+        event.preventDefault();
+
+        this.setState({ showUserLists: true }, () => {
+            document.addEventListener('click', this.hideUserLists);
+        });
+    }
+
+    hideUserLists(event) {
+        this.setState({ showUserLists: false }, () => {
+            document.removeEventListener('click', this.hideUserLists);
+        });
+    }
+
    /* ingredientStatus(name) {
         var statusOfIngredient = await axios.post(`FODMAPIngredients/GetLabel`, { ingredient: name });
         var statusResult = statusOfIngredient.data;
@@ -186,7 +203,21 @@
                     <div className="card-header">
                         <h2 className="display-4 font-weight-normal text-capitalize">{details.Description.toLowerCase()}</h2>
                         <h3 className="font-weight-light">{details.BrandOwner}</h3>
-                        <button type="button" onClick={() => { this.handleclick() }} className="btn btn-primary text-white">Save Food</button>
+                        <button type="button" onClick={this.showUserLists} className="btn btn-primary text-white">Save Food</button>
+                        {
+                            this.state.showUserLists
+                                ? (
+                                    <div className="dropdown show">
+                                        <div className="dropdown-menu show">
+                                            <button className="dropdown-item"> Test1 </button>
+                                            <button className="dropdown-item"> Test2 </button>
+                                        </div>
+                                    </div>
+                                )
+                                : (
+                                    null
+                                )
+                        }
                     </div>
                     <div className="card-body">
                         <div className="row">

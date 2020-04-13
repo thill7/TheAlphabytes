@@ -10,6 +10,7 @@ using FODfinder.Models;
 
 namespace FODfinder.Controllers
 {
+    [Authorize]
     public class UserListsController : Controller
     {
         private FFDBContext db = new FFDBContext();
