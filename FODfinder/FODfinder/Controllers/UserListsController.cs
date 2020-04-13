@@ -7,6 +7,8 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using FODfinder.Models;
+using Microsoft.AspNet.Identity;
+using Newtonsoft.Json.Linq;
 
 namespace FODfinder.Controllers
 {
@@ -19,6 +21,46 @@ namespace FODfinder.Controllers
         public ActionResult Index()
         {
             return View(db.UserLists.ToList());
+        }
+
+        [HttpGet]
+        public ContentResult getLists()
+        {
+            string userID = User.Identity.GetUserId();
+            if (userID != null)
+            {
+                List<UserList> userLists = db.UserLists.Where(x => x.userID == userID).ToList();
+                if (!userLists.Any())
+                {
+                    var jsonNoLists = new
+                    {
+                        success = false,
+                        redirect = false,
+                    };
+
+                    var resultNoLists = JObject.FromObject(jsonNoLists);
+                    return Content(resultNoLists.ToString(), "Application/json");
+                }
+
+                var jsonLoggedIn = new
+                {
+                    success = true,
+                    redirect = false,
+                    lists = userLists
+                };
+
+                var resultSuccess = JObject.FromObject(jsonLoggedIn);
+                return Content(resultSuccess.ToString(), "Application/json");
+            }
+
+            var jsonNotLoggedIn = new
+            {
+                success = false,
+                redirect = true
+            };
+
+            var resultNotLoggedIn = JObject.FromObject(jsonNotLoggedIn);
+            return Content(resultNotLoggedIn.ToString(), "Application/json");
         }
 
         // GET: UserLists/Details/5

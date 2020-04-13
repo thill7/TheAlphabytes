@@ -6,13 +6,15 @@
             details: JSON.parse(this.props.details),
             showUserLists: false,
             showLabels: false,
-            ingredientId: null
+            ingredientId: null,
+            userLists: null
         };
         this.handleclick.bind(this);
         this.showUserLists = this.showUserLists.bind(this);
         this.hideUserLists = this.hideUserLists.bind(this);
         this.showLabels = this.showLabels.bind(this);
-        this.hideLabels= this.hideLabels.bind(this);
+        this.hideLabels = this.hideLabels.bind(this);
+        this.getUserLists = this.getUserLists.bind(this);
     }
 
     GetFoodNutrientValue(key) {
@@ -149,6 +151,15 @@
         });
     }
 
+    async getUserLists(event) {
+        var result = await axios.get(`/UserLists/getLists`);
+        if (result.data.success === true) {
+            console.log(result.data);
+            this.state.details.userLists = result.data.lists;
+            this.showUserLists(event);
+        }
+    }
+
    /* ingredientStatus(name) {
         var statusOfIngredient = await axios.post(`FODMAPIngredients/GetLabel`, { ingredient: name });
         var statusResult = statusOfIngredient.data;
@@ -203,14 +214,13 @@
                     <div className="card-header">
                         <h2 className="display-4 font-weight-normal text-capitalize">{details.Description.toLowerCase()}</h2>
                         <h3 className="font-weight-light">{details.BrandOwner}</h3>
-                        <button type="button" onClick={this.showUserLists} className="btn btn-primary text-white">Save Food</button>
+                        <button type="button" onClick={this.getUserLists} className="btn btn-primary text-white">Save Food</button>
                         {
                             this.state.showUserLists
                                 ? (
                                     <div className="dropdown show">
                                         <div className="dropdown-menu show">
-                                            <button className="dropdown-item"> Test1 </button>
-                                            <button className="dropdown-item"> Test2 </button>
+                                            {details.userLists.map(list => <button className="dropdown-item"> {list.listName} </button>)}
                                         </div>
                                     </div>
                                 )
