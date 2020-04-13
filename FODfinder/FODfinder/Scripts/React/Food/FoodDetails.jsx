@@ -120,12 +120,14 @@
         });
     }
 
-    async handleclick() {
+    async handleclick(e) {
         var id = parseInt(this.state.details.FdcId);
+        var button = e.target;
+        var listID = button.dataset.list;
         var brand = this.state.details.BrandOwner;
         var desc = this.state.details.Description;
         var barcode = this.state.details.UPC;
-        var saveFood = await axios.post(`/SavedFoods/Create`, { usdaFoodID: id, brandOwner: brand, description: desc, upc: barcode });
+        var saveFood = await axios.post(`/SavedFoods/Create`, { usdaFoodID: id, listID: listID, brandOwner: brand, description: desc, upc: barcode });
         var result = saveFood.data;
         var message = result.message;
         if (result.redirect == true) {
@@ -222,7 +224,7 @@
                                     <div className="dropdown show" ref={(element) => { this.saveFoodDropdown = element; }}>
                                         <div className="dropdown-menu show">
                                             {details.userLists != null ?
-                                                details.userLists.map(list => <button className="dropdown-item"> {list.listName} </button>) : null}
+                                                details.userLists.map(list => <button className="dropdown-item" data-list={list.listID} onClick={(e) => this.handleclick(e)}> {list.listName} </button>) : null}
                                             <a className="dropdown-item" href="/UserLists/Create">Create new list</a>
                                         </div>
                                     </div>

@@ -31,7 +31,5 @@ namespace FODfinder.Models
         public string upc { get; set; }
 
         public string desc { get; set; }
-
-        public virtual AspNetUser AspNetUser { get; set; }
     }
 }
