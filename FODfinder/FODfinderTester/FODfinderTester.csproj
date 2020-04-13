@@ -71,8 +71,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="JAServingSizeCleanerTest.cs" />
+    <Compile Include="GbAlgorithmTester.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="THQueryStringGenerator.cs" />
+    <Compile Include="CRSavedFoodsControllerTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
