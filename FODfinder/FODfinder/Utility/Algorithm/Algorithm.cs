@@ -34,21 +34,20 @@ namespace FODfinder.Utility.Algorithm
                 }
                 return false;
             }
-            catch (ArgumentNullException e)
+            catch (NullReferenceException e)
             {
-                throw new Exception($"Arguments must not be null: {e}");
+                throw new NullReferenceException($"Arguments for \"ListContainsFodmaps\" must not be null: {e}");
             }
         }
         public static Score DetermineLevelOfFodmap(List<List<Ingredient>> primaryIngredients, List<List<Ingredient>> secondaryIngredients)
         {
             try
             {
-                var temp = ListContainsFodmaps(primaryIngredients) ? Score.High : ListContainsFodmaps(secondaryIngredients) ? Score.Medium : Score.Low;
-                return temp;
+                return ListContainsFodmaps(primaryIngredients) ? Score.High : ListContainsFodmaps(secondaryIngredients) ? Score.Medium : Score.Low;
             }
-            catch (ArgumentNullException e)
+            catch (NullReferenceException e)
             {
-                throw new Exception($"Arguments must not be null: {e}");
+                throw new NullReferenceException($"Arguments for \"DetermineLevelOfFodmap()\" must not be null: {e}");
             }
         }
         public enum Score
