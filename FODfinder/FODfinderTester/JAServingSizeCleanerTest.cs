@@ -17,10 +17,31 @@ namespace FODfinderTester
         }
 
         [TestMethod]
-        public void CleanRegular_ReturnsLowerCase()
+        public void CleanGenericString_ReturnsLowerCase()
         {
             string result = ServingSizeCleaner.Clean("THIs is 1 teST!");
             Assert.AreEqual("this is 1 test!", result);
+        }
+
+        [TestMethod]
+        public void CleanONZ_ReturnsOZ()
+        {
+            string result = ServingSizeCleaner.Clean("12 ONZ");
+            Assert.AreEqual("12 oz", result);
+        }
+
+        [TestMethod]
+        public void CleanOZA_Returns_fl_OZ()
+        {
+            string result = ServingSizeCleaner.Clean("22 OZA");
+            Assert.AreEqual("22 fl oz", result);
+        }
+
+        [TestMethod]
+        public void CleanStringWithParentheses_ReturnsOnlyFirstPart()
+        {
+            string result = ServingSizeCleaner.Clean("1 can(355ml)");
+            Assert.AreEqual("1 can", result);
         }
     }
 }
