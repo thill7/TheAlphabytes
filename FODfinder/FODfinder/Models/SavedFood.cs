@@ -9,7 +9,7 @@ namespace FODfinder.Models
     public partial class SavedFood
     {
         public SavedFood() { }
-        public SavedFood(int usdaId, string listId, string brandOwner, string barcode, string description)
+        public SavedFood(int usdaId, int listId, string brandOwner, string barcode, string description)
         {
             this.usdaFoodID = usdaId;
             this.listID = listId;
@@ -24,7 +24,7 @@ namespace FODfinder.Models
 
         [Key]
         [Column(Order = 1)]
-        public string listID { get; set; }
+        public int listID { get; set; }
 
         public string brand { get; set; }
 

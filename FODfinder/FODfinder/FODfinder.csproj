@@ -241,6 +241,7 @@
     <Compile Include="Controllers\FODMAPIngredientsController.cs" />
     <Compile Include="Controllers\FoodController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\UserListsController.cs" />
     <Compile Include="Models\LabelledIngredient.cs" />
     <Compile Include="Controllers\SuperAdminController.cs" />
     <Compile Include="Controllers\IbsInfoController.cs" />
@@ -486,6 +487,11 @@
     <Content Include="Views\SavedFoods\Edit.cshtml" />
     <Content Include="Views\SavedFoods\Index.cshtml" />
     <Content Include="Views\FodmapInfo\CommonFodmap.cshtml" />
+    <Content Include="Views\UserLists\Create.cshtml" />
+    <Content Include="Views\UserLists\Delete.cshtml" />
+    <Content Include="Views\UserLists\Details.cshtml" />
+    <Content Include="Views\UserLists\Edit.cshtml" />
+    <Content Include="Views\UserLists\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\index.d.ts" />

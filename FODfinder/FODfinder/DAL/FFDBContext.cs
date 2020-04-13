@@ -8,7 +8,7 @@ namespace FODfinder.Models
     public partial class FFDBContext : DbContext
     {
         public FFDBContext()
-            : base("name=FFDBContext_Azure_Dev")
+            : base("name=FFDBContext")
         {
         }
 
@@ -39,11 +39,6 @@ namespace FODfinder.Models
                 .HasForeignKey(e => e.UserId);
 
             modelBuilder.Entity<AspNetUser>()
-                .HasMany(e => e.SavedFoods)
-                .WithRequired(e => e.AspNetUser)
-                .HasForeignKey(e => e.userID);
-
-            modelBuilder.Entity<AspNetUser>()
                 .HasMany(e => e.UserIngredients)
                 .WithRequired(e => e.AspNetUser)
                 .HasForeignKey(e => e.userID);
@@ -53,5 +48,7 @@ namespace FODfinder.Models
                 .WithRequired(e => e.LabelledIngredient)
                 .WillCascadeOnDelete(false);
         }
+
+        public System.Data.Entity.DbSet<FODfinder.Models.UserList> UserLists { get; set; }
     }
 }

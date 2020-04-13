@@ -25,10 +25,10 @@ namespace FODfinder.Controllers
         }
 
         // GET: SavedFoods
-        public ActionResult Index()
+        public ActionResult Index(int? id)
         {
             var uid = User.Identity.GetUserId();
-            List<SavedFood> savedFoodsList = db.SavedFoods.Where(sf => sf.userID == uid).ToList();
+            List<SavedFood> savedFoodsList = db.SavedFoods.Where(sf => sf.listID == id).ToList();
             ViewBag.TotalSavedFoods = countSavedFoods(savedFoodsList);
             return View(savedFoodsList);
         }
@@ -53,12 +53,11 @@ namespace FODfinder.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         //[ValidateAntiForgeryToken]
-        public ContentResult Create(int usdaFoodID, string brandOwner, string upc, string description)
+        public ContentResult Create(int usdaFoodID, int listID, string brandOwner, string upc, string description)
         {
-            string userID = User.Identity.GetUserId();
-            if (userID != null)
+            if (User.Identity.GetUserId() != null)
             {
-                SavedFood savedFood = new SavedFood(usdaFoodID, userID, brandOwner, upc, description);
+                SavedFood savedFood = new SavedFood(usdaFoodID, listID, brandOwner, upc, description);
                 try
                 {
                     db.SavedFoods.Add(savedFood);
