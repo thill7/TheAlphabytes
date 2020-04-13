@@ -146,18 +146,19 @@
     }
 
     hideUserLists(event) {
-        this.setState({ showUserLists: false }, () => {
-            document.removeEventListener('click', this.hideUserLists);
-        });
+        if (!this.saveFoodDropdown.contains(event.target)) {
+            this.setState({ showUserLists: false }, () => {
+                document.removeEventListener('click', this.hideUserLists);
+            });
+        }
     }
 
     async getUserLists(event) {
         var result = await axios.get(`/UserLists/getLists`);
         if (result.data.success === true) {
-            console.log(result.data);
             this.state.details.userLists = result.data.lists;
-            this.showUserLists(event);
         }
+        this.showUserLists(event);
     }
 
    /* ingredientStatus(name) {
@@ -218,9 +219,11 @@
                         {
                             this.state.showUserLists
                                 ? (
-                                    <div className="dropdown show">
+                                    <div className="dropdown show" ref={(element) => { this.saveFoodDropdown = element; }}>
                                         <div className="dropdown-menu show">
-                                            {details.userLists.map(list => <button className="dropdown-item"> {list.listName} </button>)}
+                                            {details.userLists != null ?
+                                                details.userLists.map(list => <button className="dropdown-item"> {list.listName} </button>) : null}
+                                            <a className="dropdown-item" href="/UserLists/Create">Create new list</a>
                                         </div>
                                     </div>
                                 )
