@@ -20,7 +20,8 @@ namespace FODfinder.Controllers
         // GET: UserLists
         public ActionResult Index()
         {
-            return View(db.UserLists.ToList());
+            string userID = User.Identity.GetUserId();
+            return View(db.UserLists.Where(x => x.userID == userID).ToList());
         }
 
         [HttpGet]
@@ -91,6 +92,7 @@ namespace FODfinder.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "listID,userID,listName")] UserList userList)
         {
+            userList.userID = User.Identity.GetUserId();
             if (ModelState.IsValid)
             {
                 db.UserLists.Add(userList);
