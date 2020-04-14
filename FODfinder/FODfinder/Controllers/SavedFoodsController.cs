@@ -129,13 +129,13 @@ namespace FODfinder.Controllers
         }
 
         // GET: SavedFoods/Delete/5
-        public ActionResult Delete(int? usdaFoodID, string userID)
+        public ActionResult Delete(int? usdaFoodID, int? listID)
         {
-            if (usdaFoodID == null || userID == null)
+            if (usdaFoodID == null || listID == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            SavedFood savedFood = db.SavedFoods.Find(usdaFoodID, userID);
+            SavedFood savedFood = db.SavedFoods.Find(usdaFoodID, listID);
             if (savedFood == null)
             {
                 return HttpNotFound();
@@ -146,12 +146,12 @@ namespace FODfinder.Controllers
         // POST: SavedFoods/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int usdaFoodID, string userID)
+        public ActionResult DeleteConfirmed(int usdaFoodID, int listID)
         {
-            SavedFood savedFood = db.SavedFoods.Find(usdaFoodID, userID);
+            SavedFood savedFood = db.SavedFoods.Find(usdaFoodID, listID);
             db.SavedFoods.Remove(savedFood);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("Index/" + listID);
         }
 
         protected override void Dispose(bool disposing)

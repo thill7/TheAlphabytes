@@ -21,7 +21,7 @@
                 @foreach (var list in Model)
                 {
                     <div class="list-group">
-                        <div class="list-group-item FoodLink" onclick="location.href='/SavedFoods/Index'">
+                        <div class="list-group-item FoodLink" onclick="location.href='/SavedFoods/Index/@list.listID'">
                             <div class="row text-gray justify-content-center text-capitalize">
                                 <h5 class="mb-0">@list.listName</h5>
                             </div>
