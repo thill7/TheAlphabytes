@@ -28,6 +28,17 @@ namespace FODfinder.Controllers
         public ActionResult Index(int? id)
         {
             var uid = User.Identity.GetUserId();
+            try
+            {
+                if (db.UserLists.FirstOrDefault(x => x.listID == id).userID != uid)
+                {
+                    return RedirectToAction("Index", "UserLists");
+                }
+            }
+            catch
+            {
+                return RedirectToAction("Index", "UserLists");
+            }
             List<SavedFood> savedFoodsList = db.SavedFoods.Where(sf => sf.listID == id).ToList();
             ViewBag.TotalSavedFoods = countSavedFoods(savedFoodsList);
             return View(savedFoodsList);
