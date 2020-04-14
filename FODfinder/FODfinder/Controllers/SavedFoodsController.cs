@@ -30,10 +30,12 @@ namespace FODfinder.Controllers
             var uid = User.Identity.GetUserId();
             try
             {
-                if (db.UserLists.FirstOrDefault(x => x.listID == id).userID != uid)
+                UserList userList = db.UserLists.FirstOrDefault(x => x.listID == id);
+                if (userList.userID != uid)
                 {
                     return RedirectToAction("Index", "UserLists");
                 }
+                ViewBag.ListName = userList.listName;
             }
             catch
             {
