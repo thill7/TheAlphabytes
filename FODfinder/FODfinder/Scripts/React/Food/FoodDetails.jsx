@@ -225,6 +225,7 @@
                                         <div className="dropdown-menu show">
                                             {details.userLists != null ?
                                                 details.userLists.map(list => <button className="dropdown-item" data-list={list.listID} onClick={(e) => this.handleclick(e)}> {list.listName} </button>) : null}
+                                            <div class="dropdown-divider"></div>
                                             <a className="dropdown-item" href="/UserLists/Create">Create new list</a>
                                         </div>
                                     </div>
