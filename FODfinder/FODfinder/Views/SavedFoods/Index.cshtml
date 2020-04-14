@@ -6,7 +6,7 @@
 
     <div class="container-fluid pt-5 pb-5 rounded bg-secondary">
         <div class="row justify-content-center">
-            <h1 class="text-gray">Saved Foods</h1>
+            <h1 class="text-gray">@ViewBag.ListName</h1>
         </div>
         <div class="row justify-content-center">
             <h5 class="text-gray">Total Saved Foods: @ViewBag.TotalSavedFoods</h5>
@@ -38,7 +38,7 @@
                                 @item.upc
                             </div>
                             <div class="col-3 align-self-center">
-                                @Html.ActionLink("Delete", "Delete", new { usdaFoodID = item.usdaFoodID, userID = item.userID }, new { @class = "btn btn-light" })
+                                @Html.ActionLink("Delete", "Delete", new { usdaFoodID = item.usdaFoodID, listID = item.listID }, new { @class = "btn btn-light" })
                             </div>
                         </div>
                     </div>

@@ -4,12 +4,17 @@
 
         this.state = {
             details: JSON.parse(this.props.details),
+            showUserLists: false,
             showLabels: false,
-            ingredientId: null
+            ingredientId: null,
+            userLists: null
         };
         this.handleclick.bind(this);
+        this.showUserLists = this.showUserLists.bind(this);
+        this.hideUserLists = this.hideUserLists.bind(this);
         this.showLabels = this.showLabels.bind(this);
-        this.hideLabels= this.hideLabels.bind(this);
+        this.hideLabels = this.hideLabels.bind(this);
+        this.getUserLists = this.getUserLists.bind(this);
     }
 
     GetFoodNutrientValue(key) {
@@ -115,12 +120,14 @@
         });
     }
 
-    async handleclick() {
+    async handleclick(e) {
         var id = parseInt(this.state.details.FdcId);
+        var button = e.target;
+        var listID = button.dataset.list;
         var brand = this.state.details.BrandOwner;
         var desc = this.state.details.Description;
         var barcode = this.state.details.UPC;
-        var saveFood = await axios.post(`/SavedFoods/Create`, { usdaFoodID: id, brandOwner: brand, description: desc, upc: barcode });
+        var saveFood = await axios.post(`/SavedFoods/Create`, { usdaFoodID: id, listID: listID, brandOwner: brand, description: desc, upc: barcode });
         var result = saveFood.data;
         var message = result.message;
         if (result.redirect == true) {
@@ -130,6 +137,30 @@
         }
         
         window.console.log(message);
+    }
+
+    showUserLists(event) {
+        event.preventDefault();
+
+        this.setState({ showUserLists: true }, () => {
+            document.addEventListener('click', this.hideUserLists);
+        });
+    }
+
+    hideUserLists(event) {
+        if (!this.saveFoodDropdown.contains(event.target)) {
+            this.setState({ showUserLists: false }, () => {
+                document.removeEventListener('click', this.hideUserLists);
+            });
+        }
+    }
+
+    async getUserLists(event) {
+        var result = await axios.get(`/UserLists/getLists`);
+        if (result.data.success === true) {
+            this.state.details.userLists = result.data.lists;
+        }
+        this.showUserLists(event);
     }
 
    /* ingredientStatus(name) {
@@ -186,7 +217,23 @@
                     <div className="card-header">
                         <h2 className="display-4 font-weight-normal text-capitalize">{details.Description.toLowerCase()}</h2>
                         <h3 className="font-weight-light">{details.BrandOwner}</h3>
-                        <button type="button" onClick={() => { this.handleclick() }} className="btn btn-primary text-white">Save Food</button>
+                        <button type="button" onClick={this.getUserLists} className="btn btn-primary text-white">Save Food</button>
+                        {
+                            this.state.showUserLists
+                                ? (
+                                    <div className="dropdown show" ref={(element) => { this.saveFoodDropdown = element; }}>
+                                        <div className="dropdown-menu show">
+                                            {details.userLists != null ?
+                                                details.userLists.map(list => <button className="dropdown-item" data-list={list.listID} onClick={(e) => this.handleclick(e)}> {list.listName} </button>) : null}
+                                            <div class="dropdown-divider"></div>
+                                            <a className="dropdown-item" href="/UserLists/Create">Create new list</a>
+                                        </div>
+                                    </div>
+                                )
+                                : (
+                                    null
+                                )
+                        }
                     </div>
                     <div className="card-body">
                         <div className="row">

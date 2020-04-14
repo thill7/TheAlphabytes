@@ -9,10 +9,10 @@ namespace FODfinder.Models
     public partial class SavedFood
     {
         public SavedFood() { }
-        public SavedFood(int usdaId, string userId, string brandOwner, string barcode, string description)
+        public SavedFood(int usdaId, int listId, string brandOwner, string barcode, string description)
         {
             this.usdaFoodID = usdaId;
-            this.userID = userId;
+            this.listID = listId;
             this.brand = brandOwner;
             this.upc = barcode;
             this.desc = description;
@@ -24,14 +24,12 @@ namespace FODfinder.Models
 
         [Key]
         [Column(Order = 1)]
-        public string userID { get; set; }
+        public int listID { get; set; }
 
         public string brand { get; set; }
 
         public string upc { get; set; }
 
         public string desc { get; set; }
-
-        public virtual AspNetUser AspNetUser { get; set; }
     }
 }
