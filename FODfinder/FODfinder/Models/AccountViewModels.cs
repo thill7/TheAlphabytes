@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
 namespace FODfinder.Models
@@ -83,6 +84,51 @@ namespace FODfinder.Models
         [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+
+        [Required]
+        [DisplayName("Profile Privacy")]
+        public bool is_public { get; set; }
+
+        [Required]
+        [DisplayName("First Name")]
+        [StringLength(30)]
+        public string firstName { get; set; }
+        
+        [Required]
+        [DisplayName("Last Name")]
+        [StringLength(30)]
+        public string lastName { get; set; }
+
+        [Required]
+        public bool showEthnicity { get; set; }
+
+        [Required]
+        [DisplayName("Ethnicity")]
+        [StringLength(50)]
+        public string ethnicity { get; set; }
+
+        [Required]
+        public bool showAge { get; set; }
+
+        [Required]
+        [DisplayName("Age")]
+        public int age { get; set; }
+
+        [Required]
+        public bool showCountry { get; set; }
+
+        [Required]
+        [DisplayName("Country")]
+        [StringLength(50)]
+        public string country { get; set; }
+
+        [Required]
+        public bool showGender { get; set; }
+
+        [Required]
+        [DisplayName("Gender")]
+        [StringLength(20)]
+        public string gender { get; set; }
     }
 
     public class ResetPasswordViewModel
