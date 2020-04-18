@@ -166,6 +166,7 @@ CREATE TABLE [dbo].[UserInformation]
 CREATE TABLE [dbo].[UserProfile]
 (	
 	[userID]		NVARCHAR(128)	NOT NULL,
+	[is_public]		BIT				NOT NULL,
 	[showEthnicity]	BIT				NOT NULL,
 	[showAge]		BIT				NOT NULL,
 	[showCountry]	BIT				NOT NULL,
