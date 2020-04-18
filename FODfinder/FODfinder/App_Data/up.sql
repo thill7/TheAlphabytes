@@ -146,3 +146,33 @@ CREATE TABLE [dbo].[UserIngredients]
 	CONSTRAINT [PK_dbo.UserIngredients_dbo.FODMAPIngredientID] FOREIGN KEY ([FODMAPIngredientID])
 		REFERENCES [dbo].[FODMAPIngredients] ([ID])
 );
+
+CREATE TABLE [dbo].[UserInformation]
+(
+	[userID]	NVARCHAR(128)	NOT NULL,
+	[firstName]	NVARCHAR(30)	NOT NULL,
+	[lastName]	NVARCHAR(30)	NOT NULL,
+	[ethnicity]	NVARCHAR(50)	NOT NULL
+		CHECK (ethnicity IN('Black', 'Native American', 'Asian', 'Native Hawaiian or Other Pacific Islander', 'Hispanic or Latino', 'White')),
+	[age]		INT				NOT NULL,
+	[country]	NVARCHAR(50)	NOT NULL,
+	[gender]	NVARCHAR(20)	NOT NULL
+		CHECK (gender IN('Male','Female','Nonbinary','Other/Prefer not to say')),
+	CONSTRAINT [PK_dbo.UserInformation] PRIMARY KEY CLUSTERED ([userID] ASC),
+	CONSTRAINT [PK_dbo.UserInformation_dbo.userID] FOREIGN KEY ([userID])
+		REFERENCES [dbo].[AspNetUsers] ([Id]) ON DELETE CASCADE
+);
+
+CREATE TABLE [dbo].[UserProfile]
+(	
+	[userID]		NVARCHAR(128)	NOT NULL,
+	[showEthnicity]	BIT				NOT NULL,
+	[showAge]		BIT				NOT NULL,
+	[showCountry]	BIT				NOT NULL,
+	[showGender]	BIT				NOT NULL,
+	[description]	NVARCHAR(2000)	NULL,
+	[profileImgUrl]	NVARCHAR(500)	NULL,
+	CONSTRAINT [PK_dbo.UserProfile] PRIMARY KEY CLUSTERED ([userID] ASC),
+	CONSTRAINT [PK_dbo.UserProfile_dbo.userID] FOREIGN KEY ([userID])
+		REFERENCES [dbo].[AspNetUsers] ([Id]) ON DELETE CASCADE
+);
