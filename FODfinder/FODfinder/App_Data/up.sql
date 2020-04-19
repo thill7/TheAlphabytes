@@ -109,16 +109,26 @@ GO
 
 --## MORE NON-ASPNET TABLES ##--
 
+CREATE TABLE [dbo].[UserLists]
+(
+	[listID]	INT	IDENTITY (1,1)	NOT NULL,
+	[userID]	NVARCHAR(128)		NOT NULL,
+	[listName]	NVARCHAR(150)		NOT NULL,
+	CONSTRAINT [PK_dbo.UserLists] PRIMARY KEY CLUSTERED ([listID] ASC),
+	CONSTRAINT [PK_dbo.UserLists_dbo.userID] FOREIGN KEY ([userID])
+		REFERENCES [dbo].[AspNetUsers] ([Id]) ON DELETE CASCADE,
+);
+
 CREATE TABLE [dbo].[SavedFoods]
 (
-	[usdaFoodID]	INT					NOT NULL,
-	[userID]		NVARCHAR(128)		NOT NULL,
-	[brand]			NVARCHAR(200)		NOT NULL,
-	[upc]			NVARCHAR(32)		NOT NULL,
-	[desc]			NVARCHAR(200)		NOT NULL,
-	CONSTRAINT [PK_dbo.SavedFoods] PRIMARY KEY CLUSTERED ([usdaFoodID] ASC, [userID] ASC),
-	CONSTRAINT [PK_dbo.SavedFoods_dbo.userID] FOREIGN KEY ([userID])
-		REFERENCES [dbo].[AspNetUsers] ([Id]) ON DELETE CASCADE
+	[usdaFoodID]	INT				NOT NULL,
+	[listID]		INT				NOT NULL,
+	[brand]			NVARCHAR(200)	NOT NULL,
+	[upc]			NVARCHAR(32)	NOT NULL,
+	[desc]			NVARCHAR(200)	NOT NULL,
+	CONSTRAINT [PK_dbo.SavedFoods] PRIMARY KEY CLUSTERED ([usdaFoodID] ASC, [listID] ASC),
+	CONSTRAINT [PK_dbo.SavedFoods_dbo.listID] FOREIGN KEY ([listID])
+		REFERENCES [dbo].[UserLists] ([listID]) ON DELETE CASCADE
 );
 
 CREATE TABLE [dbo].[UserIngredients]

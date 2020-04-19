@@ -25,10 +25,23 @@ namespace FODfinder.Controllers
         }
 
         // GET: SavedFoods
-        public ActionResult Index()
+        public ActionResult Index(int? id)
         {
             var uid = User.Identity.GetUserId();
-            List<SavedFood> savedFoodsList = db.SavedFoods.Where(sf => sf.userID == uid).ToList();
+            try
+            {
+                UserList userList = db.UserLists.FirstOrDefault(x => x.listID == id);
+                if (userList.userID != uid)
+                {
+                    return RedirectToAction("Index", "UserLists");
+                }
+                ViewBag.ListName = userList.listName;
+            }
+            catch
+            {
+                return RedirectToAction("Index", "UserLists");
+            }
+            List<SavedFood> savedFoodsList = db.SavedFoods.Where(sf => sf.listID == id).ToList();
             ViewBag.TotalSavedFoods = countSavedFoods(savedFoodsList);
             return View(savedFoodsList);
         }
@@ -53,12 +66,11 @@ namespace FODfinder.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         //[ValidateAntiForgeryToken]
-        public ContentResult Create(int usdaFoodID, string brandOwner, string upc, string description)
+        public ContentResult Create(int usdaFoodID, int listID, string brandOwner, string upc, string description)
         {
-            string userID = User.Identity.GetUserId();
-            if (userID != null)
+            if (User.Identity.GetUserId() != null)
             {
-                SavedFood savedFood = new SavedFood(usdaFoodID, userID, brandOwner, upc, description);
+                SavedFood savedFood = new SavedFood(usdaFoodID, listID, brandOwner, upc, description);
                 try
                 {
                     db.SavedFoods.Add(savedFood);
@@ -130,13 +142,13 @@ namespace FODfinder.Controllers
         }
 
         // GET: SavedFoods/Delete/5
-        public ActionResult Delete(int? usdaFoodID, string userID)
+        public ActionResult Delete(int? usdaFoodID, int? listID)
         {
-            if (usdaFoodID == null || userID == null)
+            if (usdaFoodID == null || listID == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            SavedFood savedFood = db.SavedFoods.Find(usdaFoodID, userID);
+            SavedFood savedFood = db.SavedFoods.Find(usdaFoodID, listID);
             if (savedFood == null)
             {
                 return HttpNotFound();
@@ -147,12 +159,12 @@ namespace FODfinder.Controllers
         // POST: SavedFoods/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int usdaFoodID, string userID)
+        public ActionResult DeleteConfirmed(int usdaFoodID, int listID)
         {
-            SavedFood savedFood = db.SavedFoods.Find(usdaFoodID, userID);
+            SavedFood savedFood = db.SavedFoods.Find(usdaFoodID, listID);
             db.SavedFoods.Remove(savedFood);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("Index/" + listID);
         }
 
         protected override void Dispose(bool disposing)

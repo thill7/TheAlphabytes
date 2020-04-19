@@ -21,9 +21,9 @@ namespace FODfinderTester
             //Arrange
             List<SavedFood> testList = new List<SavedFood>
             {
-                new SavedFood { usdaFoodID = 1, userID = "35", brand = "brand name", desc = "Hello", upc = "003647898" },
-                new SavedFood { usdaFoodID = 1, userID = "35", brand = "brand name", desc = "Hello", upc = "003647898" },
-                new SavedFood { usdaFoodID = 1, userID = "35", brand = "brand name", desc = "Hello", upc = "003647898" }
+                new SavedFood { usdaFoodID = 1, listID = 35, brand = "brand name", desc = "Hello", upc = "003647898" },
+                new SavedFood { usdaFoodID = 1, listID = 35, brand = "brand name", desc = "Hello", upc = "003647898" },
+                new SavedFood { usdaFoodID = 1, listID = 35, brand = "brand name", desc = "Hello", upc = "003647898" }
             };
             int expectedResult = 3;
 

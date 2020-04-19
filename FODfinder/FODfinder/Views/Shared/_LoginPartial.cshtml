@@ -40,7 +40,7 @@
                 </a>
                 <div class="dropdown-menu">
                     @Html.ActionLink("Manage Account", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage", @class = "dropdown-item" })
-                    @Html.ActionLink("View Saved Foods", "Index", "SavedFoods", null, new { @class = "dropdown-item"})
+                    @Html.ActionLink("My Lists", "Index", "UserLists", null, new { @class = "dropdown-item"})
                 </div>
             </li>
             <li class="nav-item"><a class="nav-link" href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
