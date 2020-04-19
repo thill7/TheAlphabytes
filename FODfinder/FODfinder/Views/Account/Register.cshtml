@@ -103,9 +103,9 @@
                                     </div>
                                     <div class="form-control">
                                         Public
-                                        @Html.RadioButtonFor(m => m.showAge, 1)
+                                        @Html.RadioButtonFor(m => m.showAge, "true")
                                         Private
-                                        @Html.RadioButtonFor(m => m.showAge, 0)
+                                        @Html.RadioButtonFor(m => m.showAge, "false")
                                     </div>
                                 </div>
                                 @Html.ValidationMessageFor(m => m.showAge, "", new { @class = "text-danger" })
@@ -139,9 +139,9 @@
                                     </div>
                                     <div class="form-control">
                                         Public
-                                        @Html.RadioButtonFor(m => m.showGender, 1)
+                                        @Html.RadioButtonFor(m => m.showGender, "true")
                                         Private
-                                        @Html.RadioButtonFor(m => m.showGender, 0)
+                                        @Html.RadioButtonFor(m => m.showGender, "false")
                                     </div>
                                 </div>
                                 @Html.ValidationMessageFor(m => m.showGender, "", new { @class = "text-danger" })
@@ -152,7 +152,17 @@
                                         <div class="input-group-text text-gray bg-secondary">
                                             @Html.LabelFor(m => m.country, new { id = "RegisterFormLabel" })
                                         </div>
-                                        @Html.DropDownListFor(m => m.country, new SelectList(ViewBag.CountryList), new { @class = "form-control" })
+                                        @Html.DropDownListFor(m => m.country, new List<SelectListItem>
+                                        {
+                                            new SelectListItem{ Text="North America"},
+                                            new SelectListItem{ Text="South America"},
+                                            new SelectListItem{ Text="Central America"},
+                                            new SelectListItem{ Text="Africa"},
+                                            new SelectListItem{ Text="Australia"},
+                                            new SelectListItem{ Text="Europe"},
+                                            new SelectListItem{ Text="Asia"},
+                                            new SelectListItem{ Text="Somewhere else"}
+                                        })
                                     </div>
                                     @Html.ValidationMessageFor(m => m.country, "", new { @class = "text-danger" })
                                 </div>
@@ -166,9 +176,9 @@
                                     </div>
                                     <div class="form-control">
                                         Public
-                                        @Html.RadioButtonFor(m => m.showCountry, 1)
+                                        @Html.RadioButtonFor(m => m.showCountry, "true")
                                         Private
-                                        @Html.RadioButtonFor(m => m.showCountry, 0)
+                                        @Html.RadioButtonFor(m => m.showCountry, "false")
                                     </div>
                                 </div>
                                 @Html.ValidationMessageFor(m => m.showCountry, "", new { @class = "text-danger" })
@@ -202,9 +212,9 @@
                                     </div>
                                     <div class="form-control">
                                         Public
-                                        @Html.RadioButtonFor(m => m.showEthnicity, 1)
+                                        @Html.RadioButtonFor(m => m.showEthnicity, "true")
                                         Private
-                                        @Html.RadioButtonFor(m => m.showEthnicity, 0)
+                                        @Html.RadioButtonFor(m => m.showEthnicity, "false")
                                     </div>
                                 </div>
                                 @Html.ValidationMessageFor(m => m.showEthnicity, "", new { @class = "text-danger" })
@@ -219,9 +229,9 @@
                                     </div>
                                     <div class="form-control">
                                         Public
-                                        @Html.RadioButtonFor(m => m.is_public, 1)
+                                        @Html.RadioButtonFor(m => m.is_public, "true")
                                         Private
-                                        @Html.RadioButtonFor(m => m.is_public, 0)
+                                        @Html.RadioButtonFor(m => m.is_public, "false")
                                     </div>
                                 </div>
                                 @Html.ValidationMessageFor(m => m.is_public, "", new { @class = "text-danger" })

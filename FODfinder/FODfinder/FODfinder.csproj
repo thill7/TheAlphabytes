@@ -247,6 +247,7 @@
     <Compile Include="Controllers\IbsInfoController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\SavedFoodsController.cs" />
+    <Compile Include="Models\UserInformation.cs" />
     <Compile Include="Models\UserIngredient.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -258,6 +259,7 @@
     <Compile Include="Models\AspNetUserLogin.cs" />
     <Compile Include="Models\Food\Ingredient.cs" />
     <Compile Include="Models\UserList.cs" />
+    <Compile Include="Models\UserProfile.cs" />
     <Compile Include="Utility\Algorithm\Algorithm.cs" />
     <Compile Include="Utility\IngredientParser.cs" />
     <Compile Include="DAL\FFDBContext.cs" />

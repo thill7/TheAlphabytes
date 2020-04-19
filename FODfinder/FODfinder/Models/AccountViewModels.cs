@@ -124,7 +124,7 @@ namespace FODfinder.Models
         public bool showCountry { get; set; }
 
         [Required]
-        [DisplayName("Country")]
+        [DisplayName("Location")]
         [StringLength(50)]
         public string country { get; set; }
 

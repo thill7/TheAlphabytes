@@ -9,6 +9,12 @@ namespace FODfinder.Models
 
     public partial class FODMAPIngredient
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public FODMAPIngredient()
+        {
+            UserIngredients = new HashSet<UserIngredient>();
+        }
+
         public int ID { get; set; }
 
         [Required]
@@ -19,5 +25,8 @@ namespace FODfinder.Models
         [StringLength(50)]
         [DisplayName("Also Listed As")]
         public string Aliases { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<UserIngredient> UserIngredients { get; set; }
     }
 }

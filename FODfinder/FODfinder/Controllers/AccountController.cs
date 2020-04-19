@@ -17,6 +17,7 @@ namespace FODfinder.Controllers
     [Authorize]
     public class AccountController : Controller
     {
+        private FFDBContext db = new FFDBContext();
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
 
@@ -168,11 +169,17 @@ namespace FODfinder.Controllers
             if (ModelState.IsValid)
             {
                 var user = new ApplicationUser { UserName = model.UserName, Email = model.Email };
+                string uid = user.Id;
+                UserInformation userInformation = new UserInformation { userID = uid, firstName = model.firstName, lastName = model.lastName, ethnicity = model.ethnicity, birthdate = model.birthdate, gender = model.gender, country = model.country };
+                UserProfile userProfile = new UserProfile { userID = uid, is_public = model.is_public, showAge = model.showAge, showCountry = model.showCountry, showEthnicity = model.showEthnicity, showGender = model.showGender };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
-                    
+                    db.UserInformations.Add(userInformation);
+                    db.UserProfiles.Add(userProfile);
+                    db.SaveChanges();
+
                     // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
                     // Send an email with this link
                     // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
