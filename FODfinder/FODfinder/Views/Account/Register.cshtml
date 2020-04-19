@@ -65,6 +65,155 @@
                                 <div class="input-group">
                                     <div class="input-group-prepend">
                                         <div class="input-group-text text-gray bg-secondary">
+                                            @Html.LabelFor(m => m.firstName, new { id = "RegisterFormLabel" })
+                                        </div>
+                                        @Html.TextBoxFor(m => m.firstName, new { @class = "form-control" })
+                                    </div>
+                                    @Html.ValidationMessageFor(m => m.firstName, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text text-gray bg-secondary">
+                                            @Html.LabelFor(m => m.lastName, new { id = "RegisterFormLabel" })
+                                        </div>
+                                        @Html.TextBoxFor(m => m.lastName, new { @class = "form-control" })
+                                    </div>
+                                    @Html.ValidationMessageFor(m => m.lastName, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text text-gray bg-secondary">
+                                            @Html.LabelFor(m => m.birthdate, new { id = "RegisterFormLabel" })
+                                        </div>
+                                        @Html.EditorFor(m => m.birthdate, new { @class = "form-control" })
+                                    </div>
+                                    @Html.ValidationMessageFor(m => m.birthdate, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text text-gray bg-secondary">
+                                            @Html.LabelFor(m => m.showAge, new { id = "RegisterFormLabel" })
+                                        </div>
+                                    </div>
+                                    <div class="form-control">
+                                        Public
+                                        @Html.RadioButtonFor(m => m.showAge, 1)
+                                        Private
+                                        @Html.RadioButtonFor(m => m.showAge, 0)
+                                    </div>
+                                </div>
+                                @Html.ValidationMessageFor(m => m.showAge, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text text-gray bg-secondary">
+                                            @Html.LabelFor(m => m.gender, new { id = "RegisterFormLabel" })
+                                        </div>
+                                    </div>
+                                    <div class="form-control">
+                                        Male
+                                        @Html.RadioButtonFor(m => m.gender, "Male")
+                                        Female
+                                        @Html.RadioButtonFor(m => m.gender, "Female")
+                                        Nonbinary
+                                        @Html.RadioButtonFor(m => m.gender, "Nonbinary")
+                                        Other/Prefer not to say
+                                        @Html.RadioButtonFor(m => m.gender, "Other/Prefer not to say")
+                                    </div>
+                                </div>
+                                @Html.ValidationMessageFor(m => m.showCountry, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text text-gray bg-secondary">
+                                            @Html.LabelFor(m => m.showGender, new { id = "RegisterFormLabel" })
+                                        </div>
+                                    </div>
+                                    <div class="form-control">
+                                        Public
+                                        @Html.RadioButtonFor(m => m.showGender, 1)
+                                        Private
+                                        @Html.RadioButtonFor(m => m.showGender, 0)
+                                    </div>
+                                </div>
+                                @Html.ValidationMessageFor(m => m.showGender, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text text-gray bg-secondary">
+                                            @Html.LabelFor(m => m.country, new { id = "RegisterFormLabel" })
+                                        </div>
+                                        @Html.DropDownListFor(m => m.country, new SelectList(ViewBag.CountryList), new { @class = "form-control" })
+                                    </div>
+                                    @Html.ValidationMessageFor(m => m.country, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text text-gray bg-secondary">
+                                            @Html.LabelFor(m => m.showCountry, new { id = "RegisterFormLabel" })
+                                        </div>
+                                    </div>
+                                    <div class="form-control">
+                                        Public
+                                        @Html.RadioButtonFor(m => m.showCountry, 1)
+                                        Private
+                                        @Html.RadioButtonFor(m => m.showCountry, 0)
+                                    </div>
+                                </div>
+                                @Html.ValidationMessageFor(m => m.showCountry, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text text-gray bg-secondary">
+                                            @Html.LabelFor(m => m.ethnicity, new { id = "RegisterFormLabel" })
+                                        </div>
+                                        @Html.DropDownListFor(m => m.ethnicity, new List<SelectListItem>
+                                        {
+                                            new SelectListItem{ Text="Prefer not to say"},
+                                            new SelectListItem{ Text="Black"},
+                                            new SelectListItem{ Text="Native American"},
+                                            new SelectListItem{ Text="Asian"},
+                                            new SelectListItem{ Text="Native Hawaiian or Other Pacific Islander"},
+                                            new SelectListItem{ Text="Hispanic or Latino"},
+                                            new SelectListItem{ Text="White"}
+                                        })
+                                    </div>
+                                    @Html.ValidationMessageFor(m => m.ethnicity, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text text-gray bg-secondary">
+                                            @Html.LabelFor(m => m.showEthnicity, new { id = "RegisterFormLabel" })
+                                        </div>
+                                    </div>
+                                    <div class="form-control">
+                                        Public
+                                        @Html.RadioButtonFor(m => m.showEthnicity, 1)
+                                        Private
+                                        @Html.RadioButtonFor(m => m.showEthnicity, 0)
+                                    </div>
+                                </div>
+                                @Html.ValidationMessageFor(m => m.showEthnicity, "", new { @class = "text-danger" })
+                            </div>
+
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text text-gray bg-secondary">
                                             @Html.LabelFor(m => m.is_public, new { id = "RegisterFormLabel" })
                                         </div>
                                     </div>
@@ -98,7 +247,7 @@
                             </div>
                         }
                     </div>
-                </div>
+                    </div>
             </div>
         </div>
     </div>

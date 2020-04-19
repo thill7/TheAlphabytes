@@ -153,8 +153,8 @@ CREATE TABLE [dbo].[UserInformation]
 	[firstName]	NVARCHAR(30)	NOT NULL,
 	[lastName]	NVARCHAR(30)	NOT NULL,
 	[ethnicity]	NVARCHAR(50)	NOT NULL
-		CHECK (ethnicity IN('Black', 'Native American', 'Asian', 'Native Hawaiian or Other Pacific Islander', 'Hispanic or Latino', 'White')),
-	[age]		INT				NOT NULL,
+		CHECK (ethnicity IN('Prefer not to say','Black', 'Native American', 'Asian', 'Native Hawaiian or Other Pacific Islander', 'Hispanic or Latino', 'White')),
+	[birthdate]	DATETIME		NOT NULL,
 	[country]	NVARCHAR(50)	NOT NULL,
 	[gender]	NVARCHAR(20)	NOT NULL
 		CHECK (gender IN('Male','Female','Nonbinary','Other/Prefer not to say')),
