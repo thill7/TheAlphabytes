@@ -159,7 +159,7 @@
 
     async addLabel(label, ingredient) {
         var id = parseInt(this.state.details.FdcId);
-        var saveLabel = await axios.post(`/FODMAPIngredients/Create`, { assignLabel: label, ingredientName: ingredient });
+        var saveLabel = await axios.post(`/fodmapingredients/create`, { assignLabel: label, ingredientName: ingredient });
         var result = saveLabel.data;
         var message = result.message;
         if(result.redirect == true) {

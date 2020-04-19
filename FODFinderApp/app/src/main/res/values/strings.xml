@@ -16,14 +16,19 @@
 
 <resources>
     <string name="app_name">FODFinder</string>
+    <string name="not_found">Not Found</string>
     <string name="label_nav_home">Home</string>
     <string name="label_group_info">Info</string>
     <string name="label_sources">Sources</string>
     <string name="label_nav_fodmap_info">What\'s a FODMAP?</string>
     <string name="label_nav_ibs_info">What\'s IBS?</string>
     <string name="label_nav_info">Information</string>
+    <string name="label_search">Search</string>
 
-    <string name="app_description">\tThis website is a free resource for learning about IBS and FODMAPs, searching for foods to see if they\'re compatible with a low-FODMAP diet (coming soon), and saving those results for your later convenience in shopping, meal prep, and everyday life (coming soon).</string>
+    <string name="app_description">\tThis website is a free resource for learning about IBS and FODMAPs, searching for
+        foods to see if they\'re compatible with a low-FODMAP diet (coming soon), and saving those results for your
+        later convenience in shopping, meal prep, and everyday life (coming soon).
+    </string>
 
     <!-- FODMAP INFO PAGE -->
     <string name="header_what_is_a_fodmap">What is a FODMAP?</string>

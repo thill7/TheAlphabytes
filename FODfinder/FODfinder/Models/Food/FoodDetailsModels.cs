@@ -7,23 +7,24 @@ using FODfinder.Utility;
 using FODfinder.Utility.Algorithm;
 using Microsoft.AspNet.Identity;
 using Newtonsoft.Json.Linq;
+using Newtonsoft.Json;
 
 namespace FODfinder.Models.Food
 {
     public class FoodDetailsModels
     {
-        public int FdcId { private set; get; }
-        public string Description { private set; get; }
-        public string BrandOwner { private set; get; }
-        public List<Ingredient> Ingredients { private set; get; } = new List<Ingredient>();
-        public List<List<Ingredient>> PrimaryIngredients { private set; get; } = new List<List<Ingredient>>();
-        public List<List<Ingredient>> SecondaryIngredients { private set; get; } = new List<List<Ingredient>>();
-        public double ServingSize { private set; get; }
-        public string ServingSizeUnit { private set; get; }
-        public string ServingSizeFullText { private set; get; }
-        public string LabelNutrients { private set; get; }
-        public string UPC { private set; get; }
-        public string FodmapScore { private set; get; }
+        public int FdcId { set; get; }
+        public string Description { set; get; }
+        public string BrandOwner { set; get; }
+        public List<Ingredient> Ingredients { set; get; } = new List<Ingredient>();
+        public List<List<Ingredient>> PrimaryIngredients { set; get; } = new List<List<Ingredient>>();
+        public List<List<Ingredient>> SecondaryIngredients { set; get; } = new List<List<Ingredient>>();
+        public double ServingSize { set; get; }
+        public string ServingSizeUnit { set; get; }
+        public string ServingSizeFullText { set; get; }
+        public string LabelNutrients { set; get; }
+        public string UPC { set; get; }
+        public string FodmapScore { set; get; }
 
         public FoodDetailsModels(string jsonString) {
             JObject detailObject = JObject.Parse(jsonString);
@@ -65,6 +66,12 @@ namespace FODfinder.Models.Food
             FdcId = int.TryParse(detailObject.SelectToken("fdcId")?.ToString() ?? "", out fdcId) ? fdcId : -1;
             UPC = detailObject.SelectToken("gtinUpc")?.ToString() ?? "";
             FodmapScore = Algorithm.DetermineLevelOfFodmap(this.PrimaryIngredients, this.SecondaryIngredients).ToString();
+        }
+
+        [JsonConstructor]
+        public FoodDetailsModels()
+        {
+
         }
     }
 }
