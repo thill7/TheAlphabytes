@@ -41,7 +41,7 @@
         [DisplayName("Description")]
         public string description { get; set; }
 
-        [StringLength(500)]
+        [StringLength(15)]
         [DisplayName("Profile Picture URL")]
         public string profileImgUrl { get; set; }
 

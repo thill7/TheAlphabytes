@@ -173,7 +173,7 @@ CREATE TABLE [dbo].[UserProfile]
 	[showGender]	BIT				NOT NULL,
 	[showContact]	BIT				NOT NULL,
 	[description]	NVARCHAR(2000)	NULL,
-	[profileImgUrl]	NVARCHAR(500)	NULL,
+	[profileImgUrl]	NVARCHAR(15)	NULL,
 	CONSTRAINT [PK_dbo.UserProfile] PRIMARY KEY CLUSTERED ([userID] ASC),
 	CONSTRAINT [PK_dbo.UserProfile_dbo.userID] FOREIGN KEY ([userID])
 		REFERENCES [dbo].[AspNetUsers] ([Id]) ON DELETE CASCADE

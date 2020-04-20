@@ -117,6 +117,9 @@ namespace FODfinder.Models
         [DisplayName("Make Date of Birth Public")]
         public bool showContact { get; set; }
 
+        [StringLength(15)]
+        public string profileImgUrl { get; set; }
+
         [Required]
         [DisplayName("Date of Birth")]
         [DataType(DataType.Date)]
