@@ -125,6 +125,7 @@ namespace FODfinder.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "listID,userID,listName")] UserList userList)
         {
+            userList.userID = User.Identity.GetUserId();
             if (ModelState.IsValid)
             {
                 db.Entry(userList).State = EntityState.Modified;

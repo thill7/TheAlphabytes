@@ -35,6 +35,7 @@ namespace FODfinder.Controllers
                 {
                     return RedirectToAction("Index", "UserLists");
                 }
+                ViewBag.ListID = userList.listID;
                 ViewBag.ListName = userList.listName;
             }
             catch
