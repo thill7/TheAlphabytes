@@ -87,7 +87,7 @@ namespace FODfinder.Models
         public string ConfirmPassword { get; set; }
 
         [Required]
-        [DisplayName("Profile Privacy")]
+        [DisplayName("Make profile public")]
         public bool is_public { get; set; }
 
         [Required]
@@ -101,7 +101,7 @@ namespace FODfinder.Models
         public string lastName { get; set; }
 
         [Required]
-        [DisplayName("Ethnicity Privacy")]
+        [DisplayName("Make Ethnicity Public")]
         public bool showEthnicity { get; set; }
 
         [Required]
@@ -110,7 +110,7 @@ namespace FODfinder.Models
         public string ethnicity { get; set; }
 
         [Required]
-        [DisplayName("Date of Birth Privacy")]
+        [DisplayName("Make Date of Birth Public")]
         public bool showAge { get; set; }
 
         [Required]
@@ -120,7 +120,7 @@ namespace FODfinder.Models
         public DateTime birthdate { get; set; }
 
         [Required]
-        [DisplayName("Location Privacy")]
+        [DisplayName("Make Location Public")]
         public bool showCountry { get; set; }
 
         [Required]
@@ -129,7 +129,7 @@ namespace FODfinder.Models
         public string country { get; set; }
 
         [Required]
-        [DisplayName("Gender Privacy")]
+        [DisplayName("Make Gender Public")]
         public bool showGender { get; set; }
 
         [Required]
