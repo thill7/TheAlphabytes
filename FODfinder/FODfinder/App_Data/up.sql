@@ -171,6 +171,7 @@ CREATE TABLE [dbo].[UserProfile]
 	[showAge]		BIT				NOT NULL,
 	[showCountry]	BIT				NOT NULL,
 	[showGender]	BIT				NOT NULL,
+	[showContact]	BIT				NOT NULL,
 	[description]	NVARCHAR(2000)	NULL,
 	[profileImgUrl]	NVARCHAR(500)	NULL,
 	CONSTRAINT [PK_dbo.UserProfile] PRIMARY KEY CLUSTERED ([userID] ASC),

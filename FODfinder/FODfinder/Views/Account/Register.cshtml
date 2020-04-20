@@ -26,6 +26,10 @@
                                     </div>
                                     @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder = "example@email.com" })
                                 </div>
+                                <span class="container">
+                                    Make email public     &nbsp; &nbsp;
+                                    @Html.CheckBoxFor(m => m.showContact, new { @checked = true })
+                                </span>
                                 @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
                             </div>
                             <div class="form-group">

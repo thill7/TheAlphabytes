@@ -33,6 +33,10 @@
         [DisplayName("Gender Privacy")]
         public bool showGender { get; set; }
 
+        [Required]
+        [DisplayName("Make Date of Birth Public")]
+        public bool showContact { get; set; }
+
         [StringLength(2000)]
         [DisplayName("Description")]
         public string description { get; set; }

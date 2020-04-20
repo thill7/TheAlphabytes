@@ -112,6 +112,10 @@ namespace FODfinder.Models
         [Required]
         [DisplayName("Make Date of Birth Public")]
         public bool showAge { get; set; }
+        
+        [Required]
+        [DisplayName("Make Date of Birth Public")]
+        public bool showContact { get; set; }
 
         [Required]
         [DisplayName("Date of Birth")]
