@@ -242,6 +242,7 @@
     <Compile Include="Controllers\FoodController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\UserListsController.cs" />
+    <Compile Include="Controllers\UserProfilesController.cs" />
     <Compile Include="Models\LabelledIngredient.cs" />
     <Compile Include="Controllers\SuperAdminController.cs" />
     <Compile Include="Controllers\IbsInfoController.cs" />
@@ -494,6 +495,11 @@
     <Content Include="Views\UserLists\Details.cshtml" />
     <Content Include="Views\UserLists\Edit.cshtml" />
     <Content Include="Views\UserLists\Index.cshtml" />
+    <Content Include="Views\UserProfiles\Create.cshtml" />
+    <Content Include="Views\UserProfiles\Delete.cshtml" />
+    <Content Include="Views\UserProfiles\UserProfile.cshtml" />
+    <Content Include="Views\UserProfiles\Edit.cshtml" />
+    <Content Include="Views\UserProfiles\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\index.d.ts" />

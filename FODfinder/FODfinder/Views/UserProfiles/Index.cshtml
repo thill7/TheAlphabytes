@@ -1,0 +1,75 @@
+﻿@model IEnumerable<FODfinder.Models.UserProfile>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.AspNetUser.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.is_public)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.showEthnicity)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.showAge)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.showCountry)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.showGender)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.profileImgUrl)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.AspNetUser.Email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.is_public)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.showEthnicity)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.showAge)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.showCountry)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.showGender)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.profileImgUrl)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.userID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.userID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.userID })
+        </td>
+    </tr>
+}
+
+</table>
