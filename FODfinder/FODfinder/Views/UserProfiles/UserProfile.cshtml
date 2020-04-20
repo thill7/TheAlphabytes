@@ -1,82 +1,98 @@
 ﻿@model FODfinder.Models.UserProfile
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Profile";
 }
 
-<h2>Details</h2>
+    <div class="container pt-3">
+        <div class="card shadow h-100">
+            <div class="card-header bg-light text-gray">
+                <h2 class="text-center">@ViewBag.Name</h2>
+            </div>
+            <div class="card-body row">
+                <div class="col-sm-4">
+                    <img class="img-fluid" src="~/Content/Images/@ViewBag.ProfilePic" />
+                </div>
+                <div class="col-sm-8">
+                    @if (Model.showContact) { <p>Email: @ViewBag.Contact</p>}
+                    @if (Model.showAge) { <p>Age: @ViewBag.Age</p>}
+                    @if (Model.showGender) { <p>Gender: @ViewBag.Gender</p>}
+                    @if (Model.showEthnicity) { <p>Ethnicity: @ViewBag.Ethnicity</p>}
+                    @if (Model.showCountry) { <p>Location: @ViewBag.Location</p>}
+                    <p>Description:</p>
+                    @Html.DisplayFor(model => model.description)
+                </div>
+            </div>
+            <hr />
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.AspNetUser.Email)
+                </dt>
 
-<div>
-    <h4>UserProfile</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.AspNetUser.Email)
-        </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.AspNetUser.Email)
+                </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.AspNetUser.Email)
-        </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.is_public)
+                </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.is_public)
-        </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.is_public)
+                </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.is_public)
-        </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.showEthnicity)
+                </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.showEthnicity)
-        </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.showEthnicity)
+                </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.showEthnicity)
-        </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.showAge)
+                </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.showAge)
-        </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.showAge)
+                </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.showAge)
-        </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.showCountry)
+                </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.showCountry)
-        </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.showCountry)
+                </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.showCountry)
-        </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.showGender)
+                </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.showGender)
-        </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.showGender)
+                </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.showGender)
-        </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.description)
+                </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.description)
-        </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.description)
+                </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.description)
-        </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.profileImgUrl)
+                </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.profileImgUrl)
-        </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.profileImgUrl)
+                </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.profileImgUrl)
-        </dd>
-
-    </dl>
-</div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.userID }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+            </dl>
+        </div>
+        <p>
+            @Html.ActionLink("Edit", "Edit", new { id = Model.userID }) |
+            @Html.ActionLink("Back to List", "Index")
+        </p>
+    </div>

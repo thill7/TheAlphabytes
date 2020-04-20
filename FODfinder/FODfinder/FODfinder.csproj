@@ -294,6 +294,12 @@
     <Content Include="Content\Images\home-logo.png" />
     <Content Include="Content\Images\IBS_info.png" />
     <Content Include="Content\Images\logo.png" />
+    <Content Include="Content\Images\profilepic1.jpg" />
+    <Content Include="Content\Images\profilepic2.jpg" />
+    <Content Include="Content\Images\profilepic3.jpg" />
+    <Content Include="Content\Images\profilepic4.jpg" />
+    <Content Include="Content\Images\profilepic5.jpg" />
+    <Content Include="Content\Images\profilepic6.jpg" />
     <Content Include="Content\nutritionLabel-min.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\fontawesome-webfont.svg" />

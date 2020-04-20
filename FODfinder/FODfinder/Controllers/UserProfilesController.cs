@@ -36,11 +36,17 @@ namespace FODfinder.Controllers
                 return HttpNotFound();
             }
             if (userProfile.is_public || userProfile.userID == userID) {
-                ViewBag.Gender = db.UserInformations.Where(u=>u.userID ==id).Select(u => u.gender).ToString();
+
+                string fname = db.UserInformations.Where(u=>u.userID ==id).ToList().Select(u => u.firstName).Single();
+                string lname = db.UserInformations.Where(u=>u.userID ==id).ToList().Select(u => u.lastName).Single();
+                ViewBag.Name = fname + " " + lname;
+                ViewBag.Contact = db.AspNetUsers.Where(u => u.userID == id).ToList().Select(u => u.Email).Single();
+                ViewBag.Gender = db.UserInformations.Where(u=>u.userID ==id).Select(u => u.gender);
                 ViewBag.Location = db.UserInformations.Where(u=>u.userID ==id).Select(u => u.country).ToString();
                 ViewBag.Ethnicity = db.UserInformations.Where(u=>u.userID ==id).Select(u => u.ethnicity).ToString();
                 DateTime birthdate = db.UserInformations.Where(u=>u.userID ==id).Select(u => u.birthdate).FirstOrDefault();
                 ViewBag.Age = DateTime.Now.Date.Subtract(birthdate);
+                ViewBag.ProfilePic = db.UserProfiles.Where(u => u.userID == id).ToList().Select(u => u.profileImgUrl).Single() + ".jpg";
                 return View(userProfile);
             }
             else

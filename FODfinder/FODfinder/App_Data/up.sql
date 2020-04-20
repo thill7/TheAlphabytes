@@ -156,7 +156,7 @@ CREATE TABLE [dbo].[UserInformation]
 		CHECK (ethnicity IN('Prefer not to say','Black', 'Native American', 'Asian', 'Native Hawaiian or Other Pacific Islander', 'Hispanic or Latino', 'White')),
 	[birthdate]	DATETIME		NOT NULL,
 	[country]	NVARCHAR(50)	NOT NULL,
-	[gender]	NVARCHAR(20)	NOT NULL
+	[gender]	NVARCHAR(25)	NOT NULL
 		CHECK (gender IN('Male','Female','Nonbinary','Other/Prefer not to say')),
 	CONSTRAINT [PK_dbo.UserInformation] PRIMARY KEY CLUSTERED ([userID] ASC),
 	CONSTRAINT [PK_dbo.UserInformation_dbo.userID] FOREIGN KEY ([userID])
