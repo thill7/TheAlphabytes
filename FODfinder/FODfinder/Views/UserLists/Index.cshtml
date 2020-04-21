@@ -21,9 +21,15 @@
                 @foreach (var list in Model)
                 {
                     <div class="list-group">
-                        <div class="list-group-item FoodLink" onclick="location.href='/SavedFoods/Index/@list.listID'">
-                            <div class="row text-gray justify-content-center text-capitalize">
-                                <h5 class="mb-0">@list.listName</h5>
+                        <div class="list-group-item FoodLink p-2"` onclick="location.href='/SavedFoods/Index/@list.listID'">
+                            <div class="row text-gray justify-content-center">
+                                <div class="col-sm-3"></div>
+                                <div class="col-sm-6 text-center align-self-center">
+                                    <h5 class="mb-0">@list.listName</h5>
+                                </div>
+                                <div class="col-sm-3 text-right align-self-center">
+                                    @Html.ActionLink("Delete", "Delete", new { id = list.listID }, new { @class = "btn btn-light" })
+                                </div>
                             </div>
                         </div>
                     </div>
