@@ -10,12 +10,8 @@
         public Ingredient(string name, bool isFodmap, string label, bool isPartOfSublist)
         {
             Name = name;
-            IsFodmap = isFodmap;
             Label = label;
-            if (label == "Low-Risk")
-            {
-                IsFodmap = false;
-            }
+            IsFodmap = label == "Low-Risk" ? false : isFodmap;
             IsPartOfSublist = isPartOfSublist;
         }
     }
