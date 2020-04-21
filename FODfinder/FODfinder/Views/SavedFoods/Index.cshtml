@@ -6,7 +6,14 @@
 
     <div class="container-fluid pt-5 pb-5 rounded bg-secondary">
         <div class="row justify-content-center">
-            <h1 class="text-gray">@ViewBag.ListName</h1>
+            <h1 class="text-gray mb-0">@ViewBag.ListName</h1>
+        </div>
+        <div class="row justify-content-center">
+            <p>
+                <a class="text-gray" href="/UserLists/Edit/@ViewBag.ListID">Rename</a> |
+                <a class="text-gray" href="/UserLists/Delete/@ViewBag.ListID">Delete</a> |
+                <a class="text-gray" href="/UserLists/Index">Go Back</a>
+            </p>
         </div>
         <div class="row justify-content-center">
             <h5 class="text-gray">Total Saved Foods: @ViewBag.TotalSavedFoods</h5>
