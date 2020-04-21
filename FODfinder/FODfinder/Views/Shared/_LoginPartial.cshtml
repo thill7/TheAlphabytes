@@ -40,6 +40,7 @@
                 </a>
                 <div class="dropdown-menu">
                     @Html.ActionLink("Manage Account", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage", @class = "dropdown-item" })
+                    @Html.ActionLink("My Profile", "UserProfile", "UserProfiles", new { id=User.Identity.GetUserId() }, new { @class = "dropdown-item" })
                     @Html.ActionLink("My Lists", "Index", "UserLists", null, new { @class = "dropdown-item"})
                 </div>
             </li>

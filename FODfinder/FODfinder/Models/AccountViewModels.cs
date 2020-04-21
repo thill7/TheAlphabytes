@@ -141,7 +141,7 @@ namespace FODfinder.Models
 
         [Required]
         [DisplayName("Gender")]
-        [StringLength(20)]
+        [StringLength(25)]
         public string gender { get; set; }
     }
 

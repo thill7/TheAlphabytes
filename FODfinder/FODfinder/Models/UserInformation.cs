@@ -40,7 +40,7 @@
         public string country { get; set; }
 
         [Required]
-        [StringLength(20)]
+        [StringLength(25)]
         [DisplayName("Gender")]
         public string gender { get; set; }
 

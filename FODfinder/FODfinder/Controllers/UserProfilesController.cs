@@ -40,12 +40,13 @@ namespace FODfinder.Controllers
                 string fname = db.UserInformations.Where(u=>u.userID ==id).ToList().Select(u => u.firstName).Single();
                 string lname = db.UserInformations.Where(u=>u.userID ==id).ToList().Select(u => u.lastName).Single();
                 ViewBag.Name = fname + " " + lname;
-                ViewBag.Contact = db.AspNetUsers.Where(u => u.userID == id).ToList().Select(u => u.Email).Single();
-                ViewBag.Gender = db.UserInformations.Where(u=>u.userID ==id).Select(u => u.gender);
-                ViewBag.Location = db.UserInformations.Where(u=>u.userID ==id).Select(u => u.country).ToString();
-                ViewBag.Ethnicity = db.UserInformations.Where(u=>u.userID ==id).Select(u => u.ethnicity).ToString();
+                ViewBag.Contact = db.AspNetUsers.Where(u => u.Id == id).ToList().Select(u => u.Email).Single();
+                ViewBag.Gender = db.UserInformations.Where(u=>u.userID ==id).ToList().Select(u => u.gender).Single();
+                ViewBag.Location = db.UserInformations.Where(u=>u.userID ==id).ToList().Select(u => u.country).Single();
+                ViewBag.Ethnicity = db.UserInformations.Where(u=>u.userID ==id).ToList().Select(u => u.ethnicity).Single();
                 DateTime birthdate = db.UserInformations.Where(u=>u.userID ==id).Select(u => u.birthdate).FirstOrDefault();
-                ViewBag.Age = DateTime.Now.Date.Subtract(birthdate);
+                DateTime today = DateTime.Now.Date;
+                ViewBag.Age = today.Year - birthdate.Year;// DateTime.Now.Date.Subtract(birthdate);
                 ViewBag.ProfilePic = db.UserProfiles.Where(u => u.userID == id).ToList().Select(u => u.profileImgUrl).Single() + ".jpg";
                 return View(userProfile);
             }
