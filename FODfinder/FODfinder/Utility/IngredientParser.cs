@@ -57,7 +57,7 @@ namespace FODfinder.Utility
                             foreach (var subIngredient in ingredient)
                             {
                                 var fodmap = db.FODMAPIngredients.Where(f => subIngredient.Contains(f.Name.ToLower())).FirstOrDefault();
-                                list.Add(new Ingredient(subIngredient.Trim(), fodmap != null, null));
+                                list.Add(new Ingredient(subIngredient.Trim(), fodmap != null, null, null));
                             }
                             ingredients.Add(list);
                         }
@@ -65,7 +65,7 @@ namespace FODfinder.Utility
                         {
                             var fodmap = db.FODMAPIngredients.Where(f => ingredient.FirstOrDefault().Contains(f.Name.ToLower())).FirstOrDefault();
                             var label = db.UserIngredients.Where(u => u.userID == userID && u.LabelledIngredient.Name == ingredient.FirstOrDefault()).Select(u => u.Label).FirstOrDefault();
-                            ingredients.Add(new List<Ingredient>() { new Ingredient(ingredient.FirstOrDefault().Trim(), fodmap != null, label) });
+                            ingredients.Add(new List<Ingredient>() { new Ingredient(ingredient.FirstOrDefault().Trim(), fodmap != null, label, null) });
                         }
                     }
                     return ingredients;

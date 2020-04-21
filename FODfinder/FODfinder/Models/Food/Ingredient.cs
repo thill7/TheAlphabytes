@@ -2,17 +2,23 @@
 {
     public class Ingredient
     {
-        public string Name { get; private set; }
-        public bool IsFodmap { get; private set; }
-        public string Label { get; private set; }
-        public bool IsPartOfSublist { get; private set; }
+        public string Name { get; set; }
+        public bool IsFodmap { get; set; }
+        public string Label { get; set; }
+        public Position? IngredientPosition { get; set; }
 
-        public Ingredient(string name, bool isFodmap, string label, bool isPartOfSublist)
+        public Ingredient(string name, bool isFodmap, string label, Position? ingredientPosition)
         {
             Name = name;
             Label = label;
             IsFodmap = label == "Low-Risk" ? false : isFodmap;
-            IsPartOfSublist = isPartOfSublist;
+            IngredientPosition = ingredientPosition;
+        }
+
+        public enum Position
+        {
+            Parent,
+            LastChild
         }
     }
 }
