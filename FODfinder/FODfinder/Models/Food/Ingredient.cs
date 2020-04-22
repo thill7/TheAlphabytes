@@ -5,9 +5,9 @@
         public string Name { get; set; }
         public bool IsFodmap { get; set; }
         public string Label { get; set; }
-        public Position? IngredientPosition { get; set; }
+        public Position IngredientPosition { get; set; }
 
-        public Ingredient(string name, bool isFodmap, string label, Position? ingredientPosition)
+        public Ingredient(string name, bool isFodmap, string label, Position ingredientPosition)
         {
             Name = name;
             Label = label;
@@ -18,7 +18,8 @@
         public enum Position
         {
             Parent,
-            LastChild
+            LastChild,
+            Other
         }
     }
 }
