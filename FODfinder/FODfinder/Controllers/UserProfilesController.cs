@@ -48,6 +48,14 @@ namespace FODfinder.Controllers
                 DateTime today = DateTime.Now.Date;
                 ViewBag.Age = today.Year - birthdate.Year;// DateTime.Now.Date.Subtract(birthdate);
                 ViewBag.ProfilePic = db.UserProfiles.Where(u => u.userID == id).ToList().Select(u => u.profileImgUrl).Single() + ".jpg";
+                if(userID == id)
+                {
+                    ViewBag.ownsProfile = "true";
+                }
+                else
+                {
+                    ViewBag.ownsProfile = "false";
+                }
                 return View(userProfile);
             }
             else
@@ -85,17 +93,20 @@ namespace FODfinder.Controllers
         // GET: UserProfiles/Edit/5
         public ActionResult Edit(string id)
         {
-            if (id == null)
+            string userID = User.Identity.GetUserId();
+            if (id == null || userID != id)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             UserProfile userProfile = db.UserProfiles.Find(id);
+            UserInformation userInformation = db.UserInformations.Find(id);
+            EditProfileViewModel userEditProfile = new EditProfileViewModel(userInformation, userProfile);
             if (userProfile == null)
             {
                 return HttpNotFound();
             }
             ViewBag.userID = new SelectList(db.AspNetUsers, "Id", "Email", userProfile.userID);
-            return View(userProfile);
+            return View(userEditProfile);
         }
 
         // POST: UserProfiles/Edit/5

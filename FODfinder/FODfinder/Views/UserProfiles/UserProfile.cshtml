@@ -25,7 +25,11 @@
             </div>
         </div>
         <div class="card-footer">
-            @Html.ActionLink("Edit", "Edit", new { id = Model.userID }) |
-            @Html.ActionLink("Back to List", "Index")
+            @if (ViewBag.ownsProfile == "true")
+            {
+                @Html.ActionLink("Edit My Profile", "Edit", new { id = Model.userID }, new { @class = "btn btn-primary" })
+            }
+            
+            @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-primary" })
         </div>
     </div>
