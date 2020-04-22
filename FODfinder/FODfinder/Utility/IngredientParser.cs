@@ -22,6 +22,48 @@ namespace FODfinder.Utility
             ingredients.ToList().ForEach(i => listOfLists.Add(ConvertToList(i)));
             return listOfLists;
         }
+
+        public static List<Ingredient> ConvertToIngredients(IEnumerable<string> ingredients)
+        {
+            var ingredientList = new List<Ingredient>();
+            using (FFDBContext db = new FFDBContext())
+            {
+                string userID = System.Web.HttpContext.Current.User.Identity.GetUserId();
+                foreach (var ingredient in ingredients)
+                { 
+                    if (ingredient.Contains("("))
+                    {
+                        var tempList = ingredient.Replace(")", " ").Replace("(", ", ").Split(',').ToList();
+                        for (var i = 0; i < tempList.Count() - 1; i++)
+                        {
+                            var subingredient = tempList.ElementAt(i);
+                            var fodmap = db.FODMAPIngredients.Where(f => subingredient.Contains(f.Name.ToLower())).FirstOrDefault();
+                            var label = db.UserIngredients.Where(u => u.userID == userID && u.LabelledIngredient.Name == subingredient).Select(u => u.Label).FirstOrDefault();
+                            if (i == 0)
+                            {
+                                ingredientList.Add(new Ingredient(tempList[i].Trim(), fodmap != null, label, Ingredient.Position.Parent));
+                            }
+                            else if (i == ingredients.Count() - 1)
+                            {
+                                ingredientList.Add(new Ingredient(tempList[i].Trim(), fodmap != null, label, Ingredient.Position.LastChild));
+                            }
+                            else
+                            {
+                                ingredientList.Add(new Ingredient(tempList[i].Trim(), fodmap != null, label, null));
+                            }
+                        }
+                    }
+                    else
+                    {
+                        var fodmap = db.FODMAPIngredients.Where(f => ingredient.Contains(f.Name.ToLower())).FirstOrDefault();
+                        var label = db.UserIngredients.Where(u => u.userID == userID && u.LabelledIngredient.Name == ingredient).Select(u => u.Label).FirstOrDefault();
+                        ingredientList.Add(new Ingredient(ingredient.Trim(), fodmap != null, label, null));
+                    }
+                }
+            }
+            return ingredientList;
+        }
+
         public static void Parse(string ingredients, out List<List<string>> primaryIngredients, out List<List<string>> secondaryIngredients)
         {
             ToRemove.ToList().ForEach(tr => ingredients = ingredients.ToLower().Replace(tr, ""));
@@ -38,6 +80,7 @@ namespace FODfinder.Utility
             var temp = index == -1 ? index = ingredients.Length : index;
             var primaryIngredientsString = ingredients.Substring(0, index);
             var secondaryIngredientsString = ingredients.Substring(index + length);
+            var blob = ConvertToIngredients(ConvertToEnumerable(MatchRegEx(secondaryIngredientsString)));
             secondaryIngredients = ConvertToListOfLists(ConvertToEnumerable(MatchRegEx(secondaryIngredientsString)));
             primaryIngredients = ConvertToListOfLists(ConvertToEnumerable(MatchRegEx(primaryIngredientsString)));
         }
