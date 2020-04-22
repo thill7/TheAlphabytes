@@ -25,6 +25,7 @@ namespace FODfinder.Models
             this.ethnicity = userInfo.ethnicity;
             this.country = userInfo.country;
             this.gender = userInfo.gender;
+            this.birthdate = userInfo.birthdate;
         }
 
         [Key]
@@ -86,5 +87,11 @@ namespace FODfinder.Models
         [StringLength(25)]
         [DisplayName("Gender")]
         public string gender { get; set; }
+
+        [Required]
+        [DisplayName("Date of Birth")]
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
+        public DateTime birthdate { get; set; }
     }
 }

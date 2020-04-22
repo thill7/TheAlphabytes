@@ -46,7 +46,7 @@ namespace FODfinder.Controllers
                 ViewBag.Ethnicity = db.UserInformations.Where(u=>u.userID ==id).ToList().Select(u => u.ethnicity).Single();
                 DateTime birthdate = db.UserInformations.Where(u=>u.userID ==id).Select(u => u.birthdate).FirstOrDefault();
                 DateTime today = DateTime.Now.Date;
-                ViewBag.Age = today.Year - birthdate.Year;// DateTime.Now.Date.Subtract(birthdate);
+                ViewBag.Age = today.Year - birthdate.Year;
                 ViewBag.ProfilePic = db.UserProfiles.Where(u => u.userID == id).ToList().Select(u => u.profileImgUrl).Single() + ".jpg";
                 if(userID == id)
                 {
@@ -114,11 +114,12 @@ namespace FODfinder.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "userID,is_public,showEthnicity,showAge,showCountry,showGender,description,profileImgUrl")] UserProfile userProfile)
+        public ActionResult Edit([Bind(Include = "userID,is_public,showEthnicity,showAge,showCountry,showGender,description,profileImgUrl")] UserProfile userProfile, [Bind(Include = "userID,firstName,lastName,ethnicity,birthdate,country,gender,")] UserInformation userInfo)
         {
             if (ModelState.IsValid)
             {
                 db.Entry(userProfile).State = EntityState.Modified;
+                db.Entry(userInfo).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
