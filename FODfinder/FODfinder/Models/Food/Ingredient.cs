@@ -19,7 +19,8 @@
         {
             Parent,
             LastChild,
-            Other
+            OnlyChild,
+            Other,
         }
     }
 }

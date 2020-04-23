@@ -45,7 +45,7 @@ namespace FODfinder.Utility
                     for (var i = 0; i < tempList.Count(); i++)
                     {
                         var subingredient = tempList.ElementAt(i);
-                        var position = i == 0 ? Ingredient.Position.Parent : i == tempList.Count() - 1 ? Ingredient.Position.LastChild : Ingredient.Position.Other;
+                        var position = i == 0 ? Ingredient.Position.Parent : tempList.Count() == 2 ? Ingredient.Position.OnlyChild : i == tempList.Count() - 1 ? Ingredient.Position.LastChild : Ingredient.Position.Other;
                         ingredientList.Add(CreateNewIngredient(subingredient, position));
                     }
                 }
@@ -72,8 +72,8 @@ namespace FODfinder.Utility
             var temp = index == -1 ? index = ingredients.Length : index;
             var primaryIngredientsString = ingredients.Substring(0, index);
             var secondaryIngredientsString = ingredients.Substring(index + length);
-            secondaryIngredients = ConvertToIngredients(ConvertToEnumerable(MatchRegEx(primaryIngredientsString)));
-            primaryIngredients = ConvertToIngredients(ConvertToEnumerable(MatchRegEx(secondaryIngredientsString)));
+            primaryIngredients = ConvertToIngredients(ConvertToEnumerable(MatchRegEx(primaryIngredientsString)));
+            secondaryIngredients = ConvertToIngredients(ConvertToEnumerable(MatchRegEx(secondaryIngredientsString)));
         }
     }
 }
