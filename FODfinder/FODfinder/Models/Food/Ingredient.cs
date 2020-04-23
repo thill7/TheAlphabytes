@@ -10,8 +10,12 @@
         public Ingredient(string name, bool isFodmap, string label, Position ingredientPosition)
         {
             Name = name;
+            IsFodmap = isFodmap;
             Label = label;
-            IsFodmap = label == "Low-Risk" ? false : isFodmap;
+            if (label == "Low-Risk")
+            {
+                IsFodmap = false;
+            }
             IngredientPosition = ingredientPosition;
         }
 

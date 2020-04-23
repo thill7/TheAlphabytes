@@ -19,7 +19,8 @@ namespace FODfinder.Utility
         {
             using (FFDBContext db = new FFDBContext())
             {
-                return db.FODMAPIngredients.Where(f => ingredient.Contains(f.Name.ToLower())).FirstOrDefault() != null ? true: false;
+                var temp = db.FODMAPIngredients.Where(f => ingredient.Contains(f.Name.ToLower())).Count() != 0 ? true: false;
+                return temp;
             }
         }
         public static string GetLabel(string ingredient)
@@ -27,7 +28,8 @@ namespace FODfinder.Utility
             string userID = System.Web.HttpContext.Current.User.Identity.GetUserId();
             using (FFDBContext db = new FFDBContext())
             {
-                return db.UserIngredients.Where(u => u.userID == userID && u.LabelledIngredient.Name == ingredient).Select(u => u.Label).FirstOrDefault();
+                var temp = db.UserIngredients.Where(u => u.userID == userID && u.LabelledIngredient.Name == ingredient).Select(u => u.Label).FirstOrDefault();
+                return temp;
             }
         }
         public static Ingredient CreateNewIngredient(string ingredientName, Ingredient.Position position)
@@ -44,7 +46,7 @@ namespace FODfinder.Utility
                     var tempList = ingredient.Replace(")", " ").Replace("(", ", ").Split(',').ToList();
                     for (var i = 0; i < tempList.Count(); i++)
                     {
-                        var subingredient = tempList.ElementAt(i);
+                        var subingredient = tempList.ElementAt(i).Trim();
                         var position = i == 0 ? Ingredient.Position.Parent : tempList.Count() == 2 ? Ingredient.Position.OnlyChild : i == tempList.Count() - 1 ? Ingredient.Position.LastChild : Ingredient.Position.Other;
                         ingredientList.Add(CreateNewIngredient(subingredient, position));
                     }
