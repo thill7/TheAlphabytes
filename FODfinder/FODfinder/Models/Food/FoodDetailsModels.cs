@@ -46,7 +46,7 @@ namespace FODfinder.Models.Food
             int fdcId;
             FdcId = int.TryParse(detailObject.SelectToken("fdcId")?.ToString() ?? "", out fdcId) ? fdcId : -1;
             UPC = detailObject.SelectToken("gtinUpc")?.ToString() ?? "";
-            //FodmapScore = Algorithm.DetermineLevelOfFodmap(this.PrimaryIngredients, this.SecondaryIngredients).ToString();
+            FodmapScore = Algorithm.DetermineLevelOfFodmap(PrimaryIngredients, SecondaryIngredients).ToString();
         }
     }
 }

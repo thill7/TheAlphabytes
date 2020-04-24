@@ -121,6 +121,7 @@
 .High-Risk {
     background-color: var(--danger-50) !important;
     color: white;
+    padding: 0rem 0.25rem 0rem 0.25rem;
 }
 .Low-Risk {
     background-color: transparent !important;
@@ -129,6 +130,7 @@
 .Blacklist {
     background-color: black !important;
     color: white !important;
+    padding: 0rem 0.25rem 0rem 0.25rem;
 }
 .card-img {
     max-height: 75px !important;

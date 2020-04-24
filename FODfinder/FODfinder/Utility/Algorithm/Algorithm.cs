@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using FODfinder.Models.Food;
-using System.Linq;
-using System.Web;
 
 namespace FODfinder.Utility.Algorithm
 {

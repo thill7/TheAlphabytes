@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
-using System;
 using FODfinder.Models.Food;
 using FODfinder.Models;
 using Microsoft.AspNet.Identity;
@@ -10,7 +9,7 @@ namespace FODfinder.Utility
 {
     public class IngredientParser
     {
-        private const string Pattern = @"\w[\w\s-\']+(\([\w\s-,\']+\))*";
+        private const string Pattern = @"\w[\w\s-\'/]+(\([\w\s-,\'/]+\))*";
         private static readonly string[] ToRemove = { "ingredients", ":", ";", "made of", ".", "contains one or more of the following", "[", "]" };
         private static readonly string[] Variations = { "contains less than 2% of", "contains less than 2%", "contains 2% or less of", "less than 2% of", "less than 2%", "less than 2 percent" };
         public static MatchCollection MatchRegEx(string ingredientsString) => Regex.Matches(ingredientsString, Pattern);
@@ -19,8 +18,7 @@ namespace FODfinder.Utility
         {
             using (FFDBContext db = new FFDBContext())
             {
-                var temp = db.FODMAPIngredients.Where(f => ingredient.Contains(f.Name.ToLower())).Count() != 0 ? true: false;
-                return temp;
+                return db.FODMAPIngredients.Where(f => ingredient.Contains(f.Name.ToLower())).Count() != 0 ? true: false;
             }
         }
         public static string GetLabel(string ingredient)
@@ -28,8 +26,7 @@ namespace FODfinder.Utility
             string userID = System.Web.HttpContext.Current.User.Identity.GetUserId();
             using (FFDBContext db = new FFDBContext())
             {
-                var temp = db.UserIngredients.Where(u => u.userID == userID && u.LabelledIngredient.Name == ingredient).Select(u => u.Label).FirstOrDefault();
-                return temp;
+                return db.UserIngredients.Where(u => u.userID == userID && u.LabelledIngredient.Name == ingredient).Select(u => u.Label).FirstOrDefault();
             }
         }
         public static Ingredient CreateNewIngredient(string ingredientName, Ingredient.Position position)
@@ -44,11 +41,18 @@ namespace FODfinder.Utility
                 if (ingredient.Contains("("))
                 {
                     var tempList = ingredient.Replace(")", " ").Replace("(", ", ").Split(',').ToList();
-                    for (var i = 0; i < tempList.Count(); i++)
+                    if (tempList.Count() == 2)
                     {
-                        var subingredient = tempList.ElementAt(i).Trim();
-                        var position = i == 0 ? Ingredient.Position.Parent : tempList.Count() == 2 ? Ingredient.Position.OnlyChild : i == tempList.Count() - 1 ? Ingredient.Position.LastChild : Ingredient.Position.Other;
-                        ingredientList.Add(CreateNewIngredient(subingredient, position));
+                        ingredientList.Add(CreateNewIngredient($"{tempList.ElementAt(0)} ({tempList.ElementAt(1).Trim()})", Ingredient.Position.Other));
+                    }
+                    else
+                    {
+                        for (var i = 0; i < tempList.Count(); i++)
+                        {
+                            var subingredient = tempList.ElementAt(i).Trim();
+                            var position = i == 0 ? Ingredient.Position.Parent : i == tempList.Count() - 1 ? Ingredient.Position.LastChild : Ingredient.Position.Other;
+                            ingredientList.Add(CreateNewIngredient(subingredient, position));
+                        }
                     }
                 }
                 else

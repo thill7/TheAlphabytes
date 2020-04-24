@@ -23,7 +23,6 @@
         {
             Parent,
             LastChild,
-            OnlyChild,
             Other,
         }
     }
