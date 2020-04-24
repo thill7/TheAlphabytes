@@ -219,20 +219,26 @@
                     <div className="card-body">
                         <div className="row">
                             <div className="col-md-6 d-inline-flex flex-column justify-content-start align-items-start">
-                                <div className="text-lowercase">
+                                <p className="text-lowercase">
+                                    {console.log(details.PrimaryIngredients)}
+                                    {console.log(details.SecondaryIngredients)}
                                     <span className="font-weight-bold text-capitalize">Ingredients:&nbsp;</span>
-                                    {details.PrimaryIngredients.map((i, index) =>
+                                    {details.PrimaryIngredients.map((i, index, array) =>
                                         <span key={`primary-outer-span-${index}`}>
-                                            <span key={`primary-inner-span-${index}`} onClick={(e) => { this.showLabels(e, index) }} className={"p2 cursor-pointer rounded " + i.Label + (i.IsFodmap ? " bg-danger-50 text-white rounded" : "")}>
-                                                {i.Name}
-                                            </span>
+                                            {console.log(i.IngredientPosition)}
+                                            {
+                                                i.IngredientPosition == 3 || (i.IngredientPosition == 0 && array[index + 1].IngredientPosition == 2) ? <span key={`primary-inner-span-${index}`} onClick={(e) => { this.showLabels(e, index) }} className={"cursor-pointer rounded " + i.Label + (i.IsFodmap ? " px-1 bg-danger-50 text-white rounded" : "")}>{i.Name}</span>
+                                                    : i.IngredientPosition == 2 || (i.IngredientPosition == 0 && array[index + 1].IngredientPosition != 2) ? <span className="p2">{i.Name}</span>
+                                                        : i.IngredientPosition == 1 ? <span key={`primary-inner-span-${index}`} onClick={(e) => { this.showLabels(e, index) }} className={"cursor-pointer rounded" + i.Label + (i.IsFodmap ? " px-1 bg-danger-50 text-white" : "")}>{i.Name}</span>
+                                                            : null
+                                            }
                                             {
                                                 i.IngredientPosition == 3 && index != primaryLength - 1 ? ", "
                                                     : i.IngredientPosition == 0 ? " ("
-                                                        : (i.IngredientPosition == 1 || i.IngredientPosition == 2) && index != primaryLength - 1 ? "), "
-                                                            : (i.IngredientPosition == 1 || i.IngredientPosition == 2) && index == primaryLength - 1 ? ") "
-                                                                : secondaryLength != 0 ? ", " : ""
-                        }
+                                                    : (i.IngredientPosition == 1 || i.IngredientPosition == 2) && index != primaryLength - 1 ? "), "
+                                                    : (i.IngredientPosition == 1 || i.IngredientPosition == 2) && index == primaryLength - 1 ? ") "
+                                                    : secondaryLength != 0 ? ", " : ""
+                                            }
                                             {i.Label == "Blacklist" ? flagBlacklist = true : null}
                                             {
                                                 this.state.showLabels && this.state.ingredientId == index
@@ -252,22 +258,25 @@
                                                     )
                                             }
                                         </span>)
-                                }
+                                    }
                                     {
                                         secondaryLength > 0 &&
                                         <span className="font-weight-bold">contains 2% or less of:&nbsp;</span>
                                     }
-                                    {details.SecondaryIngredients.map((i, index) =>
+                                    {details.SecondaryIngredients.map((i, index, array) =>
                                         <span key={`secondary-outer-span-${index}`}>
-                                            <span key={`secondary-inner-span-${index}`} onClick={(e) => { this.showLabels(e, index + primaryLength) }} className={"p2 cursor-pointer rounded " + i.Label + (i.IsFodmap ? " bg-danger-50 text-white rounded" : "")}>
-                                                {i.Name}
-                                            </span>
+                                            {console.log(i.IngredientPosition)}
+                                            {
+                                                i.IngredientPosition == 1 || i.IngredientPosition == 3 || (i.IngredientPosition == 0 && array[index + 1].IngredientPosition == 2) ? <span key={`secondary-inner-span-${index}`} onClick={(e) => { this.showLabels(e, index + primaryLength) }} className={"cursor-pointer rounded " + i.Label + (i.IsFodmap ? " px-1 bg-danger-50 text-white rounded" : "")}>{i.Name}</span>
+                                                    : i.IngredientPosition == 2 || (i.IngredientPosition == 0 && array[index + 1].IngredientPosition != 2) ? <span className="p2">{i.Name}</span>
+                                                        : <span key={`secondary-inner-span-${index}`} onClick={(e) => { this.showLabels(e, index + primaryLength) }} className={"cursor-pointer rounded" + i.Label + (i.IsFodmap ? " px-1 bg-danger-50 text-white" : "")}>{i.Name}</span>
+                                            }
                                             {
                                                 i.IngredientPosition == 3 && index != secondaryLength - 1 ? ", "
                                                     : i.IngredientPosition == 0 ? " ("
-                                                        : (i.IngredientPosition == 1 || i.IngredientPosition == 2) && index != secondaryLength - 1 ? "), "
-                                                            : (i.IngredientPosition == 1 || i.IngredientPosition == 2) && index == secondaryLength - 1 ? ") "
-                                                                : ""
+                                                    : (i.IngredientPosition == 1 || i.IngredientPosition == 2) && index != secondaryLength - 1 ? "), "
+                                                    : (i.IngredientPosition == 1 || i.IngredientPosition == 2) && index == secondaryLength - 1 ? ") "
+                                                    : ""
                                             }
                                             {i.Label == "Blacklist" ? flagBlacklist = true : null}
                                             {
@@ -289,7 +298,7 @@
                                             }
                                         </span>)
                                     }
-                                </div>
+                                </p>
                                 {flagBlacklist == true ? <p className='pt-2 d-inline-block font-weight-bold font-italic'>This food contains an item you blacklisted</p> : ""}
                                 <p className="d-inline-block"><span className="font-weight-bold">UPC:</span> {details.UPC}</p>
                                 <p>
