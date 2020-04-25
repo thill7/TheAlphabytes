@@ -502,11 +502,9 @@
     <Content Include="Views\UserLists\Details.cshtml" />
     <Content Include="Views\UserLists\Edit.cshtml" />
     <Content Include="Views\UserLists\Index.cshtml" />
-    <Content Include="Views\UserProfiles\Create.cshtml" />
-    <Content Include="Views\UserProfiles\Delete.cshtml" />
     <Content Include="Views\UserProfiles\UserProfile.cshtml" />
     <Content Include="Views\UserProfiles\Edit.cshtml" />
-    <Content Include="Views\UserProfiles\Index.cshtml" />
+    <Content Include="Views\UserProfiles\Search.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\index.d.ts" />

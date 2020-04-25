@@ -24,10 +24,16 @@ namespace FODfinder.Controllers
             {
                 var matchLastName = db.UserInformations.Where(ui => ui.lastName.Contains(search));
                 var queryResults = db.UserInformations.Where(ui => ui.firstName.Contains(search)).Union(matchLastName);
-                List<UserInformation> resultList = queryResults.Wher
+                List<UserInformation> resultList = queryResults.Where(p => db.UserInformations.Any(a => a.userID == p.userID)).ToList();
+                ViewBag.Success = true;
+                if (!resultList.Any())
+                {
+                    ViewBag.Success = false;
+                }
+                return View(resultList);
             }
-            var userProfiles = db.UserProfiles.Include(u => u.AspNetUser);
-            return View(userProfiles.ToList());
+            //var userProfiles = db.UserProfiles.Include(u => u.AspNetUser);
+            return View();
         }
 
         // GET: UserProfiles/Details/5

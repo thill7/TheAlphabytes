@@ -1,75 +1,47 @@
-﻿@model IEnumerable<FODfinder.Models.UserProfile>
+﻿@model IEnumerable<FODfinder.Models.UserInformation>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Search Users";
 }
 
-<h2>Index</h2>
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.AspNetUser.Email)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.is_public)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.showEthnicity)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.showAge)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.showCountry)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.showGender)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.description)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.profileImgUrl)
-        </th>
-        <th></th>
-    </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.AspNetUser.Email)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.is_public)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.showEthnicity)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.showAge)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.showCountry)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.showGender)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.description)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.profileImgUrl)
-        </td>
-        <td>
-            
-            @Html.ActionLink("User Profile", "UserProfile", new { id=item.userID }) |
-            
-        </td>
-    </tr>
-}
-
-</table>
+@Styles.Render("~/Content/font-awesome.min.css")
+    <div class="container-fluid bg-secondary p-4 rounded-bottom">
+        <div class="container px-0">
+                @using (Html.BeginForm("Search", "UserProfiles", FormMethod.Get, new { @class = "form w-100" }))
+                {
+                    @Html.AntiForgeryToken()
+                        <div class="form-group w-100 mb-0">
+                            <div class="input-group w-100">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">
+                                        Search
+                                    </span>
+                                </div>
+                            </div>
+                            @Html.TextBox("search", null, new { @class = "form-control border-left-0 border-right-0", type = "text", style = "", name = "search" })
+                            <div class="input-group-append">
+                                <button class="btn btn-primary" type="submit">Go!</button>
+                            </div>
+                        </div>
+                }
+            </div>
+        </div>
+        @if (ViewBag.Success ?? false)
+        {
+    <div class="container-fluid">
+        <p class="bg-secondary display-4 p-2 rounded shadow text-gray">Results:</p>
+        <div class="row">
+            <ul class="list-group list-group-lg">
+                @foreach (var person in Model)
+                {
+                  @Html.ActionLink(person.firstName + " " + person.lastName, "UserProfile", "UserProfiles", new { id = person.userID, search = ViewBag.Search }, null)
+                }
+            </ul>
+        </div>
+    </div>
+        }
+        else if (ViewBag.Success == false)
+        {
+            <br />
+            <p>Sorry, we could not find the athlete you were looking for.</p>
+        }
