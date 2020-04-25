@@ -8,6 +8,12 @@ namespace FODfinder.Models
 
     public partial class UserList
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public UserList()
+        {
+            SavedFoods = new HashSet<SavedFood>();
+        }
+
         [Key]
         public int listID { get; set; }
 
@@ -18,5 +24,10 @@ namespace FODfinder.Models
         [Required]
         [StringLength(150)]
         public string listName { get; set; }
+
+        public virtual AspNetUser AspNetUser { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<SavedFood> SavedFoods { get; set; }
     }
 }

@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
 namespace FODfinder.Models
@@ -83,6 +85,64 @@ namespace FODfinder.Models
         [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+
+        [Required]
+        [DisplayName("Make profile public")]
+        public bool is_public { get; set; }
+
+        [Required]
+        [DisplayName("First Name")]
+        [StringLength(30)]
+        public string firstName { get; set; }
+        
+        [Required]
+        [DisplayName("Last Name")]
+        [StringLength(30)]
+        public string lastName { get; set; }
+
+        [Required]
+        [DisplayName("Make Ethnicity Public")]
+        public bool showEthnicity { get; set; }
+
+        [Required]
+        [DisplayName("Ethnicity")]
+        [StringLength(50)]
+        public string ethnicity { get; set; }
+
+        [Required]
+        [DisplayName("Make Date of Birth Public")]
+        public bool showAge { get; set; }
+        
+        [Required]
+        [DisplayName("Make Date of Birth Public")]
+        public bool showContact { get; set; }
+
+        [StringLength(15)]
+        public string profileImgUrl { get; set; }
+
+        [Required]
+        [DisplayName("Date of Birth")]
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
+        public DateTime birthdate { get; set; }
+
+        [Required]
+        [DisplayName("Make Location Public")]
+        public bool showCountry { get; set; }
+
+        [Required]
+        [DisplayName("Location")]
+        [StringLength(50)]
+        public string country { get; set; }
+
+        [Required]
+        [DisplayName("Make Gender Public")]
+        public bool showGender { get; set; }
+
+        [Required]
+        [DisplayName("Gender")]
+        [StringLength(25)]
+        public string gender { get; set; }
     }
 
     public class ResetPasswordViewModel

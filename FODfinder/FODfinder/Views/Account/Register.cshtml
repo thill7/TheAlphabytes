@@ -26,6 +26,10 @@
                                     </div>
                                     @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder = "example@email.com" })
                                 </div>
+                                <span class="container">
+                                    Make email public     &nbsp; &nbsp;
+                                    @Html.CheckBoxFor(m => m.showContact, new { @checked = true })
+                                </span>
                                 @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
                             </div>
                             <div class="form-group">
@@ -62,6 +66,128 @@
                                 @Html.ValidationMessageFor(m => m.ConfirmPassword, "", new { @class = "text-danger" })
                             </div>
                             <div class="form-group">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text text-gray bg-secondary">
+                                            @Html.LabelFor(m => m.firstName, new { id = "RegisterFormLabel" })
+                                        </div>
+                                    </div>
+                                        @Html.TextBoxFor(m => m.firstName, new { @class = "form-control" })
+                                    
+                                    @Html.ValidationMessageFor(m => m.firstName, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text text-gray bg-secondary">
+                                            @Html.LabelFor(m => m.lastName, new { id = "RegisterFormLabel" })
+                                        </div>
+                                    </div>
+                                        @Html.TextBoxFor(m => m.lastName, new { @class = "form-control" })
+                                    
+                                    @Html.ValidationMessageFor(m => m.lastName, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text text-gray bg-secondary">
+                                            @Html.LabelFor(m => m.birthdate, new { id = "RegisterFormLabel" })
+                                        </div>
+                                    </div>
+                                        @Html.EditorFor(m => m.birthdate, new { @class = "form-control" })
+                                    
+                                </div>
+                                @Html.ValidationMessageFor(m => m.birthdate, "", new { @class = "text-danger" })
+                            <span class="container">
+                                Make date of birth public     &nbsp; &nbsp;
+                                @Html.CheckBoxFor(m => m.showAge, new { @checked = true })
+                            </span>
+                            </div>
+                            
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text text-gray bg-secondary">
+                                            @Html.LabelFor(m => m.gender, new { id = "RegisterFormLabel" })
+                                        </div>
+                                    </div>
+                                    @Html.DropDownListFor(m => m.gender, new List<SelectListItem>
+                                       {
+                                           new SelectListItem{ Text="Other/Prefer not to say"},
+                                           new SelectListItem{ Text="Male"},
+                                           new SelectListItem{ Text="Female"},
+                                           new SelectListItem{ Text="Nonbinary"}
+                                       }, new { @class = "custom-select" })
+                                </div>
+                                @Html.ValidationMessageFor(m => m.gender, "", new { @class = "text-danger" })
+                            <span class="container">
+                                Make gender public     &nbsp; &nbsp;
+                                @Html.CheckBoxFor(m => m.showGender, new { @checked = true })
+                            </span>
+                            </div>
+                            
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text text-gray bg-secondary">
+                                            @Html.LabelFor(m => m.country, new { id = "RegisterFormLabel" })
+                                        </div>
+                                    </div>
+                                        @Html.DropDownListFor(m => m.country, new List<SelectListItem>
+                                        {
+                                            new SelectListItem{ Text="North America"},
+                                            new SelectListItem{ Text="South America"},
+                                            new SelectListItem{ Text="Central America"},
+                                            new SelectListItem{ Text="Africa"},
+                                            new SelectListItem{ Text="Australia"},
+                                            new SelectListItem{ Text="Europe"},
+                                            new SelectListItem{ Text="Asia"},
+                                            new SelectListItem{ Text="Somewhere else"}
+                                        }, new { @class = "custom-select" })
+                                    
+                                    @Html.ValidationMessageFor(m => m.country, "", new { @class = "text-danger" })
+                                <span class="container">
+                                    Make location public     &nbsp; &nbsp;
+                                    @Html.CheckBoxFor(m => m.showCountry, new { @checked = true })
+                                </span>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text text-gray bg-secondary">
+                                            @Html.LabelFor(m => m.ethnicity, new { id = "RegisterFormLabel" })
+                                        </div>
+                                    </div>
+                                        @Html.DropDownListFor(m => m.ethnicity, new List<SelectListItem>
+                                        {
+                                            new SelectListItem{ Text="Prefer not to say"},
+                                            new SelectListItem{ Text="Black"},
+                                            new SelectListItem{ Text="Native American"},
+                                            new SelectListItem{ Text="Asian"},
+                                            new SelectListItem{ Text="Native Hawaiian or Other Pacific Islander"},
+                                            new SelectListItem{ Text="Hispanic or Latino"},
+                                            new SelectListItem{ Text="White"}
+                                        }, new { @class = "custom-select" })
+                                    
+                                    @Html.ValidationMessageFor(m => m.ethnicity, "", new { @class = "text-danger" })
+                                <span class="container">
+                                    Make ethnicity public     &nbsp; &nbsp;
+                                    @Html.CheckBoxFor(m => m.showEthnicity, new { @checked = true })
+                                </span>
+                                </div>
+                            </div>
+                            <input type="hidden" id="profileImgUrl" name="profileImgUrl" value="profilepic1" />
+
+                            <div class="container pt-4 pb-4">
+                                Make profile public     &nbsp; &nbsp;
+                                @Html.CheckBoxFor(m => m.is_public, new { @checked = true })
+                            </div>
+
+                            <div class="form-group">
                                 <div class="d-flex justify-content-center">
                                     @Html.Recaptcha()
                                 </div>
@@ -71,7 +197,7 @@
                             </div>
                             <div class="form-group">
                                 <div class="input-group">
-                                        <input type="submit" class="btn btn-primary mx-auto w-75" value="Create An Account" />
+                                    <input type="submit" class="btn btn-primary mx-auto w-75" value="Create An Account" />
                                 </div>
                             </div>
                             <div class="row justify-content-center text-center">
@@ -81,7 +207,7 @@
                             </div>
                         }
                     </div>
-                </div>
+                    </div>
             </div>
         </div>
     </div>

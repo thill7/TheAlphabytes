@@ -1,0 +1,51 @@
+﻿@model IEnumerable<FODfinder.Models.UserInformation>
+
+@{
+    ViewBag.Title = "Search Users";
+}
+
+@Styles.Render("~/Content/font-awesome.min.css")
+    <div class="container-fluid bg-secondary p-4 rounded-bottom justify-content-center">
+        <div class="container px-0 pb-4">
+            <div class="col-12">
+                <p class="bg-secondary display-4 p-2 my-4 rounded shadow text-gray text-center">Search User Profiles</p>
+            </div>
+            @using (Html.BeginForm("Search", "UserProfiles", FormMethod.Get, new { @class = "form w-100" }))
+            {
+                @Html.AntiForgeryToken()
+                <div class="form-group w-100 mb-0">
+                    <div class="input-group w-100">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">
+                                Search
+                            </span>
+                        </div>
+
+                        @Html.TextBox("search", null, new { @class = "form-control border-left-0 border-right-0", type = "text", style = "", name = "search" })
+                        <div class="input-group-append">
+                            <button class="btn btn-primary" type="submit">Go!</button>
+                        </div>
+                    </div>
+                </div>
+            }
+
+        </div>
+
+        @if (ViewBag.Success ?? false)
+        {
+            <div class="container-fluid">
+                <p class="bg-secondary display-4 p-2 rounded shadow text-gray pt-2">Results:</p>
+                <ul class="list-group list-group-lg">
+                    @foreach (var person in Model)
+                    {
+                        @Html.ActionLink(person.firstName + " " + person.lastName, "UserProfile", "UserProfiles", new { id = person.userID, search = ViewBag.Search }, new { @class = "list-group-item list-group-item-info FoodLink" })
+                    }
+                </ul>
+            </div>
+        }
+        else if (ViewBag.Success == false)
+        {
+            <br />
+            <p class="text-center">Sorry, we could not find any users that match your search.</p>
+        }
+    </div>
