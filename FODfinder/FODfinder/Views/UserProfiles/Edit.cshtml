@@ -26,8 +26,9 @@
                                         <div class="input-group-text text-gray bg-secondary">
                                             @Html.LabelFor(m => m.firstName, new { id = "RegisterFormLabel" })
                                         </div>
-                                        @Html.TextBoxFor(m => m.firstName, new { @class = "form-control" })
                                     </div>
+                                        @Html.TextBoxFor(m => m.firstName, new { @class = "form-control" })
+                                    
                                     @Html.ValidationMessageFor(m => m.firstName, "", new { @class = "text-danger" })
                                 </div>
                             </div>
@@ -37,8 +38,9 @@
                                         <div class="input-group-text text-gray bg-secondary">
                                             @Html.LabelFor(m => m.lastName, new { id = "RegisterFormLabel" })
                                         </div>
-                                        @Html.TextBoxFor(m => m.lastName, new { @class = "form-control col-12" })
                                     </div>
+                                        @Html.TextBoxFor(m => m.lastName, new { @class = "form-control col-12" })
+                                    
                                     @Html.ValidationMessageFor(m => m.lastName, "", new { @class = "text-danger" })
                                 </div>
                             </div>
@@ -48,8 +50,9 @@
                                         <div class="input-group-text text-gray bg-secondary">
                                             @Html.LabelFor(model => model.description, htmlAttributes: new { id = "RegisterFormLabel" })
                                         </div>
-                                        @Html.TextAreaFor(model => model.description, new { htmlAttributes = new { @class = "form-control" } })
                                     </div>
+                                        @Html.TextAreaFor(model => model.description, new { @class = "form-control" })
+                                    
                                 </div>
                                 @Html.ValidationMessageFor(model => model.description, "", new { @class = "text-danger" })
                             </div>
@@ -66,7 +69,7 @@
                                            new SelectListItem{ Text="Male"},
                                            new SelectListItem{ Text="Female"},
                                            new SelectListItem{ Text="Nonbinary"}
-                                       })
+                                       }, new { @class = "custom-select" })
                                 </div>
                                 @Html.ValidationMessageFor(m => m.gender, "", new { @class = "text-danger" })
                                 <span class="container">
@@ -81,6 +84,7 @@
                                         <div class="input-group-text text-gray bg-secondary">
                                             @Html.LabelFor(m => m.country, new { id = "RegisterFormLabel" })
                                         </div>
+                                    </div>
                                         @Html.DropDownListFor(m => m.country, new List<SelectListItem>
                                         {
                                             new SelectListItem{ Text="North America"},
@@ -91,8 +95,8 @@
                                             new SelectListItem{ Text="Europe"},
                                             new SelectListItem{ Text="Asia"},
                                             new SelectListItem{ Text="Somewhere else"}
-                                        })
-                                    </div>
+                                        }, new { @class = "custom-select" })
+                                    
                                     @Html.ValidationMessageFor(m => m.country, "", new { @class = "text-danger" })
                                     <span class="container">
                                         Make location public     &nbsp; &nbsp;
@@ -107,6 +111,7 @@
                                         <div class="input-group-text text-gray bg-secondary">
                                             @Html.LabelFor(m => m.ethnicity, new { id = "RegisterFormLabel" })
                                         </div>
+                                    </div>
                                         @Html.DropDownListFor(m => m.ethnicity, new List<SelectListItem>
                                         {
                                             new SelectListItem{ Text="Prefer not to say"},
@@ -117,7 +122,6 @@
                                             new SelectListItem{ Text="Hispanic or Latino"},
                                             new SelectListItem{ Text="White"}
                                         }, new { @class = "custom-select" })
-                                    </div>
                                     @Html.ValidationMessageFor(m => m.ethnicity, "", new { @class = "text-danger" })
                                     <span class="container">
                                         Make ethnicity public     &nbsp; &nbsp;
@@ -125,21 +129,11 @@
                                     </span>
                                 </div>
                             </div>
-                            <div class="form-group">
-                                <div class="input-group">
-                                    <div class="input-group-prepend">
-                                        <div class="input-group-text text-gray bg-secondary">
-                                            @Html.LabelFor(m => m.birthdate, new { id = "RegisterFormLabel" })
-                                        </div>
-                                        @Html.HiddenFor(m => m.birthdate, new { @class = "form-control" })
-                                    </div>
-                                </div>
-                                @Html.ValidationMessageFor(m => m.birthdate, "", new { @class = "text-danger" })
-                                <span class="container">
+                             @Html.HiddenFor(m => m.birthdate, new { @class = "form-control" })
+                                <div class="container">
                                     Make date of birth public     &nbsp; &nbsp;
                                     @Html.CheckBoxFor(m => m.showAge, new { @checked = true })
-                                </span>
-                            </div>
+                                </div>
                             <div class="form-group">
                                 <div class="input-group">
                                     <div class="input-group-prepend">
