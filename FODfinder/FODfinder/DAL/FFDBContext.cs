@@ -19,7 +19,10 @@ namespace FODfinder.Models
         public virtual DbSet<FODMAPIngredient> FODMAPIngredients { get; set; }
         public virtual DbSet<LabelledIngredient> LabelledIngredients { get; set; }
         public virtual DbSet<SavedFood> SavedFoods { get; set; }
+        public virtual DbSet<UserInformation> UserInformations { get; set; }
         public virtual DbSet<UserIngredient> UserIngredients { get; set; }
+        public virtual DbSet<UserList> UserLists { get; set; }
+        public virtual DbSet<UserProfile> UserProfiles { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -39,9 +42,24 @@ namespace FODfinder.Models
                 .HasForeignKey(e => e.UserId);
 
             modelBuilder.Entity<AspNetUser>()
+                .HasOptional(e => e.UserInformation)
+                .WithRequired(e => e.AspNetUser)
+                .WillCascadeOnDelete();
+
+            modelBuilder.Entity<AspNetUser>()
                 .HasMany(e => e.UserIngredients)
                 .WithRequired(e => e.AspNetUser)
                 .HasForeignKey(e => e.userID);
+
+            modelBuilder.Entity<AspNetUser>()
+                .HasMany(e => e.UserLists)
+                .WithRequired(e => e.AspNetUser)
+                .HasForeignKey(e => e.userID);
+
+            modelBuilder.Entity<AspNetUser>()
+                .HasOptional(e => e.UserProfile)
+                .WithRequired(e => e.AspNetUser)
+                .WillCascadeOnDelete();
 
             modelBuilder.Entity<LabelledIngredient>()
                 .HasMany(e => e.UserIngredients)
@@ -49,6 +67,6 @@ namespace FODfinder.Models
                 .WillCascadeOnDelete(false);
         }
 
-        public System.Data.Entity.DbSet<FODfinder.Models.UserList> UserLists { get; set; }
+       //public System.Data.Entity.DbSet<FODfinder.Models.UserList> UserLists { get; set; }
     }
 }
