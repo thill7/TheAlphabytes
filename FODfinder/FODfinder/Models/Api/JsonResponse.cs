@@ -5,7 +5,7 @@ using System.Web;
 
 namespace FODfinder.Models.Api
 {
-    abstract public class JsonResponse
+    public class JsonResponse
     {
         public bool success { get; set; }
         public string message { get; set; }

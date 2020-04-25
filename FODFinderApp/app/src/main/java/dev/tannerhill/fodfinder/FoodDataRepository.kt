@@ -13,7 +13,7 @@ object FoodDataRepository {
             .addConverterFactory(
                 GsonConverterFactory.create()
             )
-            .baseUrl("http://192.168.0.17:55759/")
+            .baseUrl(BuildConfig.API_DOMAIN)
             .build()
         api = retrofit.create(FoodDataService::class.java)
     }

@@ -45,14 +45,6 @@ class MainActivity : AppCompatActivity(), NavController.OnDestinationChangedList
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        foodSearchViewModel.getFoodSearchResult().observe(this, Observer {
-            if(it != null) {
-                Log.d("HOME",it.toString())
-            }
-        })
-
-        foodSearchViewModel.search("chili")
-
         navController = findNavController(R.id.nav_host_fragment)
         navController!!.addOnDestinationChangedListener(this)
 
@@ -62,12 +54,12 @@ class MainActivity : AppCompatActivity(), NavController.OnDestinationChangedList
     }
 
     override fun onSupportNavigateUp(): Boolean {
-        val navController = findNavController(R.id.nav_host_fragment)
+
         if(appBarConfiguration != null) {
-            if(navController.previousBackStackEntry != null) {
-                nav_view.setCheckedItem(navController.previousBackStackEntry!!.destination.id)
+            if(navController != null && navController!!.previousBackStackEntry != null) {
+                nav_view.setCheckedItem(navController!!.previousBackStackEntry!!.destination.id)
             }
-            return navController.navigateUp(appBarConfiguration!!)
+            return navController!!.navigateUp(appBarConfiguration!!)
         }
         return super.onSupportNavigateUp()
     }

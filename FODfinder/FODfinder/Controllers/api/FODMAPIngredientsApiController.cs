@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Cors;
 
@@ -29,10 +30,7 @@ namespace FODfinder.Controllers.api
                     int ingredientID = db.LabelledIngredients.Where(s => s.Name == ingredientName).Select(s => s.ID).FirstOrDefault();
                     if (ingredientID == 0)
                     {
-                        LabelledIngredient labelIngredient = new LabelledIngredient
-                        {
-                            Name = ingredientName
-                        };
+                        LabelledIngredient labelIngredient = new LabelledIngredient { Name=ingredientName };
                         try
                         {
                             db.LabelledIngredients.Add(labelIngredient);
@@ -41,12 +39,14 @@ namespace FODfinder.Controllers.api
                         }
                         catch
                         {
-                            var jsonData_failed_ingredient_add = new FodmapIngredientJsonResponse
+                            var jsonData_failed_ingredient_add = new JsonResponse
                             {
                                 success = false,
                                 message = "Ingredient not added to database",
                                 redirect = false
                             };
+
+                            
                             return Ok(jsonData_failed_ingredient_add);
                         }
                     }
@@ -55,12 +55,13 @@ namespace FODfinder.Controllers.api
                         var existingRecord = db.UserIngredients.FirstOrDefault(s => s.LabelledIngredientID == ingredientID && s.userID == userID);
                         existingRecord.Label = assignLabel;
                         db.SaveChanges();
-                        var jsonData_edit_record = new FodmapIngredientJsonResponse
+                        var jsonData_edit_record = new JsonResponse
                         {
                             success = true,
                             message = "Label has been changed in the record",
                             redirect = false
                         };
+
                         return Ok(jsonData_edit_record);
                     }
                     else
@@ -70,7 +71,7 @@ namespace FODfinder.Controllers.api
                         {
                             db.UserIngredients.Add(userIng);
                             db.SaveChanges();
-                            var jsonData_success = new FodmapIngredientJsonResponse
+                            var jsonData_success = new JsonResponse
                             {
                                 success = true,
                                 message = "Label has been saved.",
@@ -79,12 +80,12 @@ namespace FODfinder.Controllers.api
 
                             return Ok(jsonData_success);
                         }
-                        catch
+                        catch(Exception e)
                         {
-                            var jsonData_fail = new FodmapIngredientJsonResponse
+                            var jsonData_fail = new JsonResponse
                             {
                                 success = false,
-                                message = "Something went wrong",
+                                message = $"Something went wrong: {e.InnerException.InnerException.Message}",
                                 redirect = false
                             };
 
@@ -92,16 +93,16 @@ namespace FODfinder.Controllers.api
                         }
                     }
                 }
+
+                var jsonData3 = new JsonResponse
+                {
+                    success = false,
+                    message = "User not logged in.",
+                    redirect = true
+                };
+
+                return Ok(jsonData3);
             }
-
-            var jsonData3 = new FodmapIngredientJsonResponse
-            {
-                success = false,
-                message = "User not logged in.",
-                redirect = true
-            };
-
-            return Ok(jsonData3);
         }
     }
 }

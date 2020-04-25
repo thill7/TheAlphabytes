@@ -15,6 +15,9 @@
 -->
 
 <resources>
+
+    <!-- IMPORTANT: CHANGE THIS WHEN DEPLOYING -->
+    <string name="api_domain">http://192.168.0.17:55759/</string>
     <string name="app_name">FODFinder</string>
     <string name="not_found">Not Found</string>
     <string name="label_nav_home">Home</string>
@@ -91,6 +94,9 @@
     <string name="content_disclaimer">We are not medical professionals. We are not responsible for what may happen if
         you follow the advice listed on this site. If you have any serious concerns, please consult your doctor.
     </string>
+
+    <!-- SEARCH FRAGMENT -->
+    <string name="search_placeholder_display">Please search a food item to get started&#8230;</string>
 
     <!-- RESOURCES -->
 

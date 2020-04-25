@@ -81,7 +81,8 @@ namespace FODfinder.Controllers.api
         [HttpGet]
         async public Task<FoodDetailsModels> Details([FromUri] int id)
         {
-            return new FoodDetailsModels(await GetFoodDetails(id.ToString()));
+            var json = await GetFoodDetails(id.ToString());
+            return new FoodDetailsModels(json);
         }
     }
 }
