@@ -135,7 +135,7 @@ namespace FODfinder.Controllers
                 db.Entry(userProfile).State = EntityState.Modified;
                 db.Entry(userInfo).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("UserProfile", new { id = userProfile.userID });
             }
             ViewBag.userID = new SelectList(db.AspNetUsers, "Id", "Email", userProfile.userID);
             return View(userProfile);

@@ -60,7 +60,7 @@ namespace FODfinder.Models
         public string description { get; set; }
 
         [StringLength(15)]
-        [DisplayName("Profile Picture URL")]
+        [DisplayName("Profile Picture")]
         public string profileImgUrl { get; set; }
 
         [Required]
