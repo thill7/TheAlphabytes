@@ -16,8 +16,16 @@ namespace FODfinder.Controllers
         private FFDBContext db = new FFDBContext();
 
         // GET: UserProfiles
-        public ActionResult Index()
+        [HttpGet]
+        public ActionResult Search()
         {
+            string search = Request.QueryString["search"];
+            if (!String.IsNullOrEmpty(search))
+            {
+                var matchLastName = db.UserInformations.Where(ui => ui.lastName.Contains(search));
+                var queryResults = db.UserInformations.Where(ui => ui.firstName.Contains(search)).Union(matchLastName);
+                List<UserInformation> resultList = queryResults.Wher
+            }
             var userProfiles = db.UserProfiles.Include(u => u.AspNetUser);
             return View(userProfiles.ToList());
         }
