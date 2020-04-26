@@ -127,7 +127,7 @@
         var brand = this.state.details.BrandOwner;
         var desc = this.state.details.Description;
         var barcode = this.state.details.UPC;
-        var saveFood = await axios.post(`/SavedFoods/Create`, { usdaFoodID: id, listID: listID, brandOwner: brand, description: desc, upc: barcode });
+        var saveFood = await axios.post(`/api/savedfoods/create`, { usdaFoodID: id, listID: listID, brandOwner: brand, description: desc, upc: barcode });
         var result = saveFood.data;
         var message = result.message;
         if (result.redirect == true) {
@@ -156,7 +156,7 @@
     }
 
     async getUserLists(event) {
-        var result = await axios.get(`/UserLists/getLists`);
+        var result = await axios.get(`/api/userlists/get`);
         if (result.data.success === true) {
             this.state.details.userLists = result.data.lists;
         }
@@ -190,7 +190,7 @@
 
     async addLabel(label, ingredient) {
         var id = parseInt(this.state.details.FdcId);
-        var saveLabel = await axios.post(`/FODMAPIngredients/Create`, { assignLabel: label, ingredientName: ingredient });
+        var saveLabel = await axios.post(`/api/fodmapingredients/create`, { assignLabel: label, ingredientName: ingredient });
         var result = saveLabel.data;
         var message = result.message;
         if(result.redirect == true) {
@@ -225,7 +225,7 @@
                                         <div className="dropdown-menu show">
                                             {details.userLists != null ?
                                                 details.userLists.map(list => <button className="dropdown-item" data-list={list.listID} onClick={(e) => this.handleclick(e)}> {list.listName} </button>) : null}
-                                            <div class="dropdown-divider"></div>
+                                            <div className="dropdown-divider"></div>
                                             <a className="dropdown-item" href="/UserLists/Create">Create new list</a>
                                         </div>
                                     </div>

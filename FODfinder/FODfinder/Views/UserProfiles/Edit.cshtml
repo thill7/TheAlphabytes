@@ -1,0 +1,189 @@
+﻿@model FODfinder.Models.EditProfileViewModel
+
+@{
+    ViewBag.Title = "Edit Profile";
+}
+<div class="container-fluid pt-4">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="card shadow">
+                <div class="card-header bg-secondary text-gray text-center">
+                    <h4>Edit Profile</h4>
+                </div>
+                <div class="card-body d-flex justify-content-center">
+                    <div class="container-fluid">
+                        @using (Html.BeginForm())
+                        {
+                            @Html.AntiForgeryToken()
+
+                        <div class="form-horizontal">
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            @Html.HiddenFor(model => model.userID)
+
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text text-gray bg-secondary">
+                                            @Html.LabelFor(m => m.firstName, new { id = "RegisterFormLabel" })
+                                        </div>
+                                    </div>
+                                    @Html.TextBoxFor(m => m.firstName, new { @class = "form-control" })
+
+                                    @Html.ValidationMessageFor(m => m.firstName, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text text-gray bg-secondary">
+                                            @Html.LabelFor(m => m.lastName, new { id = "RegisterFormLabel" })
+                                        </div>
+                                    </div>
+                                    @Html.TextBoxFor(m => m.lastName, new { @class = "form-control col-12" })
+
+                                    @Html.ValidationMessageFor(m => m.lastName, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="input-group-text text-gray bg-secondary">
+                                    @Html.LabelFor(m => m.profileImgUrl, new { id = "RegisterFormLabel", @class = "text-center" })
+                                </div>
+                                <table class="table table-borderless">
+                                    <tr>
+                                        <td align="center"><span class="profilepic profilepic1"></span></td>
+                                        <td align="center"><span class="profilepic profilepic2"></span></td>
+                                        <td align="center"><span class="profilepic profilepic3"></span></td>
+                                        <td align="center"><span class="profilepic profilepic4"></span></td>
+                                        <td align="center"><span class="profilepic profilepic5"></span></td>
+                                        <td align="center"><span class="profilepic profilepic6"></span></td>
+                                    </tr>
+                                    <tr>
+                                        <td align="center">@Html.RadioButtonFor(model => model.profileImgUrl, "profilepic1")</td>
+                                        <td align="center">@Html.RadioButtonFor(model => model.profileImgUrl, "profilepic2")</td>
+                                        <td align="center">@Html.RadioButtonFor(model => model.profileImgUrl, "profilepic3")</td>
+                                        <td align="center">@Html.RadioButtonFor(model => model.profileImgUrl, "profilepic4")</td>
+                                        <td align="center">@Html.RadioButtonFor(model => model.profileImgUrl, "profilepic5")</td>
+                                        <td align="center">@Html.RadioButtonFor(model => model.profileImgUrl, "profilepic6")</td>
+                                    </tr>
+                                </table>
+                                @Html.ValidationMessageFor(model => model.profileImgUrl, "", new { @class = "text-danger" })
+                            </div>
+
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text text-gray bg-secondary">
+                                            @Html.LabelFor(model => model.description, htmlAttributes: new { id = "RegisterFormLabel" })
+                                        </div>
+                                    </div>
+                                    @Html.TextAreaFor(model => model.description, new { @class = "form-control" })
+
+                                </div>
+                                @Html.ValidationMessageFor(model => model.description, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text text-gray bg-secondary">
+                                            @Html.LabelFor(m => m.gender, new { id = "RegisterFormLabel" })
+                                        </div>
+                                    </div>
+                                    @Html.DropDownListFor(m => m.gender, new List<SelectListItem>
+                                       {
+                                           new SelectListItem{ Text="Other/Prefer not to say"},
+                                           new SelectListItem{ Text="Male"},
+                                           new SelectListItem{ Text="Female"},
+                                           new SelectListItem{ Text="Nonbinary"}
+                                       }, new { @class = "custom-select" })
+
+                                    @Html.ValidationMessageFor(m => m.gender, "", new { @class = "text-danger" })
+                                    <span class="container">
+                                        Make gender public     &nbsp; &nbsp;
+                                        @Html.CheckBoxFor(m => m.showGender)
+                                    </span>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text text-gray bg-secondary">
+                                            @Html.LabelFor(m => m.country, new { id = "RegisterFormLabel" })
+                                        </div>
+                                    </div>
+                                    @Html.DropDownListFor(m => m.country, new List<SelectListItem>
+                                    {
+                                        new SelectListItem{ Text="North America"},
+                                        new SelectListItem{ Text="South America"},
+                                        new SelectListItem{ Text="Central America"},
+                                        new SelectListItem{ Text="Africa"},
+                                        new SelectListItem{ Text="Australia"},
+                                        new SelectListItem{ Text="Europe"},
+                                        new SelectListItem{ Text="Asia"},
+                                        new SelectListItem{ Text="Somewhere else"}
+                                    }, new { @class = "custom-select" })
+
+                                    @Html.ValidationMessageFor(m => m.country, "", new { @class = "text-danger" })
+                                    <span class="container">
+                                        Make location public     &nbsp; &nbsp;
+                                        @Html.CheckBoxFor(m => m.showCountry)
+                                    </span>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text text-gray bg-secondary">
+                                            @Html.LabelFor(m => m.ethnicity, new { id = "RegisterFormLabel" })
+                                        </div>
+                                    </div>
+                                    @Html.DropDownListFor(m => m.ethnicity, new List<SelectListItem>
+                                    {
+                                        new SelectListItem{ Text="Prefer not to say"},
+                                        new SelectListItem{ Text="Black"},
+                                        new SelectListItem{ Text="Native American"},
+                                        new SelectListItem{ Text="Asian"},
+                                        new SelectListItem{ Text="Native Hawaiian or Other Pacific Islander"},
+                                        new SelectListItem{ Text="Hispanic or Latino"},
+                                        new SelectListItem{ Text="White"}
+                                    }, new { @class = "custom-select" })
+                                    @Html.ValidationMessageFor(m => m.ethnicity, "", new { @class = "text-danger" })
+                                    <span class="container">
+                                        Make ethnicity public     &nbsp; &nbsp;
+                                        @Html.CheckBoxFor(m => m.showEthnicity)
+                                    </span>
+                                </div>
+                            </div>
+                            @Html.HiddenFor(m => m.birthdate, new { @class = "form-control" })
+                            <div class="container">
+                                Make date of birth public     &nbsp; &nbsp;
+                                @Html.CheckBoxFor(m => m.showAge)
+                            </div>
+                            <div class="container pt-4 pb-4">
+                                Make profile public     &nbsp; &nbsp;
+                                @Html.CheckBoxFor(m => m.is_public)
+                            </div>
+
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <input type="submit" value="Save" class="btn btn-primary mx-auto w-75" />
+                                </div>
+                            </div>
+                        </div>
+                        }
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <div>
+                        @Html.ActionLink("Back to Profile", "UserProfile", new { id = Model.userID }, new { @class = "btn btn-primary" })
+                    </div>
+                </div>
+            </div>
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

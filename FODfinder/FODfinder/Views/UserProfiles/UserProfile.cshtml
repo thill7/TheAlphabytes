@@ -1,0 +1,35 @@
+﻿@model FODfinder.Models.UserProfile
+
+@{
+    ViewBag.Title = "Profile";
+}
+
+    <div class="container pt-3">
+        <div class="card shadow h-100">
+            <div class="card-header bg-light text-gray">
+                <h2 class="text-center">@ViewBag.Name</h2>
+            </div>
+            <div class="card-body row">
+                <div class="col-sm-4">
+                    <img class="img-fluid" src="~/Content/Images/@ViewBag.ProfilePic" />
+                </div>
+                <div class="col-sm-8">
+                    @if (Model.showContact) { <p>Email: @ViewBag.Contact</p>}
+                    @if (Model.showAge) { <p>Age: @ViewBag.Age</p>}
+                    @if (Model.showGender) { <p>Gender: @ViewBag.Gender</p>}
+                    @if (Model.showEthnicity) { <p>Ethnicity: @ViewBag.Ethnicity</p>}
+                    @if (Model.showCountry) { <p>Location: @ViewBag.Location</p>}
+                    <p>Description:</p>
+                    @Html.DisplayFor(model => model.description)
+                </div>
+            </div>
+        </div>
+        <div class="card-footer">
+            @if (ViewBag.ownsProfile == "true")
+            {
+                @Html.ActionLink("Edit My Profile", "Edit", new { id = Model.userID }, new { @class = "btn btn-primary" })
+            }
+            
+            @Html.ActionLink("Back to Search", "Search", null, new { @class = "btn btn-primary" })
+        </div>
+    </div>
