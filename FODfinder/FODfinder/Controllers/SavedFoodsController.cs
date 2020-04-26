@@ -151,6 +151,10 @@ namespace FODfinder.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+            if (User.Identity.GetUserId() != db.UserLists.Find(listID).userID)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.Unauthorized);
+            }
             SavedFood savedFood = db.SavedFoods.Find(usdaFoodID, listID);
             if (savedFood == null)
             {
