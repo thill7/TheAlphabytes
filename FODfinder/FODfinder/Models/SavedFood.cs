@@ -40,7 +40,7 @@ namespace FODfinder.Models
         [Required]
         [StringLength(200)]
         public string desc { get; set; }
-
+        [JsonIgnore]
         public virtual UserList UserList { get; set; }
     }
 }
