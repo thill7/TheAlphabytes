@@ -23,6 +23,7 @@ namespace FODfinder.Models
         public ApplicationDbContext()
             : base("FFDBContext_Azure_Dev", throwIfV1Schema: false)
         {
+            Database.SetInitializer<FFDBContext>(null);
         }
 
         public static ApplicationDbContext Create()

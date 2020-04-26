@@ -156,7 +156,9 @@
     }
 
     async getUserLists(event) {
+        event.persist();
         var result = await axios.get(`/api/userlists/get`);
+        console.log(result);
         if (result.data.success === true) {
             this.state.details.userLists = result.data.lists;
         }

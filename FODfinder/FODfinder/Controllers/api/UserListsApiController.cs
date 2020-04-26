@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNet.Identity;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -15,14 +17,14 @@ namespace FODfinder.Models.Api
     {
         [HttpGet]
         [Route("get")]
-        public UserListJsonResponse getLists()
+        public IHttpActionResult getLists()
         {
             using (var db = new FFDBContext())
             {
                 string userID = User.Identity.GetUserId();
                 if (userID != null)
                 {
-                    List<UserList> userLists = db.UserLists.Where(x => x.userID == userID).ToList();
+                    List<UserList> userLists = db.UserLists.Where(x => x.userID == userID).Include(u => u.SavedFoods).ToList();
                     if (!userLists.Any())
                     {
                         var jsonNoLists = new UserListJsonResponse
@@ -30,7 +32,7 @@ namespace FODfinder.Models.Api
                             success = false,
                             redirect = false,
                         };
-                        return jsonNoLists;
+                        return Ok(jsonNoLists);
                     }
 
                     var jsonLoggedIn = new UserListJsonResponse
@@ -40,7 +42,7 @@ namespace FODfinder.Models.Api
                         lists = userLists
                     };
 
-                    return jsonLoggedIn;
+                    return Ok(jsonLoggedIn);
                 }
 
                 var jsonNotLoggedIn = new UserListJsonResponse
@@ -49,7 +51,7 @@ namespace FODfinder.Models.Api
                     redirect = true
                 };
 
-                return jsonNotLoggedIn;
+                return Ok(jsonNotLoggedIn);
             }
         }
     }

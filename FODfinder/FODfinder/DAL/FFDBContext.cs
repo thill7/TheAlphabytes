@@ -8,8 +8,9 @@ namespace FODfinder.Models
     public partial class FFDBContext : DbContext
     {
         public FFDBContext()
-            : base("name=FFDBContext")
+            : base("name=FFDBContext_Azure_Dev")
         {
+            Database.SetInitializer<FFDBContext>(null);
         }
 
         public virtual DbSet<AspNetRole> AspNetRoles { get; set; }
