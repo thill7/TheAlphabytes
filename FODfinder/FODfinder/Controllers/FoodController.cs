@@ -114,7 +114,7 @@ namespace FODfinder.Controllers
             };
             var foodDetails = await GetAsync(url, parameters);
             var model = JsonConvert.DeserializeObject<FoodDetailsModels>(foodDetails);
-            if (model.FdcId == default)
+            if (model.FdcId == default(int))
             {
                 return new HttpNotFoundResult("Invalid FdcId");
             }

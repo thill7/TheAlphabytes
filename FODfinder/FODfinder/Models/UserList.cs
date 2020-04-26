@@ -1,5 +1,6 @@
 namespace FODfinder.Models
 {
+    using Newtonsoft.Json;
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
@@ -24,7 +25,7 @@ namespace FODfinder.Models
         [Required]
         [StringLength(150)]
         public string listName { get; set; }
-
+        [JsonIgnore]
         public virtual AspNetUser AspNetUser { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
