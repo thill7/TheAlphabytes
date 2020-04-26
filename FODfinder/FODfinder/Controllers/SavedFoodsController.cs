@@ -28,13 +28,14 @@ namespace FODfinder.Controllers
         [AllowAnonymous]
         public ActionResult Index(int? id)
         {
+            ViewBag.ReadOnly = true;
             var uid = User.Identity.GetUserId();
             try
             {
                 UserList userList = db.UserLists.First(x => x.listID == id);
-                if (uid == null || userList.userID != uid)
+                if (userList.userID == uid)
                 {
-                    ViewBag.ReadOnly = true;
+                    ViewBag.ReadOnly = false;
                 }
                 ViewBag.ListID = userList.listID;
                 ViewBag.ListName = userList.listName;
