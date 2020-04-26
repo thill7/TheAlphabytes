@@ -108,12 +108,18 @@
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
     <Reference Include="System.Threading.Thread" />
+    <Reference Include="System.Web.Cors, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Cors.5.2.7\lib\net45\System.Web.Cors.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Http.Cors, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Cors.5.2.7\lib\net45\System.Web.Http.Cors.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.Optimization.React, Version=5.1.0.0, Culture=neutral, PublicKeyToken=9aed67b161f7db78, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Web.Optimization.React.5.1.2\lib\net40\System.Web.Optimization.React.dll</HintPath>
     </Reference>
@@ -236,6 +242,9 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\api\FODMAPIngredientsApiController.cs" />
+    <Compile Include="Controllers\api\FoodApiController.cs" />
+    <Compile Include="Controllers\api\SavedFoodsApiController.cs" />
     <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\FodmapInfoController.cs" />
     <Compile Include="Controllers\FODMAPIngredientsController.cs" />
@@ -244,6 +253,12 @@
     <Compile Include="Controllers\UserListsController.cs" />
     <Compile Include="Controllers\UserProfilesController.cs" />
     <Compile Include="Models\EditProfileViewModel.cs" />
+    <Compile Include="Models\Api\FodmapIngredientJsonResponse.cs" />
+    <Compile Include="Models\Api\JsonResponse.cs" />
+    <Compile Include="Models\Api\LabelIngredientRequest.cs" />
+    <Compile Include="Models\Api\SavedFoodRequest.cs" />
+    <Compile Include="Controllers\api\UserListsApiController.cs" />
+    <Compile Include="Models\Api\UserListJsonResponse.cs" />
     <Compile Include="Models\LabelledIngredient.cs" />
     <Compile Include="Controllers\SuperAdminController.cs" />
     <Compile Include="Controllers\IbsInfoController.cs" />

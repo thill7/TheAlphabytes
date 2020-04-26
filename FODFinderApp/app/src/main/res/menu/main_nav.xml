@@ -5,6 +5,9 @@
               android:checked="true"
               android:title="@string/label_nav_home" />
 
+        <item android:id="@+id/search_fragment_nav"
+              android:title="@string/label_search" />
+
         <item android:id="@+id/info_fragment_nav"
               android:title="@string/label_nav_info" />
     </group>

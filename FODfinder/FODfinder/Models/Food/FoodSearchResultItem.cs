@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json.Linq;
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,12 +9,12 @@ namespace FODfinder.Models.Food
 {
     public class FoodSearchResultItem
     {
-        public int FdcId { get; private set; }
-        public string GtinUPC { get; private set; }
-        public string Description { get; private set; }
-        public string PublishedDate { get; private set; }
-        public string BrandOwner { get; private set; }
-        public string Ingredients { get; private set; }
+        public int FdcId { get; set; }
+        public string GtinUPC { get; set; }
+        public string Description { get; set; }
+        public string PublishedDate { get; set; }
+        public string BrandOwner { get; set; }
+        public string Ingredients { get; set; }
 
         public FoodSearchResultItem(string jsonString)
         {
@@ -26,6 +27,12 @@ namespace FODfinder.Models.Food
             PublishedDate = foodObject.SelectToken("publishedData")?.ToString() ?? "";
             BrandOwner = foodObject.SelectToken("brandOwner")?.ToString() ?? "";
             Ingredients = foodObject.SelectToken("ingredients")?.ToString() ?? "";
+        }
+
+        [JsonConstructor]
+        public FoodSearchResultItem()
+        {
+
         }
     }
 }
