@@ -161,12 +161,14 @@
     }
 
     hideLabels(event) {
-        if (!this.dropdownMenu.contains(event.target)) {
-            this.setState({ showLabels: false }, () => {
-                document.removeEventListener('click', this.hideLabels);
-            });
+        if (this.dropdownMenu != null) {
+            if (!this.dropdownMenu.contains(event.target)) {
+                this.setState({ showLabels: false }, () => {
+                    document.removeEventListener('click', this.hideLabels);
+                });
+            }
+            this.setState({ ingredientId: null });
         }
-        this.setState({ ingredientId: null });
     }
 
     async addLabel(label, ingredient) {
