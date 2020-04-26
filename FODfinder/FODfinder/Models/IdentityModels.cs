@@ -21,8 +21,9 @@ namespace FODfinder.Models
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext()
-            : base("FFDBContext", throwIfV1Schema: false)
+            : base("FFDBContext_Azure_Dev", throwIfV1Schema: false)
         {
+            Database.SetInitializer<FFDBContext>(null);
         }
 
         public static ApplicationDbContext Create()
