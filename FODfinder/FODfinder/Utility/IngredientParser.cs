@@ -11,7 +11,7 @@ namespace FODfinder.Utility
     {
         private const string Pattern = @"\w[\w\s-\'/]+(\([\w\s-,\'/]+\))*";
         private static readonly string[] ToRemove = { "ingredients", ":", ";", "made of", ".", "contains one or more of the following", "[", "]" };
-        private static readonly string[] Variations = { "contains less than 2% of", "contains less than 2%", "contains 2% or less of", "less than 2% of", "less than 2%", "less than 2 percent" };
+        private static readonly string[] Variations = { "contains less than 2% of", "contains less than 2%", "contains 2% or less of", "contains 2% or less", "less than 2% of", "less than 2%", "less than 2 percent" };
         public static MatchCollection MatchRegEx(string ingredientsString) => Regex.Matches(ingredientsString, Pattern);
         public static IEnumerable<string> ConvertToEnumerable(MatchCollection matches) => matches.Cast<Match>().Select(m => $"{m}".Trim());
         public static bool GetFodmapStatus(string ingredient)

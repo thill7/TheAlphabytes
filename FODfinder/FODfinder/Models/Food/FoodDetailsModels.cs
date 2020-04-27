@@ -50,20 +50,3 @@ namespace FODfinder.Models.Food
         }
     }
 }
-//if(!string.IsNullOrEmpty(ingredientString))
-//{
-//    var primary = new List<List<string>>();
-//    var secondary = new List<List<string>>();
-//    IngredientParser.Parse(ingredientString, out primary, out secondary);
-
-//    var parsedIngredients = IngredientParser.Parse(ingredientString);
-//    foreach(var ingredient in parsedIngredients)
-//    {
-//        if(string.IsNullOrEmpty(ingredient))
-//        {
-//            continue;
-//        }
-//        var fodmap = db.FODMAPIngredients.Where(f => ingredient.Contains(f.Name.ToLower())).FirstOrDefault();
-//        Ingredients.Add(new Ingredient(ingredient, fodmap != null));
-//    }
-//}
