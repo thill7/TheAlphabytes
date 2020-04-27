@@ -8,7 +8,7 @@ namespace FODfinder.Models
     public partial class FFDBContext : DbContext
     {
         public FFDBContext()
-            : base("name=FFDBContext_Azure_Dev")
+            : base("name=FFDBContext")
         {
             Database.SetInitializer<FFDBContext>(null);
         }
@@ -68,6 +68,8 @@ namespace FODfinder.Models
                 .WillCascadeOnDelete(false);
         }
 
-       //public System.Data.Entity.DbSet<FODfinder.Models.UserList> UserLists { get; set; }
+        public System.Data.Entity.DbSet<FODfinder.Models.HighRiskLabelledIngredient> HighRiskLabelledIngredients { get; set; }
+
+        //public System.Data.Entity.DbSet<FODfinder.Models.UserList> UserLists { get; set; }
     }
 }

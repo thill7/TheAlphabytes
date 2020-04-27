@@ -249,6 +249,7 @@
     <Compile Include="Controllers\FodmapInfoController.cs" />
     <Compile Include="Controllers\FODMAPIngredientsController.cs" />
     <Compile Include="Controllers\FoodController.cs" />
+    <Compile Include="Controllers\HighRiskLabelledIngredientsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\UserListsController.cs" />
     <Compile Include="Controllers\UserProfilesController.cs" />
@@ -259,6 +260,7 @@
     <Compile Include="Models\Api\SavedFoodRequest.cs" />
     <Compile Include="Controllers\api\UserListsApiController.cs" />
     <Compile Include="Models\Api\UserListJsonResponse.cs" />
+    <Compile Include="Models\HighRiskLabelledIngredient.cs" />
     <Compile Include="Models\LabelledIngredient.cs" />
     <Compile Include="Controllers\SuperAdminController.cs" />
     <Compile Include="Controllers\IbsInfoController.cs" />
@@ -520,6 +522,7 @@
     <Content Include="Views\UserProfiles\UserProfile.cshtml" />
     <Content Include="Views\UserProfiles\Edit.cshtml" />
     <Content Include="Views\UserProfiles\Search.cshtml" />
+    <Content Include="Views\HighRiskLabelledIngredients\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\index.d.ts" />
