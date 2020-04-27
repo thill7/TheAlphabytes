@@ -68,6 +68,8 @@ namespace FODfinder.Models
                 .WillCascadeOnDelete(false);
         }
 
-       //public System.Data.Entity.DbSet<FODfinder.Models.UserList> UserLists { get; set; }
+        public System.Data.Entity.DbSet<FODfinder.Models.HighRiskLabelledIngredient> HighRiskLabelledIngredients { get; set; }
+
+        //public System.Data.Entity.DbSet<FODfinder.Models.UserList> UserLists { get; set; }
     }
 }
