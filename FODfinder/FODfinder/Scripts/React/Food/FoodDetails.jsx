@@ -115,7 +115,7 @@
         var brand = this.state.details.BrandOwner;
         var desc = this.state.details.Description;
         var barcode = this.state.details.UPC;
-        var saveFood = await axios.post(`/SavedFoods/Create`, { usdaFoodID: id, listID: listID, brandOwner: brand, description: desc, upc: barcode });
+        var saveFood = await axios.post(`/api/savedfoods/create`, { usdaFoodID: id, listID: listID, brandOwner: brand, description: desc, upc: barcode });
         var result = saveFood.data;
         var message = result.message;
         if (result.redirect == true) {
@@ -144,7 +144,9 @@
     }
 
     async getUserLists(event) {
-        var result = await axios.get(`/UserLists/getLists`);
+        event.persist();
+        var result = await axios.get(`/api/userlists/get`);
+        console.log(result);
         if (result.data.success === true) {
             this.state.details.userLists = result.data.lists;
         }
@@ -173,7 +175,7 @@
 
     async addLabel(label, ingredient) {
         var id = parseInt(this.state.details.FdcId);
-        var saveLabel = await axios.post(`/FODMAPIngredients/Create`, { assignLabel: label, ingredientName: ingredient });
+        var saveLabel = await axios.post(`/api/fodmapingredients/create`, { assignLabel: label, ingredientName: ingredient });
         var result = saveLabel.data;
         var message = result.message;
         if(result.redirect == true) {
@@ -263,8 +265,8 @@
                                             {
                                                 i.IngredientPosition == 2 ? <span key={`secondary-inner-span-${index}`} onClick={(e) => { this.showLabels(e, index + primaryLength) }} className={"cursor-pointer rounded " + i.Label + (i.IsFodmap ? " px-1 bg-danger-50 text-white rounded" : "")}>{i.Name}</span>
                                                     : i.IngredientPosition == 0 ? <span>{i.Name}</span>
-                                                        : i.IngredientPosition == 1 ? <span key={`secondary-inner-span-${index}`} onClick={(e) => { this.showLabels(e, index + primaryLength) }} className={"cursor-pointer rounded " + i.Label + (i.IsFodmap ? " px-1 bg-danger-50 text-white" : "")}>{i.Name}</span>
-                                                            : null
+                                                    : i.IngredientPosition == 1 ? <span key={`secondary-inner-span-${index}`} onClick={(e) => { this.showLabels(e, index + primaryLength) }} className={"cursor-pointer rounded " + i.Label + (i.IsFodmap ? " px-1 bg-danger-50 text-white" : "")}>{i.Name}</span>
+                                                    : null
                                             }
                                             {
                                                 i.IngredientPosition == 2 ? index == secondaryLength - 1 ? "." : ", "

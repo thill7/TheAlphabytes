@@ -1,5 +1,6 @@
 namespace FODfinder.Models
 {
+    using Newtonsoft.Json;
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
@@ -17,6 +18,7 @@ namespace FODfinder.Models
             this.upc = barcode;
             this.desc = description;
         }
+
         [Key]
         [Column(Order = 0)]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
@@ -24,12 +26,21 @@ namespace FODfinder.Models
 
         [Key]
         [Column(Order = 1)]
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int listID { get; set; }
 
+        [Required]
+        [StringLength(200)]
         public string brand { get; set; }
 
+        [Required]
+        [StringLength(32)]
         public string upc { get; set; }
 
+        [Required]
+        [StringLength(200)]
         public string desc { get; set; }
+        [JsonIgnore]
+        public virtual UserList UserList { get; set; }
     }
 }

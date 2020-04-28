@@ -25,16 +25,19 @@ namespace FODfinder.Controllers
         }
 
         // GET: SavedFoods
+        [AllowAnonymous]
         public ActionResult Index(int? id)
         {
+            ViewBag.ReadOnly = true;
             var uid = User.Identity.GetUserId();
             try
             {
-                UserList userList = db.UserLists.FirstOrDefault(x => x.listID == id);
-                if (userList.userID != uid)
+                UserList userList = db.UserLists.First(x => x.listID == id);
+                if (userList.userID == uid)
                 {
-                    return RedirectToAction("Index", "UserLists");
+                    ViewBag.ReadOnly = false;
                 }
+                ViewBag.ListID = userList.listID;
                 ViewBag.ListName = userList.listName;
             }
             catch
@@ -147,6 +150,10 @@ namespace FODfinder.Controllers
             if (usdaFoodID == null || listID == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            if (User.Identity.GetUserId() != db.UserLists.Find(listID).userID)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.Unauthorized);
             }
             SavedFood savedFood = db.SavedFoods.Find(usdaFoodID, listID);
             if (savedFood == null)

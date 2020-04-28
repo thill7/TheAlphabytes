@@ -1,0 +1,35 @@
+﻿@model IEnumerable<FODfinder.Models.HighRiskLabelledIngredient>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+    <div class="container-fluid bg-secondary p-4 rounded-bottom justify-content-center">
+        <div class="col-12">
+            <p class="bg-secondary display-4 p-2 my-4 rounded shadow text-gray text-center">User Labelled High Risk Ingredients</p>
+        </div>
+
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.ingredientName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.countOfLabelOccurences)
+                </th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ingredientName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.countOfLabelOccurences)
+                    </td>
+                </tr>
+            }
+
+        </table>
+    </div>  

@@ -1,5 +1,6 @@
 ﻿using FODfinder.Models;
 using FODfinder.Models.Food;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
@@ -27,6 +28,19 @@ namespace FODfinder.Controllers
                 queryParams[param.Key] = param.Value;
             }
             return queryParams.ToString();
+        }
+
+        async Task<string> GetAsync(string url, Dictionary<string, string> parameters)
+        {
+            string json;
+            UriBuilder builder = new UriBuilder(url);
+            builder.Query = GenerateQueryString(parameters);
+            using (HttpClient client = new HttpClient())
+            {
+                var response = await client.GetAsync(builder.ToString());
+                json = await response.Content.ReadAsStringAsync();
+            }
+            return json;
         }
 
         async private Task<string> GetFoodResults(string query, string pageNumber = "1", string ingredients = null, bool requireAllWords = false)
@@ -72,23 +86,39 @@ namespace FODfinder.Controllers
         // GET: Food
         async public Task<ActionResult> Index(string query, string ingredients = null, bool requireAllWords = false)
         {
-            if (query == null)
+            if (string.IsNullOrEmpty(query))
             {
                 return View();
             }
-            var foodSearchResults = await GetFoodResults(query, "1", ingredients, requireAllWords);
-            return View(new FoodSearchResult(foodSearchResults,ingredients,requireAllWords));
+            string url = $"{Request.Url.Scheme}{Uri.SchemeDelimiter}{Request.Url.Authority}/api/food/search";
+            var parameters = new Dictionary<string, string>
+            {
+                {"query",query },
+                {"requireAllWords",requireAllWords.ToString() }
+            };
+            if(!string.IsNullOrEmpty(ingredients))
+            {
+                parameters.Add("ingredients", ingredients);
+            }
+            var foodSearchResults = await GetAsync(url, parameters);
+            var model = JsonConvert.DeserializeObject<FoodSearchResult>(foodSearchResults);
+            return View(model);
         }
 
         async public Task<ActionResult> Details(int id)
         {
-            var foodDetails = await GetFoodDetails(id.ToString());
-            JObject json = JObject.Parse(foodDetails);
-            if (!json.ContainsKey("fdcId"))
+            string url = $"{Request.Url.Scheme}{Uri.SchemeDelimiter}{Request.Url.Authority}/api/food/details";
+            var parameters = new Dictionary<string, string>
+            {
+                {"id",id.ToString() }
+            };
+            var foodDetails = await GetAsync(url, parameters);
+            var model = JsonConvert.DeserializeObject<FoodDetailsModels>(foodDetails);
+            if (model.FdcId == default(int))
             {
                 return new HttpNotFoundResult("Invalid FdcId");
             }
-            return View(new FoodDetailsModels(foodDetails));
+            return View(model);
         }
 
         async public Task<ContentResult> Get(string query, string pageNumber="1", string ingredients = null, bool requireAllWords = false)

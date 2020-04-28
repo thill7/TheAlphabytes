@@ -6,8 +6,18 @@
 
     <div class="container-fluid pt-5 pb-5 rounded bg-secondary">
         <div class="row justify-content-center">
-            <h1 class="text-gray">@ViewBag.ListName</h1>
+            <h1 class="text-gray mb-0">@ViewBag.ListName</h1>
         </div>
+        @if (!ViewBag.ReadOnly)
+        {
+            <div class="row justify-content-center">
+                <p>
+                    <a class="text-gray" href="/UserLists/Edit/@ViewBag.ListID">Rename</a> |
+                    <a class="text-gray" href="/UserLists/Delete/@ViewBag.ListID">Delete</a> |
+                    <a class="text-gray" href="/UserLists/Index">Go Back</a>
+                </p>
+            </div>
+        }
         <div class="row justify-content-center">
             <h5 class="text-gray">Total Saved Foods: @ViewBag.TotalSavedFoods</h5>
         </div>
@@ -17,9 +27,18 @@
             <div class="list-group">
                 <div class="list-group-item bg-secondary">
                     <div class="row text-gray h5 mb-0">
-                        <div class="col-3">Food</div>
-                        <div class="col-3">Brand</div>
-                        <div class="col-3">UPC</div>
+                        @if (!ViewBag.ReadOnly)
+                        {
+                            <div class="col-3">Food</div>
+                            <div class="col-3">Brand</div>
+                            <div class="col-3">UPC</div>
+                        }
+                        else
+                        {
+                            <div class="col-4">Food</div>
+                            <div class="col-4">Brand</div>
+                            <div class="col-4">UPC</div>
+                        }
                     </div>
                 </div>
             </div>
@@ -28,18 +47,33 @@
                 <div class="list-group">
                     <div class="list-group-item FoodLink" onclick="location.href='/food/details/@item.usdaFoodID'">
                         <div class="row text-gray text-capitalize">
-                            <div class="col-3 align-self-center">
-                                @item.desc.ToLower()
-                            </div>
-                            <div class="col-3 align-self-center">
-                                @item.brand.ToLower()
-                            </div>
-                            <div class="col-3 align-self-center">
-                                @item.upc
-                            </div>
-                            <div class="col-3 align-self-center">
-                                @Html.ActionLink("Delete", "Delete", new { usdaFoodID = item.usdaFoodID, listID = item.listID }, new { @class = "btn btn-light" })
-                            </div>
+                            @if (!ViewBag.ReadOnly)
+                            {
+                                <div class="col-3 align-self-center">
+                                    @item.desc.ToLower()
+                                </div>
+                                <div class="col-3 align-self-center">
+                                    @item.brand.ToLower()
+                                </div>
+                                <div class="col-3 align-self-center">
+                                    @item.upc
+                                </div>
+                                <div class="col-3 align-self-center">
+                                    @Html.ActionLink("Delete", "Delete", new { usdaFoodID = item.usdaFoodID, listID = item.listID }, new { @class = "btn btn-light" })
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="col-4 align-self-center">
+                                    @item.desc.ToLower()
+                                </div>
+                                <div class="col-4 align-self-center">
+                                    @item.brand.ToLower()
+                                </div>
+                                <div class="col-4 align-self-center">
+                                    @item.upc
+                                </div>
+                            }
                         </div>
                     </div>
                 </div>

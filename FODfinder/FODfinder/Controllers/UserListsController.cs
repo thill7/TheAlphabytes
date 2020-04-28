@@ -30,7 +30,7 @@ namespace FODfinder.Controllers
             string userID = User.Identity.GetUserId();
             if (userID != null)
             {
-                List<UserList> userLists = db.UserLists.Where(x => x.userID == userID).ToList();
+                var userLists = db.UserLists.Where(x=>x.userID == userID).ToList().Select(q => new { listID = q.listID, listName = q.listName }).ToList();
                 if (!userLists.Any())
                 {
                     var jsonNoLists = new
@@ -125,6 +125,7 @@ namespace FODfinder.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "listID,userID,listName")] UserList userList)
         {
+            userList.userID = User.Identity.GetUserId();
             if (ModelState.IsValid)
             {
                 db.Entry(userList).State = EntityState.Modified;

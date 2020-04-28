@@ -13,6 +13,29 @@
     --danger-50: rgba(220,53,69,0.5);
 }
 
+.profilepic {
+    height: 100px;
+    width: 100px;
+    display: inline-block;
+    object-fit: contain;
+    background-size: cover;
+}
+
+.profilepic1 {
+    background-image: url("Images/profilepic1.jpg");
+    
+}.profilepic2 {
+    background-image: url("Images/profilepic2.jpg");
+}.profilepic3 {
+    background-image: url("Images/profilepic3.jpg");
+}.profilepic4 {
+    background-image: url("Images/profilepic4.jpg");
+}.profilepic5 {
+    background-image: url("Images/profilepic5.jpg");
+}.profilepic6 {
+    background-image: url("Images/profilepic6.jpg");
+}
+
 .navbar-light, .bg-light, .btn-light, .input-group-text-light {
     background-color: #F5EEEB !important;
 }

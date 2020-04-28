@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json.Linq;
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Web;
@@ -7,13 +8,13 @@ namespace FODfinder.Models.Food
 {
     public class FoodSearchResult
     {
-        public string Query { get; private set; }
-        public int TotalHits { get; private set; }
-        public int CurrentPage { get; private set; }
-        public int TotalPages { get; private set; }
-        public string Ingredients { get; private set; }
-        public bool RequireAllWords { get; private set; }
-        public List<FoodSearchResultItem> Foods { get; private set; } = new List<FoodSearchResultItem>();
+        public string Query { get; set; }
+        public int TotalHits { get; set; }
+        public int CurrentPage { get; set; }
+        public int TotalPages { get; set; }
+        public string Ingredients { get; set; }
+        public bool RequireAllWords { get; set; }
+        public List<FoodSearchResultItem> Foods { get; set; } = new List<FoodSearchResultItem>();
 
         public FoodSearchResult(string jsonInput, string ingredients, bool requireAllWords)
         {
@@ -33,6 +34,12 @@ namespace FODfinder.Models.Food
             }
             this.Ingredients = ingredients;
             this.RequireAllWords = requireAllWords;
+        }
+
+        [JsonConstructor]
+        public FoodSearchResult()
+        {
+
         }
     }
 }
