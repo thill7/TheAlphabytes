@@ -114,7 +114,7 @@ namespace FODfinder.Models
         public bool showAge { get; set; }
         
         [Required]
-        [DisplayName("Make Date of Birth Public")]
+        [DisplayName("Make Email Public")]
         public bool showContact { get; set; }
 
         [StringLength(15)]
