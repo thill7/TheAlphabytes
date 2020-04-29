@@ -22,6 +22,7 @@ import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.navigation.NavigationView
+import dev.tannerhill.fodfinder.ViewModels.FoodDetailsViewModel
 import dev.tannerhill.fodfinder.ViewModels.FoodSearchViewModel
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -30,6 +31,7 @@ class MainActivity : AppCompatActivity(), NavController.OnDestinationChangedList
     private var navController: NavController? = null
     private var appBarConfiguration: AppBarConfiguration? = null
     private val foodSearchViewModel: FoodSearchViewModel by viewModels()
+    private val foodDetailsViewModel: FoodDetailsViewModel by viewModels()
 
     private var optionsMenu: Menu? = null
     private var searchView: SearchView? = null
@@ -47,6 +49,14 @@ class MainActivity : AppCompatActivity(), NavController.OnDestinationChangedList
 
         navController = findNavController(R.id.nav_host_fragment)
         navController!!.addOnDestinationChangedListener(this)
+
+        foodDetailsViewModel.getFoodDetails().observe(this, Observer {
+            if(it != null) {
+                Log.d("HOME",it.toString())
+            }
+        })
+
+        foodDetailsViewModel.get("647880")
 
         appBarConfiguration = AppBarConfiguration(navController!!.graph,drawer_layout)
         nav_view.setupWithNavController(navController!!)

@@ -1,6 +1,7 @@
 package dev.tannerhill.fodfinder
 
 import androidx.lifecycle.MutableLiveData
+import dev.tannerhill.fodfinder.Models.Food.FoodDetails
 import dev.tannerhill.fodfinder.Models.Food.FoodSearchResult
 import retrofit2.*
 import retrofit2.converter.gson.GsonConverterFactory
@@ -30,6 +31,24 @@ object FoodDataRepository {
                 }
 
                 override fun onResponse(call: Call<FoodSearchResult>, response: Response<FoodSearchResult>) {
+                    data.value = response.body()
+                }
+            })
+    }
+
+    fun details(
+        id: String,
+        data: MutableLiveData<FoodDetails>,
+        onError: (t: Throwable) -> Unit
+    ) {
+        api.details(id)
+            .enqueue(object: Callback<FoodDetails> {
+                override fun onFailure(call: Call<FoodDetails>, t: Throwable) {
+                    onError.invoke(t)
+                    data.value = null
+                }
+
+                override fun onResponse(call: Call<FoodDetails>, response: Response<FoodDetails>) {
                     data.value = response.body()
                 }
             })

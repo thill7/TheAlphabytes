@@ -27,6 +27,7 @@
     <string name="label_nav_ibs_info">What\'s IBS?</string>
     <string name="label_nav_info">Information</string>
     <string name="label_search">Search</string>
+    <string name="label_details">Details</string>
 
     <string name="app_description">\tThis website is a free resource for learning about IBS and FODMAPs, searching for
         foods to see if they\'re compatible with a low-FODMAP diet (coming soon), and saving those results for your

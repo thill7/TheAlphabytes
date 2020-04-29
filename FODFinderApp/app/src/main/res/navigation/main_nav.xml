@@ -19,5 +19,10 @@
               tools:layout="@layout/fragment_info"
               android:label="@string/label_nav_info"/>
 
+    <fragment android:id="@+id/details_fragment_nav"
+              android:name="dev.tannerhill.fodfinder.FoodDetailFragment"
+              tools:layout="@layout/fragment_food_detail"
+              android:label="@string/label_details"/>
+
 
 </navigation>
