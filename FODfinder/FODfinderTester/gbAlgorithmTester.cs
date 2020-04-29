@@ -17,11 +17,11 @@ namespace FODfinderTester
         [TestMethod]
         public void ListContainsFodmaps_containsNoFodmaps_returnsFalse()
         {
-            var ingredients = new List<List<Ingredient>>() 
+            var ingredients = new List<Ingredient>() 
             { 
-                new List<Ingredient>() { new Ingredient("water", false, null) },
-                new List<Ingredient>() { new Ingredient("salt", false, null) },
-                new List<Ingredient>() { new Ingredient("beef", false, null) }
+                new Ingredient("water", false, null, Ingredient.Position.Other),
+                new Ingredient("salt", false, null, Ingredient.Position.Other),
+                new Ingredient("beef", false, null, Ingredient.Position.Other)
             };
             var result = Algorithm.ListContainsFodmaps(ingredients);
             Assert.IsFalse(result);
@@ -29,11 +29,11 @@ namespace FODfinderTester
         [TestMethod]
         public void ListContainsFodmaps_containsFodmaps_returnsTrue()
         {
-            var ingredients = new List<List<Ingredient>>()
+            var ingredients = new List<Ingredient>()
             {
-                new List<Ingredient>() { new Ingredient("sorbitol", true, null) },
-                new List<Ingredient>() { new Ingredient("onions", true, null) },
-                new List<Ingredient>() { new Ingredient("garlic powder", true, null) }
+                new Ingredient("sorbitol", true, null, Ingredient.Position.Other),
+                new Ingredient("onions", true, null, Ingredient.Position.Other),
+                new Ingredient("garlic powder", true, null, Ingredient.Position.Other)
             };
             var result = Algorithm.ListContainsFodmaps(ingredients);
             Assert.IsTrue(result);

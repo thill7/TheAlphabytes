@@ -242,6 +242,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\AlgoInfoController.cs" />
     <Compile Include="Controllers\api\FODMAPIngredientsApiController.cs" />
     <Compile Include="Controllers\api\FoodApiController.cs" />
     <Compile Include="Controllers\api\SavedFoodsApiController.cs" />
@@ -522,6 +523,7 @@
     <Content Include="Views\UserProfiles\UserProfile.cshtml" />
     <Content Include="Views\UserProfiles\Edit.cshtml" />
     <Content Include="Views\UserProfiles\Search.cshtml" />
+    <Content Include="Views\AlgoInfo\Index.cshtml" />
     <Content Include="Views\HighRiskLabelledIngredients\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>

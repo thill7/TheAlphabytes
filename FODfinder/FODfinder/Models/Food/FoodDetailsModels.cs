@@ -16,9 +16,8 @@ namespace FODfinder.Models.Food
         public int FdcId { set; get; }
         public string Description { set; get; }
         public string BrandOwner { set; get; }
-        public List<Ingredient> Ingredients { set; get; } = new List<Ingredient>();
-        public List<List<Ingredient>> PrimaryIngredients { set; get; } = new List<List<Ingredient>>();
-        public List<List<Ingredient>> SecondaryIngredients { set; get; } = new List<List<Ingredient>>();
+        public List<Ingredient> PrimaryIngredients { set; get; } = new List<Ingredient>();
+        public List<Ingredient> SecondaryIngredients { set; get; } = new List<Ingredient>();
         public double ServingSize { set; get; }
         public string ServingSizeUnit { set; get; }
         public string ServingSizeFullText { set; get; }
@@ -34,29 +33,12 @@ namespace FODfinder.Models.Food
             var ingredientString = detailObject.SelectToken("ingredients")?.ToString() ?? "";
             if (!string.IsNullOrEmpty(ingredientString))
             {
-                var primary = new List<List<string>>();
-                var secondary = new List<List<string>>();
+                var primary = new List<Ingredient>();
+                var secondary = new List<Ingredient>();
                 IngredientParser.Parse(ingredientString, out primary, out secondary);
-                PrimaryIngredients = IngredientParser.ConvertToIngredients(primary);
-                SecondaryIngredients = IngredientParser.ConvertToIngredients(secondary);
+                PrimaryIngredients = primary;
+                SecondaryIngredients = secondary;
             }
-            //if(!string.IsNullOrEmpty(ingredientString))
-            //{
-            //    var primary = new List<List<string>>();
-            //    var secondary = new List<List<string>>();
-            //    IngredientParser.Parse(ingredientString, out primary, out secondary);
-
-            //    var parsedIngredients = IngredientParser.Parse(ingredientString);
-            //    foreach(var ingredient in parsedIngredients)
-            //    {
-            //        if(string.IsNullOrEmpty(ingredient))
-            //        {
-            //            continue;
-            //        }
-            //        var fodmap = db.FODMAPIngredients.Where(f => ingredient.Contains(f.Name.ToLower())).FirstOrDefault();
-            //        Ingredients.Add(new Ingredient(ingredient, fodmap != null));
-            //    }
-            //}
             double servingSize;
             ServingSize = double.TryParse(detailObject.SelectToken("servingSize")?.ToString() ?? "", out servingSize) ? servingSize : 0.0;
             ServingSizeUnit = detailObject.SelectToken("servingSizeUnit")?.ToString() ?? "";
@@ -65,7 +47,7 @@ namespace FODfinder.Models.Food
             int fdcId;
             FdcId = int.TryParse(detailObject.SelectToken("fdcId")?.ToString() ?? "", out fdcId) ? fdcId : -1;
             UPC = detailObject.SelectToken("gtinUpc")?.ToString() ?? "";
-            FodmapScore = Algorithm.DetermineLevelOfFodmap(this.PrimaryIngredients, this.SecondaryIngredients).ToString();
+            FodmapScore = Algorithm.DetermineLevelOfFodmap(PrimaryIngredients, SecondaryIngredients).ToString();
         }
 
         [JsonConstructor]

@@ -1,35 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
 using FODfinder.Models.Food;
-using System.Linq;
-using System.Web;
 
 namespace FODfinder.Utility.Algorithm
 {
     public class Algorithm
     {
-        public static bool ListContainsFodmaps(List<List<Ingredient>> ingredients)
+        public static bool ListContainsFodmaps(List<Ingredient> ingredients)
         {
             try
             {
                 foreach (var ingredient in ingredients)
                 {
-                    if (ingredient.Count == 1)
+                    if (ingredient.IsFodmap)
                     {
-                        if (ingredient.FirstOrDefault().IsFodmap)
-                        {
-                            return true;
-                        }
-                    }
-                    else
-                    {
-                        foreach (var subingredient in ingredient)
-                        {
-                            if(subingredient.IsFodmap)
-                            {
-                                return true;
-                            }
-                        }
+                        return true;
                     }
                 }
                 return false;
@@ -39,7 +24,7 @@ namespace FODfinder.Utility.Algorithm
                 throw new NullReferenceException($"Arguments for \"ListContainsFodmaps\" must not be null: {e}");
             }
         }
-        public static Score DetermineLevelOfFodmap(List<List<Ingredient>> primaryIngredients, List<List<Ingredient>> secondaryIngredients)
+        public static Score DetermineLevelOfFodmap(List<Ingredient> primaryIngredients, List<Ingredient> secondaryIngredients)
         {
             try
             {

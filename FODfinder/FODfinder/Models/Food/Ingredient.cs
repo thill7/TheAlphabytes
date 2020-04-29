@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,16 +11,25 @@ namespace FODfinder.Models.Food
         public string Name { get; set; }
         public bool IsFodmap { get; set; }
         public string Label { get; set; }
+        public Position IngredientPosition { get; set; }
 
-        public Ingredient(String name, bool isFodmap, string label)
+        public Ingredient(string name, bool isFodmap, string label, Position ingredientPosition)
         {
-            this.Name = name;
-            this.IsFodmap = isFodmap;
-            this.Label = label;
+            Name = name;
+            IsFodmap = isFodmap;
+            Label = label;
             if (label == "Low-Risk")
             {
-                this.IsFodmap = false;
+                IsFodmap = false;
             }
+            IngredientPosition = ingredientPosition;
+        }
+
+        public enum Position
+        {
+            Parent,
+            LastChild,
+            Other,
         }
 
         [JsonConstructor]

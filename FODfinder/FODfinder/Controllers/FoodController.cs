@@ -107,18 +107,8 @@ namespace FODfinder.Controllers
 
         async public Task<ActionResult> Details(int id)
         {
-            string url = $"{Request.Url.Scheme}{Uri.SchemeDelimiter}{Request.Url.Authority}/api/food/details";
-            var parameters = new Dictionary<string, string>
-            {
-                {"id",id.ToString() }
-            };
-            var foodDetails = await GetAsync(url, parameters);
-            var model = JsonConvert.DeserializeObject<FoodDetailsModels>(foodDetails);
-            if (model.FdcId == default(int))
-            {
-                return new HttpNotFoundResult("Invalid FdcId");
-            }
-            return View(model);
+            var jsonContent = await GetFoodDetails($"{id}");
+            return View(new FoodDetailsModels(jsonContent));
         }
 
         async public Task<ContentResult> Get(string query, string pageNumber="1", string ingredients = null, bool requireAllWords = false)
