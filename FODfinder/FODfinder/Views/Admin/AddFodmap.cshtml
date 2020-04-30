@@ -38,6 +38,7 @@
                                 </div>
                                 @Html.ValidationMessageFor(m => m.Aliases, "", new { @class = "text-danger" })
                             </div>
+                            <input type="hidden" name="previousAction" id="previousAction" value="AddFodmap" />
                             <div class="form-group">
                                 <div class="input-group">
                                     <input type="submit" class="btn btn-primary mx-auto w-75" value="Add FODMAP" />
