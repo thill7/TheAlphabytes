@@ -31,11 +31,11 @@
             if (position == 0) {
                 ingredientsList += list[i].Name + " (";
             }
-            else if (position == 1 || position == 2) {
+            else if (position == 1) {
                 ingredientsList += list[i].Name;
                 ingredientsList += i == list.length - 1 ? ")" : "), ";
             }
-            else if (position == 3) {
+            else if (position == 2) {
                 ingredientsList += list[i].Name;
                 ingredientsList += i == list.length - 1 ? "" : ", ";
             }
