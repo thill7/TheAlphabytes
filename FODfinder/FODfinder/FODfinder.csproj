@@ -525,6 +525,7 @@
     <Content Include="Views\UserProfiles\Search.cshtml" />
     <Content Include="Views\AlgoInfo\Index.cshtml" />
     <Content Include="Views\HighRiskLabelledIngredients\Index.cshtml" />
+    <Content Include="Views\Admin\UserFodmap.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\index.d.ts" />
