@@ -10,6 +10,7 @@ using System.Web.Mvc;
 using FODfinder.Models;
 using Microsoft.AspNet.Identity;
 using Newtonsoft.Json.Linq;
+using Rotativa;
 
 namespace FODfinder.Controllers
 {
@@ -47,6 +48,23 @@ namespace FODfinder.Controllers
             List<SavedFood> savedFoodsList = db.SavedFoods.Where(sf => sf.listID == id).ToList();
             ViewBag.TotalSavedFoods = countSavedFoods(savedFoodsList);
             return View(savedFoodsList);
+        }
+
+        [AllowAnonymous]
+        public ActionResult PrintableIndex(int id)
+        {
+            UserList userList = db.UserLists.First(x => x.listID == id);
+            ViewBag.ListName = userList.listName;
+            List<SavedFood> savedFoodsList = db.SavedFoods.Where(sf => sf.listID == id).ToList();
+            ViewBag.TotalSavedFoods = countSavedFoods(savedFoodsList);
+            return View(savedFoodsList);
+        }
+
+        [AllowAnonymous]
+        public ActionResult PrintList(int id)
+        {
+            var list = new ActionAsPdf("PrintableIndex", new { id = id });
+            return list;
         }
 
         // GET: SavedFoods/Details/5
