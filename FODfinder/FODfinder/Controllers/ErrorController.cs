@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using FODfinder.Models;
 
 namespace FODfinder.Controllers
 {
     public class ErrorController : Controller
     {
-        // GET: Error
+        private FFDBContext db = new FFDBContext();
+
         public ActionResult Default()
         {
             return View();
@@ -16,15 +18,11 @@ namespace FODfinder.Controllers
 
         public ActionResult NotFound()
         {
-            var quotes = new List<(string Quote, string Author)>
-            {
-                ("I swear I'll branch. Promise.", "Tanner"),
-                ("All Scrum, no master.", "Tanner"),
-            };
-
-            ViewBag.Quotes = quotes;
+            Random rand = new Random();
+            int quoteID = rand.Next(1, db.Quotes.Count() + 1);
+            Quote quote = db.Quotes.FirstOrDefault(x => x.ID == quoteID);
             Response.StatusCode = 404;
-            return View();
+            return View(quote);
         }
 
         public ActionResult InternalServer()

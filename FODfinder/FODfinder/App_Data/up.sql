@@ -178,3 +178,11 @@ CREATE TABLE [dbo].[UserProfile]
 	CONSTRAINT [PK_dbo.UserProfile_dbo.userID] FOREIGN KEY ([userID])
 		REFERENCES [dbo].[AspNetUsers] ([Id]) ON DELETE CASCADE
 );
+
+CREATE TABLE [dbo].[Quotes]
+(
+	[ID]		INT IDENTITY (1,1)	NOT NULL,
+	[Body]		NVARCHAR(250)		NOT NULL,
+	[Author]	NVARCHAR(50)		NOT NULL,
+	CONSTRAINT [PK_dbo.Quotes] PRIMARY KEY CLUSTERED ([ID] ASC)
+);

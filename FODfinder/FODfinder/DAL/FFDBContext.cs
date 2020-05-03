@@ -8,7 +8,7 @@ namespace FODfinder.Models
     public partial class FFDBContext : DbContext
     {
         public FFDBContext()
-            : base("name=FFDBContext_Azure_Dev")
+            : base("name=FFDBContext")
         {
             Database.SetInitializer<FFDBContext>(null);
         }
@@ -24,6 +24,7 @@ namespace FODfinder.Models
         public virtual DbSet<UserIngredient> UserIngredients { get; set; }
         public virtual DbSet<UserList> UserLists { get; set; }
         public virtual DbSet<UserProfile> UserProfiles { get; set; }
+        public virtual DbSet<Quote> Quotes { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

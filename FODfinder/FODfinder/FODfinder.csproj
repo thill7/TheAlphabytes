@@ -271,6 +271,7 @@
     <Compile Include="Controllers\IbsInfoController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\SavedFoodsController.cs" />
+    <Compile Include="Models\Quote.cs" />
     <Compile Include="Models\UserInformation.cs" />
     <Compile Include="Models\UserIngredient.cs" />
     <Compile Include="Global.asax.cs">
