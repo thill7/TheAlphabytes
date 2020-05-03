@@ -2,20 +2,131 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
              xmlns:tools="http://schemas.android.com/tools"
              android:layout_width="match_parent"
-             android:layout_height="match_parent"
+             android:layout_height="wrap_content"
              tools:context=".FoodDetailFragment">
 
-    <ExpandableListView
-            android:id="@+id/primaryIngredientListView"
+    <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-    </ExpandableListView>
+            android:layout_height="match_parent">
 
-    <ExpandableListView
-            android:id="@+id/secondaryIngredientListView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-    </ExpandableListView>
+        <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            <LinearLayout
+                    android:orientation="vertical"
+                    android:padding="15dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                <com.google.android.material.textview.MaterialTextView
+                        style="@style/TextAppearance.MaterialComponents.Headline3"
+                        android:text="@string/not_found"
+                        android:id="@+id/foodDetailsTitle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+
+                <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                    <com.google.android.material.textview.MaterialTextView
+                            style="@style/TextAppearance.MaterialComponents.Headline5"
+                            android:textFontWeight="700"
+                            android:text="@string/not_found"
+                            android:id="@+id/foodDetailsBrand"
+                            android:layout_weight="0.5"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"/>
+
+                    <com.google.android.material.textview.MaterialTextView
+                            style="@style/TextAppearance.MaterialComponents.Headline5"
+                            android:text="@string/not_found"
+                            android:id="@+id/foodDetailsUpc"
+                            android:layout_weight="0.5"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"/>
+
+                </LinearLayout>
+
+                <com.google.android.material.textview.MaterialTextView
+                        style="@style/TextAppearance.MaterialComponents.Headline5"
+                        android:text="@string/not_found"
+                        android:id="@+id/foodDetailsFodmapScore"
+                        android:layout_gravity="center"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+
+
+            </LinearLayout>
+
+
+            <View
+                    android:id="@+id/divider"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginVertical="10dp"
+                    android:background="?android:attr/listDivider"
+            />
+            <LinearLayout
+                    android:id="@+id/primaryIngredientsLayout"
+                    android:orientation="vertical"
+                    android:layout_marginTop="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                <com.google.android.material.textview.MaterialTextView
+                        style="@style/TextAppearance.MaterialComponents.Headline4"
+                        android:text="@string/label_primary_ingredients"
+                        android:padding="15dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+
+                <ExpandableListView
+                        android:nestedScrollingEnabled="true"
+                        android:id="@+id/primaryIngredientListView"
+                        android:groupIndicator="@android:color/transparent"
+                        android:layout_width="match_parent"
+                        android:layout_height="250dp">
+                </ExpandableListView>
+
+            </LinearLayout>
+
+
+
+            <LinearLayout
+                    android:id="@+id/secondaryIngredientsLayout"
+                    android:layout_marginTop="10dp"
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                <com.google.android.material.textview.MaterialTextView
+                        style="@style/TextAppearance.MaterialComponents.Headline4"
+                        android:text="@string/label_secondary_ingredients"
+                        android:padding="15dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+
+                <ExpandableListView
+                        android:nestedScrollingEnabled="true"
+                        android:id="@+id/secondaryIngredientListView"
+                        android:groupIndicator="@android:color/transparent"
+                        android:layout_width="match_parent"
+                        android:layout_height="250dp">
+                </ExpandableListView>
+
+            </LinearLayout>
+
+
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+
 
     <RelativeLayout
             android:id="@+id/loadingScreen"

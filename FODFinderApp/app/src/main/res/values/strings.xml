@@ -28,6 +28,7 @@
     <string name="label_nav_info">Information</string>
     <string name="label_search">Search</string>
     <string name="label_details">Details</string>
+    <string name="label_barcode_scanner">Barcode Scanner</string>
 
     <string name="app_description">\tThis website is a free resource for learning about IBS and FODMAPs, searching for
         foods to see if they\'re compatible with a low-FODMAP diet (coming soon), and saving those results for your
@@ -98,6 +99,12 @@
 
     <!-- SEARCH FRAGMENT -->
     <string name="search_placeholder_display">Please search a food item to get started&#8230;</string>
+    <string name="label_switch_upc_search">UPC</string>
+    <string name="label_switch_text_search">Text</string>
+
+    <!-- DETAILS FRAGMENT -->
+    <string name="label_primary_ingredients">Ingredients:</string>
+    <string name="label_secondary_ingredients">Contains 2% or less of:</string>
 
     <!-- RESOURCES -->
 

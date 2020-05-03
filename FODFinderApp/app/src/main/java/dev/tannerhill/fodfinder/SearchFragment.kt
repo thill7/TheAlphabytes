@@ -1,12 +1,16 @@
 package dev.tannerhill.fodfinder
 
 
+import android.Manifest
+import android.content.pm.PackageManager
 import android.opengl.Visibility
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
@@ -14,6 +18,7 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import dev.tannerhill.fodfinder.BarcodeScannerFragment.Companion.PERMISSION_CAMERA
 import dev.tannerhill.fodfinder.Models.Food.FoodSearchResultItem
 import dev.tannerhill.fodfinder.ViewModels.FoodDetailsViewModel
 import dev.tannerhill.fodfinder.ViewModels.FoodSearchViewModel
@@ -28,6 +33,12 @@ class SearchFragment : Fragment(), FoodItemAdapter.FoodItemAdapterListener {
 
     private val foodSearchViewModel : FoodSearchViewModel by activityViewModels()
     private val foodDetailsViewModel : FoodDetailsViewModel by activityViewModels()
+
+    private fun requestCameraPermission() {
+        ActivityCompat.requestPermissions(requireActivity(),
+            arrayOf(Manifest.permission.CAMERA),
+            PERMISSION_CAMERA)
+    }
     private lateinit var adapter: FoodItemAdapter
 
     override fun onCreateView(
@@ -53,7 +64,34 @@ class SearchFragment : Fragment(), FoodItemAdapter.FoodItemAdapterListener {
             adapter.setFoodItems(it?.Foods ?: listOf())
         })
 
+        foodSearchViewModel.getSelectedSearchToggle().observe(viewLifecycleOwner, Observer {
+            searchToggleGroup.check(it)
+            barcodeScannerButton.visibility = if(it == R.id.searchByTextButton) View.GONE else View.VISIBLE
+        })
 
+        foodSearchViewModel.getSearchExpanded().observe(viewLifecycleOwner, Observer {
+            searchToggleLayout.visibility = if(it) View.VISIBLE else View.GONE
+        })
+
+        searchByTextButton.setOnClickListener {
+            foodSearchViewModel.setSelectedSearchToggle(R.id.searchByTextButton)
+            barcodeScannerButton.visibility = View.GONE
+        }
+
+        searchByUpcButton.setOnClickListener {
+            foodSearchViewModel.setSelectedSearchToggle(R.id.searchByUpcButton)
+            barcodeScannerButton.visibility = View.VISIBLE
+        }
+
+        barcodeScannerButton.setOnClickListener {
+            if (ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.CAMERA)
+                != PackageManager.PERMISSION_GRANTED) {
+                requestCameraPermission()
+            }
+            else {
+                requireActivity().findNavController(R.id.nav_host_fragment).navigate(R.id.barcode_scanner_fragment_nav)
+            }
+        }
     }
 
     override fun selectFoodItem(id: String) {

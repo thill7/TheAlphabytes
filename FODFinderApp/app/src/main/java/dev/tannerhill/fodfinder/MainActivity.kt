@@ -1,16 +1,15 @@
 package dev.tannerhill.fodfinder
 
+import android.content.pm.PackageManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Layout
 import android.util.Log
-import android.view.Menu
-import android.view.MenuInflater
-import android.view.MenuItem
-import android.view.ViewGroup
+import android.view.*
 import android.widget.ExpandableListView
 import android.widget.LinearLayout
 import android.widget.TableLayout
+import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.widget.SearchView
 import androidx.lifecycle.Observer
@@ -26,12 +25,13 @@ import dev.tannerhill.fodfinder.ViewModels.FoodDetailsViewModel
 import dev.tannerhill.fodfinder.ViewModels.FoodSearchViewModel
 import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : AppCompatActivity(), NavController.OnDestinationChangedListener, SearchView.OnQueryTextListener {
+class MainActivity : AppCompatActivity(), NavController.OnDestinationChangedListener, SearchView.OnQueryTextListener, View.OnClickListener, SearchView.OnCloseListener {
 
     private var navController: NavController? = null
     private var appBarConfiguration: AppBarConfiguration? = null
     private val foodSearchViewModel: FoodSearchViewModel by viewModels()
     private val foodDetailsViewModel: FoodDetailsViewModel by viewModels()
+    private var selectedSearchToggle: Int = R.id.searchByTextButton
 
     private var optionsMenu: Menu? = null
     private var searchView: SearchView? = null
@@ -50,13 +50,9 @@ class MainActivity : AppCompatActivity(), NavController.OnDestinationChangedList
         navController = findNavController(R.id.nav_host_fragment)
         navController!!.addOnDestinationChangedListener(this)
 
-        foodDetailsViewModel.getFoodDetails().observe(this, Observer {
-            if(it != null) {
-                Log.d("HOME",it.toString())
-            }
+        foodSearchViewModel.getSelectedSearchToggle().observe(this, Observer {
+            selectedSearchToggle = it
         })
-
-        foodDetailsViewModel.get("647880")
 
         appBarConfiguration = AppBarConfiguration(navController!!.graph,drawer_layout)
         nav_view.setupWithNavController(navController!!)
@@ -92,19 +88,45 @@ class MainActivity : AppCompatActivity(), NavController.OnDestinationChangedList
         if(currentMenu == R.menu.search_options_menu) {
             searchView = menu?.findItem(R.id.navBarSearchView)?.actionView as SearchView
             searchView?.setOnQueryTextListener(this)
+            searchView?.setOnSearchClickListener(this)
+            searchView?.setOnCloseListener(this)
         }
         return super.onPrepareOptionsMenu(menu)
     }
 
     override fun onQueryTextSubmit(query: String?): Boolean {
         if(!query.isNullOrBlank()) {
-            foodSearchViewModel.search(query)
+            val fullQuery = if(selectedSearchToggle == R.id.searchByTextButton) query else "gtinUpc:*${query.trimStart('0')}"
+            Log.d("Search Term",fullQuery)
+            foodSearchViewModel.search(fullQuery) {
+                Toast.makeText(this,"Couldn't search... Check your internet connection.", Toast.LENGTH_SHORT).show()
+            }
             searchView?.onActionViewCollapsed()
         }
+        foodSearchViewModel.setSearchExpanded(false)
         return true
     }
 
     override fun onQueryTextChange(newText: String?): Boolean {
         return true
+    }
+
+    override fun onClick(v: View?) {
+        foodSearchViewModel.setSearchExpanded(true)
+    }
+
+    override fun onClose(): Boolean {
+        foodSearchViewModel.setSearchExpanded(false)
+        return false
+    }
+
+    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
+        when(requestCode) {
+            BarcodeScannerFragment.PERMISSION_CAMERA -> {
+                if(grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    navController?.navigate(R.id.barcode_scanner_fragment_nav)
+                }
+            }
+        }
     }
 }
