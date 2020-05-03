@@ -16,6 +16,13 @@ namespace FODfinder.Controllers
 
         public ActionResult NotFound()
         {
+            var quotes = new List<(string Quote, string Author)>
+            {
+                ("I swear I'll branch. Promise.", "Tanner"),
+                ("All Scrum, no master.", "Tanner"),
+            };
+
+            ViewBag.Quotes = quotes;
             Response.StatusCode = 404;
             return View();
         }
