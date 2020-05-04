@@ -538,6 +538,7 @@
     <Content Include="Views\Admin\UserFodmap.cshtml" />
     <Content Include="Views\SavedFoods\PrintableIndex.cshtml" />
     <Content Include="Views\Error\NotFound.cshtml" />
+    <Content Include="Views\Error\InternalServer.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\index.d.ts" />

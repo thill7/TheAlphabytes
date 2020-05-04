@@ -11,11 +11,6 @@ namespace FODfinder.Controllers
     {
         private FFDBContext db = new FFDBContext();
 
-        public ActionResult Default()
-        {
-            return View();
-        }
-
         public ActionResult NotFound()
         {
             Random rand = new Random();
