@@ -51,6 +51,10 @@ namespace FODfinder.Controllers
             {
                 ViewBag.anyLists = true;
             }
+            else
+            {
+                ViewBag.anyLists = false;
+            }
             if (userProfile == null)
             {
                 return HttpNotFound();
