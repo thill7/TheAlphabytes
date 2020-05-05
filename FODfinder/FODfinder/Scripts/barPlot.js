@@ -9,16 +9,27 @@
 };
 
 function successAjax(data) {
+    var xValues = [];
+    var yValues = [];
+    for(i = data.length - 1; i >= 0; i--) {
+        xValues.push(data[i]['countOfLabelOccurences']);
+        yValues.push(data[i]['ingredientName']);
+    }
+
     var data = [{
         type: 'bar',
-        x: [data[0]['countOfLabelOccurences'], data[1]['countOfLabelOccurences'], data[2]['countOfLabelOccurences']],
-        y: [data[0]['ingredientName'], data[1]['ingredientName'], data[2]['ingredientName']],
+        marker: { color: 'CCBDBD' },
+        x: xValues,
+        y: yValues,
         orientation: 'h'
     }];
 
     var layout = {
         plot_bgcolor: '#F5EEEB',
-        paper_bgcolor: '#F5EEEB'
+        paper_bgcolor: '#F5EEEB',
+        yaxis: { fixedrange: true },
+        xaxis: { fixedrange: true, dtick: 1 },
+        hovermode: 'closest'
     }
 
     var chart = document.getElementById('chart');
