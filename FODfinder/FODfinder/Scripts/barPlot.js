@@ -11,9 +11,11 @@
 function successAjax(data) {
     var xValues = [];
     var yValues = [];
+    var textValues = [];
     for(i = data.length - 1; i >= 0; i--) {
         xValues.push(data[i]['countOfLabelOccurences']);
         yValues.push(data[i]['ingredientName']);
+        textValues.push(data[i]['ingredientName']);
     }
 
     var data = [{
@@ -21,15 +23,17 @@ function successAjax(data) {
         marker: { color: 'CCBDBD' },
         x: xValues,
         y: yValues,
+        text: textValues,
+        textposition: 'auto',
         orientation: 'h'
     }];
 
     var layout = {
         plot_bgcolor: '#F5EEEB',
         paper_bgcolor: '#F5EEEB',
-        yaxis: { fixedrange: true },
+        yaxis: { fixedrange: true, dtick: 1, visible: false },
         xaxis: { fixedrange: true, dtick: 1 },
-        hovermode: 'closest'
+        margin: { l: 130, t: 70, b: 70 }
     }
 
     var chart = document.getElementById('chart');
