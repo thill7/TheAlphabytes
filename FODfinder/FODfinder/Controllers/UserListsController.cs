@@ -9,6 +9,7 @@ using System.Web.Mvc;
 using FODfinder.Models;
 using Microsoft.AspNet.Identity;
 using Newtonsoft.Json.Linq;
+using Rotativa;
 
 namespace FODfinder.Controllers
 {
@@ -159,8 +160,8 @@ namespace FODfinder.Controllers
             db.UserLists.Remove(userList);
             db.SaveChanges();
             return RedirectToAction("Index");
-        }
-
+        }       
+        
         protected override void Dispose(bool disposing)
         {
             if (disposing)

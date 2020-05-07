@@ -1,0 +1,25 @@
+﻿@model IEnumerable<FODfinder.Models.SavedFood>
+@{
+    ViewBag.Title = "PrintableIndex";
+}
+
+<h1 class="text-gray pt-4">@ViewBag.ListName</h1>
+<h5 class="text-gray">Total Saved Foods: @ViewBag.TotalSavedFoods</h5>
+<table class="table">
+    <tr>
+        <th>Food</th>
+        <th>Brand</th>
+        <th>UPC</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td> @item.desc.ToLower()</td>
+            <td> @item.brand.ToLower()</td>
+            <td> @item.upc</td>
+        </tr>
+    }
+</table>
+
+            
+

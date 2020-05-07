@@ -10,3 +10,4 @@ DROP TABLE [dbo].[UserInformation];
 DROP TABLE [dbo].[UserLists];
 DROP TABLE [dbo].[AspNetUsers];
 DROP TABLE [dbo].[AspNetRoles];
+DROP TABLE [dbo].[Quotes];

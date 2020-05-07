@@ -45,6 +45,16 @@ namespace FODfinder.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             UserProfile userProfile = db.UserProfiles.Find(id);
+            List<UserList> userLists = db.UserLists.Where(u => u.userID == id).ToList();
+            ViewBag.UserLists = userLists;
+            if (userLists.Any())
+            {
+                ViewBag.anyLists = true;
+            }
+            else
+            {
+                ViewBag.anyLists = false;
+            }
             if (userProfile == null)
             {
                 return HttpNotFound();

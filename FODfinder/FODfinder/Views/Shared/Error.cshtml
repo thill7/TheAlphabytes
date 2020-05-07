@@ -4,6 +4,22 @@
     ViewBag.Title = "Error";
 }
 
-<h1 class="text-danger">Error.</h1>
-<h2 class="text-danger">An error occurred while processing your request.</h2>
-
+<div class="container-fluid pt-4">
+    <div class="row d-flex justify-content-center">
+        <div class="col-lg-6">
+            <div class="card shadow">
+                <div class="card-header bg-secondary text-gray text-center">
+                    <h4>
+                        Well, that didn't work
+                    </h4>
+                </div>
+                <div class="card-body text-muted text-center">
+                    <h5 class="p-2">
+                        Something went wrong, give us a sec and try again later
+                    </h5>
+                    @Html.ActionLink("Return to Home", "Index", "Home", null, new { @class = "btn btn-light mr-auto p-2 text-gray" })
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -9,27 +9,57 @@
             <div class="card-header bg-light text-gray">
                 <h2 class="text-center">@ViewBag.Name</h2>
             </div>
-            <div class="card-body row">
-                <div class="col-sm-4">
-                    <img class="img-fluid" src="~/Content/Images/@ViewBag.ProfilePic" />
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-sm-4">
+                        <img class="img-fluid" src="~/Content/Images/@ViewBag.ProfilePic" />
+                    </div>
+                    <div class="col-sm-8">
+                        @if (Model.showContact)
+                        {<p>Email: @ViewBag.Contact</p>}
+                        @if (Model.showAge)
+                        {<p>Age: @ViewBag.Age</p>}
+                        @if (Model.showGender)
+                        {<p>Gender: @ViewBag.Gender</p>}
+                        @if (Model.showEthnicity)
+                        {<p>Ethnicity: @ViewBag.Ethnicity</p>}
+                        @if (Model.showCountry)
+                        {<p>Location: @ViewBag.Location</p>}
+                        <p>Description:</p>
+                        @Html.DisplayFor(model => model.description)
+                    </div>
                 </div>
-                <div class="col-sm-8">
-                    @if (Model.showContact) { <p>Email: @ViewBag.Contact</p>}
-                    @if (Model.showAge) { <p>Age: @ViewBag.Age</p>}
-                    @if (Model.showGender) { <p>Gender: @ViewBag.Gender</p>}
-                    @if (Model.showEthnicity) { <p>Ethnicity: @ViewBag.Ethnicity</p>}
-                    @if (Model.showCountry) { <p>Location: @ViewBag.Location</p>}
-                    <p>Description:</p>
-                    @Html.DisplayFor(model => model.description)
-                </div>
+                @if (ViewBag.anyLists)
+                {
+                 <div class="container">
+                    <div class="row justify-content-center pt-4 pl-2 pr-2">
+                        <div class="w-100 text-center align-self-center  bg-light rounded">
+                            <h3 class="text-gray ">@ViewBag.Name 's Lists</h3>
+                        </div>
+                    </div>
+                        @foreach (var list in ViewBag.UserLists)
+                        {
+                            <div class="list-group">
+                                <div class="list-group-item FoodLink p-2" ` onclick="location.href='/SavedFoods/Index/@list.listID'">
+                                    <div class="row text-gray justify-content-center">
+                                        <div class="col-sm-3"></div>
+                                        <div class="col-sm-6 text-center align-self-center">
+                                            <h5 class="mb-0">@list.listName</h5>
+                                        </div>
+                                        <div class="col-sm-3"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                 </div>
+                }
             </div>
-        </div>
         <div class="card-footer">
             @if (ViewBag.ownsProfile == "true")
             {
                 @Html.ActionLink("Edit My Profile", "Edit", new { id = Model.userID }, new { @class = "btn btn-primary" })
             }
-            
+
             @Html.ActionLink("Back to Search", "Search", null, new { @class = "btn btn-primary" })
         </div>
     </div>

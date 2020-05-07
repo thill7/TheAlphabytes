@@ -38,5 +38,17 @@ namespace FODfinderTester
             var result = Algorithm.ListContainsFodmaps(ingredients);
             Assert.IsTrue(result);
         }
+        [TestMethod]
+        public void ListContainsFodmaps_containsUserLabledFodmaps_returnsTrue()
+        {
+            var ingredients = new List<Ingredient>() 
+            { 
+                new Ingredient("water", false, "High-Risk", Ingredient.Position.Other),
+                new Ingredient("salt", true, null, Ingredient.Position.Other),
+                new Ingredient("beef", false, null, Ingredient.Position.Other)
+            };
+            var result = Algorithm.ListContainsFodmaps(ingredients);
+            Assert.IsTrue(result);
+        }
     }
 }
