@@ -120,6 +120,5 @@ class BarcodeScannerFragment : Fragment() {
 
     private fun searchForUPC(upc: String) {
         foodSearchViewModel.search("gtinUpc:*${upc.trimStart('0')}") {}
-        requireActivity().findNavController(R.id.nav_host_fragment).navigateUp()
     }
 }

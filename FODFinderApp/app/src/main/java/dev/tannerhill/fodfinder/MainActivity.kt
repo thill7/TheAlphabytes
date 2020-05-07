@@ -57,6 +57,14 @@ class MainActivity : AppCompatActivity(), NavController.OnDestinationChangedList
         appBarConfiguration = AppBarConfiguration(navController!!.graph,drawer_layout)
         nav_view.setupWithNavController(navController!!)
         setupActionBarWithNavController(navController!!, appBarConfiguration!!)
+
+        foodSearchViewModel.getFoodSearchResult().observe(this, Observer {
+            if(it != null) {
+                while(navController != null && navController?.currentDestination?.id != R.id.search_fragment_nav) {
+                    navController!!.navigateUp()
+                }
+            }
+        })
     }
 
     override fun onSupportNavigateUp(): Boolean {

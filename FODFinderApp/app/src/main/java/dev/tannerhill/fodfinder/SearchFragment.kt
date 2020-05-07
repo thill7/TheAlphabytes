@@ -89,6 +89,7 @@ class SearchFragment : Fragment(), FoodItemAdapter.FoodItemAdapterListener {
                 requestCameraPermission()
             }
             else {
+                foodSearchViewModel.setSearchExpanded(false)
                 requireActivity().findNavController(R.id.nav_host_fragment).navigate(R.id.barcode_scanner_fragment_nav)
             }
         }
