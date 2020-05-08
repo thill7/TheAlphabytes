@@ -48,6 +48,9 @@ namespace FODfinder.Models.Food
             FdcId = int.TryParse(detailObject.SelectToken("fdcId")?.ToString() ?? "", out fdcId) ? fdcId : -1;
             UPC = detailObject.SelectToken("gtinUpc")?.ToString() ?? "";
             FodmapScore = Algorithm.DetermineLevelOfFodmap(PrimaryIngredients, SecondaryIngredients).ToString();
+
+            // Just for manual testing; will remove before merge to dev.
+            Algorithm.DetermineIngredientAmounts(PrimaryIngredients);
         }
 
         [JsonConstructor]
