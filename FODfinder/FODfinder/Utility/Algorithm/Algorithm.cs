@@ -8,12 +8,11 @@ namespace FODfinder.Utility.Algorithm
     {
         public static Tuple<int, int> DetermineIngredientAmounts(List<Ingredient> ingredients)
         {
-            var maxAmount = 0;
-            var minAmount = 0;
             var numberOfIngredients = ingredients.Count;
             for (var i = 0; i < numberOfIngredients; i++)
             {
                 ingredients[i].MaxAmount = (100 - ((numberOfIngredients - 1 - i) * 3)) / (i + 1);
+                ingredients[i].MinAmount = i == 0 ? 100 / numberOfIngredients : 3;
             }
             return null;
             
