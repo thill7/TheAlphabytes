@@ -6,16 +6,29 @@ namespace FODfinder.Utility.Algorithm
 {
     public class Algorithm
     {
-        public static Tuple<int, int> DetermineIngredientAmounts(List<Ingredient> ingredients)
+        public static void DetermineIngredientAmounts(List<Ingredient> primaryIngredients, List<Ingredient> secondaryIngredients)
         {
-            var numberOfIngredients = ingredients.Count;
-            for (var i = 0; i < numberOfIngredients; i++)
+            var numberOfPrimaryIngredients = primaryIngredients.Count;
+            var numberOfSecondaryIngredients = secondaryIngredients.Count;
+            var totalLeft = 100 - numberOfSecondaryIngredients * 0.001;
+            for (var i = 0; i < numberOfPrimaryIngredients; i++)
             {
-                ingredients[i].MaxAmount = (100 - ((numberOfIngredients - 1 - i) * 3)) / (i + 1);
-                ingredients[i].MinAmount = i == 0 ? 100 / numberOfIngredients : 3;
+                primaryIngredients[i].MaxAmount = (totalLeft - ((numberOfPrimaryIngredients - 1 - i) * 3)) / (i + 1);
+                primaryIngredients[i].MinAmount = i == 0 ? totalLeft / numberOfPrimaryIngredients : 2.001;
             }
-            return null;
-            
+            for (var i = 0; i < numberOfSecondaryIngredients; i++)
+            {
+                secondaryIngredients[i].MaxAmount = 2;
+                secondaryIngredients[i].MinAmount = 0.001;
+            }
+            for (var i = 0; i < numberOfPrimaryIngredients; i++)
+            {
+                if (primaryIngredients[i].IngredientPosition == Ingredient.Position.Parent)
+                {
+                    var parentIngredientMax = primaryIngredients[i].MaxAmount;
+                    var parentIngredientMin = primaryIngredients[i].MinAmount;
+                }
+            }
         }
         public static bool ListContainsFodmaps(List<Ingredient> ingredients)
         {

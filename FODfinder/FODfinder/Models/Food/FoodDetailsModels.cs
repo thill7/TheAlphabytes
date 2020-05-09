@@ -50,7 +50,7 @@ namespace FODfinder.Models.Food
             FodmapScore = Algorithm.DetermineLevelOfFodmap(PrimaryIngredients, SecondaryIngredients).ToString();
 
             // Just for manual testing; will remove before merge to dev.
-            Algorithm.DetermineIngredientAmounts(PrimaryIngredients);
+            Algorithm.DetermineIngredientAmounts(PrimaryIngredients, SecondaryIngredients);
         }
 
         [JsonConstructor]

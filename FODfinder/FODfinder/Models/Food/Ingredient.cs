@@ -11,8 +11,8 @@ namespace FODfinder.Models.Food
         public string Name { get; set; }
         public bool IsFodmap { get; set; }
         public string Label { get; set; }
-        public int MaxAmount { get; set; }
-        public int MinAmount { get; set; }
+        public double MaxAmount { get; set; }
+        public double MinAmount { get; set; }
         public Position IngredientPosition { get; set; }
 
         public Ingredient(string name, bool isFodmap, string label, Position ingredientPosition)
