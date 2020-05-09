@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-             xmlns:tools="http://schemas.android.com/tools"
-             android:layout_width="match_parent"
-             android:layout_height="match_parent"
-             tools:context=".SearchFragment">
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" xmlns:app="http://schemas.android.com/apk/res-auto"
+                tools:context=".SearchFragment">
 
     <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/foodRecycler"
@@ -22,5 +22,49 @@
             android:id="@+id/searchPlaceholderDisplay"
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>
+
+    <LinearLayout
+            android:id="@+id/searchToggleLayout"
+            android:visibility="gone"
+            android:orientation="horizontal"
+            android:background="@color/color_surface"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        <com.google.android.material.button.MaterialButtonToggleGroup
+                android:id="@+id/searchToggleGroup"
+                android:layout_marginTop="0dp"
+                app:singleSelection="true"
+                app:checkedButton="@id/searchByTextButton"
+                android:layout_weight="0.75"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content">
+
+            <com.google.android.material.button.MaterialButton
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    android:id="@+id/searchByTextButton"
+                    android:text="@string/label_switch_text_search"
+                    android:layout_width="0dp"
+                    android:layout_weight="0.5"
+                    android:layout_height="wrap_content"/>
+
+            <com.google.android.material.button.MaterialButton
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    android:id="@+id/searchByUpcButton"
+                    android:text="@string/label_switch_upc_search"
+                    android:layout_width="0dp"
+                    android:layout_weight="0.5"
+                    android:layout_height="wrap_content"/>
+        </com.google.android.material.button.MaterialButtonToggleGroup>
+
+        <ImageButton
+                android:src="@drawable/ic_photo_camera_black_24dp"
+                android:scaleType="fitCenter"
+                android:id="@+id/barcodeScannerButton"
+                android:layout_width="0dp"
+                android:layout_weight="0.25"
+                android:visibility="gone"
+                android:layout_height="match_parent"/>
+    </LinearLayout>
 
 </RelativeLayout>

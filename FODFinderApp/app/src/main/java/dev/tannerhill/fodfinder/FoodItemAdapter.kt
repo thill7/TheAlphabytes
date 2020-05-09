@@ -10,7 +10,7 @@ import dev.tannerhill.fodfinder.Models.Food.FoodSearchResultItem
 import dev.tannerhill.fodfinder.Util.TextParser
 import org.w3c.dom.Text
 
-class FoodItemAdapter(val context: Context) : RecyclerView.Adapter<FoodItemAdapter.FoodHolder>() {
+class FoodItemAdapter(val context: Context, val listener: FoodItemAdapterListener) : RecyclerView.Adapter<FoodItemAdapter.FoodHolder>() {
     val foodItems: ArrayList<FoodSearchResultItem> = arrayListOf()
 
     fun setFoodItems(newItems: List<FoodSearchResultItem>) {
@@ -32,11 +32,19 @@ class FoodItemAdapter(val context: Context) : RecyclerView.Adapter<FoodItemAdapt
         holder.foodItemName.text = TextParser.capitalize(foodItem.Description)
         holder.foodItemBrand.text = TextParser.capitalize(foodItem.BrandOwner)
         holder.foodItemUpc.text = foodItem.GtinUPC
+
+        holder.itemView.setOnClickListener {
+            listener.selectFoodItem(foodItem.FdcId.toString())
+        }
     }
 
     class FoodHolder(v: View): RecyclerView.ViewHolder(v) {
         val foodItemName: TextView = v.findViewById(R.id.foodItemName)
         val foodItemBrand: TextView = v.findViewById(R.id.foodItemBrand)
         val foodItemUpc: TextView = v.findViewById(R.id.foodItemUpc)
+    }
+
+    interface FoodItemAdapterListener {
+        fun selectFoodItem(id: String)
     }
 }

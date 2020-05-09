@@ -1,5 +1,6 @@
 package dev.tannerhill.fodfinder
 
+import dev.tannerhill.fodfinder.Models.Food.FoodDetails
 import dev.tannerhill.fodfinder.Models.Food.FoodSearchResult
 import retrofit2.*
 import retrofit2.http.GET
@@ -11,4 +12,9 @@ interface FoodDataService {
     fun search(
         @Query("query") query: String
     ) : Call<FoodSearchResult>
+
+    @GET("api/food/details")
+    fun details(
+        @Query("id") id: String
+    ) : Call<FoodDetails>
 }
