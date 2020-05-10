@@ -23,6 +23,10 @@ namespace FODfinder
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                 "~/Scripts/bootstrap.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/barPlot").Include(
+                "~/Scripts/jquery-3.3.1.min.js",
+                "~/Scripts/barPlot.js"));
+
             bundles.Add(new StyleBundle("~/Content/css").Include(
                 "~/Content/bootstrap.css",
                 "~/Content/site.css"));
