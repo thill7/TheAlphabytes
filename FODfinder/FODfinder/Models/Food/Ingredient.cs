@@ -18,9 +18,12 @@ namespace FODfinder.Models.Food
         public Ingredient(string name, bool isFodmap, string label, Position ingredientPosition)
         {
             Name = name;
-            Label = label;
-            IsFodmap = label == "High-Risk" ? true : label == "Low-Risk" ? false : isFodmap;
             IngredientPosition = ingredientPosition;
+            if (ingredientPosition != Position.Parent)
+            {
+                Label = label;
+                IsFodmap = label == "High-Risk" ? true : label == "Low-Risk" ? false : isFodmap;
+            }
         }
 
         public enum Position

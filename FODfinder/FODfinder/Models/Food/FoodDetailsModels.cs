@@ -49,7 +49,7 @@ namespace FODfinder.Models.Food
             FdcId = int.TryParse(detailObject.SelectToken("fdcId")?.ToString() ?? "", out fdcId) ? fdcId : -1;
             UPC = detailObject.SelectToken("gtinUpc")?.ToString() ?? "";
             MaxFodmapPercentage = Math.Round(Algorithm.GetMaxFodmapPercentage(PrimaryIngredients, SecondaryIngredients), 2);
-            FodmapScore = MaxFodmapPercentage > 60 ? $"{Score.High}" : MaxFodmapPercentage > 20 ? $"{Score.Medium}" : $"{Score.Low}";
+            FodmapScore = MaxFodmapPercentage > 5 ? $"{Score.High}" : MaxFodmapPercentage > 0 ? $"{Score.Medium}" : $"{Score.Low}";
         }
 
         public enum Score
