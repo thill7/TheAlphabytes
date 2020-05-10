@@ -55,7 +55,7 @@ namespace FODfinder.Utility.Algorithm
                     var k = 0;
                     for (var j = startIndex; j < sublistCount + startIndex; j++)
                     {
-                        secondaryIngredients[j].MaxAmount = (100 - ((sublistCount - 1 - k) * 0.001)) / (k + 1) * 2 / 100; // maybe play with this
+                        secondaryIngredients[j].MaxAmount = (100 - ((sublistCount - 1 - k) * 0.001)) / (k + 1) * 2 / 100;
                         secondaryIngredients[j].MinAmount = 0.001;
                         k++;
                     }
