@@ -64,9 +64,28 @@ namespace FODfinder.Utility.Algorithm
                 secondaryIngredients[i].MinAmount = 0.001;
             }
         }
+        public static bool ListContainsFodmaps(List<Ingredient> ingredients)
+        {
+            try
+            {
+                foreach (var ingredient in ingredients)
+                {
+                    if (ingredient.IsFodmap)
+                    {
+                        return true;
+                    }
+                }
+                return false;
+            }
+            catch (NullReferenceException e)
+            {
+                throw new NullReferenceException($"Arguments for \"ListContainsFodmaps()\" must not be null: {e}");
+            }
+        }
         public static double GetSumOfMinAmounts(List<Ingredient> ingredients) => ingredients.Where(i => i.IsFodmap).Select(i => i.MinAmount).Sum();
         public static double GetMaxFodmapPercentage(List<Ingredient> primaryIngredients, List<Ingredient> secondaryIngredients)
         {
+            SetIngredientAmounts(primaryIngredients, secondaryIngredients);
             var maxFodmapPercentage = 0d;
             if (ListContainsFodmaps(primaryIngredients))
             {
@@ -89,44 +108,6 @@ namespace FODfinder.Utility.Algorithm
                 maxFodmapPercentage += highestPercentageIngredient.MaxAmount + GetSumOfMinAmounts(primaryIngredients) - highestPercentageIngredient.MinAmount + GetSumOfMinAmounts(secondaryIngredients);
             }
             return maxFodmapPercentage;
-        }
-        public static bool ListContainsFodmaps(List<Ingredient> ingredients)
-        {
-            try
-            {
-                foreach (var ingredient in ingredients)
-                {
-                    if (ingredient.IsFodmap)
-                    {
-                        return true;
-                    }
-                }
-                return false;
-            }
-            catch (NullReferenceException e)
-            {
-                throw new NullReferenceException($"Arguments for \"ListContainsFodmaps()\" must not be null: {e}");
-            }
-        }
-        public static Score DetermineLevelOfFodmap(List<Ingredient> primaryIngredients, List<Ingredient> secondaryIngredients)
-        {
-            SetIngredientAmounts(primaryIngredients, secondaryIngredients);
-            var thing = GetMaxFodmapPercentage(primaryIngredients, secondaryIngredients);
-            GetMaxFodmapPercentage(primaryIngredients, secondaryIngredients);
-            try
-            {
-                return ListContainsFodmaps(primaryIngredients) ? Score.High : ListContainsFodmaps(secondaryIngredients) ? Score.Medium : Score.Low;
-            }
-            catch (NullReferenceException e)
-            {
-                throw new NullReferenceException($"Arguments for \"DetermineLevelOfFodmap()\" must not be null: {e}");
-            }
-        }
-        public enum Score
-        {
-            Low,
-            Medium,
-            High
         }
     }
 }

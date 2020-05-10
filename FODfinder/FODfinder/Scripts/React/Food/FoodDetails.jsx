@@ -302,7 +302,10 @@
                                         (details.ServingSizeFullText == "") ? <span> {details.ServingSize}{details.ServingSizeUnit}</span> : <span> ({details.ServingSize}{details.ServingSizeUnit})</span>
                                     }
                                 </p>
-                                <p className="d-inline-block"><span className="font-weight-bold">This is a {details.FodmapScore} FODMAP food</span></p>
+                                <p className="d-inline-block">
+                                    <span className="font-weight-bold">Rating: </span>
+                                    <span>This is a </span><span className="font-weight-bold">{details.FodmapScore}</span><span> FODMAP food (could contain up to </span><span className="font-weight-bold">{details.MaxFodmapPercentage}%</span><span> High FODMAP ingredients)</span>
+                                </p>
                             </div>
                             <div className="col-md-6">
                                 <div className="shadow rounded bg-gray p-4">

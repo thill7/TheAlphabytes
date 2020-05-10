@@ -24,6 +24,7 @@ namespace FODfinder.Models.Food
         public string LabelNutrients { set; get; }
         public string UPC { set; get; }
         public string FodmapScore { set; get; }
+        public double MaxFodmapPercentage { get; set; }
 
         public FoodDetailsModels(string jsonString) {
             JObject detailObject = JObject.Parse(jsonString);
@@ -47,7 +48,15 @@ namespace FODfinder.Models.Food
             int fdcId;
             FdcId = int.TryParse(detailObject.SelectToken("fdcId")?.ToString() ?? "", out fdcId) ? fdcId : -1;
             UPC = detailObject.SelectToken("gtinUpc")?.ToString() ?? "";
-            FodmapScore = Algorithm.DetermineLevelOfFodmap(PrimaryIngredients, SecondaryIngredients).ToString();
+            MaxFodmapPercentage = Math.Round(Algorithm.GetMaxFodmapPercentage(PrimaryIngredients, SecondaryIngredients), 2);
+            FodmapScore = MaxFodmapPercentage > 60 ? $"{Score.High}" : MaxFodmapPercentage > 20 ? $"{Score.Medium}" : $"{Score.Low}";
+        }
+
+        public enum Score
+        {
+            Low,
+            Medium,
+            High
         }
 
         [JsonConstructor]
