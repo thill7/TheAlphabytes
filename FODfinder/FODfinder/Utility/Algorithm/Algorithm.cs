@@ -60,8 +60,11 @@ namespace FODfinder.Utility.Algorithm
                         k++;
                     }
                 }
-                secondaryIngredients[i].MaxAmount = 2;
-                secondaryIngredients[i].MinAmount = 0.001;
+                else
+                {
+                    secondaryIngredients[i].MaxAmount = 2;
+                    secondaryIngredients[i].MinAmount = 0.001;
+                }
             }
         }
         public static bool ListContainsFodmaps(List<Ingredient> ingredients)
@@ -104,8 +107,6 @@ namespace FODfinder.Utility.Algorithm
                 {
                     maxFodmapPercentage = 100 - numberOfNonParentPrimaryIngredients * 2.001;
                 }
-                var highestPercentageIngredient = secondaryIngredients.Where(si => si.IsFodmap).FirstOrDefault();
-                maxFodmapPercentage += highestPercentageIngredient.MaxAmount + GetSumOfMinAmounts(primaryIngredients) - highestPercentageIngredient.MinAmount + GetSumOfMinAmounts(secondaryIngredients);
             }
             return maxFodmapPercentage;
         }
