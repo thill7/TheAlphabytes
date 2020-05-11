@@ -1,0 +1,60 @@
+﻿
+@{
+    ViewBag.Title = "Donate";
+}
+
+<h1 class="display-4 pt-3 text-center">Make a <a class="font-weight-bold">Donation</a></h1>
+<hr />
+
+<div class="container">
+    <div class="row mt-4">
+        <div class="col-lg-4 mb-lg-0 mb-4">
+            <div class="card shadow h-100 text-center">
+                <div class="card-header bg-light text-gray">
+                    <h3>Free to Use</h3>
+                </div>
+                <div class="card-body">
+                    <div class="row pl-1 pr-1">
+                        FODfinder has always been completely free to use for anyone who wants to, and we are committed to staying this way.
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 mb-lg-0 mb-4">
+            <div class="card shadow h-100 text-center">
+                <div class="card-header bg-light text-gray">
+                    <h3>Independent</h3>
+                </div>
+                <div class="card-body">
+                    <div class="row pl-1 pr-1">
+                        FODfinder is completely independently run by a small team of developers.
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 mb-lg-0 mb-4">
+            <div class="card shadow h-100 text-center">
+                <div class="card-header bg-light text-gray">
+                    <h3>How You Can Help</h3>
+                </div>
+                <div class="card-body">
+                    <div class="row pl-1 pr-1">
+                        We intend to stay free, but donations help us pay for hosting and development costs to keep FODfinder going.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="d-flex justify-content-center pt-4">
+    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+        <input type="hidden" name="cmd" value="_donations" />
+        <input type="hidden" name="business" value="4FGN4H89XY4HS" />
+        <input type="hidden" name="item_name" value="Cover hosting and development costs for FODfinder" />
+        <input type="hidden" name="currency_code" value="USD" />
+        <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif" border="0" width="106" height="30" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Donate with PayPal button" />
+        <img alt="" border="0" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1" />
+    </form>
+</div>
