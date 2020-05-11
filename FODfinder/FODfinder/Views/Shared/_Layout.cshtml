@@ -31,7 +31,15 @@
                                     @Html.ActionLink("User Labelled Risky Ingredients", "Index", "HighRiskLabelledIngredients", null, new { @class = "dropdown-item" })
                                 </div>
                             </li>
-                            <li class="nav-item">@Html.ActionLink("Contact us", "Contact", "Contact", null, new { @class = "nav-link" })</li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">
+                                    Contribute
+                                </a>
+                                <div class="dropdown-menu">
+                                    @Html.ActionLink("Contact us", "Contact", "Contact", null, new { @class = "dropdown-item" })
+                                    @Html.ActionLink("Donate", "Index", "Donate", null, new { @class = "dropdown-item" })
+                                </div>
+                            </li>
                         </ul>
                     </div>
                     @Html.Partial("_LoginPartial")
