@@ -63,11 +63,7 @@ namespace FODfinder.Controllers
         [AllowAnonymous]
         public ActionResult PrintList(int id)
         {
-            UserList userList = db.UserLists.First(x => x.listID == id);
-            ViewBag.ListName = userList.listName;
-            List<SavedFood> savedFoodsList = db.SavedFoods.Where(sf => sf.listID == id).ToList();
-            ViewBag.TotalSavedFoods = countSavedFoods(savedFoodsList);
-            var list = new ViewAsPdf("PrintableIndex", savedFoodsList);
+            var list = new ActionAsPdf("PrintableIndex", new { id = id });
             return list;
         }
 
