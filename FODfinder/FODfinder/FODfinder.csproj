@@ -333,11 +333,6 @@
     <Content Include="readme.txt" />
     <Content Include="Rotativa\help-wkhtmltoimage.txt" />
     <Content Include="Rotativa\help-wkhtmltopdf.txt" />
-    <Content Include="Rotativa\msdia140.dll" />
-    <Content Include="Rotativa\msvcp120.dll" />
-    <Content Include="Rotativa\msvcp140.dll" />
-    <Content Include="Rotativa\msvcr120.dll" />
-    <Content Include="Rotativa\vcruntime140.dll" />
     <Content Include="Rotativa\wkhtmltoimage.exe" />
     <Content Include="Rotativa\wkhtmltopdf.exe" />
     <Content Include="Scripts\axios.js" />
