@@ -8,12 +8,8 @@
         <div class="row justify-content-center">
             <h1 class="text-gray mb-0">@ViewBag.ListName</h1>
         </div>
-        <div class="row justify-content-center">
-            <p>
-                @Html.ActionLink("Print List", "PrintList", new { id = ViewBag.ListID })
-            </p>
-        </div>
-        
+
+
         @if (!ViewBag.ReadOnly)
         {
             <div class="row justify-content-center">
@@ -24,6 +20,7 @@
                 </p>
             </div>
         }
+
         <div class="row justify-content-center">
             <h5 class="text-gray">Total Saved Foods: @ViewBag.TotalSavedFoods</h5>
         </div>
@@ -84,5 +81,8 @@
                     </div>
                 </div>
             }
+        </div>
+        <div class="row justify-content-center pt-2">
+            <btn class="btn btn-primary" onclick="javascript:window.print();">Print</btn>
         </div>
     </div>
