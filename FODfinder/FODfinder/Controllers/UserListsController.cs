@@ -9,7 +9,6 @@ using System.Web.Mvc;
 using FODfinder.Models;
 using Microsoft.AspNet.Identity;
 using Newtonsoft.Json.Linq;
-using Rotativa;
 
 namespace FODfinder.Controllers
 {
