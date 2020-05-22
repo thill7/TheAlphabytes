@@ -47,7 +47,18 @@
         if (!includeList.includes(includeItem) && includeItem != "") {
             await this.setState({ includeList: [...includeList,includeItem] });
         }
-        console.log("Include list: " + this.state.includeList)
+    }
+
+    async addIncludeOnEnter(event) {
+        if (event.key === "Enter") {
+            await this.addToIncludeList();
+        }
+    }
+
+    async addExcludeOnEnter(event) {
+        if (event.key === "Enter") {
+            await this.addToExcludeList();
+        }
     }
 
     showIncludeList() {
@@ -55,6 +66,7 @@
             return (
                 <div className="shadow rounded">
                     <ul className="list-group">
+                        <li className="list-group-item font-weight-bold text-capitalize text-gray text-center">Included Ingredients</li>
                         {this.state.includeList.map(item => (<li className="list-group-item" key={item}>{item}</li>))}
                     </ul>
                 </div>
@@ -71,7 +83,6 @@
         if (!excludeList.includes(excludeItem) && excludeItem != "") {
             await this.setState({ excludeList: [...excludeList,excludeItem] });
         }
-        console.log("Exclude list: " + this.state.excludeList)
     }
 
     showExcludeList() {
@@ -79,6 +90,7 @@
             return (
                 <div className="shadow rounded">
                     <ul className="list-group">
+                        <li className="list-group-item font-weight-bold text-capitalize text-gray text-center">Excluded Ingredients</li>
                         {this.state.excludeList.map(item => (<li className="list-group-item" key={item}>{item}</li>))}
                     </ul>
                 </div>
@@ -95,7 +107,8 @@
         var { isUpc, query, requireAllWords, includeList, excludeList } = this.state;
         var searchQuery = new URLSearchParams();
         var totalIngredientList = [...includeList.map(ingr => ingr.includes(" ") ? `"${ingr}"` : ingr), ...excludeList.map(ingr => ingr.includes(" ") ? `-"${ingr}"` : `-${ingr}`)];
-        if (totalIngredientList.length > 0) {
+        console.log(isUpc);
+        if (totalIngredientList.length > 0 && isUpc == false) {
             searchQuery.append("ingredients", totalIngredientList.join(" "))
         }
         searchQuery.append("query", isUpc ? ("gtinUpc:*" + this.removeLeadingZeros(query)) : query)
@@ -121,11 +134,13 @@
                             <input type={(!isUpc ? "text" : "number")} required={true} onChangeCapture={(e) => { this.onQueryChanged(e) }} className="form-control border-left-0 border-right-0" />
                             <div className="input-group-append">
                                 <div className="btn-group">
-                                    <button type="button" className="btn btn-block btn-primary rounded-0" data-toggle="collapse" data-target="#CollapseFilter" onClick={ () => this.onCollapse(!isCollapsed) }>
-                                        <span className="small">
-                                            {isCollapsed ? "▼" : "▲"}
-                                        </span>
-                                    </button>
+                                    <span className="d-inline-block" data-toggle="tooltip" data-placement="bottom" title="Apply filters!">
+                                        <button type="button" className="btn btn-block btn-primary rounded-0" data-toggle="collapse" data-target="#CollapseFilter" onClick={ () => this.onCollapse(!isCollapsed) }>
+                                            <span className="small">
+                                                {isCollapsed ? "▼" : "▲"}
+                                            </span>
+                                        </button>
+                                    </span>
                                     <button className="btn btn-primary" type="submit">Go</button>
                                 </div>
                             </div>
@@ -135,6 +150,11 @@
                 <div className="collapse" id="CollapseFilter">
                     <div className="card card-body shadow bg-secondary">
                         <div className="row d-flex justify-content-center">
+                            <div className="col-12 text-center">
+                                <span className="font-weight-bold text-capitalize text-gray">
+                                    Apply Filters
+                                </span>
+                            </div>
                             <div className="col-lg-6">
                                 <div className="input-group py-2">
                                     <div className="input-group-prepend">
@@ -180,15 +200,15 @@
                                             Include
                                         </span>
                                     </div>
-                                    <input type="text" className="form-control" disabled={isUpc ? "disabled" : ""} onChange={(e) => { this.onAddInclude(e) }} />
+                                    <input type="text" className="form-control" disabled={isUpc ? "disabled" : ""} onChange={(e) => { this.onAddInclude(e) }} onKeyPress={(e) => this.addIncludeOnEnter(e)} />
                                     <div className="input-group-append">
                                         <button className="btn btn-primary" disabled={isUpc ? "disabled" : ""} onClick={() => this.addToIncludeList()}>
-                                            Add
+                                            &#65291;
                                         </button>
                                     </div>
                                 </div>
                                 <div>
-                                    {this.showIncludeList()}
+                                    {!isUpc ? this.showIncludeList() : ""}
                                 </div>
                             </div>
                             <div className="col-lg-6">
@@ -198,15 +218,15 @@
                                             Exclude
                                         </span>
                                     </div>
-                                    <input type="text" className="form-control" disabled={isUpc ? "disabled" : ""} onChange={(e) => { this.onAddExclude(e) }} />
+                                    <input type="text" className="form-control" disabled={isUpc ? "disabled" : ""} onChange={(e) => { this.onAddExclude(e) }} onKeyPress={(e) => this.addExcludeOnEnter(e)} />
                                     <div className="input-group-append">
                                         <button type="submit" className="btn btn-primary" disabled={isUpc ? "disabled" : ""} onClick={() => this.addToExcludeList()}>
-                                            Add
+                                            &#65291;
                                         </button>
                                     </div>
                                 </div>
                                 <div>
-                                    {this.showExcludeList()}
+                                    {!isUpc ? this.showExcludeList() : ""}
                                 </div>
                             </div>
                         </div>
