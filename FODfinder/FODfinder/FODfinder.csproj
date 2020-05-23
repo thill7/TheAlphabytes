@@ -247,6 +247,7 @@
     <Compile Include="Controllers\api\FoodApiController.cs" />
     <Compile Include="Controllers\api\SavedFoodsApiController.cs" />
     <Compile Include="Controllers\ContactController.cs" />
+    <Compile Include="Controllers\DevInfoController.cs" />
     <Compile Include="Controllers\DonateController.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\FodmapInfoController.cs" />
@@ -534,6 +535,7 @@
     <Content Include="Views\Error\NotFound.cshtml" />
     <Content Include="Views\Error\InternalServer.cshtml" />
     <Content Include="Views\Donate\Index.cshtml" />
+    <Content Include="Views\DevInfo\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\index.d.ts" />
