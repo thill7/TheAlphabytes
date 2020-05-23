@@ -43,7 +43,7 @@ class FoodSearchViewModel : ViewModel() {
         searchExpanded.value = expanded
     }
 
-    fun search(query: String, onError: (t: Throwable) -> Unit ) {
-        FoodDataRepository.search(query,foodSearchResult, onError)
+    fun search(query: String, pageNumber: Int = 1, onError: (t: Throwable) -> Unit ) {
+        FoodDataRepository.search(query, pageNumber, foodSearchResult, onError)
     }
 }
