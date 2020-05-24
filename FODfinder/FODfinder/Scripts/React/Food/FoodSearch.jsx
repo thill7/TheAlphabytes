@@ -18,8 +18,8 @@
         this.onRequireAllWords.bind(this);
         this.onCollapse.bind(this);
         this.addToIncludeList.bind(this);
+        this.removeFromIncludeList.bind(this);
         this.addToExcludeList.bind(this);
-        this.showExcludeList.bind(this);
     }
 
     async onQueryChanged(event) {
@@ -46,6 +46,7 @@
         var {  includeItem, includeList  } = this.state;
         if (!includeList.includes(includeItem) && includeItem != "") {
             await this.setState({ includeList: [...includeList,includeItem] });
+            $('#IncludeInput').val('');
         }
     }
 
@@ -55,9 +56,13 @@
         }
     }
 
-    async addExcludeOnEnter(event) {
-        if (event.key === "Enter") {
-            await this.addToExcludeList();
+    async removeFromIncludeList(item) {
+        var index = this.state.includeList.indexOf(item);
+        if(index > -1) {
+            var newIncludeList = this.state.includeList;
+            newIncludeList.splice(index, 1);
+            this.setState({ includeList : newIncludeList })
+            this.setState({ includeItem : "" })
         }
     }
 
@@ -67,7 +72,24 @@
                 <div className="shadow rounded">
                     <ul className="list-group">
                         <li className="list-group-item font-weight-bold text-capitalize text-gray text-center">Included Ingredients</li>
-                        {this.state.includeList.map(item => (<li className="list-group-item" key={item}>{item}</li>))}
+                        {this.state.includeList.map(item => (
+                            <li className="list-group-item" key={item}>
+                                <div className="container p-0 m-0">
+                                    <div className="row d-flex p-0 m-0">
+                                        <div className="col-8 inline-block align-middle p-0 m-0">
+                                            <span className="align-middle">
+                                                {item}
+                                            </span>
+                                        </div>
+                                        <div className="col-4 p-0 pl-1 m-0 text-right align-self-center">
+                                            <button className="btn btn-primary text-gray" onClick={() => this.removeFromIncludeList(item)}>
+                                                &#128940;        
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        ))}
                     </ul>
                 </div>
             );
@@ -82,6 +104,23 @@
         var {  excludeItem, excludeList  } = this.state;
         if (!excludeList.includes(excludeItem) && excludeItem != "") {
             await this.setState({ excludeList: [...excludeList,excludeItem] });
+            $('#ExcludeInput').val('');
+        }
+    }
+
+    async addExcludeOnEnter(event) {
+        if (event.key === "Enter") {
+            await this.addToExcludeList();
+        }
+    }
+
+    async removeFromExcludeList(item) {
+        var index = this.state.excludeList.indexOf(item);
+        if(index > -1) {
+            var newExcludeList = this.state.excludeList;
+            newExcludeList.splice(index, 1);
+            this.setState({ excludeList : newExcludeList })
+            this.setState({ excludeItem : "" })
         }
     }
 
@@ -91,7 +130,24 @@
                 <div className="shadow rounded">
                     <ul className="list-group">
                         <li className="list-group-item font-weight-bold text-capitalize text-gray text-center">Excluded Ingredients</li>
-                        {this.state.excludeList.map(item => (<li className="list-group-item" key={item}>{item}</li>))}
+                        {this.state.excludeList.map(item => (
+                            <li className="list-group-item" key={item}>
+                                <div className="container p-0 m-0">
+                                    <div className="row d-flex p-0 m-0">
+                                        <div className="col-8 inline-block align-middle p-0 m-0">
+                                            <span className="align-middle">
+                                                {item}
+                                            </span>
+                                        </div>
+                                        <div className="col-4 p-0 pl-1 m-0 text-right align-self-center">
+                                            <button className="btn btn-primary text-gray" onClick={() => this.removeFromExcludeList(item)}>
+                                                &#128940;        
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        ))}
                     </ul>
                 </div>
             );
@@ -133,15 +189,15 @@
                             </div>
                             <input type={(!isUpc ? "text" : "number")} required={true} onChangeCapture={(e) => { this.onQueryChanged(e) }} className="form-control border-left-0 border-right-0" />
                             <div className="input-group-append">
-                                <div className="btn-group">
-                                    <span className="d-inline-block" data-toggle="tooltip" data-placement="bottom" title="Apply filters!">
-                                        <button type="button" className="btn btn-block btn-primary rounded-0" data-toggle="collapse" data-target="#CollapseFilter" onClick={ () => this.onCollapse(!isCollapsed) }>
+                                <div className="btn-group" role="group">
+                                    <span className="d-inline-block" data-toggle="tooltip" data-placement="bottom" title="Apply filters!" data-trigger="hover" data-delay='{"show":100, "hide":500}'>
+                                        <button type="button" className="btn btn-primary m-0 rounded-0" data-toggle="collapse" data-target="#CollapseFilter" onClick={ () => this.onCollapse(!isCollapsed) }>
                                             <span className="small">
                                                 {isCollapsed ? "▼" : "▲"}
                                             </span>
                                         </button>
                                     </span>
-                                    <button className="btn btn-primary" type="submit">Go</button>
+                                    <button className="btn btn-primary m-0" type="submit">Go</button>
                                 </div>
                             </div>
                         </div>             
@@ -163,7 +219,7 @@
                                         </span>
                                     </div>
                                     <div className="input-group-append">
-                                        <button type="button" className="btn btn-primary dropdown-toggle" data-toggle="dropdown" id="SearchByButton">
+                                        <button type="button" className="btn btn-primary dropdown-toggle text-gray" data-toggle="dropdown" id="SearchByButton">
                                             {!isUpc ? "Name" : "UPC"}
                                         </button>
                                         <div className="dropdown-menu bg-secondary" aria-labelledby="SearchByButton">
@@ -200,10 +256,10 @@
                                             Include
                                         </span>
                                     </div>
-                                    <input type="text" className="form-control" disabled={isUpc ? "disabled" : ""} onChange={(e) => { this.onAddInclude(e) }} onKeyPress={(e) => this.addIncludeOnEnter(e)} />
+                                    <input id="IncludeInput" type="text" className="form-control" disabled={isUpc ? "disabled" : ""} onChange={(e) => { this.onAddInclude(e) }} onKeyPress={(e) => this.addIncludeOnEnter(e)} />
                                     <div className="input-group-append">
-                                        <button className="btn btn-primary" disabled={isUpc ? "disabled" : ""} onClick={() => this.addToIncludeList()}>
-                                            &#65291;
+                                        <button className="btn btn-primary text-gray" disabled={isUpc ? "disabled" : ""} onClick={() => this.addToIncludeList()}>
+                                            &#10010;
                                         </button>
                                     </div>
                                 </div>
@@ -218,10 +274,10 @@
                                             Exclude
                                         </span>
                                     </div>
-                                    <input type="text" className="form-control" disabled={isUpc ? "disabled" : ""} onChange={(e) => { this.onAddExclude(e) }} onKeyPress={(e) => this.addExcludeOnEnter(e)} />
+                                    <input id="ExcludeInput" type="text" className="form-control" disabled={isUpc ? "disabled" : ""} onChange={(e) => { this.onAddExclude(e) }} onKeyPress={(e) => this.addExcludeOnEnter(e)} />
                                     <div className="input-group-append">
-                                        <button type="submit" className="btn btn-primary" disabled={isUpc ? "disabled" : ""} onClick={() => this.addToExcludeList()}>
-                                            &#65291;
+                                        <button type="submit" className="btn btn-primary text-gray" disabled={isUpc ? "disabled" : ""} onClick={() => this.addToExcludeList()}>
+                                            &#10010;
                                         </button>
                                     </div>
                                 </div>
