@@ -36,6 +36,13 @@ class FoodItemAdapter(val context: Context, val listener: FoodItemAdapterListene
         holder.itemView.setOnClickListener {
             listener.selectFoodItem(foodItem.FdcId.toString())
         }
+<<<<<<< Updated upstream
+=======
+
+        if(seen.size == foodSearchResultItems.size && foodSearchResult!!.CurrentPage < foodSearchResult!!.TotalPages) {
+            listener.paginate(foodSearchResult!!)
+        }
+>>>>>>> Stashed changes
     }
 
     class FoodHolder(v: View): RecyclerView.ViewHolder(v) {
@@ -46,5 +53,9 @@ class FoodItemAdapter(val context: Context, val listener: FoodItemAdapterListene
 
     interface FoodItemAdapterListener {
         fun selectFoodItem(id: String)
+<<<<<<< Updated upstream
+=======
+        fun paginate(foodSearchResult: FoodSearchResult)
+>>>>>>> Stashed changes
     }
 }
