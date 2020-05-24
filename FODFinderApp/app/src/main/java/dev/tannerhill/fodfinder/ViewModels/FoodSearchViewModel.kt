@@ -53,16 +53,11 @@ class FoodSearchViewModel : ViewModel() {
         searchExpanded.value = expanded
     }
 
-<<<<<<< Updated upstream
-    fun search(query: String, onError: (t: Throwable) -> Unit ) {
-        FoodDataRepository.search(query,foodSearchResult, onError)
-=======
     fun search(query: String, pageNumber: Int = 1, ingredients: String? = foodSearchOptions.value?.Ingredients, requireAllWords: Boolean? = foodSearchOptions.value?.requireAllWords, onError: (t: Throwable) -> Unit ) {
         FoodDataRepository.search(query, pageNumber, ingredients, requireAllWords, foodSearchResult, onError)
     }
 
     fun setSearchOptions(newSearchOptions: FoodSearchOptions?) {
         foodSearchOptions.value = newSearchOptions
->>>>>>> Stashed changes
     }
 }

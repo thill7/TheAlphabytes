@@ -4,14 +4,12 @@ package dev.tannerhill.fodfinder
 import android.Manifest
 import android.content.pm.PackageManager
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-<<<<<<< Updated upstream
-=======
 import android.widget.*
 import androidx.appcompat.app.AlertDialog
->>>>>>> Stashed changes
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
@@ -85,10 +83,6 @@ class SearchFragment : Fragment(), FoodItemAdapter.FoodItemAdapterListener {
                 currentList.addAll(includeIngredientListAdapter.ingredients)
                 currentList.add(if(include.contains(" ")) "\"$include\"" else include)
                 includeIngredientListAdapter.setIngredients(currentList)
-                Log.d("INGREDIENT",include)
-            }
-            else {
-                Log.d("INGREDIENT","Didn't work!")
             }
         }
 
@@ -160,18 +154,13 @@ class SearchFragment : Fragment(), FoodItemAdapter.FoodItemAdapterListener {
 
         foodSearchViewModel.getFoodSearchResult().observe(viewLifecycleOwner, Observer {
             searchPlaceholderDisplay.visibility = if(it == null) View.VISIBLE else View.GONE
-<<<<<<< Updated upstream
-            adapter.setFoodItems(it?.Foods ?: listOf())
-=======
             adapter.setFoodItems(it)
+            Log.d("Food Search",it?.toString() ?: "NULL")
             foodSearchViewModel.setSearchOptions(if(it == null) null else FoodSearchOptions(it.Ingredients,it.RequireAllWords))
-            Log.d("FOOD SEARCH",it.toString())
         })
 
         foodSearchViewModel.getfoodSearchOptions().observe(viewLifecycleOwner, Observer {
-            Log.d("SEARCH OPTIONS",it?.toString() ?: "NULL")
             setFoodSearchOptions(it)
->>>>>>> Stashed changes
         })
 
         foodSearchViewModel.getSelectedSearchToggle().observe(viewLifecycleOwner, Observer {
@@ -216,16 +205,13 @@ class SearchFragment : Fragment(), FoodItemAdapter.FoodItemAdapterListener {
         foodDetailsViewModel.get(id)
         requireActivity().findNavController(R.id.nav_host_fragment).navigate(R.id.details_fragment_nav)
     }
-<<<<<<< Updated upstream
-=======
 
     override fun paginate(foodSearchResult: FoodSearchResult) {
         foodSearchViewModel.search(
             foodSearchResult.Query,
             foodSearchResult.CurrentPage + 1,
             foodSearchResult.Ingredients,
-            if(foodSearchResult.RequireAllWords) null else foodSearchResult.RequireAllWords) {}
+            if(!foodSearchResult.RequireAllWords) null else foodSearchResult.RequireAllWords) {}
         Toast.makeText(requireContext(),"Page ${foodSearchResult.CurrentPage+1}",Toast.LENGTH_SHORT).show()
     }
->>>>>>> Stashed changes
 }

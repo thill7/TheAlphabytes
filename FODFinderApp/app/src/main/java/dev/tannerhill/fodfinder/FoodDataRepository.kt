@@ -21,12 +21,6 @@ object FoodDataRepository {
 
     fun search(
         query: String,
-<<<<<<< Updated upstream
-        data: MutableLiveData<FoodSearchResult>,
-        onError: (t: Throwable) -> Unit
-    ) {
-        api.search(query)
-=======
         pageNumber: Int,
         ingredients: String?,
         allWordsRequired: Boolean?,
@@ -34,7 +28,6 @@ object FoodDataRepository {
         onError: (t: Throwable) -> Unit
     ) {
         api.search(query,pageNumber,ingredients,allWordsRequired)
->>>>>>> Stashed changes
             .enqueue(object: Callback<FoodSearchResult> {
                 override fun onFailure(call: Call<FoodSearchResult>, t: Throwable) {
                     data.value = null
