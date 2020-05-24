@@ -187,7 +187,7 @@
                                     Search
                                 </span>
                             </div>
-                            <input type={(!isUpc ? "text" : "number")} required={true} onChangeCapture={(e) => { this.onQueryChanged(e) }} className="form-control border-left-0 border-right-0" />
+                            <input type={(!isUpc ? "text" : "number")} required={true} onChangeCapture={(e) => { this.onQueryChanged(e) }} className="form-control border-left-0 border-right-0" title="" />
                             <div className="input-group-append">
                                 <div className="btn-group" role="group">
                                     <span className="d-inline-block" data-toggle="tooltip" data-placement="bottom" title="Apply filters!" data-trigger="hover" data-delay='{"show":100, "hide":500}'>
@@ -213,7 +213,7 @@
                             </div>
                             <div className="col-lg-6">
                                 <div className="input-group py-2">
-                                    <div className="input-group-prepend">
+                                    <div className="input-group-prepend text-center" data-toggle="tooltip" data-placement="top" title="Toggle between searching by food name and by UPC." data-trigger="hover" data-delay='{"show":100, "hide":500}'>
                                         <span className="input-group-text">
                                             Search by
                                         </span>
@@ -235,7 +235,7 @@
                             </div>
                             <div className="col-lg-6">
                                 <div className="input-group py-2">
-                                    <div className="input-group-prepend">
+                                    <div className="input-group-prepend text-center" data-toggle="tooltip" data-placement="top" title="Enable or disable exact phrase searching." data-trigger="hover" data-delay='{"show":100, "hide":500}'>
                                         <span className="input-group-text">
                                             Exact phrase search
                                         </span>
@@ -251,7 +251,7 @@
                         <div className="row d-flex justify-content-center">
                             <div className="col-lg-6">
                                 <div className="input-group py-2">
-                                    <div className="input-group-prepend text-center">
+                                    <div className="input-group-prepend text-center" data-toggle="tooltip" data-placement="top" data-html="true" title='Type in the name of an ingredient you <b>do</b> want to see in the results, then click "+" or press enter.'  data-trigger="hover" data-delay='{"show":100, "hide":500}'>
                                         <span id="IncludeExclude" className="input-group-text">
                                             Include
                                         </span>
@@ -269,7 +269,7 @@
                             </div>
                             <div className="col-lg-6">
                                 <div className="input-group py-2">
-                                    <div className="input-group-prepend text-center">
+                                    <div className="input-group-prepend text-center" data-toggle="tooltip" data-placement="top" data-html="true" title='Type in the name of an ingredient you <b>do not</b> want to see in the results, then click "+" or press enter.' data-trigger="hover" data-delay='{"show":100, "hide":500}'>
                                         <span id="IncludeExclude" className="input-group-text">
                                             Exclude
                                         </span>
