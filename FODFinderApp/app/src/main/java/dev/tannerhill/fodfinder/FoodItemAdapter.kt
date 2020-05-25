@@ -40,16 +40,25 @@ class FoodItemAdapter(val context: Context, val listener: FoodItemAdapterListene
         holder.foodItemBrand.text = TextParser.capitalize(foodItem.BrandOwner)
         holder.foodItemUpc.text = foodItem.GtinUPC
 
+        if(!seen.contains(foodItem.FdcId)) {
+            seen.add(foodItem.FdcId)
+        }
+
         holder.itemView.setOnClickListener {
             listener.selectFoodItem(foodItem.FdcId.toString())
         }
 
+<<<<<<< HEAD
         if(!seen.contains(foodItem.FdcId)) {
             seen.add(foodItem.FdcId)
         }
 
         if(seen.size == foodSearchResultItems.size && foodSearchResult!!.CurrentPage < foodSearchResult!!.TotalPages) {
             listener.paginate(foodSearchResult!!)
+=======
+        if(seen.size == foodSearchResultItems.size && foodSearchResult!!.CurrentPage < foodSearchResult!!.TotalPages) {
+            listener.paginate(foodSearchResult!!.Query, foodSearchResult!!.CurrentPage + 1)
+>>>>>>> dev
         }
     }
 
@@ -61,6 +70,10 @@ class FoodItemAdapter(val context: Context, val listener: FoodItemAdapterListene
 
     interface FoodItemAdapterListener {
         fun selectFoodItem(id: String)
+<<<<<<< HEAD
         fun paginate(foodSearchResult: FoodSearchResult)
+=======
+        fun paginate(query: String, page: Int)
+>>>>>>> dev
     }
 }
