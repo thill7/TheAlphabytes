@@ -5,10 +5,12 @@ import android.Manifest
 import android.content.pm.PackageManager
 import android.opengl.Visibility
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
@@ -61,7 +63,7 @@ class SearchFragment : Fragment(), FoodItemAdapter.FoodItemAdapterListener {
 
         foodSearchViewModel.getFoodSearchResult().observe(viewLifecycleOwner, Observer {
             searchPlaceholderDisplay.visibility = if(it == null) View.VISIBLE else View.GONE
-            adapter.setFoodItems(it?.Foods ?: listOf())
+            adapter.setFoodItems(it)
         })
 
         foodSearchViewModel.getSelectedSearchToggle().observe(viewLifecycleOwner, Observer {
@@ -98,5 +100,10 @@ class SearchFragment : Fragment(), FoodItemAdapter.FoodItemAdapterListener {
     override fun selectFoodItem(id: String) {
         foodDetailsViewModel.get(id)
         requireActivity().findNavController(R.id.nav_host_fragment).navigate(R.id.details_fragment_nav)
+    }
+
+    override fun paginate(query: String, page: Int) {
+        foodSearchViewModel.search(query, page) {}
+        Toast.makeText(requireContext(),"Page $page",Toast.LENGTH_SHORT).show()
     }
 }

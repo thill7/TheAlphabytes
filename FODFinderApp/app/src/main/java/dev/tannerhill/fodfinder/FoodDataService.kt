@@ -10,7 +10,8 @@ import retrofit2.http.Query
 interface FoodDataService {
     @GET("api/food/search")
     fun search(
-        @Query("query") query: String
+        @Query("query") query: String,
+        @Query("pageNumber") pageNumber: Int
     ) : Call<FoodSearchResult>
 
     @GET("api/food/details")
