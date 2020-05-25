@@ -156,15 +156,12 @@ class SearchFragment : Fragment(), FoodItemAdapter.FoodItemAdapterListener {
         foodSearchViewModel.getFoodSearchResult().observe(viewLifecycleOwner, Observer {
             searchPlaceholderDisplay.visibility = if(it == null) View.VISIBLE else View.GONE
             adapter.setFoodItems(it)
-<<<<<<< HEAD
             Log.d("Food Search",it?.toString() ?: "NULL")
             foodSearchViewModel.setSearchOptions(if(it == null) null else FoodSearchOptions(it.Ingredients,it.RequireAllWords))
         })
 
         foodSearchViewModel.getfoodSearchOptions().observe(viewLifecycleOwner, Observer {
             setFoodSearchOptions(it)
-=======
->>>>>>> dev
         })
 
         foodSearchViewModel.getSelectedSearchToggle().observe(viewLifecycleOwner, Observer {
@@ -210,7 +207,6 @@ class SearchFragment : Fragment(), FoodItemAdapter.FoodItemAdapterListener {
         requireActivity().findNavController(R.id.nav_host_fragment).navigate(R.id.details_fragment_nav)
     }
 
-<<<<<<< HEAD
     override fun paginate(foodSearchResult: FoodSearchResult) {
         foodSearchViewModel.search(
             foodSearchResult.Query,
@@ -218,10 +214,5 @@ class SearchFragment : Fragment(), FoodItemAdapter.FoodItemAdapterListener {
             foodSearchResult.Ingredients,
             if(!foodSearchResult.RequireAllWords) null else foodSearchResult.RequireAllWords) {}
         Toast.makeText(requireContext(),"Page ${foodSearchResult.CurrentPage+1}",Toast.LENGTH_SHORT).show()
-=======
-    override fun paginate(query: String, page: Int) {
-        foodSearchViewModel.search(query, page) {}
-        Toast.makeText(requireContext(),"Page $page",Toast.LENGTH_SHORT).show()
->>>>>>> dev
     }
 }
