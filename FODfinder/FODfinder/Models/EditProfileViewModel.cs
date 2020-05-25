@@ -13,6 +13,7 @@ namespace FODfinder.Models
         {
             this.userID = userInfo.userID;
             this.is_public = userProf.is_public;
+            this.optIn = userProf.optIn;
             this.showAge = userProf.showAge;
             this.showContact = userProf.showContact;
             this.showCountry = userProf.showCountry;
@@ -34,6 +35,10 @@ namespace FODfinder.Models
         [Required]
         [DisplayName("Make Profile Public")]
         public bool is_public { get; set; }
+
+        [Required]
+        [DisplayName("Use my anonymized demographic info")]
+        public bool optIn { get; set; }
 
         [Required]
         [DisplayName("Make Ethnicity Public")]
