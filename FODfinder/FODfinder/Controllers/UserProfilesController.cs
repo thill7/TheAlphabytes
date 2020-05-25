@@ -101,7 +101,7 @@ namespace FODfinder.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "userID,is_public,showEthnicity,showAge,showCountry,showGender,description,profileImgUrl")] UserProfile userProfile)
+        public ActionResult Create([Bind(Include = "userID,is_public,optIn,showEthnicity,showAge,showCountry,showGender,description,profileImgUrl")] UserProfile userProfile)
         {
             if (ModelState.IsValid)
             {
