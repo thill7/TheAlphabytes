@@ -21,6 +21,7 @@ import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.navigation.NavigationView
+import dev.tannerhill.fodfinder.Models.Food.FoodSearchOptions
 import dev.tannerhill.fodfinder.ViewModels.FoodDetailsViewModel
 import dev.tannerhill.fodfinder.ViewModels.FoodSearchViewModel
 import kotlinx.android.synthetic.main.activity_main.*
@@ -32,6 +33,8 @@ class MainActivity : AppCompatActivity(), NavController.OnDestinationChangedList
     private val foodSearchViewModel: FoodSearchViewModel by viewModels()
     private val foodDetailsViewModel: FoodDetailsViewModel by viewModels()
     private var selectedSearchToggle: Int = R.id.searchByTextButton
+
+    private var foodSearchOptions: FoodSearchOptions? = null
 
     private var optionsMenu: Menu? = null
     private var searchView: SearchView? = null

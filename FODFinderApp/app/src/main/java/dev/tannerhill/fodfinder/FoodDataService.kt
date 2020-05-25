@@ -11,7 +11,9 @@ interface FoodDataService {
     @GET("api/food/search")
     fun search(
         @Query("query") query: String,
-        @Query("pageNumber") pageNumber: Int
+        @Query("pageNumber") pageNumber: Int,
+        @Query("ingredients") ingredients: String?,
+        @Query("requireAllWords") requireAllWords: Boolean?
     ) : Call<FoodSearchResult>
 
     @GET("api/food/details")

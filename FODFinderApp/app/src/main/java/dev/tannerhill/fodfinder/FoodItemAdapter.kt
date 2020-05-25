@@ -12,25 +12,17 @@ import dev.tannerhill.fodfinder.Util.TextParser
 import org.w3c.dom.Text
 
 class FoodItemAdapter(val context: Context, val listener: FoodItemAdapterListener) : RecyclerView.Adapter<FoodItemAdapter.FoodHolder>() {
-    var foodSearchResult: FoodSearchResult? = null
-
-    val foodSearchResultItems: ArrayList<FoodSearchResultItem> = arrayListOf()
+    private val foodSearchResultItems: ArrayList<FoodSearchResultItem> = arrayListOf()
+    private var foodSearchResult: FoodSearchResult? = null
 
     val seen: ArrayList<Int> = arrayListOf()
 
-    fun setFoodItems(newSearch: FoodSearchResult?) {
-        foodSearchResult = newSearch
-        if(foodSearchResult == null) {
+    fun setFoodItems(newItems: FoodSearchResult?) {
+        foodSearchResult = newItems
+        if(newItems?.CurrentPage == 1) {
             foodSearchResultItems.clear()
-            seen.clear()
         }
-        else if(foodSearchResult!!.CurrentPage != 1) {
-            foodSearchResultItems.addAll(foodSearchResult!!.Foods)
-        }
-        else {
-            foodSearchResultItems.clear()
-            foodSearchResultItems.addAll(foodSearchResult!!.Foods)
-        }
+        foodSearchResultItems.addAll(newItems?.Foods ?: arrayListOf())
         notifyDataSetChanged()
     }
 
@@ -56,8 +48,12 @@ class FoodItemAdapter(val context: Context, val listener: FoodItemAdapterListene
             listener.selectFoodItem(foodItem.FdcId.toString())
         }
 
+        if(!seen.contains(foodItem.FdcId)) {
+            seen.add(foodItem.FdcId)
+        }
+
         if(seen.size == foodSearchResultItems.size && foodSearchResult!!.CurrentPage < foodSearchResult!!.TotalPages) {
-            listener.paginate(foodSearchResult!!.Query, foodSearchResult!!.CurrentPage + 1)
+            listener.paginate(foodSearchResult!!)
         }
     }
 
@@ -69,6 +65,6 @@ class FoodItemAdapter(val context: Context, val listener: FoodItemAdapterListene
 
     interface FoodItemAdapterListener {
         fun selectFoodItem(id: String)
-        fun paginate(query: String, page: Int)
+        fun paginate(foodSearchResult: FoodSearchResult)
     }
 }
