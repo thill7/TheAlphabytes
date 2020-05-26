@@ -13,6 +13,11 @@
     --danger-50: rgba(220,53,69,0.5);
 }
 
+.dev-img {
+    width: 200px;
+
+}
+
 .profilepic {
     height: 100px;
     width: 100px;
