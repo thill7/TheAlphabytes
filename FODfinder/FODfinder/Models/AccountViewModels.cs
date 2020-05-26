@@ -91,6 +91,10 @@ namespace FODfinder.Models
         public bool is_public { get; set; }
 
         [Required]
+        [DisplayName("Use my anonymized demographic info")]
+        public bool optIn { get; set; }
+
+        [Required]
         [DisplayName("First Name")]
         [StringLength(30)]
         public string firstName { get; set; }

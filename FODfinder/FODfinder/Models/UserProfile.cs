@@ -18,6 +18,10 @@
         public bool is_public { get; set; }
 
         [Required]
+        [DisplayName("Opt In")]
+        public bool optIn { get; set; }
+
+        [Required]
         [DisplayName("Ethnicity Privacy")]
         public bool showEthnicity { get; set; }
 

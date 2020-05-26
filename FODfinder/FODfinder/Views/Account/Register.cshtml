@@ -182,10 +182,15 @@
                             </div>
                             <input type="hidden" id="profileImgUrl" name="profileImgUrl" value="profilepic1" />
 
-                            <div class="container pt-4 pb-4">
+                            <div class="container">
+                                Use my anonymized demographic info     &nbsp; &nbsp;
+                                @Html.CheckBoxFor(m => m.optIn, new { @checked = true, title = "Your information will only be used to spot general trends by demographic within the FODfinder website" })
+                            </div>
+                            <div class="container pt-3 pb-4">
                                 Make profile public     &nbsp; &nbsp;
                                 @Html.CheckBoxFor(m => m.is_public, new { @checked = true })
                             </div>
+
 
                             <div class="form-group">
                                 <div class="d-flex justify-content-center">
