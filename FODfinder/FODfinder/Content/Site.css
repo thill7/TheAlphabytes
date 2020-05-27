@@ -212,8 +212,8 @@ html, body {
     margin: 0;
 }
 
-#IncludeExclude {
-    width: 80px;
+#FilterLabel {
+    width: 170px;
 }
 
 #ContactFormButton {

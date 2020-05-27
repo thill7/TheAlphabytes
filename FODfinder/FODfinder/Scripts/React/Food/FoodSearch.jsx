@@ -212,17 +212,17 @@
                                 </span>
                             </div>
                             <div className="col-lg-6">
-                                <div className="input-group py-2">
-                                    <div className="input-group-prepend text-center" data-toggle="tooltip" data-placement="top" title="Toggle between searching by food name and by UPC." data-trigger="hover" data-delay='{"show":100, "hide":500}'>
-                                        <span className="input-group-text">
+                                <div className="input-group py-2" data-toggle="tooltip" data-placement="top" title="Toggle between searching by food name and by UPC." data-trigger="hover" data-delay='{"show":200, "hide":100}'>
+                                    <div className="input-group-prepend mr-0 d-flex" >
+                                        <span id="FilterLabel" className="input-group-text justify-content-center">
                                             Search by
                                         </span>
                                     </div>
-                                    <div className="input-group-append">
-                                        <button type="button" className="btn btn-primary dropdown-toggle text-gray" data-toggle="dropdown" id="SearchByButton">
+                                    <div className="input-group-append ml-0 flex-fill">
+                                        <button type="button" className="btn btn-primary w-100 dropdown-toggle text-gray" data-toggle="dropdown" id="SearchByButton">
                                             {!isUpc ? "Name" : "UPC"}
                                         </button>
-                                        <div className="dropdown-menu bg-secondary" aria-labelledby="SearchByButton">
+                                        <div className="dropdown-menu bg-secondary w-75" aria-labelledby="SearchByButton">
                                             <a href="#" className={"dropdown-item text-gray" + (!isUpc ? " active bg-primary" : "")} onClick={() => { this.onUpcToggle(false) }}>
                                                 Name
                                             </a>
@@ -234,14 +234,14 @@
                                 </div>
                             </div>
                             <div className="col-lg-6">
-                                <div className="input-group py-2">
-                                    <div className="input-group-prepend text-center" data-toggle="tooltip" data-placement="top" title="Enable or disable exact phrase searching." data-trigger="hover" data-delay='{"show":100, "hide":500}'>
-                                        <span className="input-group-text">
+                                <div className="input-group py-2 d-flex" data-toggle="tooltip" data-placement="top" title="Enable or disable exact phrase searching." data-trigger="hover" data-delay='{"show":200, "hide":100}'>
+                                    <div className="input-group-prepend mr-0 d-flex" >
+                                        <span id="FilterLabel" className="input-group-text justify-content-center">
                                             Exact phrase search
                                         </span>
                                     </div>
-                                    <div className="input-group-append">
-                                        <button className={"btn " + (isUpc ? "btn-danger" : !requireAllWords ? "btn-danger" : "btn-success")} disabled={isUpc ? "disabled" : ""} onClick={() => { this.onRequireAllWords(!requireAllWords) }}>
+                                    <div className="input-group-append ml-0 flex-fill">
+                                        <button className={"btn w-100 " + (isUpc ? "btn-danger" : !requireAllWords ? "btn-danger" : "btn-success")} disabled={isUpc ? "disabled" : ""} onClick={() => { this.onRequireAllWords(!requireAllWords) }}>
                                             {isUpc ? "Disabled" : !requireAllWords ? "Disabled" : "Enabled"}
                                         </button>
                                     </div>
@@ -250,13 +250,13 @@
                         </div>
                         <div className="row d-flex justify-content-center">
                             <div className="col-lg-6">
-                                <div className="input-group py-2">
-                                    <div className="input-group-prepend text-center" data-toggle="tooltip" data-placement="top" data-html="true" title='Type in the name of an ingredient you <b>do</b> want to see in the results, then click "+" or press enter.'  data-trigger="hover" data-delay='{"show":100, "hide":500}'>
-                                        <span id="IncludeExclude" className="input-group-text">
+                                <div className="input-group py-2" data-toggle="tooltip" data-placement="top" data-html="true" title='Type in the name of an ingredient you <b>do</b> want to see in the results, then click "+" or press enter.'  data-trigger="hover" data-delay='{"show":200, "hide":100}'>
+                                    <div className="input-group-prepend d-flex" >
+                                        <span id="FilterLabel" className="input-group-text justify-content-center">
                                             Include
                                         </span>
                                     </div>
-                                    <input id="IncludeInput" type="text" className="form-control" disabled={isUpc ? "disabled" : ""} onChange={(e) => { this.onAddInclude(e) }} onKeyPress={(e) => this.addIncludeOnEnter(e)} />
+                                    <input id="IncludeInput" type="text" placeholder="Type an ingredient..." className="form-control" disabled={isUpc ? "disabled" : ""} onChange={(e) => { this.onAddInclude(e) }} onKeyPress={(e) => this.addIncludeOnEnter(e)} />
                                     <div className="input-group-append">
                                         <button className="btn btn-primary text-gray" disabled={isUpc ? "disabled" : ""} onClick={() => this.addToIncludeList()}>
                                             &#10010;
@@ -268,13 +268,13 @@
                                 </div>
                             </div>
                             <div className="col-lg-6">
-                                <div className="input-group py-2">
-                                    <div className="input-group-prepend text-center" data-toggle="tooltip" data-placement="top" data-html="true" title='Type in the name of an ingredient you <b>do not</b> want to see in the results, then click "+" or press enter.' data-trigger="hover" data-delay='{"show":100, "hide":500}'>
-                                        <span id="IncludeExclude" className="input-group-text">
+                                <div className="input-group py-2" data-toggle="tooltip" data-placement="top" data-html="true" title='Type in the name of an ingredient you <b>do not</b> want to see in the results, then click "+" or press enter.' data-trigger="hover" data-delay='{"show":200, "hide":100}'>
+                                    <div className="input-group-prepend d-flex" >
+                                        <span id="FilterLabel" className="input-group-text justify-content-center">
                                             Exclude
                                         </span>
                                     </div>
-                                    <input id="ExcludeInput" type="text" className="form-control" disabled={isUpc ? "disabled" : ""} onChange={(e) => { this.onAddExclude(e) }} onKeyPress={(e) => this.addExcludeOnEnter(e)} />
+                                    <input id="ExcludeInput" type="text" placeholder="Type an ingredient..." className="form-control" disabled={isUpc ? "disabled" : ""} onChange={(e) => { this.onAddExclude(e) }} onKeyPress={(e) => this.addExcludeOnEnter(e)} />
                                     <div className="input-group-append">
                                         <button type="submit" className="btn btn-primary text-gray" disabled={isUpc ? "disabled" : ""} onClick={() => this.addToExcludeList()}>
                                             &#10010;
