@@ -158,7 +158,7 @@ namespace FODfinder.Controllers
                 var user = new ApplicationUser { UserName = model.UserName, Email = model.Email };
                 string uid = user.Id;
                 UserInformation userInformation = new UserInformation { userID = uid, firstName = model.firstName, lastName = model.lastName, ethnicity = model.ethnicity, birthdate = model.birthdate, gender = model.gender, country = model.country };
-                UserProfile userProfile = new UserProfile { userID = uid, is_public = model.is_public, showAge = model.showAge, showCountry = model.showCountry, showEthnicity = model.showEthnicity, showGender = model.showGender, showContact = model.showContact, profileImgUrl=model.profileImgUrl };
+                UserProfile userProfile = new UserProfile { userID = uid, is_public = model.is_public, optIn = model.optIn, showAge = model.showAge, showCountry = model.showCountry, showEthnicity = model.showEthnicity, showGender = model.showGender, showContact = model.showContact, profileImgUrl=model.profileImgUrl };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {

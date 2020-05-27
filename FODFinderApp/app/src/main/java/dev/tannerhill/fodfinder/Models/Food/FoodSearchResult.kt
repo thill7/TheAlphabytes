@@ -5,6 +5,11 @@ data class FoodSearchResult(
     val TotalHits: Int,
     val CurrentPage: Int,
     val TotalPages: Int,
-    val Ingredients: String,
+    val Ingredients: String?,
     val RequireAllWords: Boolean,
     val Foods: List<FoodSearchResultItem>)
+
+data class FoodSearchOptions(
+    val Ingredients: String?,
+    val requireAllWords: Boolean?
+)

@@ -26,45 +26,60 @@
     <LinearLayout
             android:id="@+id/searchToggleLayout"
             android:visibility="gone"
-            android:orientation="horizontal"
+            android:orientation="vertical"
+            android:padding="10dp"
             android:background="@color/color_surface"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-        <com.google.android.material.button.MaterialButtonToggleGroup
-                android:id="@+id/searchToggleGroup"
-                android:layout_marginTop="0dp"
-                app:singleSelection="true"
-                app:checkedButton="@id/searchByTextButton"
-                android:layout_weight="0.75"
-                android:layout_width="0dp"
+        <LinearLayout
+                android:orientation="horizontal"
+
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-            <com.google.android.material.button.MaterialButton
-                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-                    android:id="@+id/searchByTextButton"
-                    android:text="@string/label_switch_text_search"
+            <com.google.android.material.button.MaterialButtonToggleGroup
+                    android:id="@+id/searchToggleGroup"
+                    android:layout_marginTop="0dp"
+                    app:singleSelection="true"
+                    app:checkedButton="@id/searchByTextButton"
+                    android:layout_weight="0.75"
                     android:layout_width="0dp"
-                    android:layout_weight="0.5"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content">
 
-            <com.google.android.material.button.MaterialButton
-                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-                    android:id="@+id/searchByUpcButton"
-                    android:text="@string/label_switch_upc_search"
+                <com.google.android.material.button.MaterialButton
+                        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                        android:id="@+id/searchByTextButton"
+                        android:text="@string/label_switch_text_search"
+                        android:layout_width="0dp"
+                        android:layout_weight="0.5"
+                        android:layout_height="wrap_content"/>
+
+                <com.google.android.material.button.MaterialButton
+                        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                        android:id="@+id/searchByUpcButton"
+                        android:text="@string/label_switch_upc_search"
+                        android:layout_width="0dp"
+                        android:layout_weight="0.5"
+                        android:layout_height="wrap_content"/>
+            </com.google.android.material.button.MaterialButtonToggleGroup>
+
+            <ImageButton
+                    android:src="@drawable/ic_photo_camera_black_24dp"
+                    android:scaleType="fitCenter"
+                    android:id="@+id/barcodeScannerButton"
                     android:layout_width="0dp"
-                    android:layout_weight="0.5"
-                    android:layout_height="wrap_content"/>
-        </com.google.android.material.button.MaterialButtonToggleGroup>
+                    android:layout_weight="0.25"
+                    android:visibility="gone"
+                    android:layout_height="match_parent"/>
+        </LinearLayout>
 
-        <ImageButton
-                android:src="@drawable/ic_photo_camera_black_24dp"
-                android:scaleType="fitCenter"
-                android:id="@+id/barcodeScannerButton"
-                android:layout_width="0dp"
-                android:layout_weight="0.25"
-                android:visibility="gone"
-                android:layout_height="match_parent"/>
+        <com.google.android.material.button.MaterialButton
+                android:id="@+id/searchOptionsButton"
+                android:text="@string/label_search_options"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
     </LinearLayout>
+
 
 </RelativeLayout>

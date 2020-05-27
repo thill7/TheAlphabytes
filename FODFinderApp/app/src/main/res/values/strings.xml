@@ -101,6 +101,14 @@
     <string name="search_placeholder_display">Please search a food item to get started&#8230;</string>
     <string name="label_switch_upc_search">UPC</string>
     <string name="label_switch_text_search">Text</string>
+    <string name="label_search_options">Search Options</string>
+    <string name="label_search_ingredients">Ingredients</string>
+    <string name="label_search_ingredients_include">Include</string>
+    <string name="label_search_ingredients_disclude">Disclude</string>
+    <string name="label_add_ingredient_hint">Type an ingredient&#8230;</string>
+    <string name="label_update_search_options">Update</string>
+    <string name="label_add_ingredient">Add</string>
+    <string name="label_require_all_words">Require All Words</string>
 
     <!-- DETAILS FRAGMENT -->
     <string name="label_primary_ingredients">Ingredients:</string>

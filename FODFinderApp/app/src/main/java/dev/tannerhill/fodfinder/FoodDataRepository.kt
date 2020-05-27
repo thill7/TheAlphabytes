@@ -21,10 +21,13 @@ object FoodDataRepository {
 
     fun search(
         query: String,
+        pageNumber: Int,
+        ingredients: String?,
+        allWordsRequired: Boolean?,
         data: MutableLiveData<FoodSearchResult>,
         onError: (t: Throwable) -> Unit
     ) {
-        api.search(query)
+        api.search(query,pageNumber,ingredients,allWordsRequired)
             .enqueue(object: Callback<FoodSearchResult> {
                 override fun onFailure(call: Call<FoodSearchResult>, t: Throwable) {
                     data.value = null
