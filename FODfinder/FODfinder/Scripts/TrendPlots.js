@@ -334,6 +334,258 @@ function successAjax8(data) {
     Plotly.newPlot(chart, data, layout);
 }
 
+function ajaxCall9() {
+    $.ajax({
+        type: 'GET',
+        dataType: 'json',
+        url: '/HighRiskLabelledIngredients/GetEthnicityChart1',
+        success: successAjax9,
+        error: errorAjax
+    })
+};
+
+function successAjax9(data) {
+    var xValues = [];
+    var yValues = [];
+    var textValues = [];
+    for (i = data.length - 1; i >= 0; i--) {
+        xValues.push(data[i]['countOfLabelOccurences']);
+        yValues.push(data[i]['ingredientName']);
+        textValues.push(data[i]['ingredientName']);
+    }
+
+    var data = [{
+        type: 'bar',
+        marker: { color: 'CCBDBD' },
+        x: xValues,
+        y: yValues,
+        text: textValues,
+        textposition: 'auto',
+        orientation: 'h'
+    }];
+
+    var layout = {
+        plot_bgcolor: '#F5EEEB',
+        paper_bgcolor: '#F5EEEB',
+        yaxis: { fixedrange: true, dtick: 1, visible: false },
+        xaxis: { fixedrange: true, dtick: 1 },
+        margin: { l: 130, t: 70, b: 70 }
+    }
+
+    var chart = document.getElementById('chartEthnicityBlack');
+    Plotly.newPlot(chart, data, layout);
+}
+
+function ajaxCall10() {
+    $.ajax({
+        type: 'GET',
+        dataType: 'json',
+        url: '/HighRiskLabelledIngredients/GetEthnicityChart2',
+        success: successAjax10,
+        error: errorAjax
+    })
+};
+
+function successAjax10(data) {
+    var xValues = [];
+    var yValues = [];
+    var textValues = [];
+    for (i = data.length - 1; i >= 0; i--) {
+        xValues.push(data[i]['countOfLabelOccurences']);
+        yValues.push(data[i]['ingredientName']);
+        textValues.push(data[i]['ingredientName']);
+    }
+
+    var data = [{
+        type: 'bar',
+        marker: { color: 'CCBDBD' },
+        x: xValues,
+        y: yValues,
+        text: textValues,
+        textposition: 'auto',
+        orientation: 'h'
+    }];
+
+    var layout = {
+        plot_bgcolor: '#F5EEEB',
+        paper_bgcolor: '#F5EEEB',
+        yaxis: { fixedrange: true, dtick: 1, visible: false },
+        xaxis: { fixedrange: true, dtick: 1 },
+        margin: { l: 130, t: 70, b: 70 }
+    }
+
+    var chart = document.getElementById('chartEthnicityNativeAmerican');
+    Plotly.newPlot(chart, data, layout);
+}
+
+function ajaxCall11() {
+    $.ajax({
+        type: 'GET',
+        dataType: 'json',
+        url: '/HighRiskLabelledIngredients/GetEthnicityChart3',
+        success: successAjax11,
+        error: errorAjax
+    })
+};
+
+function successAjax11(data) {
+    var xValues = [];
+    var yValues = [];
+    var textValues = [];
+    for (i = data.length - 1; i >= 0; i--) {
+        xValues.push(data[i]['countOfLabelOccurences']);
+        yValues.push(data[i]['ingredientName']);
+        textValues.push(data[i]['ingredientName']);
+    }
+
+    var data = [{
+        type: 'bar',
+        marker: { color: 'CCBDBD' },
+        x: xValues,
+        y: yValues,
+        text: textValues,
+        textposition: 'auto',
+        orientation: 'h'
+    }];
+
+    var layout = {
+        plot_bgcolor: '#F5EEEB',
+        paper_bgcolor: '#F5EEEB',
+        yaxis: { fixedrange: true, dtick: 1, visible: false },
+        xaxis: { fixedrange: true, dtick: 1 },
+        margin: { l: 130, t: 70, b: 70 }
+    }
+
+    var chart = document.getElementById('chartEthnicityAsian');
+    Plotly.newPlot(chart, data, layout);
+}
+
+function ajaxCall12() {
+    $.ajax({
+        type: 'GET',
+        dataType: 'json',
+        url: '/HighRiskLabelledIngredients/GetEthnicityChart4',
+        success: successAjax12,
+        error: errorAjax
+    })
+};
+
+function successAjax12(data) {
+    var xValues = [];
+    var yValues = [];
+    var textValues = [];
+    for (i = data.length - 1; i >= 0; i--) {
+        xValues.push(data[i]['countOfLabelOccurences']);
+        yValues.push(data[i]['ingredientName']);
+        textValues.push(data[i]['ingredientName']);
+    }
+
+    var data = [{
+        type: 'bar',
+        marker: { color: 'CCBDBD' },
+        x: xValues,
+        y: yValues,
+        text: textValues,
+        textposition: 'auto',
+        orientation: 'h'
+    }];
+
+    var layout = {
+        plot_bgcolor: '#F5EEEB',
+        paper_bgcolor: '#F5EEEB',
+        yaxis: { fixedrange: true, dtick: 1, visible: false },
+        xaxis: { fixedrange: true, dtick: 1 },
+        margin: { l: 130, t: 70, b: 70 }
+    }
+
+    var chart = document.getElementById('chartEthnicityPacific');
+    Plotly.newPlot(chart, data, layout);
+}
+
+function ajaxCall13() {
+    $.ajax({
+        type: 'GET',
+        dataType: 'json',
+        url: '/HighRiskLabelledIngredients/GetEthnicityChart5',
+        success: successAjax13,
+        error: errorAjax
+    })
+};
+
+function successAjax13(data) {
+    var xValues = [];
+    var yValues = [];
+    var textValues = [];
+    for (i = data.length - 1; i >= 0; i--) {
+        xValues.push(data[i]['countOfLabelOccurences']);
+        yValues.push(data[i]['ingredientName']);
+        textValues.push(data[i]['ingredientName']);
+    }
+
+    var data = [{
+        type: 'bar',
+        marker: { color: 'CCBDBD' },
+        x: xValues,
+        y: yValues,
+        text: textValues,
+        textposition: 'auto',
+        orientation: 'h'
+    }];
+
+    var layout = {
+        plot_bgcolor: '#F5EEEB',
+        paper_bgcolor: '#F5EEEB',
+        yaxis: { fixedrange: true, dtick: 1, visible: false },
+        xaxis: { fixedrange: true, dtick: 1 },
+        margin: { l: 130, t: 70, b: 70 }
+    }
+
+    var chart = document.getElementById('chartEthnicityLatino');
+    Plotly.newPlot(chart, data, layout);
+}
+
+function ajaxCall14() {
+    $.ajax({
+        type: 'GET',
+        dataType: 'json',
+        url: '/HighRiskLabelledIngredients/GetEthnicityChart6',
+        success: successAjax14,
+        error: errorAjax
+    })
+};
+
+function successAjax14(data) {
+    var xValues = [];
+    var yValues = [];
+    var textValues = [];
+    for (i = data.length - 1; i >= 0; i--) {
+        xValues.push(data[i]['countOfLabelOccurences']);
+        yValues.push(data[i]['ingredientName']);
+        textValues.push(data[i]['ingredientName']);
+    }
+
+    var data = [{
+        type: 'bar',
+        marker: { color: 'CCBDBD' },
+        x: xValues,
+        y: yValues,
+        text: textValues,
+        textposition: 'auto',
+        orientation: 'h'
+    }];
+
+    var layout = {
+        plot_bgcolor: '#F5EEEB',
+        paper_bgcolor: '#F5EEEB',
+        yaxis: { fixedrange: true, dtick: 1, visible: false },
+        xaxis: { fixedrange: true, dtick: 1 },
+        margin: { l: 130, t: 70, b: 70 }
+    }
+
+    var chart = document.getElementById('chartEthnicityWhite');
+    Plotly.newPlot(chart, data, layout);
+}
+
 function errorAjax() {
     console.log("Error")
 }
@@ -346,3 +598,9 @@ ajaxCall5();
 ajaxCall6();
 ajaxCall7();
 ajaxCall8();
+ajaxCall9();
+ajaxCall10();
+ajaxCall11();
+ajaxCall12();
+ajaxCall13();
+ajaxCall14();
