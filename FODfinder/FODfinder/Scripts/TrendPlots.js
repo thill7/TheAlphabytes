@@ -208,6 +208,132 @@ function successAjax5(data) {
     Plotly.newPlot(chart, data, layout);
 }
 
+function ajaxCall6() {
+    $.ajax({
+        type: 'GET',
+        dataType: 'json',
+        url: '/HighRiskLabelledIngredients/GetGenderChart1',
+        success: successAjax6,
+        error: errorAjax
+    })
+};
+
+function successAjax6(data) {
+    var xValues = [];
+    var yValues = [];
+    var textValues = [];
+    for (i = data.length - 1; i >= 0; i--) {
+        xValues.push(data[i]['countOfLabelOccurences']);
+        yValues.push(data[i]['ingredientName']);
+        textValues.push(data[i]['ingredientName']);
+    }
+
+    var data = [{
+        type: 'bar',
+        marker: { color: 'CCBDBD' },
+        x: xValues,
+        y: yValues,
+        text: textValues,
+        textposition: 'auto',
+        orientation: 'h'
+    }];
+
+    var layout = {
+        plot_bgcolor: '#F5EEEB',
+        paper_bgcolor: '#F5EEEB',
+        yaxis: { fixedrange: true, dtick: 1, visible: false },
+        xaxis: { fixedrange: true, dtick: 1 },
+        margin: { l: 130, t: 70, b: 70 }
+    }
+
+    var chart = document.getElementById('chartGenderIngredientsFemale');
+    Plotly.newPlot(chart, data, layout);
+}
+
+function ajaxCall7() {
+    $.ajax({
+        type: 'GET',
+        dataType: 'json',
+        url: '/HighRiskLabelledIngredients/GetGenderChart2',
+        success: successAjax7,
+        error: errorAjax
+    })
+};
+
+function successAjax7(data) {
+    var xValues = [];
+    var yValues = [];
+    var textValues = [];
+    for (i = data.length - 1; i >= 0; i--) {
+        xValues.push(data[i]['countOfLabelOccurences']);
+        yValues.push(data[i]['ingredientName']);
+        textValues.push(data[i]['ingredientName']);
+    }
+
+    var data = [{
+        type: 'bar',
+        marker: { color: 'CCBDBD' },
+        x: xValues,
+        y: yValues,
+        text: textValues,
+        textposition: 'auto',
+        orientation: 'h'
+    }];
+
+    var layout = {
+        plot_bgcolor: '#F5EEEB',
+        paper_bgcolor: '#F5EEEB',
+        yaxis: { fixedrange: true, dtick: 1, visible: false },
+        xaxis: { fixedrange: true, dtick: 1 },
+        margin: { l: 130, t: 70, b: 70 }
+    }
+
+    var chart = document.getElementById('chartGenderIngredientsMale');
+    Plotly.newPlot(chart, data, layout);
+}
+
+function ajaxCall8() {
+    $.ajax({
+        type: 'GET',
+        dataType: 'json',
+        url: '/HighRiskLabelledIngredients/GetGenderChart3',
+        success: successAjax8,
+        error: errorAjax
+    })
+};
+
+function successAjax8(data) {
+    var xValues = [];
+    var yValues = [];
+    var textValues = [];
+    for (i = data.length - 1; i >= 0; i--) {
+        xValues.push(data[i]['countOfLabelOccurences']);
+        yValues.push(data[i]['ingredientName']);
+        textValues.push(data[i]['ingredientName']);
+    }
+
+    var data = [{
+        type: 'bar',
+        marker: { color: 'CCBDBD' },
+        x: xValues,
+        y: yValues,
+        text: textValues,
+        textposition: 'auto',
+        orientation: 'h'
+    }];
+
+    var layout = {
+        plot_bgcolor: '#F5EEEB',
+        paper_bgcolor: '#F5EEEB',
+        yaxis: { fixedrange: true, dtick: 1, visible: false },
+        xaxis: { fixedrange: true, dtick: 1 },
+        margin: { l: 130, t: 70, b: 70 }
+    }
+
+    var chart = document.getElementById('chartGenderIngredientsNonbinary');
+    Plotly.newPlot(chart, data, layout);
+}
+
 function errorAjax() {
     console.log("Error")
 }
@@ -217,3 +343,6 @@ ajaxCall2();
 ajaxCall3();
 ajaxCall4();
 ajaxCall5();
+ajaxCall6();
+ajaxCall7();
+ajaxCall8();
