@@ -15,7 +15,6 @@
 
 .dev-img {
     width: 200px;
-
 }
 
 .profilepic {
@@ -47,92 +46,6 @@
 
 .navbar-dark, .bg-dark, .btn-dark {
     background-color: #242A4A !important;
-}
-
-.bg-primary {
-    background-color: #ccbdbd !important;
-}
-
-.btn-primary {
-    color: #212529;
-    background-color: #ccbdbd;
-    border-color: #ccbdbd;
-}
-
-.btn-primary:hover{
-    color: #212529;
-    background-color: #bba7a7;
-    border-color: #b6a0a0;
-}
-
-.btn-primary:focus {
-    color: #212529;
-    background-color: #bba7a7;
-    border-color: #b6a0a0;
-    box-shadow: 0 0 0 0.2rem rgba(178, 166, 167, 0.5);
-}
-
-.btn-primary:disabled {
-    color: #212529;
-    background-color: #ccbdbd;
-    border-color: #ccbdbd;
-}
-
-.btn-primary:not(:disabled):not(.disabled):active,
-.show > .btn-primary.dropdown-toggle {
-    color: #212529;
-    background-color: #b6a0a0;
-    border-color: #b09999;
-}
-
-.btn-primary:not(:disabled):not(.disabled):active:focus,
-.show > .btn-primary.dropdown-toggle:focus {
-    box-shadow: 0 0 0 0.2rem rgba(178, 166, 167, 0.5);
-}
-
-.dropdown-menu > .dropdown-item:hover {
-    background-color: #bba7a7 !important;
-}
-
-.bg-secondary, .btn-secondary {
-    background-color: #F5EEEB !important;
-}
-
-.btn-secondary {
-    color: #212529;
-    background-color: #f5eeeb;
-    border-color: #f5eeeb;
-}
-
-.btn-secondary:hover {
-    color: #212529;
-    background-color: #e8d8d2 !important;
-    border-color: #e4d1c9;
-}
-
-.btn-secondary:focus {
-    color: #212529;
-    background-color: #e8d8d2;
-    border-color: #e4d1c9;
-    box-shadow: 0 0 0 0.2rem rgba(213, 208, 206, 0.5);
-}
-
-.btn-secondary:disabled {
-    color: #212529;
-    background-color: #f5eeeb;
-    border-color: #f5eeeb;
-}
-
-.btn-secondary:not(:disabled):not(.disabled):active,
-.show > .btn-secondary.dropdown-toggle {
-    color: #212529;
-    background-color: #e4d1c9;
-    border-color: #e0cac1;
-}
-
-.btn-secondary:not(:disabled):not(.disabled):active:focus,
-.show > .btn-secondary.dropdown-toggle:focus {
-    box-shadow: 0 0 0 0.2rem rgba(213, 208, 206, 0.5);
 }
 
 .bg-info, .btn-info, .list-group-item-info {
@@ -218,7 +131,7 @@ html, body {
 }
 
 #FilterLabel {
-    width: 170px;
+    min-width: 170px;
 }
 
 #ContactFormButton {

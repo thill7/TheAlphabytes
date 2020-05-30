@@ -3,10 +3,41 @@
 @{
     ViewBag.Title = "Register";
 }
-
 <div class="container-fluid pt-4">
     <div class="row justify-content-center">
         <div class="col-lg-8">
+            @* New Register Form *@
+            <div class="card">
+                <div class="card-header bg-secondary text-gray text-center">
+                    <span class="h4">
+                        Create An Account
+                    </span>
+                </div>
+                <div class="card-body">
+                   @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "container-fluid p-1", role = "form" }))
+                    { 
+                        @Html.AntiForgeryToken()
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        <div class="form-group">
+                            <div class="input-group">
+                                <div class="input-group-prepend d-flex">
+                                    <span class="input-group-text input-group-text-prepend justify-content-center">
+                                        @Html.LabelFor(m => m.Email, new { id = "RegisterFormLabel" })
+                                    </span>
+                                </div>
+                                @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder = "example@email.com" })
+                                <div class="input-group-append">
+                                    <div class="input-group-text input-group-text-append">
+                                        @Html.CheckBoxFor(m => m.showContact, new { @checked = true })
+                                    </div>
+                                </div>
+                            </div>
+                            @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                        </div>
+                    }
+                </div>
+            </div>
+            @* ------- *@
             <div class="card shadow">
                 <div class="card-header bg-secondary text-gray text-center">
                     <h4>Create An Account</h4>

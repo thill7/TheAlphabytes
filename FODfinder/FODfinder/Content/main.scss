@@ -1,0 +1,84 @@
+﻿$primary: #ccbdbd;
+$secondary: #f5eeeb;
+
+@mixin rounded($side, $radius) {
+    @if $side == top {
+        border-top-left-radius: $radius !important;
+        border-top-right-radius: $radius !important;
+    }
+    @else if $side == bottom {
+        border-bottom-left-radius: $radius !important;
+        border-bottom-right-radius: $radius !important;
+    }
+    @else if $side == bl-corner {
+        border-bottom-left-radius: $radius !important;
+    }
+    @else if $side == br-corner {
+        border-bottom-right-radius: $radius !important;
+    }
+    @else if $side == all {
+        border-top-left-radius: $radius !important;
+        border-top-right-radius: $radius !important;
+        border-bottom-left-radius: $radius !important;
+        border-bottom-right-radius: $radius !important;
+    }
+    @else {
+        @error "Invalid input: #{$side}. Must be: top, bottom, bl-corner, br-corner or all.";
+    }
+}
+
+@import "bootstrap/functions";
+@import "bootstrap/variables";
+
+@media (max-width: map-get($grid-breakpoints, "md")){
+    .input-group {
+        > .input-group-prepend, .input-group-content-prepend, label {
+            @include rounded(top, 0.25rem);
+            @include rounded(bottom, 0rem);
+            width: 100%;
+            border-bottom: none;
+        }
+
+        > .input-group-append:last-child {
+            width: 100%;
+            margin: 0;
+
+            > .btn-group {
+                width: inherit;
+
+                > .btn {
+                    @include rounded(top, 0rem);
+                    width: inherit;
+                }
+
+                > .btn:last-child {
+                    @include rounded(br-corner, 0.25rem);
+                }
+
+                > .btn:first-child {
+                    @include rounded(bl-corner, 0.25rem);
+                }
+
+                > .btn:not(:first-child):not(:last-child) {
+                    @include rounded(all, 0rem);
+                }
+            }
+
+            > .btn, .input-group-content-append {
+                @include rounded(bottom, 0.25rem);
+                @include rounded(top, 0rem);
+                width: inherit;
+            }
+            > .input-group-text-append {
+                border-top: none;
+            }
+        }
+
+        > .form-control:last-child {
+            @include rounded(bottom, 0.25rem);
+            @include rounded(top, 0rem);
+        }
+    }
+}
+
+@import "Content/bootstrap/bootstrap.scss";

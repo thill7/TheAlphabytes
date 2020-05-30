@@ -182,22 +182,24 @@
                 <form className="form w-100" onSubmit={(e) => { this.onQuerySubmit(e) }}>
                     <div className="form-group w-100 mb-0">
                         <div className="input-group w-100">
-                            <div className="input-group-prepend">
-                                <span className="input-group-text">
+                            <div className="input-group-prepend d-flex">
+                                <span className="input-group-text input-group-content-prepend justify-content-center">
                                     Search
                                 </span>
                             </div>
-                            <input type={(!isUpc ? "text" : "number")} required={true} onChangeCapture={(e) => { this.onQueryChanged(e) }} className="form-control border-left-0 border-right-0" title="" />
+                            <input type={(!isUpc ? "text" : "number")} required={true} onChangeCapture={(e) => { this.onQueryChanged(e) }} className="form-control" title="" />
                             <div className="input-group-append">
                                 <div className="btn-group" role="group">
-                                    <span className="d-inline-block" data-toggle="tooltip" data-placement="bottom" title="Apply filters!" data-trigger="hover" data-delay='{"show":100, "hide":500}'>
-                                        <button type="button" className="btn btn-primary m-0 rounded-0" data-toggle="collapse" data-target="#CollapseFilter" onClick={ () => this.onCollapse(!isCollapsed) }>
-                                            <span className="small">
-                                                {isCollapsed ? "▼" : "▲"}
+                                        <button type="button" className="btn btn-primary rounded-0 m-0" data-toggle="collapse" data-target="#CollapseFilter" onClick={ () => this.onCollapse(!isCollapsed) }>
+                                            <span className="text-gray">
+                                                Filters {isCollapsed ? "▼" : "▲"}
                                             </span>
                                         </button>
-                                    </span>
-                                    <button className="btn btn-primary m-0" type="submit">Go</button>
+                                    <button className="btn btn-primary m-0" type="submit">
+                                        <span className="text-gray">
+                                            Go
+                                        </span>
+                                    </button>
                                 </div>
                             </div>
                         </div>             
@@ -214,21 +216,21 @@
                             <div className="col-lg-6">
                                 <div className="input-group py-2" data-toggle="tooltip" data-placement="top" title="Toggle between searching by food name and by UPC." data-trigger="hover" data-delay='{"show":200, "hide":100}'>
                                     <div className="input-group-prepend mr-0 d-flex" >
-                                        <span id="FilterLabel" className="input-group-text justify-content-center">
+                                        <span id="FilterLabel" className="input-group-text input-group-content-prepend justify-content-center">
                                             Search by
                                         </span>
                                     </div>
-                                    <div className="input-group-append ml-0 flex-fill">
-                                        <button type="button" className="btn btn-primary w-100 dropdown-toggle text-gray" data-toggle="dropdown" id="SearchByButton">
+                                    <div className="input-group-append ml-0 flex-fill d-inline">
+                                        <button type="button" className="btn btn-block btn-primary dropdown-toggle text-gray" data-toggle="dropdown" id="SearchByButton">
                                             {!isUpc ? "Name" : "UPC"}
                                         </button>
-                                        <div className="dropdown-menu bg-secondary w-75" aria-labelledby="SearchByButton">
-                                            <a href="#" className={"dropdown-item text-gray" + (!isUpc ? " active bg-primary" : "")} onClick={() => { this.onUpcToggle(false) }}>
+                                        <div className="dropdown-menu dropdown-menu-right w-100 bg-secondary" aria-labelledby="SearchByButton">
+                                            <a href="#" className={"dropdown-item text-gray text-center" + (!isUpc ? " active bg-primary" : "")} onClick={() => { this.onUpcToggle(false) }}>
                                                 Name
-                                            </a>
-                                            <a href="#" className={"dropdown-item text-gray" + (isUpc ? " active bg-primary" : "")} onClick={() => { this.onUpcToggle(true) }}>
+                                        </a>
+                                            <a href="#" className={"dropdown-item text-gray text-center" + (isUpc ? " active bg-primary" : "")} onClick={() => { this.onUpcToggle(true) }}>
                                                 UPC
-                                            </a>
+                                        </a>
                                         </div>
                                     </div>
                                 </div>
@@ -236,12 +238,12 @@
                             <div className="col-lg-6">
                                 <div className="input-group py-2 d-flex" data-toggle="tooltip" data-placement="top" title="Enable or disable exact phrase searching." data-trigger="hover" data-delay='{"show":200, "hide":100}'>
                                     <div className="input-group-prepend mr-0 d-flex" >
-                                        <span id="FilterLabel" className="input-group-text justify-content-center">
+                                        <span id="FilterLabel" className="input-group-text input-group-content-prepend justify-content-center">
                                             Exact phrase search
                                         </span>
                                     </div>
                                     <div className="input-group-append ml-0 flex-fill">
-                                        <button className={"btn w-100 " + (isUpc ? "btn-danger" : !requireAllWords ? "btn-danger" : "btn-success")} disabled={isUpc ? "disabled" : ""} onClick={() => { this.onRequireAllWords(!requireAllWords) }}>
+                                        <button className={"text-gray btn w-100 " + (isUpc ? "btn-outline-primary" : !requireAllWords ? "btn-outline-primary" : "btn-primary")} disabled={isUpc ? "disabled" : ""} onClick={() => { this.onRequireAllWords(!requireAllWords) }}>
                                             {isUpc ? "Disabled" : !requireAllWords ? "Disabled" : "Enabled"}
                                         </button>
                                     </div>
@@ -252,7 +254,7 @@
                             <div className="col-lg-6">
                                 <div className="input-group py-2" data-toggle="tooltip" data-placement="top" data-html="true" title='Type in the name of an ingredient you <b>do</b> want to see in the results, then click "+" or press enter.'  data-trigger="hover" data-delay='{"show":200, "hide":100}'>
                                     <div className="input-group-prepend d-flex" >
-                                        <span id="FilterLabel" className="input-group-text justify-content-center">
+                                        <span id="FilterLabel" className="input-group-text input-group-content-prepend justify-content-center">
                                             Include
                                         </span>
                                     </div>
@@ -270,7 +272,7 @@
                             <div className="col-lg-6">
                                 <div className="input-group py-2" data-toggle="tooltip" data-placement="top" data-html="true" title='Type in the name of an ingredient you <b>do not</b> want to see in the results, then click "+" or press enter.' data-trigger="hover" data-delay='{"show":200, "hide":100}'>
                                     <div className="input-group-prepend d-flex" >
-                                        <span id="FilterLabel" className="input-group-text justify-content-center">
+                                        <span id="FilterLabel" className="input-group-text input-group-content-prepend justify-content-center">
                                             Exclude
                                         </span>
                                     </div>
