@@ -36,10 +36,8 @@ function successAjax(data) {
         margin: { l: 130, t: 70, b: 70 }
     }
 
-    var config = { responsive: true }
-
     var chart = document.getElementById('chart');
-    Plotly.newPlot(chart, data, layout, config);
+    Plotly.newPlot(chart, data, layout);
 }
 
 function errorAjax() {
