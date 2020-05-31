@@ -15,6 +15,7 @@
         this.showLabels = this.showLabels.bind(this);
         this.hideLabels = this.hideLabels.bind(this);
         this.getUserLists = this.getUserLists.bind(this);
+        this.drawChart = this.drawChart.bind(this);
     }
 
     GetFoodNutrientValue(key) {
@@ -113,19 +114,18 @@
     
     drawChart(){
         var data = new google.visualization.DataTable();
-        data.addColumn('string', 'Stategy');
-        data.addColumn('number', 'Usage');
+        data.addColumn('string', 'isFODMAP');
+        data.addColumn('number', 'Content');
         data.addRows([
-          ['Docs', 3],
-          ['Educated Guessing', 1],
-          ['Intuition', 1],
-          ['Blind Guessing', 1],
+            ['Low FODMAP', 100 - this.state.details.MaxFodmapPercentage],
+            ['High FODMAP', this.state.details.MaxFodmapPercentage]
         ]);
 
-        var options = {'title':'Test Chart',
-                       'width':400,
-                       'height':250,
-                       'pieHole':0.3};
+        var options = {title:'Food Composition',
+                       width:400,
+                       height:250,
+                       tooltip:{ trigger:'none' },
+                       pieHole:0.3};
 
         var chart = new google.visualization.PieChart(document.getElementById('pieChart'));
         chart.draw(data, options);
@@ -329,7 +329,7 @@
                                     <span className="font-weight-bold">Rating: </span>
                                     <span>This is a </span><span className="font-weight-bold">{details.FodmapScore}</span><span> FODMAP food (could contain up to </span><span className="font-weight-bold">{details.MaxFodmapPercentage}%</span><span> High FODMAP ingredients)</span>
                                 </p>
-                                <div id="pieChart">
+                                <div className="shadow" id="pieChart">
 
                                 </div>
                             </div>
