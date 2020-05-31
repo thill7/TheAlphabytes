@@ -106,6 +106,29 @@
             valueServingUnitQuantity: details.ServingSize,
             showLegacyVersion: false
         });
+
+        google.charts.load('current', {'packages':['corechart']});
+        google.charts.setOnLoadCallback(this.drawChart);
+    }
+    
+    drawChart(){
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Stategy');
+        data.addColumn('number', 'Usage');
+        data.addRows([
+          ['Docs', 3],
+          ['Educated Guessing', 1],
+          ['Intuition', 1],
+          ['Blind Guessing', 1],
+        ]);
+
+        var options = {'title':'Test Chart',
+                       'width':400,
+                       'height':250,
+                       'pieHole':0.3};
+
+        var chart = new google.visualization.PieChart(document.getElementById('pieChart'));
+        chart.draw(data, options);
     }
 
     async handleclick(e) {
@@ -306,6 +329,9 @@
                                     <span className="font-weight-bold">Rating: </span>
                                     <span>This is a </span><span className="font-weight-bold">{details.FodmapScore}</span><span> FODMAP food (could contain up to </span><span className="font-weight-bold">{details.MaxFodmapPercentage}%</span><span> High FODMAP ingredients)</span>
                                 </p>
+                                <div id="pieChart">
+
+                                </div>
                             </div>
                             <div className="col-md-6">
                                 <div className="shadow rounded bg-gray p-4">
