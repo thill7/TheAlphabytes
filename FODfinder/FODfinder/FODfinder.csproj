@@ -311,10 +311,13 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\font-awesome.css" />
     <Content Include="Content\font-awesome.min.css" />
+    <Content Include="Content\Images\cassidy.jpg" />
     <Content Include="Content\Images\contact.png" />
     <Content Include="Content\Images\FODMAP.png" />
+    <Content Include="Content\Images\gabe.jpg" />
     <Content Include="Content\Images\home-logo.png" />
     <Content Include="Content\Images\IBS_info.png" />
+    <Content Include="Content\Images\jensen.jpg" />
     <Content Include="Content\Images\logo.png" />
     <Content Include="Content\Images\profilepic1.jpg" />
     <Content Include="Content\Images\profilepic2.jpg" />
@@ -322,6 +325,7 @@
     <Content Include="Content\Images\profilepic4.jpg" />
     <Content Include="Content\Images\profilepic5.jpg" />
     <Content Include="Content\Images\profilepic6.jpg" />
+    <Content Include="Content\Images\tanner.jpg" />
     <Content Include="Content\nutritionLabel-min.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\fontawesome-webfont.svg" />
@@ -536,6 +540,7 @@
     <Content Include="Views\Error\InternalServer.cshtml" />
     <Content Include="Views\Donate\Index.cshtml" />
     <Content Include="Views\DevInfo\Index.cshtml" />
+    <Content Include="Views\HighRiskLabelledIngredients\Trends.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\index.d.ts" />

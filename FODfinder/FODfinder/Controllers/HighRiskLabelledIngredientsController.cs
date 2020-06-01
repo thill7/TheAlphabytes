@@ -41,6 +41,11 @@ namespace FODfinder.Controllers
             return View(highRiskLabelledIngredientList);
         }
 
+        public ActionResult Trends()
+        {
+            return View();
+        }
+
         public JsonResult GetIngredientsForPlot()
         {
             var highRiskLabelledIngredientList = RetrieveRiskyIngredients();
