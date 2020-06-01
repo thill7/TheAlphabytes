@@ -43,7 +43,7 @@ namespace FODfinder.Controllers
                 foreach (int ingredient in highRiskList)
                 {
                     LabelledIngredient labelIng = db.LabelledIngredients.Where(l => l.ID == ingredient).FirstOrDefault();
-                    int count = db.UserIngredients.Where(u => u.LabelledIngredientID == ingredient && u.Label == "High-Risk" && (DateTime.Now.Year - u.AspNetUser.UserInformation.birthdate.Year) < 18).Count();
+                    int count = db.UserIngredients.Where(u => u.LabelledIngredientID == ingredient && u.Label == "High-Risk" && (DateTime.Now.Year - u.AspNetUser.UserInformation.birthdate.Year) < 18 && u.AspNetUser.UserProfile.optIn).Count();
                     HighRiskLabelledIngredient newIngredient = new HighRiskLabelledIngredient(labelIng, count);
                     highRiskLabelledIngredientList.Add(newIngredient);
                 }
@@ -61,7 +61,7 @@ namespace FODfinder.Controllers
                 foreach (int ingredient in highRiskList)
                 {
                     LabelledIngredient labelIng = db.LabelledIngredients.Where(l => l.ID == ingredient).FirstOrDefault();
-                    int count = db.UserIngredients.Where(u => u.LabelledIngredientID == ingredient && u.Label == "High-Risk" && (DateTime.Now.Year - u.AspNetUser.UserInformation.birthdate.Year) > 17 && (DateTime.Now.Year - u.AspNetUser.UserInformation.birthdate.Year) < 36).Count();
+                    int count = db.UserIngredients.Where(u => u.LabelledIngredientID == ingredient && u.Label == "High-Risk" && (DateTime.Now.Year - u.AspNetUser.UserInformation.birthdate.Year) > 17 && (DateTime.Now.Year - u.AspNetUser.UserInformation.birthdate.Year) < 36 && u.AspNetUser.UserProfile.optIn).Count();
                     HighRiskLabelledIngredient newIngredient = new HighRiskLabelledIngredient(labelIng, count);
                     highRiskLabelledIngredientList.Add(newIngredient);
                 }
@@ -79,7 +79,7 @@ namespace FODfinder.Controllers
                 foreach (int ingredient in highRiskList)
                 {
                     LabelledIngredient labelIng = db.LabelledIngredients.Where(l => l.ID == ingredient).FirstOrDefault();
-                    int count = db.UserIngredients.Where(u => u.LabelledIngredientID == ingredient && u.Label == "High-Risk" && (DateTime.Now.Year - u.AspNetUser.UserInformation.birthdate.Year) > 35 && (DateTime.Now.Year - u.AspNetUser.UserInformation.birthdate.Year) < 56).Count();
+                    int count = db.UserIngredients.Where(u => u.LabelledIngredientID == ingredient && u.Label == "High-Risk" && (DateTime.Now.Year - u.AspNetUser.UserInformation.birthdate.Year) > 35 && (DateTime.Now.Year - u.AspNetUser.UserInformation.birthdate.Year) < 56 && u.AspNetUser.UserProfile.optIn).Count();
                     HighRiskLabelledIngredient newIngredient = new HighRiskLabelledIngredient(labelIng, count);
                     highRiskLabelledIngredientList.Add(newIngredient);
                 }
@@ -97,7 +97,7 @@ namespace FODfinder.Controllers
                 foreach (int ingredient in highRiskList)
                 {
                     LabelledIngredient labelIng = db.LabelledIngredients.Where(l => l.ID == ingredient).FirstOrDefault();
-                    int count = db.UserIngredients.Where(u => u.LabelledIngredientID == ingredient && u.Label == "High-Risk" && (DateTime.Now.Year - u.AspNetUser.UserInformation.birthdate.Year) > 55 && (DateTime.Now.Year - u.AspNetUser.UserInformation.birthdate.Year) < 76).Count();
+                    int count = db.UserIngredients.Where(u => u.LabelledIngredientID == ingredient && u.Label == "High-Risk" && (DateTime.Now.Year - u.AspNetUser.UserInformation.birthdate.Year) > 55 && (DateTime.Now.Year - u.AspNetUser.UserInformation.birthdate.Year) < 76 && u.AspNetUser.UserProfile.optIn).Count();
                     HighRiskLabelledIngredient newIngredient = new HighRiskLabelledIngredient(labelIng, count);
                     highRiskLabelledIngredientList.Add(newIngredient);
                 }
@@ -115,7 +115,61 @@ namespace FODfinder.Controllers
                 foreach (int ingredient in highRiskList)
                 {
                     LabelledIngredient labelIng = db.LabelledIngredients.Where(l => l.ID == ingredient).FirstOrDefault();
-                    int count = db.UserIngredients.Where(u => u.LabelledIngredientID == ingredient && u.Label == "High-Risk" && (DateTime.Now.Year - u.AspNetUser.UserInformation.birthdate.Year) > 75).Count();
+                    int count = db.UserIngredients.Where(u => u.LabelledIngredientID == ingredient && u.Label == "High-Risk" && (DateTime.Now.Year - u.AspNetUser.UserInformation.birthdate.Year) > 75 && u.AspNetUser.UserProfile.optIn).Count();
+                    HighRiskLabelledIngredient newIngredient = new HighRiskLabelledIngredient(labelIng, count);
+                    highRiskLabelledIngredientList.Add(newIngredient);
+                }
+                highRiskLabelledIngredientList = highRiskLabelledIngredientList.OrderByDescending(o => o.countOfLabelOccurences).ToList();
+                return highRiskLabelledIngredientList;
+            }
+        }
+
+        public List<HighRiskLabelledIngredient> RetrieveRiskyIngredientsGender1()
+        {
+            using (FFDBContext db = new FFDBContext())
+            {
+                List<HighRiskLabelledIngredient> highRiskLabelledIngredientList = new List<HighRiskLabelledIngredient>();
+                List<int> highRiskList = db.UserIngredients.Where(u => u.Label == "High-Risk").Select(u => u.LabelledIngredientID).Distinct().ToList();
+                foreach (int ingredient in highRiskList)
+                {
+                    LabelledIngredient labelIng = db.LabelledIngredients.Where(l => l.ID == ingredient).FirstOrDefault();
+                    int count = db.UserIngredients.Where(u => u.LabelledIngredientID == ingredient && u.Label == "High-Risk" && u.AspNetUser.UserInformation.gender == "Female" && u.AspNetUser.UserProfile.optIn).Count();
+                    HighRiskLabelledIngredient newIngredient = new HighRiskLabelledIngredient(labelIng, count);
+                    highRiskLabelledIngredientList.Add(newIngredient);
+                }
+                highRiskLabelledIngredientList = highRiskLabelledIngredientList.OrderByDescending(o => o.countOfLabelOccurences).ToList();
+                return highRiskLabelledIngredientList;
+            }
+        }
+
+        public List<HighRiskLabelledIngredient> RetrieveRiskyIngredientsGender2()
+        {
+            using (FFDBContext db = new FFDBContext())
+            {
+                List<HighRiskLabelledIngredient> highRiskLabelledIngredientList = new List<HighRiskLabelledIngredient>();
+                List<int> highRiskList = db.UserIngredients.Where(u => u.Label == "High-Risk").Select(u => u.LabelledIngredientID).Distinct().ToList();
+                foreach (int ingredient in highRiskList)
+                {
+                    LabelledIngredient labelIng = db.LabelledIngredients.Where(l => l.ID == ingredient).FirstOrDefault();
+                    int count = db.UserIngredients.Where(u => u.LabelledIngredientID == ingredient && u.Label == "High-Risk" && u.AspNetUser.UserInformation.gender == "Male" && u.AspNetUser.UserProfile.optIn).Count();
+                    HighRiskLabelledIngredient newIngredient = new HighRiskLabelledIngredient(labelIng, count);
+                    highRiskLabelledIngredientList.Add(newIngredient);
+                }
+                highRiskLabelledIngredientList = highRiskLabelledIngredientList.OrderByDescending(o => o.countOfLabelOccurences).ToList();
+                return highRiskLabelledIngredientList;
+            }
+        }
+
+        public List<HighRiskLabelledIngredient> RetrieveRiskyIngredientsGender3()
+        {
+            using (FFDBContext db = new FFDBContext())
+            {
+                List<HighRiskLabelledIngredient> highRiskLabelledIngredientList = new List<HighRiskLabelledIngredient>();
+                List<int> highRiskList = db.UserIngredients.Where(u => u.Label == "High-Risk").Select(u => u.LabelledIngredientID).Distinct().ToList();
+                foreach (int ingredient in highRiskList)
+                {
+                    LabelledIngredient labelIng = db.LabelledIngredients.Where(l => l.ID == ingredient).FirstOrDefault();
+                    int count = db.UserIngredients.Where(u => u.LabelledIngredientID == ingredient && u.Label == "High-Risk" && u.AspNetUser.UserInformation.gender == "Nonbinary" && u.AspNetUser.UserProfile.optIn).Count();
                     HighRiskLabelledIngredient newIngredient = new HighRiskLabelledIngredient(labelIng, count);
                     highRiskLabelledIngredientList.Add(newIngredient);
                 }
@@ -169,6 +223,24 @@ namespace FODfinder.Controllers
         {
             var highRiskLabelledIngredientsAge5 = RetrieveRiskyIngredientsAge5();
             return Json(highRiskLabelledIngredientsAge5, JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult GetGenderChart1()
+        {
+            var highRiskLabelledIngredientsGender1 = RetrieveRiskyIngredientsGender1();
+            return Json(highRiskLabelledIngredientsGender1, JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult GetGenderChart2()
+        {
+            var highRiskLabelledIngredientsGender2 = RetrieveRiskyIngredientsGender2();
+            return Json(highRiskLabelledIngredientsGender2, JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult GetGenderChart3()
+        {
+            var highRiskLabelledIngredientsGender3 = RetrieveRiskyIngredientsGender3();
+            return Json(highRiskLabelledIngredientsGender3, JsonRequestBehavior.AllowGet);
         }
     }
 }
