@@ -144,7 +144,6 @@
             tooltip: {
                 text:'percentage'
             },
-            pieHole:0.3,
             slices: {
                 0:{ color:'E08A91' },
                 1:{ color:'828282' }
