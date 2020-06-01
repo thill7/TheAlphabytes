@@ -36,9 +36,18 @@
             User Labels Based on Age.
         </h2>
         <button id="clickTop" class="btn btn-primary">Back to Top</button>
-        <div class="container" style="height: 1000px;">
-
-
+        <div class="container">
+            <h3>High Risk Ingredients for Users under 18</h3>
+            <div id="chartAgeIngredientsGroup1" class="shadow"></div><br />
+            <h3>High Risk Ingredients for Users between 18 and 35</h3>
+            <div id="chartAgeIngredientsGroup2" class="shadow"></div><br />
+            <h3>High Risk Ingredients for Users between 36 and 55</h3>
+            <div id="chartAgeIngredientsGroup3" class="shadow"></div><br />
+            <h3>High Risk Ingredients for Users between 56 and 75</h3>
+            <div id="chartAgeIngredientsGroup4" class="shadow"></div><br />
+            <h3>High Risk Ingredients for Users over 75</h3>
+            <div id="chartAgeIngredientsGroup5" class="shadow"></div><br />
+            <div id="chartIngredientsByAge" class="shadow"></div><br />
         </div>
         <div id="gender" class="pb-5"></div>
         <div class="pb-5"></div>
@@ -60,3 +69,6 @@
         </div>
     </div>
 </div>
+
+@Scripts.Render("https://cdn.plot.ly/plotly-latest.min.js")
+@Scripts.Render("~/bundles/TrendPlots")
