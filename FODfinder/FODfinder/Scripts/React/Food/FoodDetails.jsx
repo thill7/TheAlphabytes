@@ -108,7 +108,7 @@
             showLegacyVersion: false
         });
 
-        google.charts.load('current', {'packages':['corechart']});
+        google.charts.load('42', {'packages':['corechart']});
         google.charts.setOnLoadCallback(this.drawChart);
     }
     
@@ -117,15 +117,39 @@
         data.addColumn('string', 'isFODMAP');
         data.addColumn('number', 'Content');
         data.addRows([
-            ['Low FODMAP', 100 - this.state.details.MaxFodmapPercentage],
-            ['High FODMAP', this.state.details.MaxFodmapPercentage]
+            ['High FODMAP', this.state.details.MaxFodmapPercentage],
+            ['Low FODMAP', 100 - this.state.details.MaxFodmapPercentage]
         ]);
 
-        var options = {title:'Food Composition',
-                       width:400,
-                       height:250,
-                       tooltip:{ trigger:'none' },
-                       pieHole:0.3};
+        var options = {
+            width:330,
+            height:250,
+            chartArea: {
+                left:20,
+                width:'100%'
+            },
+            backgroundColor: { fill:'FBF5F3' },
+            fontSize:13,
+            title:'Ingredients Breakdown',
+            titleTextStyle: {
+                color:'7E7E7E',
+                bold:true,
+                fontSize:16
+            },
+            legend: {
+                alignment:'center',
+                position:'left',
+                textStyle: { color:'828282' }
+            },
+            tooltip: {
+                text:'percentage'
+            },
+            pieHole:0.3,
+            slices: {
+                0:{ color:'E08A91' },
+                1:{ color:'828282' }
+            }
+        };
 
         var chart = new google.visualization.PieChart(document.getElementById('pieChart'));
         chart.draw(data, options);
