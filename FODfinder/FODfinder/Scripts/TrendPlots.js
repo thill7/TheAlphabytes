@@ -36,8 +36,10 @@ function successAjax1(data) {
         margin: { l: 130, t: 70, b: 70 }
     }
 
+    var config = { responsive: true }
+
     var chart = document.getElementById('chartAgeIngredientsGroup1');
-    Plotly.newPlot(chart, data, layout);
+    Plotly.newPlot(chart, data, layout, config);
 }
 
 function ajaxCall2() {
@@ -78,8 +80,10 @@ function successAjax2(data) {
         margin: { l: 130, t: 70, b: 70 }
     }
 
+    var config = { responsive: true }
+
     var chart = document.getElementById('chartAgeIngredientsGroup2');
-    Plotly.newPlot(chart, data, layout);
+    Plotly.newPlot(chart, data, layout, config);
 }
 
 function ajaxCall3() {
@@ -120,8 +124,10 @@ function successAjax3(data) {
         margin: { l: 130, t: 70, b: 70 }
     }
 
+    var config = { responsive: true }
+
     var chart = document.getElementById('chartAgeIngredientsGroup3');
-    Plotly.newPlot(chart, data, layout);
+    Plotly.newPlot(chart, data, layout, config);
 }
 
 function ajaxCall4() {
@@ -162,8 +168,10 @@ function successAjax4(data) {
         margin: { l: 130, t: 70, b: 70 }
     }
 
+    var config = { responsive: true }
+
     var chart = document.getElementById('chartAgeIngredientsGroup4');
-    Plotly.newPlot(chart, data, layout);
+    Plotly.newPlot(chart, data, layout, config);
 }
 
 function ajaxCall5() {
@@ -204,8 +212,10 @@ function successAjax5(data) {
         margin: { l: 130, t: 70, b: 70 }
     }
 
+    var config = { responsive: true }
+
     var chart = document.getElementById('chartAgeIngredientsGroup5');
-    Plotly.newPlot(chart, data, layout);
+    Plotly.newPlot(chart, data, layout, config);
 }
 
 function ajaxCall6() {
@@ -246,8 +256,10 @@ function successAjax6(data) {
         margin: { l: 130, t: 70, b: 70 }
     }
 
+    var config = { responsive: true }
+
     var chart = document.getElementById('chartGenderIngredientsFemale');
-    Plotly.newPlot(chart, data, layout);
+    Plotly.newPlot(chart, data, layout, config);
 }
 
 function ajaxCall7() {
@@ -288,8 +300,10 @@ function successAjax7(data) {
         margin: { l: 130, t: 70, b: 70 }
     }
 
+    var config = { responsive: true }
+
     var chart = document.getElementById('chartGenderIngredientsMale');
-    Plotly.newPlot(chart, data, layout);
+    Plotly.newPlot(chart, data, layout, config);
 }
 
 function ajaxCall8() {
@@ -330,8 +344,10 @@ function successAjax8(data) {
         margin: { l: 130, t: 70, b: 70 }
     }
 
+    var config = { responsive: true }
+
     var chart = document.getElementById('chartGenderIngredientsNonbinary');
-    Plotly.newPlot(chart, data, layout);
+    Plotly.newPlot(chart, data, layout, config);
 }
 
 function ajaxCall9() {
@@ -372,8 +388,10 @@ function successAjax9(data) {
         margin: { l: 130, t: 70, b: 70 }
     }
 
+    var config = { responsive: true }
+
     var chart = document.getElementById('chartEthnicityBlack');
-    Plotly.newPlot(chart, data, layout);
+    Plotly.newPlot(chart, data, layout, config);
 }
 
 function ajaxCall10() {
@@ -414,8 +432,10 @@ function successAjax10(data) {
         margin: { l: 130, t: 70, b: 70 }
     }
 
+    var config = { responsive: true }
+
     var chart = document.getElementById('chartEthnicityNativeAmerican');
-    Plotly.newPlot(chart, data, layout);
+    Plotly.newPlot(chart, data, layout, config);
 }
 
 function ajaxCall11() {
@@ -456,8 +476,10 @@ function successAjax11(data) {
         margin: { l: 130, t: 70, b: 70 }
     }
 
+    var config = { responsive: true }
+
     var chart = document.getElementById('chartEthnicityAsian');
-    Plotly.newPlot(chart, data, layout);
+    Plotly.newPlot(chart, data, layout, config);
 }
 
 function ajaxCall12() {
@@ -498,8 +520,10 @@ function successAjax12(data) {
         margin: { l: 130, t: 70, b: 70 }
     }
 
+    var config = { responsive: true }
+
     var chart = document.getElementById('chartEthnicityPacific');
-    Plotly.newPlot(chart, data, layout);
+    Plotly.newPlot(chart, data, layout, config);
 }
 
 function ajaxCall13() {
@@ -540,8 +564,10 @@ function successAjax13(data) {
         margin: { l: 130, t: 70, b: 70 }
     }
 
+    var config = { responsive: true }
+
     var chart = document.getElementById('chartEthnicityLatino');
-    Plotly.newPlot(chart, data, layout);
+    Plotly.newPlot(chart, data, layout, config);
 }
 
 function ajaxCall14() {
@@ -582,8 +608,10 @@ function successAjax14(data) {
         margin: { l: 130, t: 70, b: 70 }
     }
 
+    var config = { responsive: true }
+
     var chart = document.getElementById('chartEthnicityWhite');
-    Plotly.newPlot(chart, data, layout);
+    Plotly.newPlot(chart, data, layout, config);
 }
 
 function errorAjax() {
