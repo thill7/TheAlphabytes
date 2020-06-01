@@ -45,6 +45,7 @@ namespace FODfinder
 
             bundles.Add(new BabelBundle("~/bundles/FoodDetails").Include(
                 "~/Scripts/jquery-3.3.1.min.js",
+                "~/Scripts/chartsloader.js",
                 "~/Scripts/nutritionLabel-min.js",
                 "~/Scripts/React/Food/FoodDetails.jsx"));
 

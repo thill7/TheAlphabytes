@@ -15,6 +15,7 @@
         this.showLabels = this.showLabels.bind(this);
         this.hideLabels = this.hideLabels.bind(this);
         this.getUserLists = this.getUserLists.bind(this);
+        this.drawChart = this.drawChart.bind(this);
     }
 
     GetFoodNutrientValue(key) {
@@ -106,6 +107,51 @@
             valueServingUnitQuantity: details.ServingSize,
             showLegacyVersion: false
         });
+
+        google.charts.load('42', {'packages':['corechart']});
+        google.charts.setOnLoadCallback(this.drawChart);
+    }
+    
+    drawChart(){
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'isFODMAP');
+        data.addColumn('number', 'Content');
+        data.addRows([
+            ['High FODMAP', this.state.details.MaxFodmapPercentage],
+            ['Low FODMAP', 100 - this.state.details.MaxFodmapPercentage]
+        ]);
+
+        var options = {
+            width:330,
+            height:250,
+            chartArea: {
+                left:20,
+                width:'100%'
+            },
+            backgroundColor: { fill:'FBF5F3' },
+            fontSize:13,
+            title:'Ingredients Breakdown',
+            titleTextStyle: {
+                color:'7E7E7E',
+                bold:true,
+                fontSize:16
+            },
+            legend: {
+                alignment:'center',
+                position:'left',
+                textStyle: { color:'828282' }
+            },
+            tooltip: {
+                text:'percentage'
+            },
+            slices: {
+                0:{ color:'E08A91' },
+                1:{ color:'828282' }
+            }
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('pieChart'));
+        chart.draw(data, options);
     }
 
     async handleclick(e) {
@@ -306,6 +352,9 @@
                                     <span className="font-weight-bold">Rating: </span>
                                     <span>This is a </span><span className="font-weight-bold">{details.FodmapScore}</span><span> FODMAP food (could contain up to </span><span className="font-weight-bold">{details.MaxFodmapPercentage}%</span><span> High FODMAP ingredients)</span>
                                 </p>
+                                <div className="shadow" id="pieChart">
+
+                                </div>
                             </div>
                             <div className="col-md-6">
                                 <div className="shadow rounded bg-gray p-4">
