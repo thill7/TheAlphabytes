@@ -1,0 +1,90 @@
+﻿
+@{
+    ViewBag.Title = "Trends";
+}
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
+<script src="~/Scripts/Trends.js"></script>
+<h1 id="top" class="display-4 pt-3 text-center">User <a class="font-weight-bold">Trends</a></h1>
+<hr />
+<div class="row justify-content-center">
+    <div class="col-sm-8">
+        <h2>
+            What can I do here?
+        </h2>
+        <div class="container">
+            <h4>
+                <small id="age" class="text-muted">
+                    Based on the labels users have given to various ingredients, we try to identify trends by graphing the data given against age, gender, and ethnicity. Users can opt out of having their data used in their preferences.
+                    For quick navigation, click on one of the buttons below to jump to the trends you are interested in.
+                </small>
+            </h4>
+            <div class="row">
+                <div class="col-4">
+                    <button id="clickAge" class="btn btn-primary">Jump to Age Trends</button>
+                </div>
+                <div class="col-4">
+                    <button id="clickGender" class="btn btn-primary">Jump to Gender Trends</button>
+                </div>
+                <div class="col-4">
+                    <button id="clickEthnicity" class="btn btn-primary">Jump to Ethnicity Trends</button>
+                </div>
+            </div>
+        </div>
+
+        <h2 class="pt-3">
+            User Labels Based on Age.
+        </h2>
+        <button id="clickTop" class="btn btn-primary">Back to Top</button>
+        <div class="container">
+            <h3>High Risk Ingredients for Users under 18</h3>
+            <div id="chartAgeIngredientsGroup1" class="shadow"></div><br />
+            <h3>High Risk Ingredients for Users between 18 and 35</h3>
+            <div id="chartAgeIngredientsGroup2" class="shadow"></div><br />
+            <h3>High Risk Ingredients for Users between 36 and 55</h3>
+            <div id="chartAgeIngredientsGroup3" class="shadow"></div><br />
+            <h3>High Risk Ingredients for Users between 56 and 75</h3>
+            <div id="chartAgeIngredientsGroup4" class="shadow"></div><br />
+            <h3>High Risk Ingredients for Users over 75</h3>
+            <div id="chartAgeIngredientsGroup5" class="shadow"></div><br />
+            <div id="chartIngredientsByAge" class="shadow"></div><br />
+        </div>
+        <div id="gender" class="pb-5"></div>
+        <div class="pb-5"></div>
+        <h2 class="pt-3">
+            User Labels based on Gender
+        </h2>
+        <button id="clickTop1" class="btn btn-primary">Back to Top</button>
+        <div class="container">
+            <h3>High Risk Ingredients for Female Users</h3>
+            <div id="chartGenderIngredientsFemale" class="shadow"></div><br />
+            <h3>High Risk Ingredients for Male Users</h3>
+            <div id="chartGenderIngredientsMale" class="shadow"></div><br />
+            <h3>High Risk Ingredients for Nonbinary Users</h3>
+            <div id="chartGenderIngredientsNonbinary" class="shadow"></div><br />
+        </div>
+        <div id="ethnicity" class="pb-5"></div>
+        <div class="pb-5"></div>
+        <h2 class="pt-3">
+            User Labels based on Ethnicity
+        </h2>
+        <button id="clickTop2" class="btn btn-primary">Back to Top</button>
+        <div class="container">
+            <h3>High Risk Ingredients for Black Users</h3>
+            <div id="chartEthnicityBlack" class="shadow"></div><br />
+            <h3>High Risk Ingredients for Native American Users</h3>
+            <div id="chartEthnicityNativeAmerican" class="shadow"></div><br />
+            <h3>High Risk Ingredients for Asian Users</h3>
+            <div id="chartEthnicityAsian" class="shadow"></div><br />
+            <h3>High Risk Ingredients for Native Hawaiian or Other Pacific Islander Users</h3>
+            <div id="chartEthnicityPacific" class="shadow"></div><br />
+            <h3>High Risk Ingredients for Hispanic or Latino Users</h3>
+            <div id="chartEthnicityLatino" class="shadow"></div><br />
+            <h3>High Risk Ingredients for White Users</h3>
+            <div id="chartEthnicityWhite" class="shadow"></div><br />
+        </div>
+    </div>
+</div>
+
+@Scripts.Render("https://cdn.plot.ly/plotly-latest.min.js")
+@Scripts.Render("~/bundles/TrendPlots")
