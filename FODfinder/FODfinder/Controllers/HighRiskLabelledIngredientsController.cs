@@ -178,6 +178,114 @@ namespace FODfinder.Controllers
             }
         }
 
+        public List<HighRiskLabelledIngredient> RetrieveRiskyIngredientsEthnicity1()
+        {
+            using (FFDBContext db = new FFDBContext())
+            {
+                List<HighRiskLabelledIngredient> highRiskLabelledIngredientList = new List<HighRiskLabelledIngredient>();
+                List<int> highRiskList = db.UserIngredients.Where(u => u.Label == "High-Risk").Select(u => u.LabelledIngredientID).Distinct().ToList();
+                foreach (int ingredient in highRiskList)
+                {
+                    LabelledIngredient labelIng = db.LabelledIngredients.Where(l => l.ID == ingredient).FirstOrDefault();
+                    int count = db.UserIngredients.Where(u => u.LabelledIngredientID == ingredient && u.Label == "High-Risk" && u.AspNetUser.UserInformation.ethnicity == "Black" && u.AspNetUser.UserProfile.optIn).Count();
+                    HighRiskLabelledIngredient newIngredient = new HighRiskLabelledIngredient(labelIng, count);
+                    highRiskLabelledIngredientList.Add(newIngredient);
+                }
+                highRiskLabelledIngredientList = highRiskLabelledIngredientList.OrderByDescending(o => o.countOfLabelOccurences).ToList();
+                return highRiskLabelledIngredientList;
+            }
+        }
+
+        public List<HighRiskLabelledIngredient> RetrieveRiskyIngredientsEthnicity2()
+        {
+            using (FFDBContext db = new FFDBContext())
+            {
+                List<HighRiskLabelledIngredient> highRiskLabelledIngredientList = new List<HighRiskLabelledIngredient>();
+                List<int> highRiskList = db.UserIngredients.Where(u => u.Label == "High-Risk").Select(u => u.LabelledIngredientID).Distinct().ToList();
+                foreach (int ingredient in highRiskList)
+                {
+                    LabelledIngredient labelIng = db.LabelledIngredients.Where(l => l.ID == ingredient).FirstOrDefault();
+                    int count = db.UserIngredients.Where(u => u.LabelledIngredientID == ingredient && u.Label == "High-Risk" && u.AspNetUser.UserInformation.ethnicity == "Native American" && u.AspNetUser.UserProfile.optIn).Count();
+                    HighRiskLabelledIngredient newIngredient = new HighRiskLabelledIngredient(labelIng, count);
+                    highRiskLabelledIngredientList.Add(newIngredient);
+                }
+                highRiskLabelledIngredientList = highRiskLabelledIngredientList.OrderByDescending(o => o.countOfLabelOccurences).ToList();
+                return highRiskLabelledIngredientList;
+            }
+        }
+
+        public List<HighRiskLabelledIngredient> RetrieveRiskyIngredientsEthnicity3()
+        {
+            using (FFDBContext db = new FFDBContext())
+            {
+                List<HighRiskLabelledIngredient> highRiskLabelledIngredientList = new List<HighRiskLabelledIngredient>();
+                List<int> highRiskList = db.UserIngredients.Where(u => u.Label == "High-Risk").Select(u => u.LabelledIngredientID).Distinct().ToList();
+                foreach (int ingredient in highRiskList)
+                {
+                    LabelledIngredient labelIng = db.LabelledIngredients.Where(l => l.ID == ingredient).FirstOrDefault();
+                    int count = db.UserIngredients.Where(u => u.LabelledIngredientID == ingredient && u.Label == "High-Risk" && u.AspNetUser.UserInformation.ethnicity == "Asian" && u.AspNetUser.UserProfile.optIn).Count();
+                    HighRiskLabelledIngredient newIngredient = new HighRiskLabelledIngredient(labelIng, count);
+                    highRiskLabelledIngredientList.Add(newIngredient);
+                }
+                highRiskLabelledIngredientList = highRiskLabelledIngredientList.OrderByDescending(o => o.countOfLabelOccurences).ToList();
+                return highRiskLabelledIngredientList;
+            }
+        }
+
+        public List<HighRiskLabelledIngredient> RetrieveRiskyIngredientsEthnicity4()
+        {
+            using (FFDBContext db = new FFDBContext())
+            {
+                List<HighRiskLabelledIngredient> highRiskLabelledIngredientList = new List<HighRiskLabelledIngredient>();
+                List<int> highRiskList = db.UserIngredients.Where(u => u.Label == "High-Risk").Select(u => u.LabelledIngredientID).Distinct().ToList();
+                foreach (int ingredient in highRiskList)
+                {
+                    LabelledIngredient labelIng = db.LabelledIngredients.Where(l => l.ID == ingredient).FirstOrDefault();
+                    int count = db.UserIngredients.Where(u => u.LabelledIngredientID == ingredient && u.Label == "High-Risk" && u.AspNetUser.UserInformation.ethnicity == "Native Hawaiian or Other Pacific Islander" && u.AspNetUser.UserProfile.optIn).Count();
+                    HighRiskLabelledIngredient newIngredient = new HighRiskLabelledIngredient(labelIng, count);
+                    highRiskLabelledIngredientList.Add(newIngredient);
+                }
+                highRiskLabelledIngredientList = highRiskLabelledIngredientList.OrderByDescending(o => o.countOfLabelOccurences).ToList();
+                return highRiskLabelledIngredientList;
+            }
+        }
+
+        public List<HighRiskLabelledIngredient> RetrieveRiskyIngredientsEthnicity5()
+        {
+            using (FFDBContext db = new FFDBContext())
+            {
+                List<HighRiskLabelledIngredient> highRiskLabelledIngredientList = new List<HighRiskLabelledIngredient>();
+                List<int> highRiskList = db.UserIngredients.Where(u => u.Label == "High-Risk").Select(u => u.LabelledIngredientID).Distinct().ToList();
+                foreach (int ingredient in highRiskList)
+                {
+                    LabelledIngredient labelIng = db.LabelledIngredients.Where(l => l.ID == ingredient).FirstOrDefault();
+                    int count = db.UserIngredients.Where(u => u.LabelledIngredientID == ingredient && u.Label == "High-Risk" && u.AspNetUser.UserInformation.ethnicity == "Hispanic or Latino" && u.AspNetUser.UserProfile.optIn).Count();
+                    HighRiskLabelledIngredient newIngredient = new HighRiskLabelledIngredient(labelIng, count);
+                    highRiskLabelledIngredientList.Add(newIngredient);
+                }
+                highRiskLabelledIngredientList = highRiskLabelledIngredientList.OrderByDescending(o => o.countOfLabelOccurences).ToList();
+                return highRiskLabelledIngredientList;
+            }
+        }
+
+        public List<HighRiskLabelledIngredient> RetrieveRiskyIngredientsEthnicity6()
+        {
+            using (FFDBContext db = new FFDBContext())
+            {
+                List<HighRiskLabelledIngredient> highRiskLabelledIngredientList = new List<HighRiskLabelledIngredient>();
+                List<int> highRiskList = db.UserIngredients.Where(u => u.Label == "High-Risk").Select(u => u.LabelledIngredientID).Distinct().ToList();
+                foreach (int ingredient in highRiskList)
+                {
+                    LabelledIngredient labelIng = db.LabelledIngredients.Where(l => l.ID == ingredient).FirstOrDefault();
+                    int count = db.UserIngredients.Where(u => u.LabelledIngredientID == ingredient && u.Label == "High-Risk" && u.AspNetUser.UserInformation.ethnicity == "White" && u.AspNetUser.UserProfile.optIn).Count();
+                    HighRiskLabelledIngredient newIngredient = new HighRiskLabelledIngredient(labelIng, count);
+                    highRiskLabelledIngredientList.Add(newIngredient);
+                }
+                highRiskLabelledIngredientList = highRiskLabelledIngredientList.OrderByDescending(o => o.countOfLabelOccurences).ToList();
+                return highRiskLabelledIngredientList;
+            }
+        }
+
         // GET: HighRiskLabelledIngredients
         public ActionResult Index()
         {
@@ -241,6 +349,42 @@ namespace FODfinder.Controllers
         {
             var highRiskLabelledIngredientsGender3 = RetrieveRiskyIngredientsGender3();
             return Json(highRiskLabelledIngredientsGender3, JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult GetEthnicityChart1()
+        {
+            var highRiskLabelledIngredientsEthnicity1 = RetrieveRiskyIngredientsEthnicity1();
+            return Json(highRiskLabelledIngredientsEthnicity1, JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult GetEthnicityChart2()
+        {
+            var highRiskLabelledIngredientsEthnicity2 = RetrieveRiskyIngredientsEthnicity2();
+            return Json(highRiskLabelledIngredientsEthnicity2, JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult GetEthnicityChart3()
+        {
+            var highRiskLabelledIngredientsEthnicity3 = RetrieveRiskyIngredientsEthnicity3();
+            return Json(highRiskLabelledIngredientsEthnicity3, JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult GetEthnicityChart4()
+        {
+            var highRiskLabelledIngredientsEthnicity4 = RetrieveRiskyIngredientsEthnicity4();
+            return Json(highRiskLabelledIngredientsEthnicity4, JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult GetEthnicityChart5()
+        {
+            var highRiskLabelledIngredientsEthnicity5 = RetrieveRiskyIngredientsEthnicity5();
+            return Json(highRiskLabelledIngredientsEthnicity5, JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult GetEthnicityChart6()
+        {
+            var highRiskLabelledIngredientsEthnicity6 = RetrieveRiskyIngredientsEthnicity6();
+            return Json(highRiskLabelledIngredientsEthnicity6, JsonRequestBehavior.AllowGet);
         }
     }
 }
