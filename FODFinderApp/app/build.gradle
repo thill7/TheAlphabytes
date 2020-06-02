@@ -19,7 +19,7 @@ android {
     }
     buildTypes {
         debug {
-            buildConfigField "String","API_DOMAIN", "\"http://fodfinderdev.azurewebsites.net/\""
+            buildConfigField "String","API_DOMAIN", "\"http://fodfindertest.azurewebsites.net/\""
         }
         release {
             minifyEnabled false
