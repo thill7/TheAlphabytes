@@ -311,10 +311,13 @@
     </Content>
     <Content Include="Content\font-awesome.css" />
     <Content Include="Content\font-awesome.min.css" />
+    <Content Include="Content\Images\cassidy.jpg" />
     <Content Include="Content\Images\contact.png" />
     <Content Include="Content\Images\FODMAP.png" />
+    <Content Include="Content\Images\gabe.jpg" />
     <Content Include="Content\Images\home-logo.png" />
     <Content Include="Content\Images\IBS_info.png" />
+    <Content Include="Content\Images\jensen.jpg" />
     <Content Include="Content\Images\logo.png" />
     <Content Include="Content\Images\profilepic1.jpg" />
     <Content Include="Content\Images\profilepic2.jpg" />
@@ -328,6 +331,7 @@
     <Content Include="Content\main.min.css">
       <DependentUpon>main.css</DependentUpon>
     </Content>
+    <Content Include="Content\Images\tanner.jpg" />
     <Content Include="Content\nutritionLabel-min.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\fontawesome-webfont.svg" />
@@ -340,6 +344,7 @@
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\chartsloader.js" />
     <Content Include="Scripts\EnableTooltip.js" />
     <Content Include="Scripts\esm\popper-utils.js" />
     <Content Include="Scripts\esm\popper-utils.min.js" />
@@ -543,6 +548,8 @@
     <Content Include="Scripts\src\utils\setStyles.js" />
     <Content Include="Scripts\src\utils\setupEventListeners.js" />
     <Content Include="Scripts\textAreaExpand.js" />
+    <Content Include="Scripts\TrendPlots.js" />
+    <Content Include="Scripts\Trends.js" />
     <Content Include="Scripts\umd\popper-utils.js" />
     <Content Include="Scripts\umd\popper-utils.min.js" />
     <Content Include="Scripts\umd\popper.js" />
@@ -633,6 +640,7 @@
     <Content Include="Views\Error\InternalServer.cshtml" />
     <Content Include="Views\Donate\Index.cshtml" />
     <Content Include="Views\DevInfo\Index.cshtml" />
+    <Content Include="Views\HighRiskLabelledIngredients\Trends.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\index.d.ts" />

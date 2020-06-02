@@ -27,6 +27,10 @@ namespace FODfinder
                 "~/Scripts/jquery-3.3.1.min.js",
                 "~/Scripts/barPlot.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/TrendPlots").Include(
+                 "~/Scripts/jquery-3.3.1.min.js",
+                 "~/Scripts/TrendPlots.js"));
+
             bundles.Add(new StyleBundle("~/Content/css").Include(
                 "~/Content/main.css",
                 "~/Content/site.css"));
@@ -41,6 +45,7 @@ namespace FODfinder
 
             bundles.Add(new BabelBundle("~/bundles/FoodDetails").Include(
                 "~/Scripts/jquery-3.3.1.min.js",
+                "~/Scripts/chartsloader.js",
                 "~/Scripts/nutritionLabel-min.js",
                 "~/Scripts/React/Food/FoodDetails.jsx"));
 
