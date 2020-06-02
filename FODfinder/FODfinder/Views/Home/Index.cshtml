@@ -39,7 +39,7 @@
                     {
                         <div class="input-group input-group-lg w-100">
                             <div class="input-group-prepend">
-                                <span class="input-group-text input-group-text-light">Search</span>
+                                <span class="input-group-text input-group-content-prepend input-group-text-light">Search</span>
                             </div>
                             @Html.TextBox("query", "", new { @class = "form-control", required = true })
                             <div class="input-group-append">
@@ -62,7 +62,7 @@
                         <div class="justify-content-center row"><img class="img-fluid card-img" src="~/Content/Images/IBS_info.png" /></div>
                     </div>
                     <div class="card-footer text-center">
-                        <a href="@Url.Action("Index","IbsInfo")" class="btn btn-light text-gray w-50">IBS</a>
+                        <a href="@Url.Action("Index","IbsInfo")" class="btn btn-secondary text-gray w-50">IBS</a>
                     </div>
                 </div>
             </div>
@@ -76,7 +76,7 @@
                         <div class="justify-content-center pt-2 row"><img class="img-fluid card-img" src="~/Content/Images/FODMAP.png" /></div>
                     </div>
                     <div class="card-footer text-center">
-                        <a href="@Url.Action("Index","FodmapInfo")" class="btn btn-light text-gray w-50">FODMAPs</a>
+                        <a href="@Url.Action("Index","FodmapInfo")" class="btn btn-secondary text-gray w-50">FODMAPs</a>
                     </div>
                 </div>
             </div>
@@ -90,7 +90,7 @@
                         <div class="justify-content-center pt-3 row"><img class="img-fluid card-img" src="~/Content/Images/contact.png" /></div>
                     </div>
                     <div class="card-footer text-center">
-                        <a href="@Url.Action("Contact","Contact")" class="btn btn-light text-gray w-50">Contact</a>
+                        <a href="@Url.Action("Contact","Contact")" class="btn btn-secondary text-gray w-50">Contact</a>
                     </div>
                 </div>
             </div>

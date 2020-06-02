@@ -6,7 +6,7 @@
 <div class="container-fluid pt-4">
     <div class="row justify-content-center">
         <div class="col-lg-8">
-            <div class="card">
+            <div class="card shadow">
                 <div class="card-header bg-secondary text-gray text-center">
                     <span class="h4">
                         Create An Account
@@ -208,7 +208,7 @@
                             @Html.ValidationMessageFor(m => m.ethnicity, "", new { @class = "text-danger" })
                         </div>
                         <input type="hidden" id="profileImgUrl" name="profileImgUrl" value="profilepic1" />
-                        <div class="form-group text-center" data-placement="top" title="Your information will only be used to spot general trends by demographic within the FODfinder website" data-trigger="hover" data-delay='{"show":200, "hide":100}'>
+                        <div class="form-group text-center" data-toggle="tooltip" data-placement="top" title="Your information will only be used to spot general trends by demographic within the FODfinder website" data-trigger="hover" data-delay='{"show":200, "hide":100}'>
                             <div class="custom-control custom-checkbox d-inline">
                                 @Html.CheckBoxFor(m => m.optIn, new { @checked = true, @class = "custom-control-input" })
                                 <label class="custom-control-label" for="optIn"></label>
@@ -217,7 +217,7 @@
                                 Use my anonymized demographic info
                             </span>
                         </div>
-                        <div class="form-group text-center" data-placement="top" title="Your information will only be used to spot general trends by demographic within the FODfinder website" data-trigger="hover" data-delay='{"show":200, "hide":100}'>
+                        <div class="form-group text-center">
                             <div class="custom-control custom-checkbox d-inline">
                                 @Html.CheckBoxFor(m => m.is_public, new { @checked = true, @class = "custom-control-input" })
                                 <label class="custom-control-label" for="optIn"></label>

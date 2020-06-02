@@ -57,9 +57,9 @@
         <div class="card-footer">
             @if (ViewBag.ownsProfile == "true")
             {
-                @Html.ActionLink("Edit My Profile", "Edit", new { id = Model.userID }, new { @class = "btn btn-primary" })
+                @Html.ActionLink("Edit My Profile", "Edit", new { id = Model.userID }, new { @class = "btn btn-primary mb-1" })
             }
 
-            @Html.ActionLink("Back to Search", "Search", null, new { @class = "btn btn-primary" })
+            @Html.ActionLink("Back to Search", "Search", null, new { @class = "btn btn-primary mb-1" })
         </div>
     </div>
