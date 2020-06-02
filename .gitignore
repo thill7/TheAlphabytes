@@ -4,12 +4,6 @@
 ## Get latest from https://github.com/github/gitignore/blob/master/VisualStudio.gitignore
 
 Web_deploy.config
-FODfinder/FODfinder/Content/bootstrap/bootstrap.css
-FODfinder/FODfinder/Content/bootstrap/bootstrap.min.css
-FODfinder/FODfinder/Content/main.css
-FODfinder/FODfinder/Content/main.min.css
-
-
 
 # User-specific files
 *.suo
