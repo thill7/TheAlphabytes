@@ -218,3 +218,8 @@ html, body {
 @media (min-width: 1200px) {
     
 }
+
+.g-recaptcha {
+    transform: scale(0.77);
+    -webkit-transform: scale(0.77);
+}

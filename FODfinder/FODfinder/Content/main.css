@@ -30,7 +30,7 @@
       border-top-left-radius: 0rem !important;
       border-top-right-radius: 0rem !important;
       width: inherit; }
-    .input-group > .input-group-append:last-child > .input-group-text-append {
+    .input-group > .input-group-append:last-child > .input-group-content-append {
       border-top: none; }
   .input-group > .form-control:last-child {
     border-bottom-left-radius: 0.25rem !important;
