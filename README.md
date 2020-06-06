@@ -15,3 +15,7 @@ Our core team is made up of star developers:
 
 ### How can I contribute?
 We follow a Disciplined Agile Delivery approach to software development, with a focus on face to face interaction whenever possible. If you'd like to contribute, we recommend using these [tools](tools.md), and be sure to follow the [coding guidelines](codingGuidelines.md). You will need to contact one of the above developers in order to obtain the necessary *secrets*.
+
+[Finalized database schema](better_er.png)
+
+[Proof of continuous deployment](continuous_deployment.png)
